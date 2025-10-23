@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import '../../../styles/BoardsNew.css';
-import plus from '../../../assets/plus.png';
+import add from '../../../assets/add.png';
 
 const BoardsNew = () => {
     const [writer, setWriter] = useState('');
@@ -148,21 +148,21 @@ const BoardsNew = () => {
                         <div className="img__section">
                             <div className="img"></div>
                             <div className="img__upload">
-                                <img className="img__plus" src={plus} alt="사진업로드" />
+                                <img className="img__plus" src={add} alt="사진업로드" />
                                 <p className="img__text">클릭해서 사진 업로드</p>
                             </div>
                         </div>
                         <div className="img__section">
                             <div className="img"></div>
                             <div className="img__upload">
-                                <img className="img__plus" src={plus} alt="사진업로드" />
+                                <img className="img__plus" src={add} alt="사진업로드" />
                                 <p className="img__text">클릭해서 사진 업로드</p>
                             </div>
                         </div>
                         <div className="img__section">
                             <div className="img"></div>
                             <div className="img__upload">
-                                <img className="img__plus" src={plus} alt="사진업로드" />
+                                <img className="img__plus" src={add} alt="사진업로드" />
                                 <p className="img__text">클릭해서 사진 업로드</p>
                             </div>
                         </div>
