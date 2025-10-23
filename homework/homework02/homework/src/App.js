@@ -1,6 +1,45 @@
+import { useState } from 'react';
 import './App.css';
 
 const App = () => {
+    const [writer, setWriter] = useState('');
+    const [password, setPassword] = useState('');
+    const [title, setTitle] = useState('');
+    const [content, setContent] = useState('');
+
+    const [writerError, setWriterError] = useState('');
+    const [passwordError, setPasswordError] = useState('');
+    const [titleError, setTitleError] = useState('');
+    const [contentError, setContentError] = useState('');
+
+    const onChangeWriter = (event) => {
+        setWriter(event.target.value);
+    };
+
+    const onChangePassword = (event) => {
+        setPassword(event.target.value);
+    };
+
+    const onChangeTitle = (event) => {
+        setTitle(event.target.value);
+    };
+
+    const onChangeContent = (event) => {
+        setContent(event.target.value);
+    };
+
+    const onClickSubmit = () => {
+        if (!writer) setWriterError('필수입력 사항입니다.');
+        else setWriterError('');
+        if (!password) setPasswordError('필수입력 사항입니다.');
+        else setPasswordError('');
+        if (!title) setTitleError('필수입력 사항입니다.');
+        else setTitleError('');
+        if (!content) setContentError('필수입력 사항입니다.');
+        else setContentError('');
+        if (writer && password && title && content) alert('게시글 등록이 가능한 상태입니다!');
+    };
+
     return (
         <div className="root">
             <header className="title">게시물 등록</header>
@@ -13,7 +52,13 @@ const App = () => {
                             <p className="sub__title">작성자</p>
                             <p className="necessary__point">*</p>
                         </div>
-                        <input className="input__text" type="text" placeholder="작성자 명을 입력해 주세요."></input>
+                        <input
+                            className="input__text"
+                            type="text"
+                            placeholder="작성자 명을 입력해 주세요."
+                            onChange={onChangeWriter}
+                        />
+                        <div className="error">{writerError}</div>
                     </div>
                     {/* 비밀번호 */}
                     <div className="column__sort">
@@ -21,7 +66,13 @@ const App = () => {
                             <p className="sub__title">비밀번호</p>
                             <p className="necessary__point">*</p>
                         </div>
-                        <input className="input__text" type="password" placeholder="비밀번호를 입력해 주세요."></input>
+                        <input
+                            className="input__text"
+                            type="password"
+                            placeholder="비밀번호를 입력해 주세요."
+                            onChange={onChangePassword}
+                        />
+                        <div className="error">{passwordError}</div>
                     </div>
                 </div>
                 <div className="div"></div>
@@ -32,7 +83,13 @@ const App = () => {
                         <p className="sub__title">제목</p>
                         <p className="necessary__point">*</p>
                     </div>
-                    <input className="input__text" type="text" placeholder="제목을 입력해 주세요."></input>
+                    <input
+                        className="input__text"
+                        type="text"
+                        placeholder="제목을 입력해 주세요."
+                        onChange={onChangeTitle}
+                    />
+                    <div className="error">{titleError}</div>
                 </div>
                 <div className="div"></div>
 
@@ -42,25 +99,30 @@ const App = () => {
                         <p className="sub__title">내용</p>
                         <p className="necessary__point">*</p>
                     </div>
-                    <textarea className="textarea__text" placeholder="내용을 입력해 주세요." />
+                    <textarea
+                        className="textarea__text"
+                        placeholder="내용을 입력해 주세요."
+                        onChange={onChangeContent}
+                    />
+                    <div className="error">{contentError}</div>
                 </div>
 
                 {/* 주소 */}
                 <div className="column__sort">
                     <p className="sub__title">주소</p>
                     <div className="row__sort__8">
-                        <input className="input__number" type="text" placeholder="01234" maxLength={5}></input>
+                        <input className="input__number" type="text" placeholder="01234" maxLength={5} />
                         <button className="white__btn">우편번호 검색</button>
                     </div>
-                    <input className="input__text" type="text" placeholder="주소를 입력해 주세요."></input>
-                    <input className="input__text" type="text" placeholder="상세주소"></input>
+                    <input className="input__text" type="text" placeholder="주소를 입력해 주세요." />
+                    <input className="input__text" type="text" placeholder="상세주소" />
                 </div>
                 <div className="div"></div>
 
                 {/* 유튜브 링크 */}
                 <div className="column__sort">
                     <p className="sub__title">유튜브 링크</p>
-                    <input className="input__text" type="text" placeholder="링크를 입력해 주세요."></input>
+                    <input className="input__text" type="text" placeholder="링크를 입력해 주세요." />
                 </div>
                 <div className="div"></div>
 
@@ -96,7 +158,9 @@ const App = () => {
             <footer>
                 <div className="row__sort__16">
                     <button className="white__btn">취소</button>
-                    <button className="blue__btn">등록하기</button>
+                    <button className="blue__btn" onClick={onClickSubmit}>
+                        등록하기
+                    </button>
                 </div>
             </footer>
         </div>
