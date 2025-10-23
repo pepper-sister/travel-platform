@@ -12,20 +12,34 @@ const BoardsNew = () => {
     const [titleError, setTitleError] = useState('');
     const [contentError, setContentError] = useState('');
 
+    const [isActive, setIsActive] = useState(true);
+
     const onChangeWriter = (event) => {
         setWriter(event.target.value);
+
+        if (event.target.value && password && title && content) return setIsActive(false);
+        setIsActive(true);
     };
 
     const onChangePassword = (event) => {
         setPassword(event.target.value);
+
+        if (writer && event.target.value && title && content) return setIsActive(false);
+        setIsActive(true);
     };
 
     const onChangeTitle = (event) => {
         setTitle(event.target.value);
+
+        if (writer && password && event.target.value && content) return setIsActive(false);
+        setIsActive(true);
     };
 
     const onChangeContent = (event) => {
         setContent(event.target.value);
+
+        if (writer && password && title && event.target.value) return setIsActive(false);
+        setIsActive(true);
     };
 
     const onClickSubmit = () => {
@@ -158,7 +172,7 @@ const BoardsNew = () => {
             <footer>
                 <div className="row__sort__16">
                     <button className="white__btn">취소</button>
-                    <button className="blue__btn" onClick={onClickSubmit}>
+                    <button className="blue__btn" disabled={isActive} onClick={onClickSubmit}>
                         등록하기
                     </button>
                 </div>
