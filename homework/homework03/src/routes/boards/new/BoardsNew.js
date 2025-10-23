@@ -56,14 +56,14 @@ const BoardsNew = () => {
     };
 
     return (
-        <div className="column__sort__40">
+        <div className="column__sort gap__40">
             <header className="title">게시물 등록</header>
 
-            <main className="column__sort__40">
-                <div className="row__sort__40">
+            <main className="column__sort gap__40">
+                <div className="row__sort gap__40">
                     {/* 작성자 */}
-                    <div className="column__sort__8 flex">
-                        <div className="row__sort__4">
+                    <div className="column__sort gap__8 flex">
+                        <div className="row__sort gap__4">
                             <p className="sub__title">작성자</p>
                             <p className="necessary__point">*</p>
                         </div>
@@ -76,8 +76,8 @@ const BoardsNew = () => {
                         <div className="error">{writerError}</div>
                     </div>
                     {/* 비밀번호 */}
-                    <div className="column__sort__8 flex">
-                        <div className="row__sort__4">
+                    <div className="column__sort gap__8 flex">
+                        <div className="row__sort gap__4">
                             <p className="sub__title">비밀번호</p>
                             <p className="necessary__point">*</p>
                         </div>
@@ -93,8 +93,8 @@ const BoardsNew = () => {
                 <div className="div"></div>
 
                 {/* 제목 */}
-                <div className="column__sort__8">
-                    <div className="row__sort__4">
+                <div className="column__sort gap__8">
+                    <div className="row__sort gap__4">
                         <p className="sub__title">제목</p>
                         <p className="necessary__point">*</p>
                     </div>
@@ -109,8 +109,8 @@ const BoardsNew = () => {
                 <div className="div"></div>
 
                 {/* 내용 */}
-                <div className="column__sort__8">
-                    <div className="row__sort__4">
+                <div className="column__sort gap__8">
+                    <div className="row__sort gap__4">
                         <p className="sub__title">내용</p>
                         <p className="necessary__point">*</p>
                     </div>
@@ -123,9 +123,9 @@ const BoardsNew = () => {
                 </div>
 
                 {/* 주소 */}
-                <div className="column__sort__8">
+                <div className="column__sort gap__8">
                     <p className="sub__title">주소</p>
-                    <div className="row__sort__8">
+                    <div className="row__sort gap__8">
                         <input className="input__number" type="text" placeholder="01234" maxLength={5} />
                         <button className="white__btn">우편번호 검색</button>
                     </div>
@@ -135,34 +135,34 @@ const BoardsNew = () => {
                 <div className="div"></div>
 
                 {/* 유튜브 링크 */}
-                <div className="column__sort__8">
+                <div className="column__sort gap__8">
                     <p className="sub__title">유튜브 링크</p>
                     <input className="input__text" type="text" placeholder="링크를 입력해 주세요." />
                 </div>
                 <div className="div"></div>
 
                 {/* 사진 첨부 */}
-                <div className="column__sort__8">
+                <div className="column__sort gap__8">
                     <p className="sub__title">사진 첨부</p>
-                    <div className="row__sort__16">
+                    <div className="row__sort gap__16">
                         <div className="img__section">
                             <div className="img"></div>
                             <div className="img__upload">
-                                <img className="img__plus" src={plus} />
+                                <img className="img__plus" src={plus} alt="사진업로드" />
                                 <p className="img__text">클릭해서 사진 업로드</p>
                             </div>
                         </div>
                         <div className="img__section">
                             <div className="img"></div>
                             <div className="img__upload">
-                                <img className="img__plus" src={plus} />
+                                <img className="img__plus" src={plus} alt="사진업로드" />
                                 <p className="img__text">클릭해서 사진 업로드</p>
                             </div>
                         </div>
                         <div className="img__section">
                             <div className="img"></div>
                             <div className="img__upload">
-                                <img className="img__plus" src={plus} />
+                                <img className="img__plus" src={plus} alt="사진업로드" />
                                 <p className="img__text">클릭해서 사진 업로드</p>
                             </div>
                         </div>
@@ -171,7 +171,7 @@ const BoardsNew = () => {
             </main>
 
             <footer>
-                <div className="row__sort__16">
+                <div className="row__sort gap__16">
                     <button className="white__btn">취소</button>
                     <button className="blue__btn" disabled={isActive} onClick={onClickSubmit}>
                         등록하기

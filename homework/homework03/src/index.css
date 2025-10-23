@@ -21,31 +21,27 @@ body {
     flex: 1;
 }
 
-.row__sort__40 {
+.row__sort {
     display: flex;
-    gap: 40px;
 }
-.row__sort__16 {
+.column__sort {
     display: flex;
-    gap: 16px;
-}
-.row__sort__4 {
-    display: flex;
-    gap: 4px;
-}
-.row__sort__8 {
-    display: flex;
-    gap: 8px;
+    flex-direction: column;
 }
 
-.column__sort__8 {
-    display: flex;
-    flex-direction: column;
+.gap__4 {
+    gap: 4px;
+}
+.gap__8 {
     gap: 8px;
 }
-.column__sort__40 {
-    display: flex;
-    flex-direction: column;
+.gap__24 {
+    gap: 24px;
+}
+.gap__16 {
+    gap: 16px;
+}
+.gap__40 {
     gap: 40px;
 }
 
