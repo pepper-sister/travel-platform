@@ -1,58 +1,14 @@
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-
-    font-size: 16px;
-    font-weight: 500;
-    color: #000000;
-    line-height: 24px;
-    font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto,
-        'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji',
-        'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
-}
-
-.root {
-    width: 100%;
-    padding: 40px 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-}
-
 .title {
     font-size: 20px;
     font-weight: 700;
     line-height: 28px;
 }
 
-main {
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-}
-
-.row__sort__40 {
-    display: flex;
-    gap: 40px;
-}
-
-.column__sort {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.row__sort__4 {
-    display: flex;
-    gap: 4px;
-}
-
 .sub__title {
     color: #333333;
 }
-.necessary__point {
+.necessary__point,
+.error {
     color: #f66a6a;
 }
 
@@ -69,32 +25,12 @@ main {
     font-weight: 400;
     color: #ababab;
 }
-
-.error {
-    color: #f66a6a;
-}
-
-.div {
-    border-bottom: 1px solid #e4e4e4;
-}
-
 .textarea__text {
     height: 336px;
     resize: none;
 }
-
-.row__sort__8 {
-    display: flex;
-    gap: 8px;
-}
-
 .input__number {
     width: 82px;
-}
-
-.row__sort__16 {
-    display: flex;
-    gap: 16px;
 }
 
 .img__section {
@@ -137,17 +73,12 @@ footer {
 
     font-size: 18px;
     font-weight: 600;
-
-    cursor: pointer;
-}
-.white__btn {
-    border: 1px solid #000000;
-    background-color: #ffffff;
 }
 .blue__btn {
     border: none;
     background-color: #2974e5;
     color: #ffffff;
+    cursor: pointer;
 }
 .blue__btn:disabled {
     background-color: #c7c7c7;
