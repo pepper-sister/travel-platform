@@ -18,7 +18,7 @@ const 철수의페이지목록 = createBrowserRouter([
     { path: '/board2-refactoring', element: <BoardRefactoring /> },
 ]);
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById('root') as ReactDOM.Container);
 root.render(<RouterProvider router={철수의페이지목록} />);
 
 // If you want to start measuring performance in your app, pass a function
