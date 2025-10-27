@@ -1,15 +1,16 @@
 // import type { Metadata } from "next";
-// import { Geist, Geist_Mono } from "next/font/google";
+// import localFont from "next/font/local";
 import "./globals.css";
 
-// const geistSans = Geist({
+// const geistSans = localFont({
+//   src: "./fonts/GeistVF.woff",
 //   variable: "--font-geist-sans",
-//   subsets: ["latin"],
+//   weight: "100 900",
 // });
-
-// const geistMono = Geist_Mono({
+// const geistMono = localFont({
+//   src: "./fonts/GeistMonoVF.woff",
 //   variable: "--font-geist-mono",
-//   subsets: ["latin"],
+//   weight: "100 900",
 // });
 
 // export const metadata: Metadata = {
@@ -21,25 +22,10 @@ export default function RootLayout(props) {
   return (
     <html lang="en">
       <body>
-        <div>==========여기위는 레이아웃입니다 ========== </div>
+        <div>===========여기위는 레이아웃입니다===========</div>
         {props.children}
-        <div>==========여기아래는 레이아웃입니다 ========== </div>
+        <div>===========여기아래는 레이아웃입니다===========</div>
       </body>
     </html>
   );
 }
-
-/*
-  [ Next 실행 순서 ]
-
-  1. 주소창에 주소 입력
-    => http://localhost:3000/
-
-  2. 입력된 주소의 폴더안의 pages.tsx 찾기
-    => app/page.tsx
-      (ex, 주소: /mypage 라면? app/mypage/page.tsx 찾기)
-
-  3. 해당 페이지컴포넌트를 통째로 props에 넣어서 실행하기
-  <RootLayout children={페이지컴포넌트} />
-
-*/
