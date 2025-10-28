@@ -6,7 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App";
 import BoardsNew from "./routes/boards/new/BoardsNew";
-import BoardsDetail from "./routes/boards/new/BoardsDetail";
+import BoardsDetail from "./routes/boards/detail/BoardsDetail";
 
 const pages = createBrowserRouter([
   { path: "/", element: <App /> },
