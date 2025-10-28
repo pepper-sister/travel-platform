@@ -14,3 +14,7 @@
     font-size: 30px;
   }
 }
+
+* {
+  font-family: var(--글로벌폰트변수);
+}
