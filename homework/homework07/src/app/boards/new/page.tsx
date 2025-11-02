@@ -3,58 +3,71 @@
 import { ChangeEvent, useState } from "react";
 import Image from "next/image";
 import styles from "./styles.module.css";
+import { useMutation } from "@apollo/client/react";
+import { gql } from "@apollo/client";
+
+const CREATE_BOARD = gql`
+  mutation createBoard($createBoardInput: CreateBoardInput!) {
+    createBoard(createBoardInput: $createBoardInput) {
+      _id
+    }
+  }
+`;
 
 const BoardsNew = () => {
   const [writer, setWriter] = useState("");
   const [password, setPassword] = useState("");
   const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
+  const [contents, setContents] = useState("");
 
-  const [writerError, setWriterError] = useState("");
-  const [passwordError, setPasswordError] = useState("");
-  const [titleError, setTitleError] = useState("");
-  const [contentError, setContentError] = useState("");
+  // const [writerError, setWriterError] = useState("");
+  // const [passwordError, setPasswordError] = useState("");
+  // const [titleError, setTitleError] = useState("");
+  // const [contentsError, setContentsError] = useState("");
 
   const [isActive, setIsActive] = useState(true);
+
+  const [createBoard] = useMutation(CREATE_BOARD);
 
   const onChangeWriter = (event: ChangeEvent<HTMLInputElement>) => {
     setWriter(event.target.value);
 
-    if (event.target.value && password && title && content) return setIsActive(false);
+    if (event.target.value && password && title && contents) return setIsActive(false);
     setIsActive(true);
   };
 
   const onChangePassword = (event: ChangeEvent<HTMLInputElement>) => {
     setPassword(event.target.value);
 
-    if (writer && event.target.value && title && content) return setIsActive(false);
+    if (writer && event.target.value && title && contents) return setIsActive(false);
     setIsActive(true);
   };
 
   const onChangeTitle = (event: ChangeEvent<HTMLInputElement>) => {
     setTitle(event.target.value);
 
-    if (writer && password && event.target.value && content) return setIsActive(false);
+    if (writer && password && event.target.value && contents) return setIsActive(false);
     setIsActive(true);
   };
 
-  const onChangeContent = (event: ChangeEvent<HTMLTextAreaElement>) => {
-    setContent(event.target.value);
+  const onChangeContents = (event: ChangeEvent<HTMLTextAreaElement>) => {
+    setContents(event.target.value);
 
     if (writer && password && title && event.target.value) return setIsActive(false);
     setIsActive(true);
   };
 
-  const onClickSubmit = () => {
-    if (!writer) setWriterError("필수입력 사항입니다.");
-    else setWriterError("");
-    if (!password) setPasswordError("필수입력 사항입니다.");
-    else setPasswordError("");
-    if (!title) setTitleError("필수입력 사항입니다.");
-    else setTitleError("");
-    if (!content) setContentError("필수입력 사항입니다.");
-    else setContentError("");
-    if (writer && password && title && content) alert("게시글 등록이 가능한 상태입니다!");
+  const onClickSubmit = async () => {
+    await createBoard({
+      variables: {
+        createBoardInput: {
+          writer: writer,
+          password: password,
+          title: title,
+          contents: contents,
+        },
+      },
+    });
   };
 
   return (
@@ -75,7 +88,7 @@ const BoardsNew = () => {
               placeholder="작성자 명을 입력해 주세요."
               onChange={onChangeWriter}
             />
-            <div className="c__f66a6a">{writerError}</div>
+            {/* <div className="c__f66a6a">{writerError}</div> */}
           </div>
           {/* 비밀번호 */}
           <div className="column__sort gap__8 flex">
@@ -89,7 +102,7 @@ const BoardsNew = () => {
               placeholder="비밀번호를 입력해 주세요."
               onChange={onChangePassword}
             />
-            <div className="c__f66a6a">{passwordError}</div>
+            {/* <div className="c__f66a6a">{passwordError}</div> */}
           </div>
         </div>
         <div className="div"></div>
@@ -106,7 +119,7 @@ const BoardsNew = () => {
             placeholder="제목을 입력해 주세요."
             onChange={onChangeTitle}
           />
-          <div className="c__f66a6a">{titleError}</div>
+          {/* <div className="c__f66a6a">{titleError}</div> */}
         </div>
         <div className="div"></div>
 
@@ -116,8 +129,8 @@ const BoardsNew = () => {
             <p className="c__333333">내용</p>
             <p className="c__f66a6a">*</p>
           </div>
-          <textarea className={styles.textarea__text} placeholder="내용을 입력해 주세요." onChange={onChangeContent} />
-          <div className="c__f66a6a">{contentError}</div>
+          <textarea className={styles.textarea__text} placeholder="내용을 입력해 주세요." onChange={onChangeContents} />
+          {/* <div className="c__f66a6a">{contentsError}</div> */}
         </div>
 
         {/* 주소 */}
