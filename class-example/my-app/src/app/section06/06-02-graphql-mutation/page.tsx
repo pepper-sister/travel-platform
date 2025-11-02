@@ -5,7 +5,7 @@ import { gql } from "@apollo/client";
 
 const 나의그래프큐엘셋팅 = gql`
   mutation {
-    createBoard(writer: "철수", title: "안녕하세요제목!", contents: "반가워요!") {
+    createBoard(writer: "철수", title: "안녕하세요제목!", contents: 333) {
       _id
       number
       message
