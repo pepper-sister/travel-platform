@@ -5,6 +5,7 @@ import Image from "next/image";
 import styles from "./styles.module.css";
 import { useMutation } from "@apollo/client/react";
 import { gql } from "@apollo/client";
+import { useRouter } from "next/navigation";
 
 const CREATE_BOARD = gql`
   mutation createBoard($createBoardInput: CreateBoardInput!) {
@@ -15,6 +16,8 @@ const CREATE_BOARD = gql`
 `;
 
 const BoardsNew = () => {
+  const router = useRouter();
+
   const [writer, setWriter] = useState("");
   const [password, setPassword] = useState("");
   const [title, setTitle] = useState("");
@@ -59,7 +62,7 @@ const BoardsNew = () => {
 
   const onClickSubmit = async () => {
     try {
-      await createBoard({
+      const result = await createBoard({
         variables: {
           createBoardInput: {
             writer: writer,
@@ -69,6 +72,8 @@ const BoardsNew = () => {
           },
         },
       });
+
+      router.push(`/boards/${result.data.createBoard._id}`);
     } catch (error) {
       alert("에러가 발생하였습니다. 다시 시도해 주세요.");
     }
