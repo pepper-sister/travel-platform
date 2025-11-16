@@ -58,16 +58,20 @@ const BoardsNew = () => {
   };
 
   const onClickSubmit = async () => {
-    await createBoard({
-      variables: {
-        createBoardInput: {
-          writer: writer,
-          password: password,
-          title: title,
-          contents: contents,
+    try {
+      await createBoard({
+        variables: {
+          createBoardInput: {
+            writer: writer,
+            password: password,
+            title: title,
+            contents: contents,
+          },
         },
-      },
-    });
+      });
+    } catch (error) {
+      alert("에러가 발생하였습니다. 다시 시도해 주세요.");
+    }
   };
 
   return (
