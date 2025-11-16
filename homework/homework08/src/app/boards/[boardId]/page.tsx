@@ -2,8 +2,27 @@
 
 import Image from "next/image";
 import styles from "./styles.module.css";
+import { useParams } from "next/navigation";
+import { useQuery } from "@apollo/client/react";
+import { gql } from "@apollo/client";
+
+const FETCH_BOARD = gql`
+  query fetchBoard($userboardId: ID!) {
+    fetchBoard(boardId: $userboardId) {
+      writer
+      title
+      contents
+    }
+  }
+`;
 
 const BoardsDetail = () => {
+  const params = useParams();
+
+  const { data } = useQuery(FETCH_BOARD, {
+    variables: { userboardId: params.boardId },
+  });
+
   return (
     <div className="column__sort gap__24">
       <header className="f__28 w__700 l__36">
