@@ -1,0 +1,122 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  font-size: 16px;
+  font-weight: 500;
+  color: #000000;
+  line-height: 24px;
+}
+
+body {
+  width: 100%;
+  padding: 40px 20px;
+}
+
+.flex {
+  flex: 1;
+}
+
+/* row 정렬 */
+.row__sort {
+  display: flex;
+}
+.row__center {
+  justify-content: center;
+}
+.row__between {
+  justify-content: space-between;
+}
+.row__end {
+  justify-content: end;
+}
+/* column 정렬 */
+.column__sort {
+  display: flex;
+  flex-direction: column;
+}
+.column__center {
+  align-items: center;
+}
+
+/* gap */
+.gap__4 {
+  gap: 4px;
+}
+.gap__8 {
+  gap: 8px;
+}
+.gap__24 {
+  gap: 24px;
+}
+.gap__16 {
+  gap: 16px;
+}
+.gap__40 {
+  gap: 40px;
+}
+
+/* font */
+.f__14 {
+  font-size: 14px;
+}
+.f__18 {
+  font-size: 18px;
+}
+.f__20 {
+  font-size: 20px;
+}
+.f__28 {
+  font-size: 28px;
+}
+.w__300 {
+  font-weight: 300;
+}
+.w__400 {
+  font-weight: 400;
+}
+.w__600 {
+  font-weight: 600;
+}
+.w__700 {
+  font-weight: 700;
+}
+.l__20 {
+  line-height: 20px;
+}
+.l__28 {
+  line-height: 28px;
+}
+.l__36 {
+  line-height: 36px;
+}
+.c__333333 {
+  color: #333333;
+}
+.c_5F5F5F {
+  color: #5f5f5f;
+}
+.c__777777 {
+  color: #777777;
+}
+.c__818181 {
+  color: #818181;
+}
+.c__f66a6a {
+  color: #f66a6a;
+}
+.c__ffffff {
+  color: #ffffff;
+}
+
+.div {
+  border-bottom: 1px solid #e4e4e4;
+}
+
+.white__btn {
+  border-radius: 8px;
+  border: 1px solid #000000;
+  background-color: #ffffff;
+  cursor: pointer;
+}
