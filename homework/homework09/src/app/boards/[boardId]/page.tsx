@@ -63,7 +63,14 @@ const BoardsDetail = () => {
             height={0}
             sizes="100vw"
           />
-          <Image className={styles.play} src="/images/play.png" alt="play" width={24} height={24} sizes="100vw" />
+          <Image
+            className={`${styles.play} click`}
+            src="/images/play.png"
+            alt="play"
+            width={24}
+            height={24}
+            sizes="100vw"
+          />
         </div>
 
         <div className="row__sort row__center gap__24">

@@ -18,6 +18,10 @@ body {
   flex: 1;
 }
 
+.click {
+  cursor: pointer;
+}
+
 /* row 정렬 */
 .row__sort {
   display: flex;

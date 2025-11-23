@@ -214,7 +214,11 @@ const BoardsNew = () => {
       <footer className={styles.footer}>
         <div className="row__sort gap__16">
           <button className={`${styles.white__btn} white__btn f__18 w__600`}>취소</button>
-          <button className={`${styles.blue__btn} f__18 w__600 c__ffffff`} disabled={isActive} onClick={onClickSubmit}>
+          <button
+            className={`${styles.blue__btn} click f__18 w__600 c__ffffff`}
+            disabled={isActive}
+            onClick={onClickSubmit}
+          >
             등록하기
           </button>
         </div>

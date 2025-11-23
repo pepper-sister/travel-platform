@@ -52,7 +52,6 @@
   border: none;
   border-radius: 8px;
   background-color: #2974e5;
-  cursor: pointer;
 }
 .blue__btn:disabled {
   background-color: #c7c7c7;
