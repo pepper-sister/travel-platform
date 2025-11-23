@@ -1,0 +1,17 @@
+.list__section {
+  border-radius: 16px;
+  box-shadow: 0px 0px 20px 0px #00000014;
+  padding: 24px 48px;
+}
+
+.list__title {
+  padding: 16px 24px;
+}
+.list__subtitle__64 {
+  width: 64px;
+  text-align: center;
+}
+.list__subtitle__100 {
+  width: 100px;
+  text-align: center;
+}

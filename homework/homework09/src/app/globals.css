@@ -47,6 +47,9 @@ body {
 .gap__8 {
   gap: 8px;
 }
+.gap__12 {
+  gap: 12px;
+}
 .gap__24 {
   gap: 24px;
 }
@@ -91,6 +94,9 @@ body {
 .l__36 {
   line-height: 36px;
 }
+.c__1C1C1C {
+  color: #1c1c1c;
+}
 .c__333333 {
   color: #333333;
 }
@@ -102,6 +108,9 @@ body {
 }
 .c__818181 {
   color: #818181;
+}
+.c__919191 {
+  color: #919191;
 }
 .c__f66a6a {
   color: #f66a6a;
