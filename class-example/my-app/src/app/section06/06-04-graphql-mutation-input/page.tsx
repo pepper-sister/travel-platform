@@ -2,7 +2,7 @@
 
 import { useMutation } from "@apollo/client/react";
 import { gql } from "@apollo/client";
-import { ChangeEvent, useState } from "react";
+import { useState } from "react";
 
 const 나의그래프큐엘셋팅 = gql`
   # 타입적는곳
