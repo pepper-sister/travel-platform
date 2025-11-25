@@ -109,6 +109,7 @@ export default function BoardsWrite(props) {
         },
       });
 
+      alert("수정 완료!");
       router.push(`/boards/${result.data.updateBoard._id}`);
     } catch (error) {
       alert(error);
