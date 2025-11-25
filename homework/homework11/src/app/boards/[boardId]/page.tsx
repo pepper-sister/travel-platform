@@ -1,10 +1,10 @@
 "use client";
 
-import BoardsDetailUI from "@/components/board-detail";
-import useBoardsDetail from "@/components/board-detail/hook";
+import BoardsDetailUI from "@/components/boards-detail";
+import useBoardsDetail from "@/components/boards-detail/hook";
 
 export default function BoardsDetail() {
   const { params, data } = useBoardsDetail();
 
-  <BoardsDetailUI params={params} data={data} />;
+  return <BoardsDetailUI params={params} data={data} />;
 }
