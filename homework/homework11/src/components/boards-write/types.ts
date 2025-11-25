@@ -1,4 +1,4 @@
-export interface IResult {
+export interface ICreateBoardResult {
   data: any;
 }
 
@@ -10,9 +10,4 @@ export interface IChangeInput {
 export interface IBoardWriteProps {
   isEdit: boolean;
   data?: any;
-}
-
-export interface IData {
-  fetchBoard?: any;
-  fetchBoards?: any;
 }

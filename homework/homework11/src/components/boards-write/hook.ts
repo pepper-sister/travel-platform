@@ -4,7 +4,7 @@ import { useMutation } from "@apollo/client/react";
 import { useRouter } from "next/navigation";
 import { ChangeEvent, useState } from "react";
 import { CREATE_BOARD, UPDATE_BOARD } from "./queries";
-import { IChangeInput, IResult } from "./types";
+import { IChangeInput, ICreateBoardResult } from "./types";
 
 export const useBoardsWrite = () => {
   const router = useRouter();
@@ -54,7 +54,7 @@ export const useBoardsWrite = () => {
 
   const onClickSubmit = async () => {
     try {
-      const result: IResult = await createBoard({
+      const result: ICreateBoardResult = await createBoard({
         variables: {
           createBoardInput: {
             writer: writer,
@@ -79,7 +79,7 @@ export const useBoardsWrite = () => {
       if (title) changeInput.title = title;
       if (contents) changeInput.contents = contents;
 
-      const result: IResult = await updateBoard({
+      const result: ICreateBoardResult = await updateBoard({
         variables: {
           updateBoardInput: changeInput,
           password: inputPassword,
