@@ -5,6 +5,7 @@ import styles from "./styles.module.css";
 import { useParams } from "next/navigation";
 import { useQuery } from "@apollo/client/react";
 import { gql } from "@apollo/client";
+import Link from "next/link";
 
 const FETCH_BOARD = gql`
   query fetchBoard($userboardId: ID!) {
@@ -92,7 +93,9 @@ const BoardsDetail = () => {
         </button>
         <button className={`${styles.white__btn} white__btn row__sort column__center gap__8`}>
           <Image src="/images/edit.png" alt="edit" width={24} height={24} sizes="100vw" />
-          <p className="f__14 w__600 l__20">수정하기</p>
+          <Link href={`/boards/${params.boardId}/edit`} className="f__14 w__600 l__20">
+            수정하기
+          </Link>
         </button>
       </footer>
     </div>
