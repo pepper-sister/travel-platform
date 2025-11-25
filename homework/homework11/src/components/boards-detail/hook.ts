@@ -1,3 +1,5 @@
+"use client";
+
 import { useQuery } from "@apollo/client/react";
 import { useParams } from "next/navigation";
 import { FETCH_BOARD } from "./queries";
