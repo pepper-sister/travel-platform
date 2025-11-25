@@ -5,6 +5,7 @@ import Image from "next/image";
 import styles from "./styles.module.css";
 import { gql } from "@apollo/client";
 import { useRouter } from "next/navigation";
+import { IData } from "@/components/boards-write/types";
 
 const FETCH_BOARDS = gql`
   query {
@@ -24,7 +25,7 @@ const DELETE_BOARD = gql`
 `;
 
 export default function BoardsList() {
-  const { data } = useQuery(FETCH_BOARDS);
+  const { data } = useQuery<IData>(FETCH_BOARDS);
   const [deleteBoard] = useMutation(DELETE_BOARD);
 
   const router = useRouter();
@@ -58,7 +59,7 @@ export default function BoardsList() {
         </div>
 
         <div className="column__sort gap__12">
-          {data?.fetchBoards.map((el, index) => (
+          {data?.fetchBoards.map((el: any, index: number) => (
             <div key={el._id} className={`${styles.list__list} row__sort row__between`}>
               <div onClick={() => onClickDetail(el._id)} className="click row__sort gap__8">
                 <p className={`${styles.list__subtitle__64} f__14 w__300 l__20 c__919191`}>{index}</p>

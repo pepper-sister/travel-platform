@@ -6,6 +6,7 @@ import { useParams } from "next/navigation";
 import { useQuery } from "@apollo/client/react";
 import { gql } from "@apollo/client";
 import Link from "next/link";
+import { IData } from "@/components/boards-write/types";
 
 const FETCH_BOARD = gql`
   query fetchBoard($userboardId: ID!) {
@@ -20,7 +21,7 @@ const FETCH_BOARD = gql`
 const BoardsDetail = () => {
   const params = useParams();
 
-  const { data } = useQuery(FETCH_BOARD, {
+  const { data } = useQuery<IData>(FETCH_BOARD, {
     variables: { userboardId: params.boardId },
   });
 
