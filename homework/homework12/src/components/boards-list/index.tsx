@@ -45,8 +45,7 @@ export default function BoardsListUI() {
                   src="/images/delete.png"
                   alt="삭제"
                   width={24}
-                  height={0}
-                  sizes="100vw"
+                  height={24}
                 />
               </div>
             </div>

@@ -10,16 +10,16 @@ export default function CommentWriteUI(props: IFetchCommentData) {
   return (
     <div className={`${styles.comment__write} column__sort gap__24`}>
       <div className="row__sort gap__8">
-        <Image src="/images/chat.png" alt="chat" width={24} height={24} sizes="100vw" />
+        <Image src="/images/chat.png" alt="chat" width={24} height={24} />
         <p className="w__600">댓글</p>
       </div>
 
       <div className="row__sort gap__8">
-        <Image src="/images/star.png" alt="star" width={24} height={24} sizes="100vw" />
-        <Image src="/images/star.png" alt="star" width={24} height={24} sizes="100vw" />
-        <Image src="/images/star.png" alt="star" width={24} height={24} sizes="100vw" />
-        <Image src="/images/star.png" alt="star" width={24} height={24} sizes="100vw" />
-        <Image src="/images/star.png" alt="star" width={24} height={24} sizes="100vw" />
+        <Image src="/images/star.png" alt="star" width={24} height={24} />
+        <Image src="/images/star.png" alt="star" width={24} height={24} />
+        <Image src="/images/star.png" alt="star" width={24} height={24} />
+        <Image src="/images/star.png" alt="star" width={24} height={24} />
+        <Image src="/images/star.png" alt="star" width={24} height={24} />
       </div>
 
       <div className="column__sort column__right gap__16">
