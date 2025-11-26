@@ -10,7 +10,7 @@ export default function BoardsEdit() {
 
   const { data } = useQuery(FetchBoardDocument, {
     variables: {
-      userboardId: String(params.boardId),
+      boardId: String(params.boardId),
     },
   });
 

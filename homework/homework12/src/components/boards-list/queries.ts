@@ -12,7 +12,7 @@ export const FETCH_BOARDS = gql`
 `;
 
 export const DELETE_BOARD = gql`
-  mutation deleteBoard($userBoardId: ID!) {
-    deleteBoard(boardId: $userBoardId)
+  mutation deleteBoard($boardId: ID!) {
+    deleteBoard(boardId: $boardId)
   }
 `;

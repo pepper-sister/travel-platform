@@ -14,16 +14,20 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  * Learn more about it here: https://the-guild.dev/graphql/codegen/plugins/presets/preset-client#reducing-bundle-size
  */
 type Documents = {
-    "\n  query fetchBoard($userboardId: ID!) {\n    fetchBoard(boardId: $userboardId) {\n      _id\n      writer\n      title\n      contents\n    }\n  }\n": typeof types.FetchBoardDocument,
+    "\n  mutation createBoardComment($createBoardCommentInput: CreateBoardCommentInput!, $boardId: ID!) {\n    createBoardComment(createBoardCommentInput: $createBoardCommentInput, boardId: $boardId) {\n      _id\n    }\n  }\n": typeof types.CreateBoardCommentDocument,
+    "\n  query fetchBoard($boardId: ID!) {\n    fetchBoard(boardId: $boardId) {\n      _id\n      writer\n      title\n      contents\n    }\n  }\n": typeof types.FetchBoardDocument,
+    "\n  query fetchBoardComments($boardId: ID!) {\n    fetchBoardComments(boardId: $boardId) {\n      _id\n    }\n  }\n": typeof types.FetchBoardCommentsDocument,
     "\n  query fetchBoards {\n    fetchBoards(page: 1) {\n      _id\n      title\n      writer\n      createdAt\n    }\n  }\n": typeof types.FetchBoardsDocument,
-    "\n  mutation deleteBoard($userBoardId: ID!) {\n    deleteBoard(boardId: $userBoardId)\n  }\n": typeof types.DeleteBoardDocument,
+    "\n  mutation deleteBoard($boardId: ID!) {\n    deleteBoard(boardId: $boardId)\n  }\n": typeof types.DeleteBoardDocument,
     "\n  mutation createBoard($createBoardInput: CreateBoardInput!) {\n    createBoard(createBoardInput: $createBoardInput) {\n      _id\n    }\n  }\n": typeof types.CreateBoardDocument,
     "\n  mutation updateBoard($updateBoardInput: UpdateBoardInput!, $password: String, $boardId: ID!) {\n    updateBoard(updateBoardInput: $updateBoardInput, password: $password, boardId: $boardId) {\n      _id\n    }\n  }\n": typeof types.UpdateBoardDocument,
 };
 const documents: Documents = {
-    "\n  query fetchBoard($userboardId: ID!) {\n    fetchBoard(boardId: $userboardId) {\n      _id\n      writer\n      title\n      contents\n    }\n  }\n": types.FetchBoardDocument,
+    "\n  mutation createBoardComment($createBoardCommentInput: CreateBoardCommentInput!, $boardId: ID!) {\n    createBoardComment(createBoardCommentInput: $createBoardCommentInput, boardId: $boardId) {\n      _id\n    }\n  }\n": types.CreateBoardCommentDocument,
+    "\n  query fetchBoard($boardId: ID!) {\n    fetchBoard(boardId: $boardId) {\n      _id\n      writer\n      title\n      contents\n    }\n  }\n": types.FetchBoardDocument,
+    "\n  query fetchBoardComments($boardId: ID!) {\n    fetchBoardComments(boardId: $boardId) {\n      _id\n    }\n  }\n": types.FetchBoardCommentsDocument,
     "\n  query fetchBoards {\n    fetchBoards(page: 1) {\n      _id\n      title\n      writer\n      createdAt\n    }\n  }\n": types.FetchBoardsDocument,
-    "\n  mutation deleteBoard($userBoardId: ID!) {\n    deleteBoard(boardId: $userBoardId)\n  }\n": types.DeleteBoardDocument,
+    "\n  mutation deleteBoard($boardId: ID!) {\n    deleteBoard(boardId: $boardId)\n  }\n": types.DeleteBoardDocument,
     "\n  mutation createBoard($createBoardInput: CreateBoardInput!) {\n    createBoard(createBoardInput: $createBoardInput) {\n      _id\n    }\n  }\n": types.CreateBoardDocument,
     "\n  mutation updateBoard($updateBoardInput: UpdateBoardInput!, $password: String, $boardId: ID!) {\n    updateBoard(updateBoardInput: $updateBoardInput, password: $password, boardId: $boardId) {\n      _id\n    }\n  }\n": types.UpdateBoardDocument,
 };
@@ -45,7 +49,15 @@ export function graphql(source: string): unknown;
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\n  query fetchBoard($userboardId: ID!) {\n    fetchBoard(boardId: $userboardId) {\n      _id\n      writer\n      title\n      contents\n    }\n  }\n"): (typeof documents)["\n  query fetchBoard($userboardId: ID!) {\n    fetchBoard(boardId: $userboardId) {\n      _id\n      writer\n      title\n      contents\n    }\n  }\n"];
+export function graphql(source: "\n  mutation createBoardComment($createBoardCommentInput: CreateBoardCommentInput!, $boardId: ID!) {\n    createBoardComment(createBoardCommentInput: $createBoardCommentInput, boardId: $boardId) {\n      _id\n    }\n  }\n"): (typeof documents)["\n  mutation createBoardComment($createBoardCommentInput: CreateBoardCommentInput!, $boardId: ID!) {\n    createBoardComment(createBoardCommentInput: $createBoardCommentInput, boardId: $boardId) {\n      _id\n    }\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\n  query fetchBoard($boardId: ID!) {\n    fetchBoard(boardId: $boardId) {\n      _id\n      writer\n      title\n      contents\n    }\n  }\n"): (typeof documents)["\n  query fetchBoard($boardId: ID!) {\n    fetchBoard(boardId: $boardId) {\n      _id\n      writer\n      title\n      contents\n    }\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\n  query fetchBoardComments($boardId: ID!) {\n    fetchBoardComments(boardId: $boardId) {\n      _id\n    }\n  }\n"): (typeof documents)["\n  query fetchBoardComments($boardId: ID!) {\n    fetchBoardComments(boardId: $boardId) {\n      _id\n    }\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
@@ -53,7 +65,7 @@ export function graphql(source: "\n  query fetchBoards {\n    fetchBoards(page: 
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\n  mutation deleteBoard($userBoardId: ID!) {\n    deleteBoard(boardId: $userBoardId)\n  }\n"): (typeof documents)["\n  mutation deleteBoard($userBoardId: ID!) {\n    deleteBoard(boardId: $userBoardId)\n  }\n"];
+export function graphql(source: "\n  mutation deleteBoard($boardId: ID!) {\n    deleteBoard(boardId: $boardId)\n  }\n"): (typeof documents)["\n  mutation deleteBoard($boardId: ID!) {\n    deleteBoard(boardId: $boardId)\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */

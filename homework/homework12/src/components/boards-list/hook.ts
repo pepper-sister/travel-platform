@@ -19,7 +19,7 @@ export const useBoardsList = () => {
     event.stopPropagation();
     deleteBoard({
       variables: {
-        userBoardId: boardId,
+        boardId: boardId,
       },
       refetchQueries: [{ query: FetchBoardsDocument }],
     });
