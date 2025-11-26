@@ -18,6 +18,7 @@ type Documents = {
     "\n  mutation createProduct($seller: String, $createProductInput: CreateProductInput!) {\n    createProduct(seller: $seller, createProductInput: $createProductInput) {\n      _id\n      number\n      message\n    }\n  }\n": typeof types.CreateProductDocument,
     "\n  query fetchBoard($mynumber: Int) {\n    fetchBoard(number: $mynumber) {\n      number\n      writer\n      title\n      contents\n    }\n  }\n": typeof types.FetchBoardDocument,
     "\n  mutation deleteBoard($mynumber: Int) {\n    deleteBoard(number: $mynumber) {\n      message\n    }\n  }\n": typeof types.DeleteBoardDocument,
+    "\n  query fetchBoards {\n    fetchBoards {\n      number\n      writer\n      title\n      contents\n    }\n  }\n": typeof types.FetchBoardsDocument,
     "\n  mutation updateBoard($mynumber: Int, $mywriter: String, $mytitle: String, $mycontents: String) {\n    updateBoard(number: $mynumber, writer: $mywriter, title: $mytitle, contents: $mycontents) {\n      _id\n      number\n      message\n    }\n  }\n": typeof types.UpdateBoardDocument,
 };
 const documents: Documents = {
@@ -25,6 +26,7 @@ const documents: Documents = {
     "\n  mutation createProduct($seller: String, $createProductInput: CreateProductInput!) {\n    createProduct(seller: $seller, createProductInput: $createProductInput) {\n      _id\n      number\n      message\n    }\n  }\n": types.CreateProductDocument,
     "\n  query fetchBoard($mynumber: Int) {\n    fetchBoard(number: $mynumber) {\n      number\n      writer\n      title\n      contents\n    }\n  }\n": types.FetchBoardDocument,
     "\n  mutation deleteBoard($mynumber: Int) {\n    deleteBoard(number: $mynumber) {\n      message\n    }\n  }\n": types.DeleteBoardDocument,
+    "\n  query fetchBoards {\n    fetchBoards {\n      number\n      writer\n      title\n      contents\n    }\n  }\n": types.FetchBoardsDocument,
     "\n  mutation updateBoard($mynumber: Int, $mywriter: String, $mytitle: String, $mycontents: String) {\n    updateBoard(number: $mynumber, writer: $mywriter, title: $mytitle, contents: $mycontents) {\n      _id\n      number\n      message\n    }\n  }\n": types.UpdateBoardDocument,
 };
 
@@ -58,6 +60,10 @@ export function graphql(source: "\n  query fetchBoard($mynumber: Int) {\n    fet
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(source: "\n  mutation deleteBoard($mynumber: Int) {\n    deleteBoard(number: $mynumber) {\n      message\n    }\n  }\n"): (typeof documents)["\n  mutation deleteBoard($mynumber: Int) {\n    deleteBoard(number: $mynumber) {\n      message\n    }\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\n  query fetchBoards {\n    fetchBoards {\n      number\n      writer\n      title\n      contents\n    }\n  }\n"): (typeof documents)["\n  query fetchBoards {\n    fetchBoards {\n      number\n      writer\n      title\n      contents\n    }\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
