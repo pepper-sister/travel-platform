@@ -14,7 +14,7 @@ export default function BoardsDetailUI(props: IBoardDetailData) {
         <div className="column__sort gap__16">
           <div className="row__sort row__between column__center">
             <div className="row__sort gap__4 column__center">
-              <Image className={styles.person__img} src="/images/person.png" alt="person" width={24} height={24} />
+              <Image className="person__img" src="/images/person.png" alt="person" width={24} height={24} />
               <p className="f__14 w__300 l__20 c__5F5F5F">{props.data?.fetchBoard.writer}</p>
             </div>
             <p className="f__14 w__300 l__20 c__818181">2024.11.11</p>
