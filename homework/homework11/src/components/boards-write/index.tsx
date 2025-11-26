@@ -3,9 +3,9 @@
 import Image from "next/image";
 import styles from "./styles.module.css";
 import { useBoardsWrite } from "./hook";
-import { IBoardWriteProps } from "./types";
+import { IBoardWriteData } from "./types";
 
-export default function BoardsWrite(props: IBoardWriteProps) {
+export default function BoardsWrite(props: IBoardWriteData) {
   const { onChangeWriter, onChangePassword, onChangeTitle, onChangeContents, isActive, onClickUpdate, onClickSubmit } =
     useBoardsWrite();
 
@@ -26,7 +26,7 @@ export default function BoardsWrite(props: IBoardWriteProps) {
               type="text"
               placeholder="작성자 명을 입력해 주세요."
               onChange={onChangeWriter}
-              defaultValue={props.data?.fetchBoard.writer}
+              defaultValue={props.data?.fetchBoard.writer ?? ""}
               disabled={props.isEdit ? true : false}
             />
             {/* <div className="c__f66a6a">{writerError}</div> */}
@@ -156,7 +156,7 @@ export default function BoardsWrite(props: IBoardWriteProps) {
           <button
             className={`${styles.blue__btn} click f__18 w__600 c__ffffff`}
             disabled={props.isEdit ? false : isActive}
-            onClick={props.isEdit ? () => onClickUpdate(props.data?.fetchBoard._id) : onClickSubmit}
+            onClick={props.isEdit ? () => onClickUpdate(props.data?.fetchBoard._id ?? "") : onClickSubmit}
           >
             {props.isEdit ? "수정" : "등록"}하기
           </button>
