@@ -5,7 +5,7 @@ import { useParams } from "next/navigation";
 import { FetchBoardDocument } from "@/commons/graphql/graphql";
 import { FETCH_COMMENT } from "./queries";
 
-export default function useBoardsDetail() {
+export const useBoardsDetail = () => {
   const params = useParams();
 
   const { data } = useQuery(FetchBoardDocument, {
@@ -17,4 +17,4 @@ export default function useBoardsDetail() {
   });
 
   return { params, data, refetch };
-}
+};
