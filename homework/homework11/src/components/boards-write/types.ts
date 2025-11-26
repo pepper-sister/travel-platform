@@ -1,13 +1,11 @@
-export interface ICreateBoardResult {
-  data: any;
-}
+import { FetchBoardQuery } from "@/commons/graphql/graphql";
 
-export interface IChangeInput {
+export interface IBoardWriteInputChange {
   title?: string;
   contents?: string;
 }
 
-export interface IBoardWriteProps {
+export interface IBoardWriteData {
   isEdit: boolean;
-  data?: any;
+  data?: FetchBoardQuery;
 }

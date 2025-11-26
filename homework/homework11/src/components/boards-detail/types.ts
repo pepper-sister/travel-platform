@@ -1,4 +1,8 @@
-export interface IFetchBoardData {
-  data: any;
-  params: any;
+import { FetchBoardQuery } from "@/commons/graphql/graphql";
+
+export interface IBoardDetailData {
+  data?: FetchBoardQuery;
+  params: {
+    boardId?: string;
+  };
 }
