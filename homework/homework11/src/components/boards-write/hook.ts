@@ -3,8 +3,8 @@
 import { useMutation } from "@apollo/client/react";
 import { useRouter } from "next/navigation";
 import { ChangeEvent, useState } from "react";
-import { CREATE_BOARD, UPDATE_BOARD } from "./queries";
-import { IChangeInput, ICreateBoardResult } from "./types";
+import { IBoardWriteInputChange } from "./types";
+import { CreateBoardDocument, UpdateBoardDocument } from "@/commons/graphql/graphql";
 
 export const useBoardsWrite = () => {
   const router = useRouter();
@@ -21,8 +21,8 @@ export const useBoardsWrite = () => {
 
   const [isActive, setIsActive] = useState(true);
 
-  const [createBoard] = useMutation(CREATE_BOARD);
-  const [updateBoard] = useMutation(UPDATE_BOARD);
+  const [createBoard] = useMutation(CreateBoardDocument);
+  const [updateBoard] = useMutation(UpdateBoardDocument);
 
   const onChangeWriter = (event: ChangeEvent<HTMLInputElement>) => {
     setWriter(event.target.value);
@@ -54,7 +54,7 @@ export const useBoardsWrite = () => {
 
   const onClickSubmit = async () => {
     try {
-      const result: ICreateBoardResult = await createBoard({
+      const result = await createBoard({
         variables: {
           createBoardInput: {
             writer: writer,
@@ -65,9 +65,9 @@ export const useBoardsWrite = () => {
         },
       });
 
-      router.push(`/boards/${result.data.createBoard._id}`);
+      router.push(`/boards/${result.data?.createBoard._id}`);
     } catch (error) {
-      alert("에러가 발생하였습니다. 다시 시도해 주세요.");
+      alert(`${error} 에러가 발생하였습니다. 다시 시도해 주세요.`);
     }
   };
 
@@ -75,20 +75,20 @@ export const useBoardsWrite = () => {
     try {
       const inputPassword = prompt("글을 입력할때 입력하셨던 비밀번호를 입력해주세요");
 
-      const changeInput: IChangeInput = {};
-      if (title) changeInput.title = title;
-      if (contents) changeInput.contents = contents;
+      const inputChange: IBoardWriteInputChange = {};
+      if (title) inputChange.title = title;
+      if (contents) inputChange.contents = contents;
 
-      const result: ICreateBoardResult = await updateBoard({
+      const result = await updateBoard({
         variables: {
-          updateBoardInput: changeInput,
+          updateBoardInput: inputChange,
           password: inputPassword,
           boardId: boardId,
         },
       });
 
       alert("수정 완료!");
-      router.push(`/boards/${result.data.updateBoard._id}`);
+      router.push(`/boards/${result.data?.updateBoard._id}`);
     } catch (error) {
       alert(error);
     }

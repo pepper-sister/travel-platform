@@ -3,9 +3,9 @@
 import Image from "next/image";
 import styles from "./styles.module.css";
 import Link from "next/link";
-import { IFetchBoardData } from "./types";
+import { IBoardDetailData } from "./types";
 
-export default function BoardsDetailUI(props: IFetchBoardData) {
+export default function BoardsDetailUI(props: IBoardDetailData) {
   return (
     <div className="column__sort gap__24">
       <header className="f__28 w__700 l__36">{props.data?.fetchBoard.title}</header>
