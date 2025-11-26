@@ -7,3 +7,11 @@ export const CREATE_COMMENT = gql`
     }
   }
 `;
+
+export const FETCH_COMMENT = gql`
+  query fetchBoardComments($boardId: ID!) {
+    fetchBoardComments(boardId: $boardId) {
+      _id
+    }
+  }
+`;

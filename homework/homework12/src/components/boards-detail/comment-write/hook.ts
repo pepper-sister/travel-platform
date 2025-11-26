@@ -1,8 +1,8 @@
 "use client";
 
 import { ChangeEvent, useState } from "react";
-import { useMutation } from "@apollo/client/react";
-import { CreateBoardCommentDocument } from "@/commons/graphql/graphql";
+import { useMutation, useQuery } from "@apollo/client/react";
+import { CreateBoardCommentDocument, FetchBoardCommentsDocument } from "@/commons/graphql/graphql";
 import { IFetchCommentData } from "./types";
 
 export const useCommentWrite = (props: IFetchCommentData) => {
@@ -12,6 +12,9 @@ export const useCommentWrite = (props: IFetchCommentData) => {
   const [isActive, setIsActive] = useState(true);
 
   const [createBoardComment] = useMutation(CreateBoardCommentDocument);
+  const { refetch } = useQuery(FetchBoardCommentsDocument, {
+    variables: { boardId: String(props.params.boardId) },
+  });
 
   const onChangeWriter = (event: ChangeEvent<HTMLInputElement>) => {
     setWriter(event.target.value);
@@ -47,12 +50,21 @@ export const useCommentWrite = (props: IFetchCommentData) => {
       },
     });
 
-    props.refetch();
+    refetch();
 
     setWriter("");
     setPassword("");
     setComment("");
   };
 
-  return { onChangeWriter, onChangePassword, onChangeComment, onClickSubmit, writer, password, comment, isActive };
+  return {
+    onChangeWriter,
+    onChangePassword,
+    onChangeComment,
+    onClickSubmit,
+    writer,
+    password,
+    comment,
+    isActive,
+  };
 };

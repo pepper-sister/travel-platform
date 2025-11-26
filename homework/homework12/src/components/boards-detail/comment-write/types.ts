@@ -1,6 +1,5 @@
 export interface IFetchCommentData {
   params: {
-    boardId: string;
+    boardId?: string;
   };
-  refetch: () => void;
 }
