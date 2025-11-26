@@ -107,42 +107,21 @@ export default function BoardsWrite(props: IBoardWriteData) {
             <div className={styles.img__section}>
               <div className={styles.img}></div>
               <div className={`${styles.img__upload} column__sort column__center gap__8`}>
-                <Image
-                  className={styles.img__plus}
-                  src="/images/add.png"
-                  alt="사진업로드"
-                  width={0}
-                  height={0}
-                  sizes="100vw"
-                />
+                <Image className={styles.img__plus} src="/images/add.png" alt="사진업로드" width={0} height={0} />
                 <p className="w__400 c__777777">클릭해서 사진 업로드</p>
               </div>
             </div>
             <div className={styles.img__section}>
               <div className={styles.img}></div>
               <div className={`${styles.img__upload} column__sort column__center gap__8`}>
-                <Image
-                  className={styles.img__plus}
-                  src="/images/add.png"
-                  alt="사진업로드"
-                  width={0}
-                  height={0}
-                  sizes="100vw"
-                />
+                <Image className={styles.img__plus} src="/images/add.png" alt="사진업로드" width={0} height={0} />
                 <p className="w__400 c__777777">클릭해서 사진 업로드</p>
               </div>
             </div>
             <div className={styles.img__section}>
               <div className={styles.img}></div>
               <div className={`${styles.img__upload} column__sort column__center gap__8`}>
-                <Image
-                  className={styles.img__plus}
-                  src="/images/add.png"
-                  alt="사진업로드"
-                  width={0}
-                  height={0}
-                  sizes="100vw"
-                />
+                <Image className={styles.img__plus} src="/images/add.png" alt="사진업로드" width={0} height={0} />
                 <p className="w__400 c__777777">클릭해서 사진 업로드</p>
               </div>
             </div>
