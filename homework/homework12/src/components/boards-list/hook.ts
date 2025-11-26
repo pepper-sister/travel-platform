@@ -2,11 +2,10 @@
 
 import { useMutation, useQuery } from "@apollo/client/react";
 import { useRouter } from "next/navigation";
-import { IBoardListData } from "./types";
-import { FetchBoardDocument, DeleteBoardDocument } from "@/commons/graphql/graphql";
+import { DeleteBoardDocument, FetchBoardsDocument } from "@/commons/graphql/graphql";
 
 export const useBoardsList = () => {
-  const { data } = useQuery<IBoardListData>(FetchBoardDocument);
+  const { data } = useQuery(FetchBoardsDocument);
   const [deleteBoard] = useMutation(DeleteBoardDocument);
 
   const router = useRouter();
@@ -20,7 +19,7 @@ export const useBoardsList = () => {
       variables: {
         userBoardId: boardId,
       },
-      refetchQueries: [{ query: FetchBoardDocument }],
+      refetchQueries: [{ query: FetchBoardsDocument }],
     });
   };
 
