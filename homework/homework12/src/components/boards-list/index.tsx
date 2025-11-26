@@ -24,8 +24,12 @@ export default function BoardsListUI() {
 
         <div className="column__sort gap__12">
           {data?.fetchBoards.map((el, index) => (
-            <div key={el._id} className={`${styles.list__list} row__sort row__between`}>
-              <div onClick={() => onClickDetail(el._id)} className="click row__sort gap__8">
+            <div
+              key={el._id}
+              onClick={() => onClickDetail(el._id)}
+              className={`${styles.list__list} click row__sort row__between`}
+            >
+              <div className="row__sort gap__8">
                 <p className={`${styles.list__subtitle__64} f__14 w__300 l__20 c__919191`}>{index}</p>
                 <p className="f__14 l__20 c__1C1C1C">{el.title}</p>
               </div>
@@ -36,7 +40,7 @@ export default function BoardsListUI() {
                   {el.createdAt.slice(0, 10)}
                 </p>
                 <Image
-                  onClick={() => onClickDelete(el._id)}
+                  onClick={(event) => onClickDelete(event, el._id)}
                   className={`${styles.img__delete} click`}
                   src="/images/delete.png"
                   alt="삭제"

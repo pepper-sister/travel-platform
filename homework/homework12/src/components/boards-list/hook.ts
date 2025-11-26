@@ -3,6 +3,7 @@
 import { useMutation, useQuery } from "@apollo/client/react";
 import { useRouter } from "next/navigation";
 import { DeleteBoardDocument, FetchBoardsDocument } from "@/commons/graphql/graphql";
+import { MouseEvent } from "react";
 
 export const useBoardsList = () => {
   const { data } = useQuery(FetchBoardsDocument);
@@ -14,7 +15,8 @@ export const useBoardsList = () => {
     router.push(`/boards/${boardId}`);
   };
 
-  const onClickDelete = (boardId: string) => {
+  const onClickDelete = (event: MouseEvent<HTMLImageElement>, boardId: string) => {
+    event.stopPropagation();
     deleteBoard({
       variables: {
         userBoardId: boardId,
