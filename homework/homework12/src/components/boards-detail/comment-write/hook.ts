@@ -3,8 +3,9 @@
 import { ChangeEvent, useState } from "react";
 import { useMutation } from "@apollo/client/react";
 import { CreateBoardCommentDocument } from "@/commons/graphql/graphql";
+import { IFetchCommentData } from "./types";
 
-export const useCommentWrite = (props) => {
+export const useCommentWrite = (props: IFetchCommentData) => {
   const [writer, setWriter] = useState("");
   const [password, setPassword] = useState("");
   const [comment, setComment] = useState("");
@@ -42,7 +43,7 @@ export const useCommentWrite = (props) => {
           contents: comment,
           rating: 0,
         },
-        boardId: props.params.boardId,
+        boardId: String(props.params.boardId),
       },
     });
 
