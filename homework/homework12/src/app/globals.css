@@ -22,6 +22,13 @@ body {
   cursor: pointer;
 }
 
+.width__100 {
+  width: 100%;
+}
+.height__100 {
+  height: 100%;
+}
+
 /* row 정렬 */
 .row__sort {
   display: flex;
@@ -42,6 +49,9 @@ body {
 }
 .column__center {
   align-items: center;
+}
+.column__right {
+  align-items: end;
 }
 
 /* gap */
