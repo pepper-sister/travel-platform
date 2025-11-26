@@ -80,6 +80,8 @@ export default function BoardsDetailUI(props: IBoardDetailData) {
           </Link>
         </button>
       </footer>
+
+      <div className="div"></div>
     </div>
   );
 }
