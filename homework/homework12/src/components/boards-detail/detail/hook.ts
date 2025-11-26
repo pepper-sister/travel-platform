@@ -2,8 +2,7 @@
 
 import { useQuery } from "@apollo/client/react";
 import { useParams } from "next/navigation";
-import { FetchBoardDocument } from "@/commons/graphql/graphql";
-import { FETCH_COMMENT } from "./queries";
+import { FetchBoardCommentsDocument, FetchBoardDocument } from "@/commons/graphql/graphql";
 
 export const useBoardsDetail = () => {
   const params = useParams();
@@ -12,8 +11,8 @@ export const useBoardsDetail = () => {
     variables: { boardId: String(params.boardId) },
   });
 
-  const { refetch } = useQuery(FETCH_COMMENT, {
-    variables: { boardId: params.boardId },
+  const { refetch } = useQuery(FetchBoardCommentsDocument, {
+    variables: { boardId: String(params.boardId) },
   });
 
   return { params, data, refetch };
