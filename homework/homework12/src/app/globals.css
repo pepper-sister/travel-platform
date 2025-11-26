@@ -25,6 +25,9 @@ body {
 .width__100 {
   width: 100%;
 }
+.height__20 {
+  height: 20px;
+}
 .height__100 {
   height: 100%;
 }
@@ -72,6 +75,10 @@ body {
 }
 .gap__40 {
   gap: 40px;
+}
+
+.margin__top__40 {
+  margin-top: 40px;
 }
 
 /* background-color */
@@ -147,4 +154,9 @@ body {
   border: 1px solid #000000;
   background-color: #ffffff;
   cursor: pointer;
+}
+
+.person__img {
+  background-color: #e4e4e4;
+  border-radius: 100px;
 }
