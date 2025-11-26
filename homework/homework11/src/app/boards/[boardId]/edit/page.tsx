@@ -1,7 +1,7 @@
 "use client";
 
+import { FETCH_BOARD } from "@/components/boards-detail/queries";
 import BoardsWrite from "@/components/boards-write";
-import { FETCH_BOARD } from "@/components/boards-write/queries";
 import { useQuery } from "@apollo/client/react";
 import { useParams } from "next/navigation";
 
