@@ -1,8 +1,9 @@
 import Image from "next/image";
 import styles from "./styles.module.css";
 import { useCommentWrite } from "./hook";
+import { IFetchCommentData } from "./types";
 
-export default function CommentWriteUI(props) {
+export default function CommentWriteUI(props: IFetchCommentData) {
   const { onChangeWriter, onChangePassword, onChangeComment, onClickSubmit, writer, password, comment, isActive } =
     useCommentWrite(props);
 
