@@ -3,7 +3,6 @@
 import Image from "next/image";
 import styles from "./styles.module.css";
 import { useBoardsList } from "./hook";
-import { IBoardList } from "./types";
 
 export default function BoardsListUI() {
   const { data, onClickDetail, onClickDelete } = useBoardsList();
@@ -24,7 +23,7 @@ export default function BoardsListUI() {
         </div>
 
         <div className="column__sort gap__12">
-          {data?.fetchBoards.map((el: IBoardList, index: number) => (
+          {data?.fetchBoards.map((el, index) => (
             <div key={el._id} className={`${styles.list__list} row__sort row__between`}>
               <div onClick={() => onClickDetail(el._id)} className="click row__sort gap__8">
                 <p className={`${styles.list__subtitle__64} f__14 w__300 l__20 c__919191`}>{index}</p>
