@@ -1,1 +1,7 @@
-export default function LibraryIconPage() {}
+"use client";
+
+import { CloseCircleOutlined } from "@ant-design/icons";
+
+export default function LibraryIconPage() {
+  return <CloseCircleOutlined />;
+}
