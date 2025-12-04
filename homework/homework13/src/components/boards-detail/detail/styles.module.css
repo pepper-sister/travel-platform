@@ -21,6 +21,13 @@
   transform: translate(-50%, -50%);
 }
 
+.detail__bad__icon path {
+  color: #5f5f5f;
+}
+.detail__good__icon path {
+  color: #f66a6a;
+}
+
 .white__btn {
   padding: 8px 12px;
 }
