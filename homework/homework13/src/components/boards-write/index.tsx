@@ -10,7 +10,7 @@ export default function BoardsWrite(props: IBoardWriteData) {
     useBoardsWrite();
 
   return (
-    <div className="column__sort gap__40">
+    <div className="body__padding column__sort gap__40">
       <header className="f__20 w__700 l__28">게시물 {props.isEdit ? "수정" : "등록"}</header>
 
       <main className="column__sort gap__40">

@@ -11,7 +11,6 @@
 
 body {
   width: 100%;
-  padding: 40px 20px;
 }
 
 .flex {
@@ -30,6 +29,10 @@ body {
 }
 .height__100 {
   height: 100%;
+}
+
+.body__padding {
+  padding: 40px 320px;
 }
 
 /* row 정렬 */

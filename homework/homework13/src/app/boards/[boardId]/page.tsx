@@ -9,10 +9,10 @@ export default function BoardsDetail() {
   const { params, data } = useBoardsDetail();
 
   return (
-    <>
+    <div className="body__padding">
       <BoardsDetailUI params={params} data={data} />
       <CommentWriteUI params={params} />
       <CommentListUI params={params} />
-    </>
+    </div>
   );
 }
