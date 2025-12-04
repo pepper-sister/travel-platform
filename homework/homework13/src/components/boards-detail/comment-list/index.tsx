@@ -1,6 +1,8 @@
 import Image from "next/image";
 import { IFetchCommentData } from "./types";
 import { useCommentList } from "./hook";
+import { Rate } from "antd";
+import styles from "./styles.module.css";
 
 export default function CommentListUI(props: IFetchCommentData) {
   const { data } = useCommentList(props);
@@ -19,11 +21,7 @@ export default function CommentListUI(props: IFetchCommentData) {
                     <p className="f__14 w__300 c__5F5F5F">{el.writer}</p>
                   </div>
 
-                  <Image src="/images/star.png" alt="star" width={24} height={24} />
-                  <Image src="/images/star.png" alt="star" width={24} height={24} />
-                  <Image src="/images/star.png" alt="star" width={24} height={24} />
-                  <Image src="/images/star.png" alt="star" width={24} height={24} />
-                  <Image src="/images/star.png" alt="star" width={24} height={24} />
+                  <Rate className={styles.comment__star} />
                 </div>
 
                 <div className="row__sort gap__8">
