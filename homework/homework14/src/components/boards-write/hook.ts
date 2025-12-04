@@ -1,19 +1,28 @@
 "use client";
 
-import { useMutation } from "@apollo/client/react";
+import { useMutation, useQuery } from "@apollo/client/react";
 import { useRouter } from "next/navigation";
 import { ChangeEvent, useState } from "react";
 import { IBoardWriteInputChange } from "./types";
-import { CreateBoardDocument, UpdateBoardDocument } from "@/commons/graphql/graphql";
+import {
+  CreateBoardDocument,
+  FetchBoardDocument,
+  FetchBoardQuery,
+  UpdateBoardDocument,
+} from "@/commons/graphql/graphql";
 import { Modal } from "antd";
+import { Address } from "react-daum-postcode";
 
-export const useBoardsWrite = () => {
+export const useBoardsWrite = (data?: FetchBoardQuery) => {
   const router = useRouter();
 
   const [writer, setWriter] = useState("");
   const [password, setPassword] = useState("");
   const [title, setTitle] = useState("");
   const [contents, setContents] = useState("");
+  const [zonecode, setZonecode] = useState(data?.fetchBoard.boardAddress?.zipcode ?? "");
+  const [address, setAddress] = useState(data?.fetchBoard.boardAddress?.address ?? "");
+  const [detailAddress, setDetailAddress] = useState(data?.fetchBoard.boardAddress?.addressDetail ?? "");
 
   // const [writerError, setWriterError] = useState("");
   // const [passwordError, setPasswordError] = useState("");
@@ -21,9 +30,14 @@ export const useBoardsWrite = () => {
   // const [contentsError, setContentsError] = useState("");
 
   const [isActive, setIsActive] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const [createBoard] = useMutation(CreateBoardDocument);
   const [updateBoard] = useMutation(UpdateBoardDocument);
+
+  const { refetch } = useQuery(FetchBoardDocument, {
+    variables: { boardId: data?.fetchBoard._id ?? "" },
+  });
 
   const successModal = () => {
     Modal.success({
@@ -72,6 +86,20 @@ export const useBoardsWrite = () => {
     setIsActive(true);
   };
 
+  const onToggleModal = () => {
+    setIsModalOpen((prev) => !prev);
+  };
+
+  const handleComplete = (data: Address) => {
+    setZonecode(data.zonecode);
+    setAddress(data.address);
+    onToggleModal();
+  };
+
+  const onChangeDetailAddress = (event: ChangeEvent<HTMLInputElement>) => {
+    setDetailAddress(event.target.value);
+  };
+
   const onClickSubmit = async () => {
     try {
       const result = await createBoard({
@@ -81,6 +109,11 @@ export const useBoardsWrite = () => {
             password: password,
             title: title,
             contents: contents,
+            boardAddress: {
+              zipcode: zonecode,
+              address: address,
+              addressDetail: detailAddress,
+            },
           },
         },
       });
@@ -99,6 +132,14 @@ export const useBoardsWrite = () => {
       if (title) inputChange.title = title;
       if (contents) inputChange.contents = contents;
 
+      if (zonecode || address || detailAddress) {
+        inputChange.boardAddress = {};
+
+        inputChange.boardAddress.zipcode = zonecode;
+        inputChange.boardAddress.address = address;
+        inputChange.boardAddress.addressDetail = detailAddress;
+      }
+
       const result = await updateBoard({
         variables: {
           updateBoardInput: inputChange,
@@ -106,6 +147,8 @@ export const useBoardsWrite = () => {
           boardId: boardId,
         },
       });
+
+      await refetch({ boardId: result.data?.updateBoard._id });
 
       successModal();
       router.push(`/boards/${result.data?.updateBoard._id}`);
@@ -115,11 +158,18 @@ export const useBoardsWrite = () => {
   };
 
   return {
+    zonecode,
+    address,
+    detailAddress,
     onChangeWriter,
     onChangePassword,
     onChangeTitle,
     onChangeContents,
     isActive,
+    onToggleModal,
+    handleComplete,
+    isModalOpen,
+    onChangeDetailAddress,
     onClickUpdate,
     onClickSubmit,
   };
