@@ -6,6 +6,7 @@ import { CreateBoardCommentDocument, FetchBoardCommentsDocument } from "@/common
 import { IFetchCommentData } from "./types";
 
 export const useCommentWrite = (props: IFetchCommentData) => {
+  const [rate, setRate] = useState(3);
   const [writer, setWriter] = useState("");
   const [password, setPassword] = useState("");
   const [comment, setComment] = useState("");
@@ -44,7 +45,7 @@ export const useCommentWrite = (props: IFetchCommentData) => {
           writer: writer,
           password: password,
           contents: comment,
-          rating: 0,
+          rating: rate,
         },
         boardId: String(props.params.boardId),
       },
@@ -58,6 +59,8 @@ export const useCommentWrite = (props: IFetchCommentData) => {
   };
 
   return {
+    rate,
+    setRate,
     onChangeWriter,
     onChangePassword,
     onChangeComment,

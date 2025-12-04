@@ -5,8 +5,18 @@ import { useCommentWrite } from "./hook";
 import { IFetchCommentData } from "./types";
 
 export default function CommentWriteUI(props: IFetchCommentData) {
-  const { onChangeWriter, onChangePassword, onChangeComment, onClickSubmit, writer, password, comment, isActive } =
-    useCommentWrite(props);
+  const {
+    rate,
+    setRate,
+    onChangeWriter,
+    onChangePassword,
+    onChangeComment,
+    onClickSubmit,
+    writer,
+    password,
+    comment,
+    isActive,
+  } = useCommentWrite(props);
 
   return (
     <div className={`${styles.comment__write} column__sort gap__24`}>
@@ -15,7 +25,7 @@ export default function CommentWriteUI(props: IFetchCommentData) {
         <p className="w__600">댓글</p>
       </div>
 
-      <Rate className={styles.comment__star} />
+      <Rate className={styles.comment__star} value={rate} onChange={setRate} />
 
       <div className="column__sort column__right gap__16">
         <div className="column__sort width__100 gap__16">
