@@ -32,17 +32,11 @@ export default function BoardsDetailUI(props: IBoardDetailData) {
 
         <p className="w__400">{props.data?.fetchBoard.contents}</p>
 
-        <div className={`${styles.houseplants} row__sort row__center`}>
-          <Image
-            className={styles.houseplants__img}
-            src="/images/houseplants.jpg"
-            alt="houseplants"
-            width={0}
-            height={0}
-            sizes="100vw"
-          />
-          <Image className={`${styles.play} click`} src="/images/play.png" alt="play" width={24} height={24} />
-        </div>
+        {props.data?.fetchBoard.youtubeUrl && (
+          <div className={`${styles.youtube} row__sort row__center`}>
+            <iframe width="822px" height="464px" src={props.data?.fetchBoard.youtubeUrl}></iframe>
+          </div>
+        )}
 
         <div className="row__sort row__center gap__24">
           <div className="column__sort column__center gap__4">
