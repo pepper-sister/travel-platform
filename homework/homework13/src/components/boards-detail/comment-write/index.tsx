@@ -1,5 +1,6 @@
 import Image from "next/image";
 import styles from "./styles.module.css";
+import { Rate } from "antd";
 import { useCommentWrite } from "./hook";
 import { IFetchCommentData } from "./types";
 
@@ -14,13 +15,7 @@ export default function CommentWriteUI(props: IFetchCommentData) {
         <p className="w__600">댓글</p>
       </div>
 
-      <div className="row__sort gap__8">
-        <Image src="/images/star.png" alt="star" width={24} height={24} />
-        <Image src="/images/star.png" alt="star" width={24} height={24} />
-        <Image src="/images/star.png" alt="star" width={24} height={24} />
-        <Image src="/images/star.png" alt="star" width={24} height={24} />
-        <Image src="/images/star.png" alt="star" width={24} height={24} />
-      </div>
+      <Rate className={styles.comment__star} />
 
       <div className="column__sort column__right gap__16">
         <div className="column__sort width__100 gap__16">
