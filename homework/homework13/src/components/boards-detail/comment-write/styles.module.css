@@ -13,10 +13,10 @@
   margin: 0 !important;
 }
 .comment__star :global(.ant-rate-star-full svg) {
-  fill: #fadb14 !important;
+  fill: #fadb14;
 }
 .comment__star :global(.ant-rate-star-zero svg) {
-  fill: #c7c7c7 !important;
+  fill: #c7c7c7;
 }
 
 .comment__input__section {
