@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { ChangeEvent, useState } from "react";
 import { IBoardWriteInputChange } from "./types";
 import { CreateBoardDocument, UpdateBoardDocument } from "@/commons/graphql/graphql";
+import { Modal } from "antd";
 
 export const useBoardsWrite = () => {
   const router = useRouter();
@@ -23,6 +24,25 @@ export const useBoardsWrite = () => {
 
   const [createBoard] = useMutation(CreateBoardDocument);
   const [updateBoard] = useMutation(UpdateBoardDocument);
+
+  const successModal = () => {
+    Modal.success({
+      content: "수정 완료!",
+    });
+  };
+
+  const errorModal = (error: unknown) => {
+    Modal.error({
+      title: "에러가 발생하였습니다. 다시 시도해 주세요.",
+      content: String(error),
+    });
+  };
+
+  const warningModal = (error: unknown) => {
+    Modal.warning({
+      content: String(error),
+    });
+  };
 
   const onChangeWriter = (event: ChangeEvent<HTMLInputElement>) => {
     setWriter(event.target.value);
@@ -67,7 +87,7 @@ export const useBoardsWrite = () => {
 
       router.push(`/boards/${result.data?.createBoard._id}`);
     } catch (error) {
-      alert(`${error} 에러가 발생하였습니다. 다시 시도해 주세요.`);
+      errorModal(error);
     }
   };
 
@@ -87,10 +107,10 @@ export const useBoardsWrite = () => {
         },
       });
 
-      alert("수정 완료!");
+      successModal();
       router.push(`/boards/${result.data?.updateBoard._id}`);
     } catch (error) {
-      alert(error);
+      warningModal(error);
     }
   };
 
