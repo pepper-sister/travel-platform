@@ -2,6 +2,23 @@
   padding: 40px 0;
 }
 
+.comment__star {
+  display: flex;
+  gap: 8px;
+}
+.comment__star li {
+  width: 24px;
+  display: flex !important;
+  justify-content: center;
+  margin: 0 !important;
+}
+.comment__star :global(.ant-rate-star-full svg) {
+  fill: #fadb14 !important;
+}
+.comment__star :global(.ant-rate-star-zero svg) {
+  fill: #c7c7c7 !important;
+}
+
 .comment__input__section {
   width: 640px;
 }
