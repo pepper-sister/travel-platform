@@ -21,6 +21,13 @@ body {
   width: 100%;
 }
 
+a {
+  text-decoration: none;
+}
+button {
+  border: none;
+}
+
 .flex {
   flex: 1;
 }
@@ -130,6 +137,9 @@ body {
 }
 .l__36 {
   line-height: 36px;
+}
+.c__000000 {
+  color: #000000;
 }
 .c__1C1C1C {
   color: #1c1c1c;
