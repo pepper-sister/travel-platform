@@ -12,6 +12,7 @@ export default function BoardsWrite(props: IBoardWriteData) {
     zonecode,
     address,
     detailAddress,
+    youtubeUrl,
     onChangeWriter,
     onChangePassword,
     onChangeTitle,
@@ -21,6 +22,7 @@ export default function BoardsWrite(props: IBoardWriteData) {
     handleComplete,
     isModalOpen,
     onChangeDetailAddress,
+    onChangeYoutubeUrl,
     onClickUpdate,
     onClickSubmit,
   } = useBoardsWrite(props.data);
@@ -139,7 +141,13 @@ export default function BoardsWrite(props: IBoardWriteData) {
         {/* 유튜브 링크 */}
         <div className="column__sort gap__8">
           <p className="c__333333">유튜브 링크</p>
-          <input className={styles.input__text} type="text" placeholder="링크를 입력해 주세요." />
+          <input
+            className={styles.input__text}
+            type="text"
+            placeholder="링크를 입력해 주세요."
+            onChange={onChangeYoutubeUrl}
+            value={youtubeUrl}
+          />
         </div>
         <div className="div"></div>
 

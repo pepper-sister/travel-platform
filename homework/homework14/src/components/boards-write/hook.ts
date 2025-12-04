@@ -23,6 +23,7 @@ export const useBoardsWrite = (data?: FetchBoardQuery) => {
   const [zonecode, setZonecode] = useState(data?.fetchBoard.boardAddress?.zipcode ?? "");
   const [address, setAddress] = useState(data?.fetchBoard.boardAddress?.address ?? "");
   const [detailAddress, setDetailAddress] = useState(data?.fetchBoard.boardAddress?.addressDetail ?? "");
+  const [youtubeUrl, setYoutubeUrl] = useState(data?.fetchBoard.youtubeUrl ?? "");
 
   // const [writerError, setWriterError] = useState("");
   // const [passwordError, setPasswordError] = useState("");
@@ -100,6 +101,10 @@ export const useBoardsWrite = (data?: FetchBoardQuery) => {
     setDetailAddress(event.target.value);
   };
 
+  const onChangeYoutubeUrl = (event: ChangeEvent<HTMLInputElement>) => {
+    setYoutubeUrl(event.target.value);
+  };
+
   const onClickSubmit = async () => {
     try {
       const result = await createBoard({
@@ -109,6 +114,7 @@ export const useBoardsWrite = (data?: FetchBoardQuery) => {
             password: password,
             title: title,
             contents: contents,
+            youtubeUrl: youtubeUrl,
             boardAddress: {
               zipcode: zonecode,
               address: address,
@@ -140,6 +146,8 @@ export const useBoardsWrite = (data?: FetchBoardQuery) => {
         inputChange.boardAddress.addressDetail = detailAddress;
       }
 
+      if (youtubeUrl !== data?.fetchBoard.youtubeUrl) inputChange.youtubeUrl = youtubeUrl;
+
       const result = await updateBoard({
         variables: {
           updateBoardInput: inputChange,
@@ -161,6 +169,7 @@ export const useBoardsWrite = (data?: FetchBoardQuery) => {
     zonecode,
     address,
     detailAddress,
+    youtubeUrl,
     onChangeWriter,
     onChangePassword,
     onChangeTitle,
@@ -170,6 +179,7 @@ export const useBoardsWrite = (data?: FetchBoardQuery) => {
     handleComplete,
     isModalOpen,
     onChangeDetailAddress,
+    onChangeYoutubeUrl,
     onClickUpdate,
     onClickSubmit,
   };
