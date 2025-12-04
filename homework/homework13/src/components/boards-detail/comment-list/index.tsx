@@ -21,7 +21,7 @@ export default function CommentListUI(props: IFetchCommentData) {
                     <p className="f__14 w__300 c__5F5F5F">{el.writer}</p>
                   </div>
 
-                  <Rate className={styles.comment__star} />
+                  <Rate className={styles.comment__star} value={el.rating} disabled={true} />
                 </div>
 
                 <div className="row__sort gap__8">
