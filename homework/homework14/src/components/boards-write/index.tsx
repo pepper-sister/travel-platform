@@ -4,10 +4,26 @@ import Image from "next/image";
 import styles from "./styles.module.css";
 import { useBoardsWrite } from "./hook";
 import { IBoardWriteData } from "./types";
+import DaumPostcodeEmbed from "react-daum-postcode";
+import { Modal } from "antd";
 
 export default function BoardsWrite(props: IBoardWriteData) {
-  const { onChangeWriter, onChangePassword, onChangeTitle, onChangeContents, isActive, onClickUpdate, onClickSubmit } =
-    useBoardsWrite();
+  const {
+    zonecode,
+    address,
+    detailAddress,
+    onChangeWriter,
+    onChangePassword,
+    onChangeTitle,
+    onChangeContents,
+    isActive,
+    onToggleModal,
+    handleComplete,
+    isModalOpen,
+    onChangeDetailAddress,
+    onClickUpdate,
+    onClickSubmit,
+  } = useBoardsWrite(props.data);
 
   return (
     <div className="body__padding column__sort gap__40">
@@ -85,11 +101,38 @@ export default function BoardsWrite(props: IBoardWriteData) {
         <div className="column__sort gap__8">
           <p className="c__333333">주소</p>
           <div className="row__sort gap__8">
-            <input className={styles.input__number} type="text" placeholder="01234" maxLength={5} />
-            <button className={`${styles.white__btn} white__btn`}>우편번호 검색</button>
+            <input
+              className={styles.input__number}
+              type="text"
+              placeholder="01234"
+              maxLength={5}
+              disabled={true}
+              value={zonecode}
+            />
+            <button className={`${styles.white__btn} white__btn`} onClick={onToggleModal}>
+              우편번호 검색
+            </button>
+            {isModalOpen && (
+              <Modal open={isModalOpen} onOk={onToggleModal} onCancel={onToggleModal}>
+                <DaumPostcodeEmbed onComplete={handleComplete} />
+              </Modal>
+            )}
           </div>
-          <input className={styles.input__text} type="text" placeholder="주소를 입력해 주세요." />
-          <input className={styles.input__text} type="text" placeholder="상세주소" />
+
+          <input
+            className={styles.input__text}
+            type="text"
+            placeholder="주소를 입력해 주세요."
+            disabled={true}
+            value={address}
+          />
+          <input
+            className={styles.input__text}
+            type="text"
+            placeholder="상세주소"
+            onChange={onChangeDetailAddress}
+            value={detailAddress}
+          />
         </div>
         <div className="div"></div>
 
