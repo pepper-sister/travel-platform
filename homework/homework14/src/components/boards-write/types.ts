@@ -9,6 +9,7 @@ export interface BoardAddressInput {
 export interface IBoardWriteInputChange {
   title?: string;
   contents?: string;
+  youtubeUrl?: string;
   boardAddress?: BoardAddressInput;
 }
 
