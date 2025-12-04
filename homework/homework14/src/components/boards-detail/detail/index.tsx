@@ -63,7 +63,7 @@ export default function BoardsDetailUI(props: IBoardDetailData) {
         </button>
         <button className={`${styles.white__btn} white__btn row__sort column__center gap__8`}>
           <Image src="/images/edit.png" alt="edit" width={24} height={24} />
-          <Link href={`/boards/${props.params.boardId}/edit`} className="f__14 w__600 l__20">
+          <Link href={`/boards/${props.params.boardId}/edit`} className="f__14 w__600 l__20 c__000000">
             수정하기
           </Link>
         </button>
