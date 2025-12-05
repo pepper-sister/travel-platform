@@ -49,6 +49,9 @@ button {
 .body__padding {
   padding: 40px 320px;
 }
+.navi__padding {
+  padding: 20px 320px;
+}
 
 /* row 정렬 */
 .row__sort {
