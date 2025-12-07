@@ -1,12 +1,11 @@
 "use client";
 
-import { useMutation, useQuery } from "@apollo/client/react";
+import { useMutation } from "@apollo/client/react";
 import { useRouter } from "next/navigation";
 import { DeleteBoardDocument, FetchBoardsDocument } from "@/commons/graphql/graphql";
 import { MouseEvent } from "react";
 
 export const useBoardsList = () => {
-  const { data } = useQuery(FetchBoardsDocument);
   const [deleteBoard] = useMutation(DeleteBoardDocument);
 
   const router = useRouter();
@@ -25,5 +24,5 @@ export const useBoardsList = () => {
     });
   };
 
-  return { data, onClickDetail, onClickDelete };
+  return { onClickDetail, onClickDelete };
 };
