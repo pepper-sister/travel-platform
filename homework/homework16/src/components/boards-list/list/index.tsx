@@ -3,8 +3,9 @@
 import Image from "next/image";
 import styles from "./styles.module.css";
 import { useBoardsList } from "./hook";
+import { IBoardListProps } from "./types";
 
-export default function BoardsListUI(props) {
+export default function BoardsListUI(props: IBoardListProps) {
   const { onClickDetail, onClickDelete } = useBoardsList();
 
   return (
