@@ -12,11 +12,15 @@ export default function BoardsList() {
     },
   });
 
+  const onRefetch = (clickPage: number) => {
+    refetch({ clickPage: clickPage });
+  };
+
   return (
     <div className="body__padding">
       <div className="column__sort gap__8 list__section">
         <BoardsListUI data={data} />
-        <PaginationUI refetch={refetch} />
+        <PaginationUI onRefetch={onRefetch} />
       </div>
     </div>
   );
