@@ -1,41 +1,9 @@
-import { gql } from "@apollo/client";
-import { useQuery } from "@apollo/client/react";
-import { useState } from "react";
 import styles from "./styles.module.css";
+import { usePagination } from "./hook";
+import { IPaginationProps } from "./types";
 
-const FETCH_BOARDS_COUNT = gql`
-  query fetchBoardsCount {
-    fetchBoardsCount
-  }
-`;
-
-export default function PaginationUI(props) {
-  const [startPage, setStartPage] = useState(1);
-  const [activePage, setActivePage] = useState(1);
-
-  const { data } = useQuery(FETCH_BOARDS_COUNT);
-
-  const lastPage = Math.ceil((data?.fetchBoardsCount ?? 10) / 10);
-
-  const onClickPage = (event) => {
-    props.refetch({ clickPage: Number(event.currentTarget.id) });
-    setActivePage(Number(event.currentTarget.id));
-  };
-
-  const onClickPrevPage = () => {
-    if (startPage === 1) return;
-    setStartPage(startPage - 5);
-    setActivePage(startPage - 5);
-    props.refetch({ clickPage: startPage - 5 });
-  };
-
-  const onClickNextPage = () => {
-    if (startPage + 5 <= lastPage) {
-      setStartPage(startPage + 5);
-      setActivePage(startPage + 5);
-      props.refetch({ clickPage: startPage + 5 });
-    }
-  };
+export default function PaginationUI(props: IPaginationProps) {
+  const { startPage, activePage, lastPage, onClickPage, onClickPrevPage, onClickNextPage } = usePagination(props);
 
   return (
     <div className="row__sort row__center column__center gap__8">
