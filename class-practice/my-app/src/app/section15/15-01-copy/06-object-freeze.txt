@@ -1,0 +1,37 @@
+let age = 12
+undefined
+
+age = 13
+13
+
+age
+13
+
+const school = "다람쥐초등학교"
+undefined
+
+shcool = "공룡초등학교"
+VM1834:1 Uncaught TypeError: Assignment to constant variable.
+    at <anonymous>:1:8
+
+const profile = { 
+    name: "철수", 
+    age: 12
+}
+undefined
+
+profile.name = "영희"
+'영희'
+
+profile = "공룡초등학교"
+VM1550:1 Uncaught TypeError: Assignment to constant variable.
+    at <anonymous>:1:9
+
+Object.freeze(profile)
+{name: '영희', age: 12}
+
+profile.name = "훈이"
+'훈이'
+
+profile
+{name: '영희', age: 12}
