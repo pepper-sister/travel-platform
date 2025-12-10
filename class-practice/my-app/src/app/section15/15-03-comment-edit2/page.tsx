@@ -20,7 +20,7 @@ export default function PaginationPage() {
   const { data } = useQuery(FETCH_BOARDS);
 
   const onClickEdit = (event) => {
-    const qqq = myIndex;
+    const qqq = [...myIndex];
     qqq[Number(event.currentTarget.id)] = true;
     setMyIndex(qqq);
   };
