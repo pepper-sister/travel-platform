@@ -16,10 +16,12 @@ import { Address } from "react-daum-postcode";
 export const useBoardsWrite = (data?: FetchBoardQuery) => {
   const router = useRouter();
 
-  const [writer, setWriter] = useState("");
+  const [inputs, setInputs] = useState({
+    writer: "",
+    title: "",
+    contents: "",
+  });
   const [password, setPassword] = useState("");
-  const [title, setTitle] = useState("");
-  const [contents, setContents] = useState("");
   const [zonecode, setZonecode] = useState(data?.fetchBoard.boardAddress?.zipcode ?? "");
   const [address, setAddress] = useState(data?.fetchBoard.boardAddress?.address ?? "");
   const [detailAddress, setDetailAddress] = useState(data?.fetchBoard.boardAddress?.addressDetail ?? "");
@@ -59,31 +61,22 @@ export const useBoardsWrite = (data?: FetchBoardQuery) => {
     });
   };
 
-  const onChangeWriter = (event: ChangeEvent<HTMLInputElement>) => {
-    setWriter(event.target.value);
+  const onChangeInputs = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const userInputs = {
+      ...inputs,
+      [event.target.id]: event.target.value,
+    };
 
-    if (event.target.value && password && title && contents) return setIsActive(false);
+    setInputs(userInputs);
+
+    if (userInputs.writer && password && userInputs.title && userInputs.contents) return setIsActive(false);
     setIsActive(true);
   };
 
   const onChangePassword = (event: ChangeEvent<HTMLInputElement>) => {
     setPassword(event.target.value);
 
-    if (writer && event.target.value && title && contents) return setIsActive(false);
-    setIsActive(true);
-  };
-
-  const onChangeTitle = (event: ChangeEvent<HTMLInputElement>) => {
-    setTitle(event.target.value);
-
-    if (writer && password && event.target.value && contents) return setIsActive(false);
-    setIsActive(true);
-  };
-
-  const onChangeContents = (event: ChangeEvent<HTMLTextAreaElement>) => {
-    setContents(event.target.value);
-
-    if (writer && password && title && event.target.value) return setIsActive(false);
+    if (inputs.writer && event.target.value && inputs.title && inputs.contents) return setIsActive(false);
     setIsActive(true);
   };
 
@@ -110,10 +103,10 @@ export const useBoardsWrite = (data?: FetchBoardQuery) => {
       const result = await createBoard({
         variables: {
           createBoardInput: {
-            writer: writer,
+            writer: inputs.writer,
             password: password,
-            title: title,
-            contents: contents,
+            title: inputs.title,
+            contents: inputs.contents,
             youtubeUrl: youtubeUrl,
             boardAddress: {
               zipcode: zonecode,
@@ -135,8 +128,8 @@ export const useBoardsWrite = (data?: FetchBoardQuery) => {
       const inputPassword = prompt("글을 입력할때 입력하셨던 비밀번호를 입력해주세요");
 
       const inputChange: IBoardWriteInputChange = {};
-      if (title) inputChange.title = title;
-      if (contents) inputChange.contents = contents;
+      if (inputs.title) inputChange.title = inputs.title;
+      if (inputs.contents) inputChange.contents = inputs.contents;
 
       if (zonecode || address || detailAddress) {
         inputChange.boardAddress = {};
@@ -170,10 +163,8 @@ export const useBoardsWrite = (data?: FetchBoardQuery) => {
     address,
     detailAddress,
     youtubeUrl,
-    onChangeWriter,
+    onChangeInputs,
     onChangePassword,
-    onChangeTitle,
-    onChangeContents,
     isActive,
     onToggleModal,
     handleComplete,

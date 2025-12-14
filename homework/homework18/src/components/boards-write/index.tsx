@@ -13,10 +13,8 @@ export default function BoardsWrite(props: IBoardWriteData) {
     address,
     detailAddress,
     youtubeUrl,
-    onChangeWriter,
+    onChangeInputs,
     onChangePassword,
-    onChangeTitle,
-    onChangeContents,
     isActive,
     onToggleModal,
     handleComplete,
@@ -41,9 +39,10 @@ export default function BoardsWrite(props: IBoardWriteData) {
             </div>
             <input
               className={`${styles.input__text} ${props.isEdit ? "bg__F2F2F2" : ""}`}
+              id="writer"
               type="text"
               placeholder="작성자 명을 입력해 주세요."
-              onChange={onChangeWriter}
+              onChange={onChangeInputs}
               defaultValue={props.data?.fetchBoard.writer ?? ""}
               disabled={props.isEdit ? true : false}
             />
@@ -75,9 +74,10 @@ export default function BoardsWrite(props: IBoardWriteData) {
           </div>
           <input
             className={styles.input__text}
+            id="title"
             type="text"
             placeholder="제목을 입력해 주세요."
-            onChange={onChangeTitle}
+            onChange={onChangeInputs}
             defaultValue={props.data?.fetchBoard.title}
           />
           {/* <div className="c__f66a6a">{titleError}</div> */}
@@ -92,8 +92,9 @@ export default function BoardsWrite(props: IBoardWriteData) {
           </div>
           <textarea
             className={styles.textarea__text}
+            id="contents"
             placeholder="내용을 입력해 주세요."
-            onChange={onChangeContents}
+            onChange={onChangeInputs}
             defaultValue={props.data?.fetchBoard.contents}
           />
           {/* <div className="c__f66a6a">{contentsError}</div> */}
