@@ -3,12 +3,41 @@ import { IFetchCommentData } from "./types";
 import { useCommentList } from "./hook";
 import { Rate } from "antd";
 import styles from "./styles.module.css";
+import InfiniteScroll from "react-infinite-scroll-component";
+import { useState } from "react";
 
 export default function CommentListUI(props: IFetchCommentData) {
-  const { data } = useCommentList(props);
+  const [hasMore, setHasMore] = useState(true);
+  const { data, fetchMore } = useCommentList(props);
+
+  const onNext = () => {
+    if (data === undefined) return;
+
+    fetchMore({
+      variables: {
+        page: Math.ceil(data?.fetchBoardComments.length / 10) + 1,
+      },
+      updateQuery: (prev, { fetchMoreResult }) => {
+        if (!fetchMoreResult.fetchBoardComments.length) {
+          setHasMore(false);
+          return prev;
+        }
+
+        return {
+          fetchBoardComments: [...prev.fetchBoardComments, ...fetchMoreResult.fetchBoardComments],
+        };
+      },
+    });
+  };
 
   return (
-    <div className="column__sort column__center">
+    <InfiniteScroll
+      className="column__sort column__center"
+      next={onNext}
+      hasMore={hasMore}
+      loader={<div>로딩중입니다.</div>}
+      dataLength={data?.fetchBoardComments.length ?? 0}
+    >
       {data?.fetchBoardComments && data.fetchBoardComments.length > 0 ? (
         data?.fetchBoardComments.map((el, index) => (
           <div key={el._id} className="width__100 column__sort gap__40">
@@ -39,6 +68,6 @@ export default function CommentListUI(props: IFetchCommentData) {
       ) : (
         <p className="f__14 w__400 l__20 c__777777">등록된 댓글이 없습니다.</p>
       )}
-    </div>
+    </InfiniteScroll>
   );
 }
