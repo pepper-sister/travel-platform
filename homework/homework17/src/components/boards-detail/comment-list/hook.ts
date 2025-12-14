@@ -5,9 +5,9 @@ import { useQuery } from "@apollo/client/react";
 import { IFetchCommentData } from "./types";
 
 export const useCommentList = (props: IFetchCommentData) => {
-  const { data } = useQuery(FetchBoardCommentsDocument, {
+  const { data, fetchMore } = useQuery(FetchBoardCommentsDocument, {
     variables: { boardId: String(props.params.boardId) },
   });
 
-  return { data };
+  return { data, fetchMore };
 };
