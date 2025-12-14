@@ -1,5 +1,6 @@
 export interface IFetchCommentData {
   params: {
-    boardId?: string;
+    page?: number;
+    boardId: string;
   };
 }
