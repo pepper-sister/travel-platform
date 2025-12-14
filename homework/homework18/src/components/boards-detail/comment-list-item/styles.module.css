@@ -1,0 +1,16 @@
+.comment__star {
+  display: flex;
+  gap: 8px;
+}
+.comment__star li {
+  width: 24px;
+  display: flex !important;
+  justify-content: center;
+  margin: 0 !important;
+}
+.comment__star :global(.ant-rate-star-full svg) {
+  fill: #fada67;
+}
+.comment__star :global(.ant-rate-star-zero svg) {
+  fill: #c7c7c7;
+}
