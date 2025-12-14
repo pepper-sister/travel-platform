@@ -12,6 +12,7 @@ export default function CommentWriteUI(props: IFetchCommentData) {
     onChangePassword,
     onChangeComment,
     onClickSubmit,
+    onClickUpdateComment,
     writer,
     password,
     comment,
@@ -19,18 +20,20 @@ export default function CommentWriteUI(props: IFetchCommentData) {
   } = useCommentWrite(props);
 
   return (
-    <div className={`${styles.comment__write} column__sort gap__24`}>
-      <div className="row__sort gap__8">
-        <Image src="/images/chat.png" alt="chat" width={24} height={24} />
-        <p className="w__600">댓글</p>
-      </div>
+    <div className={`${!props.isCommentEdit && `${styles.comment__write}`} column__sort gap__24`}>
+      {!props.isCommentEdit && (
+        <div className="row__sort gap__8">
+          <Image src="/images/chat.png" alt="chat" width={24} height={24} />
+          <p className="w__600">댓글</p>
+        </div>
+      )}
 
-      <Rate className={styles.comment__star} value={rate} onChange={setRate} />
+      <Rate className={styles.comment__star} value={!props.isCommentEdit ? rate : props.el.rating} onChange={setRate} />
 
       <div className="column__sort column__right gap__16">
         <div className="column__sort width__100 gap__16">
           <div className={`${styles.comment__input__section} row__sort gap__16`}>
-            <div className="column__sort gap__8">
+            <div className="width__100 column__sort gap__8">
               <div className="row__sort gap__4">
                 <p className="c__333333">작성자</p>
                 <p className="c__f66a6a">*</p>
@@ -41,11 +44,12 @@ export default function CommentWriteUI(props: IFetchCommentData) {
                 onChange={onChangeWriter}
                 className={`${styles.comment__input}`}
                 placeholder="작성자 명을 입력해 주세요."
-                value={writer}
+                value={writer ?? ""}
+                disabled={props.isCommentEdit}
               />
             </div>
 
-            <div className="column__sort gap__8">
+            <div className="width__100 column__sort gap__8">
               <div className="row__sort gap__4">
                 <p className="c__333333">비밀번호</p>
                 <p className="c__f66a6a">*</p>
@@ -69,13 +73,24 @@ export default function CommentWriteUI(props: IFetchCommentData) {
               placeholder="댓글을 입력해 주세요."
               value={comment}
             />
-            <p className={`${styles.comment__text__count}`}>{comment.length}/100</p>
+            <p className={`${styles.comment__text__count}`}>
+              {comment.length}
+              /100
+            </p>
           </div>
         </div>
 
-        <button disabled={isActive} onClick={onClickSubmit} className={`${styles.black__btn} f__18 w__600 `}>
-          댓글 등록
-        </button>
+        <div className="row__sort gap__16">
+          {props.isCommentEdit && <button className={`${styles.white__btn} white__btn f__18 w__400`}>취소</button>}
+
+          <button
+            disabled={isActive}
+            onClick={!props.isCommentEdit ? onClickSubmit : onClickUpdateComment}
+            className={`${styles.black__btn} f__18 w__600`}
+          >
+            {props.isCommentEdit ? "수정 하기" : "댓글 등록"}
+          </button>
+        </div>
       </div>
     </div>
   );

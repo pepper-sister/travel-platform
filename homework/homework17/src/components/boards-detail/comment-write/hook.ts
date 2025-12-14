@@ -2,17 +2,22 @@
 
 import { ChangeEvent, useState } from "react";
 import { useMutation, useQuery } from "@apollo/client/react";
-import { CreateBoardCommentDocument, FetchBoardCommentsDocument } from "@/commons/graphql/graphql";
+import {
+  CreateBoardCommentDocument,
+  FetchBoardCommentsDocument,
+  UpdateBoardCommentDocument,
+} from "@/commons/graphql/graphql";
 import { IFetchCommentData } from "./types";
 
 export const useCommentWrite = (props: IFetchCommentData) => {
   const [rate, setRate] = useState(3);
-  const [writer, setWriter] = useState("");
+  const [writer, setWriter] = useState(!props.isCommentEdit ? "" : props.el.writer);
   const [password, setPassword] = useState("");
-  const [comment, setComment] = useState("");
+  const [comment, setComment] = useState(!props.isCommentEdit ? "" : props.el.contents);
   const [isActive, setIsActive] = useState(true);
 
   const [createBoardComment] = useMutation(CreateBoardCommentDocument);
+  const [updateBoardComment] = useMutation(UpdateBoardCommentDocument);
   const { refetch } = useQuery(FetchBoardCommentsDocument, {
     variables: { boardId: String(props.params.boardId) },
   });
@@ -38,8 +43,8 @@ export const useCommentWrite = (props: IFetchCommentData) => {
     setIsActive(true);
   };
 
-  const onClickSubmit = () => {
-    createBoardComment({
+  const onClickSubmit = async () => {
+    await createBoardComment({
       variables: {
         createBoardCommentInput: {
           writer: writer,
@@ -51,8 +56,28 @@ export const useCommentWrite = (props: IFetchCommentData) => {
       },
     });
 
-    refetch();
+    await refetch();
 
+    setWriter("");
+    setPassword("");
+    setComment("");
+  };
+
+  const onClickUpdateComment = async () => {
+    await updateBoardComment({
+      variables: {
+        updateBoardCommentInput: {
+          contents: comment,
+          rating: rate,
+        },
+        password: password,
+        boardCommentId: props.boardCommentId,
+      },
+    });
+
+    await refetch();
+
+    props.setIsCommentEdit(false);
     setWriter("");
     setPassword("");
     setComment("");
@@ -65,6 +90,7 @@ export const useCommentWrite = (props: IFetchCommentData) => {
     onChangePassword,
     onChangeComment,
     onClickSubmit,
+    onClickUpdateComment,
     writer,
     password,
     comment,
