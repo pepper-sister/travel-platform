@@ -1,19 +1,10 @@
 "use client";
 
+import { useOpenAPI } from "@/components/openapis-list/hook";
 import Image from "next/image";
-import { useEffect, useState } from "react";
 
 export default function CatPicture() {
-  const [imageUrl, setImageUrl] = useState("");
-
-  useEffect(() => {
-    const dogApi = async () => {
-      const result = await fetch("https://dog.ceo/api/breeds/image/random");
-      const data = await result.json();
-      setImageUrl(data.message);
-    };
-    dogApi();
-  }, []);
+  const { imageUrl } = useOpenAPI();
 
   return (
     <>
