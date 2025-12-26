@@ -1,13 +1,11 @@
 "use client";
 
-import { useOpenAPI } from "@/components/openapis-list/hook";
+import OpenAPIUI from "@/components/openapis-list";
 
 export default function CatPicture() {
-  const { imageUrl } = useOpenAPI();
-
   return (
     <>
-      <img src={imageUrl} />
+      <OpenAPIUI />
     </>
   );
 }
