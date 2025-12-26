@@ -1,0 +1,17 @@
+{
+  "name": "17-02-ts-node",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "qqq": "ts-node index.ts"
+  },
+  "dependencies": {
+    "pg": "^8.16.3",
+    "ts-node": "^10.9.2",
+    "typeorm": "^0.3.28"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3"
+  }
+}
