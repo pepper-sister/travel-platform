@@ -7,6 +7,8 @@
     "qqq": "ts-node index.ts"
   },
   "dependencies": {
+    "@apollo/server": "^5.2.0",
+    "graphql": "^16.12.0",
     "pg": "^8.16.3",
     "ts-node": "^10.9.2",
     "typeorm": "^0.3.28"
