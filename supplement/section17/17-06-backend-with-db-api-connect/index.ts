@@ -15,7 +15,7 @@ const typeDefs = `#graphql
   }
 
   type MyBoard {
-    number: Int
+    id: Int
     writer: String
     title: String
     contents: String
