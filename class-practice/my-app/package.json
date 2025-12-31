@@ -13,6 +13,7 @@
     "@ant-design/icons": "^6.1.0",
     "@apollo/client": "^4.0.9",
     "antd": "^6.0.0",
+    "firebase": "^12.7.0",
     "graphql": "^16.12.0",
     "next": "14.2.33",
     "react": "^18",
