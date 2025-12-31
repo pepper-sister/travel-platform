@@ -1,7 +1,7 @@
 "use client";
 
 import { firebaseApp } from "@/commons/libraries/firebase";
-import { addDoc, collection, getFirestore } from "firebase/firestore";
+import { addDoc, collection, getDocs, getFirestore } from "firebase/firestore";
 import { ChangeEvent, useState } from "react";
 
 export default function MyApisSubmitPage() {
@@ -11,8 +11,13 @@ export default function MyApisSubmitPage() {
     contents: "",
   });
 
-  const onChangeInputs = (event: ChangeEvent<HTMLInputElement>) => {
+  const onChangeInputs = async (event: ChangeEvent<HTMLInputElement>) => {
+    const boards = collection(getFirestore(firebaseApp), "boards");
+    const result = await getDocs(boards);
+    const data = result.docs.map((el) => el.data());
+
     const userInputs = {
+      number: data.length + 1,
       ...inputs,
       [event.target.id]: event.target.value,
     };
