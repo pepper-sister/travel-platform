@@ -24,8 +24,9 @@ export default function BoardsWrite(props: IBoardWriteData) {
     onChangeYoutubeUrl,
     onClickUpload,
     onChangeFile,
-    onClickUpdate,
+    onClickDelete,
     onClickSubmit,
+    onClickUpdate,
     fileRef,
   } = useBoardsWrite(props.data);
 
@@ -172,13 +173,24 @@ export default function BoardsWrite(props: IBoardWriteData) {
               <div className={styles.img}></div>
               <div className={`${styles.img__upload} column__sort column__center gap__8`}>
                 {imageUrl ? (
-                  <Image
-                    className={styles.img}
-                    src={`https://storage.googleapis.com/${imageUrl}`}
-                    alt="사진업로드"
-                    width={160}
-                    height={160}
-                  />
+                  <>
+                    <Image
+                      className={styles.img}
+                      src={`https://storage.googleapis.com/${imageUrl}`}
+                      alt="사진업로드"
+                      width={160}
+                      height={160}
+                    />
+                    <div className={styles.img__delete__section} onClick={onClickDelete}>
+                      <Image
+                        src="/images/close.png"
+                        className={styles.img__delete}
+                        alt="close"
+                        width={20}
+                        height={20}
+                      />
+                    </div>
+                  </>
                 ) : (
                   <>
                     <Image className={styles.img__plus} src="/images/add.png" alt="사진업로드" width={0} height={0} />

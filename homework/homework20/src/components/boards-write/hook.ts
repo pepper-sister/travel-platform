@@ -120,6 +120,11 @@ export const useBoardsWrite = (data?: FetchBoardQuery) => {
     setImageUrl(result.data?.uploadFile?.url ?? "");
   };
 
+  const onClickDelete = (event: React.MouseEvent<HTMLDivElement>) => {
+    event.stopPropagation();
+    setImageUrl("");
+  };
+
   const onClickSubmit = async () => {
     try {
       const result = await createBoard({
@@ -135,6 +140,7 @@ export const useBoardsWrite = (data?: FetchBoardQuery) => {
               address: address,
               addressDetail: detailAddress,
             },
+            images: [imageUrl],
           },
         },
       });
@@ -162,6 +168,8 @@ export const useBoardsWrite = (data?: FetchBoardQuery) => {
       }
 
       if (youtubeUrl !== data?.fetchBoard.youtubeUrl) inputChange.youtubeUrl = youtubeUrl;
+
+      if (!data?.fetchBoard.images?.includes(imageUrl)) inputChange.images = [imageUrl];
 
       const result = await updateBoard({
         variables: {
@@ -196,8 +204,9 @@ export const useBoardsWrite = (data?: FetchBoardQuery) => {
     onChangeYoutubeUrl,
     onClickUpload,
     onChangeFile,
-    onClickUpdate,
+    onClickDelete,
     onClickSubmit,
+    onClickUpdate,
     fileRef,
   };
 };
