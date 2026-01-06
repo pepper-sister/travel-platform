@@ -11,6 +11,7 @@ export interface IBoardWriteInputChange {
   contents?: string;
   youtubeUrl?: string;
   boardAddress?: BoardAddressInput;
+  images?: string[];
 }
 
 export interface IBoardWriteData {
