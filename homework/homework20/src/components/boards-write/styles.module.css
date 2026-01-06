@@ -29,6 +29,7 @@
   border-radius: 8px;
 }
 .img__delete__section {
+  display: none;
   position: absolute;
   top: 12px;
   right: 12px;
@@ -41,6 +42,9 @@
 }
 .img__delete {
   filter: invert(1);
+}
+.img__upload:hover .img__delete__section {
+  display: block;
 }
 .img__upload {
   width: 100%;
