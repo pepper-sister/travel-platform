@@ -1,37 +1,7 @@
 "use client";
 
-import { firebaseApp } from "@/commons/libraries/firebase";
-import { collection, DocumentData, getDocs, getFirestore } from "firebase/firestore";
-import { useEffect, useState } from "react";
+import MyApisUI from "@/components/myapis-list";
 
 export default function MyApisPage() {
-  const [board, setBoard] = useState<DocumentData[]>([]);
-
-  const FetchBoards = async () => {
-    const boards = collection(getFirestore(firebaseApp), "boards");
-    const result = await getDocs(boards);
-    const data = result.docs.map((el) => el.data());
-    setBoard(data);
-  };
-
-  useEffect(() => {
-    FetchBoards();
-  });
-
-  return (
-    <>
-      <div>목록페이지</div>
-
-      {board.map((el) => {
-        return (
-          <div key={el.number} className="row__sort gap__8">
-            <span>{el.number}</span>
-            <span>{el.writer}</span>
-            <span>{el.title}</span>
-            <span>{el.contents}</span>
-          </div>
-        );
-      })}
-    </>
-  );
+  return <MyApisUI />;
 }
