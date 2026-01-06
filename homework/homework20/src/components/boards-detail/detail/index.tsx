@@ -49,7 +49,11 @@ export default function BoardsDetailUI(props: IBoardDetailData) {
           </div>
         </div>
 
-        <Image src="/images/beach.jpg" alt="beach" width={400} height={531} />
+        {props.data?.fetchBoard.images
+          ?.filter((el) => el)
+          .map((el) => (
+            <Image key={el} src={`https://storage.googleapis.com/${el}`} alt="image" width={160} height={160} />
+          ))}
 
         <p className="w__400">{props.data?.fetchBoard.contents}</p>
 
@@ -72,16 +76,17 @@ export default function BoardsDetailUI(props: IBoardDetailData) {
       </main>
 
       <footer className="row__sort row__center gap__24">
-        <button className={`${styles.white__btn} white__btn row__sort column__center gap__8`}>
+        <Link href={`/boards`} className={`${styles.white__btn} white__btn row__sort column__center gap__8`}>
           <Image src="/images/menu.png" alt="menu" width={24} height={24} />
-          <p className="f__14 w__600 l__20">목록으로</p>
-        </button>
-        <button className={`${styles.white__btn} white__btn row__sort column__center gap__8`}>
+          <p className="f__14 w__600 l__20 c__000000">목록으로</p>
+        </Link>
+        <Link
+          href={`/boards/${props.params.boardId}/edit`}
+          className={`${styles.white__btn} white__btn row__sort column__center gap__8`}
+        >
           <Image src="/images/edit.png" alt="edit" width={24} height={24} />
-          <Link href={`/boards/${props.params.boardId}/edit`} className="f__14 w__600 l__20 c__000000">
-            수정하기
-          </Link>
-        </button>
+          <p className="f__14 w__600 l__20 c__000000">수정하기</p>
+        </Link>
       </footer>
 
       <div className="div"></div>

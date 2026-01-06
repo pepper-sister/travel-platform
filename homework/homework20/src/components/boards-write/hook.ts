@@ -26,7 +26,7 @@ export const useBoardsWrite = (data?: FetchBoardQuery) => {
   const [zonecode, setZonecode] = useState(data?.fetchBoard.boardAddress?.zipcode ?? "");
   const [address, setAddress] = useState(data?.fetchBoard.boardAddress?.address ?? "");
   const [detailAddress, setDetailAddress] = useState(data?.fetchBoard.boardAddress?.addressDetail ?? "");
-  const [imageUrl, setImageUrl] = useState("");
+  const [imageUrl, setImageUrl] = useState(data?.fetchBoard.images?.[0] ?? "");
   const fileRef = useRef<HTMLInputElement>(null);
   const [uploadFile] = useMutation(UplaodFileDocument);
   const [youtubeUrl, setYoutubeUrl] = useState(data?.fetchBoard.youtubeUrl ?? "");
