@@ -2,10 +2,11 @@
 
 import { gql } from "@apollo/client";
 import { useQuery } from "@apollo/client/react";
+import { useState } from "react";
 
 const FETCH_BOARDS = gql`
-  query fetchBoards($mypage: Int) {
-    fetchBoards(page: $mypage) {
+  query fetchBoards($mypage: Int, $mysearch: String) {
+    fetchBoards(page: $mypage, search: $mysearch) {
       _id
       writer
       title
@@ -15,18 +16,28 @@ const FETCH_BOARDS = gql`
 `;
 
 export default function PaginationPage() {
+  const [search, setSearch] = useState("");
   const { data, refetch } = useQuery(FETCH_BOARDS);
 
   console.log(data);
 
   const onClickPage = (event) => {
+    // 검색에서 refetch할 때, search 검색어가 refetch에 저장되어 있는 상태이므로, 여기서 굳이 추가 안해도 됨
     refetch({ mypage: Number(event.currentTarget.id) });
+  };
+
+  const onChangeSearch = (event) => {
+    setSearch(event.currentTarget.value);
+  };
+
+  const onClickSearch = () => {
+    refetch({ mysearch: search, mypage: 1 });
   };
 
   return (
     <>
-      검색어입력: <input type="text" />
-      <button>검색하기</button>
+      검색어입력: <input type="text" onChange={onChangeSearch} />
+      <button onClick={onClickSearch}>검색하기</button>
       {data?.fetchBoards.map((el) => (
         <div key={el._id}>
           <span style={{ margin: "10px" }}>{el.title}</span>
