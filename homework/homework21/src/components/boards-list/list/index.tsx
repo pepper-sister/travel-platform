@@ -5,7 +5,6 @@ import { IBoardListProps } from "./types";
 
 export default function BoardsListUI(props: IBoardListProps) {
   const { onClickDetail, onClickDelete } = useBoardsList();
-  console.log(`keyword: {${props.keyword}}`);
 
   return (
     <div className="column__sort gap__8">
