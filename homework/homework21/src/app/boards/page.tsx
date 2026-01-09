@@ -3,24 +3,31 @@
 import { FetchBoardsDocument } from "@/commons/graphql/graphql";
 import BoardsListUI from "@/components/boards-list/list";
 import PaginationUI from "@/components/boards-list/pagination";
+import SearchUI from "@/components/boards-list/search";
 import { useQuery } from "@apollo/client/react";
+import { useState } from "react";
 
 export default function BoardsList() {
+  const [keyword, setKeyword] = useState("");
   const { data, refetch } = useQuery(FetchBoardsDocument, {
     variables: {
-      clickPage: 1,
+      page: 1,
     },
   });
 
-  const onRefetch = (clickPage: number) => {
-    refetch({ clickPage: clickPage });
+  const onRefetch = (page: number) => {
+    refetch({ page });
   };
 
   return (
     <div className="body__padding">
-      <div className="column__sort gap__8 list__section">
-        <BoardsListUI data={data} />
-        <PaginationUI onRefetch={onRefetch} />
+      <div className="column__sort gap__24">
+        <div className="f__28 w__700 l__36">트립토크 게시판</div>
+        <SearchUI refetch={refetch} setKeyword={setKeyword} />
+        <div className="column__sort gap__8 list__section">
+          <BoardsListUI data={data} keyword={keyword} />
+          <PaginationUI onRefetch={onRefetch} />
+        </div>
       </div>
     </div>
   );
