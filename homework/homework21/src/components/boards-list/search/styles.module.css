@@ -3,6 +3,15 @@
   border-radius: 8px;
 }
 
+.search__date {
+  background-color: #f2f2f2;
+  border: none;
+  cursor: pointer;
+}
+.search__date:hover {
+  background-color: #f2f2f2;
+}
+
 .search__input {
   background-color: transparent;
   border: none;
