@@ -1,0 +1,37 @@
+.search__section {
+  padding: 12px;
+  border-radius: 8px;
+}
+
+.search__input {
+  background-color: transparent;
+  border: none;
+}
+.search__input::placeholder {
+  color: #919191;
+  font-weight: 400;
+}
+
+.black__btn {
+  background-color: #000000;
+  border-radius: 8px;
+  padding: 12px 16px;
+
+  font-size: 18px;
+  font-weight: 600;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.blue__btn {
+  background-color: #2974e5;
+  border-radius: 8px;
+  padding: 12px 16px;
+
+  font-size: 18px;
+  font-weight: 600;
+  color: #ffffff;
+}
+.write__icon {
+  filter: invert(1);
+}
