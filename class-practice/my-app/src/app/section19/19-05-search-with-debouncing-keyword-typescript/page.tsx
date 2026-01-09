@@ -2,8 +2,9 @@
 
 import { gql } from "@apollo/client";
 import { useQuery } from "@apollo/client/react";
-import { useState } from "react";
+import { ChangeEvent, MouseEvent, useState } from "react";
 import _ from "lodash";
+import { FetchBoardWithSearchesDocument } from "@/commons/graphql/graphql";
 
 const FETCH_BOARDS = gql`
   query fetchBoardWithSearches($mypage: Int, $mysearch: String) {
@@ -20,11 +21,11 @@ export default function PaginationPage() {
   // const [search, setSearch] = useState("");
   const [keyword, setKeyword] = useState("");
 
-  const { data, refetch } = useQuery(FETCH_BOARDS);
+  const { data, refetch } = useQuery(FetchBoardWithSearchesDocument);
 
   console.log(data);
 
-  const onClickPage = (event) => {
+  const onClickPage = (event: MouseEvent<HTMLSpanElement>) => {
     // 검색에서 refetch할 때, search 검색어가 refetch에 저장되어 있는 상태이므로, 여기서 굳이 추가 안해도 됨
     refetch({ mypage: Number(event.currentTarget.id) });
   };
@@ -34,7 +35,7 @@ export default function PaginationPage() {
     setKeyword(value);
   }, 500);
 
-  const onChangeSearch = (event) => {
+  const onChangeSearch = (event: ChangeEvent<HTMLInputElement>) => {
     getDebounce(event.target.value);
   };
 
