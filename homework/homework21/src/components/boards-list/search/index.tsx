@@ -3,13 +3,19 @@ import styles from "./styles.module.css";
 import Image from "next/image";
 import { useSearch } from "./hook";
 import { ISearchProps } from "./types";
+import { DatePicker } from "antd";
 
 export default function SearchUI(props: ISearchProps) {
-  const { onChangeSearch, onClickSearch } = useSearch(props);
+  const { onChangedate, onChangeSearch, onClickSearch } = useSearch(props);
+
+  const { RangePicker } = DatePicker;
+  const dateFormat = "YYYY/MM/DD";
 
   return (
     <div className="width__100 row__sort row__between gap__8">
       <div className="row__sort gap__16">
+        <RangePicker className={styles.search__date} format={dateFormat} onChange={onChangedate} />
+
         <div className={`${styles.search__section} row__sort gap__8 bg__F2F2F2`}>
           <Image src="/images/search.png" alt="검색" width={24} height={24} />
           <input
