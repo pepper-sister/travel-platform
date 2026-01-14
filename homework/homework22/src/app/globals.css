@@ -100,14 +100,23 @@ button {
 .gap__12 {
   gap: 12px;
 }
-.gap__24 {
-  gap: 24px;
-}
 .gap__16 {
   gap: 16px;
 }
+.gap__18 {
+  gap: 18px;
+}
+.gap__24 {
+  gap: 24px;
+}
+.gap__32 {
+  gap: 32px;
+}
 .gap__40 {
   gap: 40px;
+}
+.gap__64 {
+  gap: 64px;
 }
 
 .margin__top__40 {
@@ -117,6 +126,9 @@ button {
 /* background-color */
 .bg__F2F2F2 {
   background-color: #f2f2f2;
+}
+.bg__transparent {
+  background-color: transparent;
 }
 
 /* font */
@@ -129,8 +141,14 @@ button {
 .f__20 {
   font-size: 20px;
 }
+.f__24 {
+  font-size: 24px;
+}
 .f__28 {
   font-size: 28px;
+}
+.f__34 {
+  font-size: 34px;
 }
 .w__300 {
   font-weight: 300;
@@ -156,14 +174,23 @@ button {
 .l__36 {
   line-height: 36px;
 }
+.l__130 {
+  line-height: 130%;
+}
 .c__000000 {
   color: #000000;
 }
 .c__1C1C1C {
   color: #1c1c1c;
 }
+.c__2974E5 {
+  color: #2974e5;
+}
 .c__333333 {
   color: #333333;
+}
+.c__525252 {
+  color: #525252;
 }
 .c__5F5F5F {
   color: #5f5f5f;
@@ -191,6 +218,10 @@ button {
   border-bottom: 1px solid #e4e4e4;
 }
 
+.black__btn {
+  border-radius: 8px;
+  background-color: #000000;
+}
 .white__btn {
   border-radius: 8px;
   border: 1px solid #000000;
