@@ -33,7 +33,7 @@ export default function SearchUI(props: ISearchProps) {
 
       <Link href="/boards/new" className={`${styles.blue__btn} row__sort gap__8`}>
         <Image className={styles.write__icon} src="/images/write.png" alt="작성" width={24} height={24} />
-        트립토크 등록
+        {props.isBoard ? "트립토크 등록" : "숙박권 판매하기"}
       </Link>
     </div>
   );

@@ -23,7 +23,7 @@ export default function BoardsList() {
     <div className="body__sort">
       <div className="body column__sort gap__24">
         <div className="f__28 w__700 l__36">트립토크 게시판</div>
-        <SearchUI refetch={refetch} setKeyword={setKeyword} />
+        <SearchUI refetch={refetch} setKeyword={setKeyword} isBoard={true} />
         <div className="column__sort gap__8 list__section">
           <BoardsListUI data={data} keyword={keyword} />
           <PaginationUI onRefetch={onRefetch} />

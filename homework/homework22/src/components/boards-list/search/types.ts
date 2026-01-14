@@ -1,6 +1,7 @@
 import { Dispatch, SetStateAction } from "react";
 
 export interface ISearchProps {
-  refetch: ({}) => void;
-  setKeyword: Dispatch<SetStateAction<string>>;
+  refetch?: ({}) => void;
+  setKeyword?: Dispatch<SetStateAction<string>>;
+  isBoard: boolean;
 }
