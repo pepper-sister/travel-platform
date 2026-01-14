@@ -1,0 +1,3 @@
+{
+    "query": "query { fetchBoards{ writer, title, contents }}"
+}
