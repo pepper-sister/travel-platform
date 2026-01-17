@@ -28,8 +28,12 @@ export default function NavigationUI() {
             >
               숙박권 구매
             </Link>
-
-            <div className={`${styles.navigation__menu} c__333333`}>마이 페이지</div>
+            <Link
+              href="/mypage"
+              className={`${isActive("/mypage") ? styles.navigation__active : ""} ${styles.navigation__menu} c__333333`}
+            >
+              마이 페이지
+            </Link>
           </div>
         </div>
 
