@@ -23,7 +23,7 @@ export default function CommentWriteUI(props: IFetchCommentData) {
     <div className={`${!props.isCommentEdit && `${styles.comment__write}`} column__sort gap__24`}>
       {!props.isCommentEdit && (
         <div className="row__sort gap__8">
-          <Image src="/images/chat.png" alt="chat" width={24} height={24} />
+          <Image src="/images/boards-detail/chat.png" alt="chat" width={24} height={24} />
           <p className="w__600">댓글</p>
         </div>
       )}

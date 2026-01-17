@@ -47,9 +47,9 @@ export default function BoardsListUI(props: IBoardListProps) {
                 {el.createdAt.slice(0, 10)}
               </p>
               <Image
+                src="/images/boards-list/delete.png"
                 onClick={(event) => onClickDelete(event, el._id)}
                 className={`${styles.img__delete} click`}
-                src="/images/delete.png"
                 alt="삭제"
                 width={24}
                 height={24}

@@ -15,12 +15,12 @@ export default function PurchaseUI() {
           <h1 className="f__28 w__700 l__36">2026 끝여름 낭만있게 마무리 하고 싶다면?</h1>
           <div className="width__100 row__sort gap__24">
             <div className={styles.lodging__img}>
-              <Image src="/images/lodging1.jpg" alt="숙소" fill style={{ objectFit: "cover" }} />
+              <Image src="/images/purchase/lodging1.jpg" alt="숙소" fill style={{ objectFit: "cover" }} />
               <div className={styles.lodging__img__cover}></div>
               <div className={`${styles.bookmark__section} row__sort column__center`}>
                 <Image
+                  src="/images/purchase/bookmark.png"
                   className={styles.bookmark__img}
-                  src="/images/bookmark.png"
                   alt="북마크"
                   width={24}
                   height={24}
@@ -43,12 +43,12 @@ export default function PurchaseUI() {
               </div>
             </div>
             <div className={styles.lodging__img}>
-              <Image src="/images/lodging2.jpg" alt="숙소" fill style={{ objectFit: "cover" }} />
+              <Image src="/images/purchase/lodging2.jpg" alt="숙소" fill style={{ objectFit: "cover" }} />
               <div className={styles.lodging__img__cover}></div>
               <div className={`${styles.bookmark__section} row__sort column__center`}>
                 <Image
+                  src="/images/purchase/bookmark.png"
                   className={styles.bookmark__img}
-                  src="/images/bookmark.png"
                   alt="북마크"
                   width={24}
                   height={24}
@@ -71,7 +71,7 @@ export default function PurchaseUI() {
 
         <div className={`${styles.event__section} row__sort row__between`}>
           <div className={styles.event__img}>
-            <Image src="/images/event.jpg" alt="특가숙소" fill style={{ objectFit: "cover" }} />
+            <Image src="/images/purchase/event.jpg" alt="특가숙소" fill style={{ objectFit: "cover" }} />
             <div className={styles.event__cover}></div>
           </div>
 
@@ -113,39 +113,39 @@ export default function PurchaseUI() {
           <div className="column__sort gap__32">
             <div className={`${styles.reserve__icon__section} row__sort row__between`}>
               <div className={`${styles.reserve__icon} column__sort column__center gap__8 click`}>
-                <Image src="/images/single.png" alt="1인 전용" width={40} height={40} />
+                <Image src="/images/purchase/single.png" alt="1인 전용" width={40} height={40} />
                 <p className="c__333333">1인 전용</p>
               </div>
               <div className={`${styles.reserve__icon} column__sort column__center gap__8 click`}>
-                <Image src="/images/apartment.png" alt="아파트" width={40} height={40} />
+                <Image src="/images/purchase/apartment.png" alt="아파트" width={40} height={40} />
                 <p className="c__333333">아파트</p>
               </div>
               <div className={`${styles.reserve__icon} column__sort column__center gap__8 click`}>
-                <Image src="/images/hotel.png" alt="호텔" width={40} height={40} />
+                <Image src="/images/purchase/hotel.png" alt="호텔" width={40} height={40} />
                 <p className="c__333333">호텔</p>
               </div>
               <div className={`${styles.reserve__icon} column__sort column__center gap__8 click`}>
-                <Image src="/images/camp.png" alt="캠핑" width={40} height={40} />
+                <Image src="/images/purchase/camp.png" alt="캠핑" width={40} height={40} />
                 <p className="c__333333">캠핑</p>
               </div>
               <div className={`${styles.reserve__icon} column__sort column__center gap__8 click`}>
-                <Image src="/images/service.png" alt="룸 서비스 가능" width={40} height={40} />
+                <Image src="/images/purchase/service.png" alt="룸 서비스 가능" width={40} height={40} />
                 <p className="c__333333">룸 서비스 가능</p>
               </div>
               <div className={`${styles.reserve__icon} column__sort column__center gap__8 click`}>
-                <Image src="/images/fire.png" alt="불멍" width={40} height={40} />
+                <Image src="/images/purchase/fire.png" alt="불멍" width={40} height={40} />
                 <p className="c__333333">불멍</p>
               </div>
               <div className={`${styles.reserve__icon} column__sort column__center gap__8 click`}>
-                <Image src="/images/spa.png" alt="반신욕&스파" width={40} height={40} />
+                <Image src="/images/purchase/spa.png" alt="반신욕&스파" width={40} height={40} />
                 <p className="c__333333">반신욕&스파</p>
               </div>
               <div className={`${styles.reserve__icon} column__sort column__center gap__8 click`}>
-                <Image src="/images/house.png" alt="바다 위 숙소" width={40} height={40} />
+                <Image src="/images/purchase/house.png" alt="바다 위 숙소" width={40} height={40} />
                 <p className="c__333333">바다 위 숙소</p>
               </div>
               <div className={`${styles.reserve__icon} column__sort column__center gap__8 click`}>
-                <Image src="/images/planterior.png" alt="플랜테리어" width={40} height={40} />
+                <Image src="/images/purchase/planterior.png" alt="플랜테리어" width={40} height={40} />
                 <p className="c__333333">플랜테리어</p>
               </div>
             </div>
@@ -155,11 +155,11 @@ export default function PurchaseUI() {
                 return (
                   <div key={el} className="column__sort gap__12">
                     <div className={`${styles.lodging__img}`}>
-                      <Image src="/images/lodging1.jpg" alt="숙소" fill style={{ objectFit: "cover" }} />
+                      <Image src="/images/purchase/lodging1.jpg" alt="숙소" fill style={{ objectFit: "cover" }} />
                       <div className={`${styles.reserve__bookmark__section} row__sort column__center`}>
                         <Image
+                          src="/images/purchase/bookmark.png"
                           className={styles.bookmark__img}
-                          src="/images/bookmark.png"
                           alt="북마크"
                           width={24}
                           height={24}
@@ -185,9 +185,9 @@ export default function PurchaseUI() {
                         <div className="row__sort row__between column__center">
                           <div className="row__sort column__center gap__4">
                             <Image
+                              src="/images/purchase/profile.jpg"
                               className={styles.profile__img}
-                              src="/images/binyarntree.jpg"
-                              alt="빈얀트리"
+                              alt="프로필"
                               width={24}
                               height={24}
                             />

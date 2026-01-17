@@ -165,7 +165,13 @@ export default function BoardsWrite(props: IBoardWriteData) {
               <div className={styles.img__section}>
                 <div className={styles.img}></div>
                 <div className={`${styles.img__upload} column__sort column__center gap__8`}>
-                  <Image className={styles.img__plus} src="/images/add.png" alt="사진업로드" width={0} height={0} />
+                  <Image
+                    src="/images/boards-write/add.png"
+                    className={styles.img__plus}
+                    alt="사진업로드"
+                    width={0}
+                    height={0}
+                  />
                   <p className="w__400 c__777777">클릭해서 사진 업로드</p>
                 </div>
               </div>
@@ -176,15 +182,15 @@ export default function BoardsWrite(props: IBoardWriteData) {
                   {imageUrl ? (
                     <>
                       <Image
-                        className={styles.img}
                         src={`https://storage.googleapis.com/${imageUrl}`}
+                        className={styles.img}
                         alt="사진업로드"
                         width={160}
                         height={160}
                       />
                       <div className={styles.img__delete__section} onClick={onClickDelete}>
                         <Image
-                          src="/images/close.png"
+                          src="/images/boards-write/close.png"
                           className={styles.img__delete}
                           alt="close"
                           width={20}
@@ -194,7 +200,13 @@ export default function BoardsWrite(props: IBoardWriteData) {
                     </>
                   ) : (
                     <>
-                      <Image className={styles.img__plus} src="/images/add.png" alt="사진업로드" width={0} height={0} />
+                      <Image
+                        src="/images/boards-write/add.png"
+                        className={styles.img__plus}
+                        alt="사진업로드"
+                        width={0}
+                        height={0}
+                      />
                       <p className="w__400 c__777777">클릭해서 사진 업로드</p>
                     </>
                   )}
@@ -211,7 +223,13 @@ export default function BoardsWrite(props: IBoardWriteData) {
               <div className={styles.img__section}>
                 <div className={styles.img}></div>
                 <div className={`${styles.img__upload} column__sort column__center gap__8`}>
-                  <Image className={styles.img__plus} src="/images/add.png" alt="사진업로드" width={0} height={0} />
+                  <Image
+                    src="/images/boards-write/add.png"
+                    className={styles.img__plus}
+                    alt="사진업로드"
+                    width={0}
+                    height={0}
+                  />
                   <p className="w__400 c__777777">클릭해서 사진 업로드</p>
                 </div>
               </div>

@@ -13,8 +13,8 @@ export default function Banner() {
     <Swiper className={styles.banner__pagination} pagination={{ clickable: true }} modules={[Pagination]}>
       <SwiperSlide className={styles.banner__style}>
         <Image
+          src="/images/banner/banner1.png"
           className={styles.banner__image}
-          src="/images/banner1.png"
           alt="배너이미지"
           width={0}
           height={0}
@@ -23,8 +23,8 @@ export default function Banner() {
       </SwiperSlide>
       <SwiperSlide className={styles.banner__style}>
         <Image
+          src="/images/banner/banner2.png"
           className={styles.banner__image}
-          src="/images/banner2.png"
           alt="배너이미지"
           width={0}
           height={0}
@@ -33,8 +33,8 @@ export default function Banner() {
       </SwiperSlide>
       <SwiperSlide className={styles.banner__style}>
         <Image
+          src="/images/banner/banner3.png"
           className={styles.banner__image}
-          src="/images/banner3.png"
           alt="배너이미지"
           width={0}
           height={0}

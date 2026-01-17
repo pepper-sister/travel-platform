@@ -17,14 +17,20 @@ export default function BoardsDetailUI(props: IBoardDetailData) {
         <div className="column__sort gap__16">
           <div className="row__sort row__between column__center">
             <div className="row__sort gap__4 column__center">
-              <Image className="person__img" src="/images/person.png" alt="person" width={24} height={24} />
+              <Image
+                src="/images/boards-detail/profile.png"
+                className={styles.profile__img}
+                alt="person"
+                width={24}
+                height={24}
+              />
               <p className="f__14 w__300 l__20 c__5F5F5F">{props.data?.fetchBoard.writer}</p>
             </div>
             <p className="f__14 w__300 l__20 c__818181">2024.11.11</p>
           </div>
           <div className="div"></div>
           <div className="row__sort row__end gap__8">
-            <Image src="/images/link.png" alt="link" width={24} height={24} />
+            <Image src="/images/boards-detail/link.png" alt="link" width={24} height={24} />
             <Tooltip
               title={props.data?.fetchBoard.boardAddress?.address}
               slotProps={{
@@ -44,7 +50,7 @@ export default function BoardsDetailUI(props: IBoardDetailData) {
                 },
               }}
             >
-              <Image src="/images/location.png" alt="location" width={24} height={24} />
+              <Image src="/images/boards-detail/location.png" alt="location" width={24} height={24} />
             </Tooltip>
           </div>
         </div>
@@ -77,14 +83,14 @@ export default function BoardsDetailUI(props: IBoardDetailData) {
 
       <footer className="row__sort row__center gap__24">
         <Link href={`/boards`} className={`${styles.white__btn} white__btn row__sort column__center gap__8`}>
-          <Image src="/images/menu.png" alt="menu" width={24} height={24} />
+          <Image src="/images/boards-detail/menu.png" alt="menu" width={24} height={24} />
           <p className="f__14 w__600 l__20 c__000000">목록으로</p>
         </Link>
         <Link
           href={`/boards/${props.params.boardId}/edit`}
           className={`${styles.white__btn} white__btn row__sort column__center gap__8`}
         >
-          <Image src="/images/edit.png" alt="edit" width={24} height={24} />
+          <Image src="/images/boards-detail/edit.png" alt="edit" width={24} height={24} />
           <p className="f__14 w__600 l__20 c__000000">수정하기</p>
         </Link>
       </footer>

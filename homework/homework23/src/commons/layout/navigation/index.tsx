@@ -12,7 +12,7 @@ export default function NavigationUI() {
     <div className="navi__sort">
       <div className="navi row__sort row__between column__center">
         <div className="row__sort gap__24 column__center">
-          <Image src="/images/logo.png" alt="logo" width={52} height={32} />
+          <Image src="/images/navigation/logo.png" alt="logo" width={52} height={32} />
           <div className="row__sort gap__16">
             <Link
               href="/boards"
@@ -38,8 +38,14 @@ export default function NavigationUI() {
         </div>
 
         <div className="row__sort gap__4 column__center">
-          <Image className="person__img" src="/images/person.png" alt="person" width={40} height={40} />
-          <Image src="/images/down_arrow.png" alt="down" width={24} height={24} />
+          <Image
+            src="/images/navigation/profile.png"
+            className={styles.profile__img}
+            alt="person"
+            width={40}
+            height={40}
+          />
+          <Image src="/images/navigation/down_arrow.png" alt="down" width={24} height={24} />
         </div>
       </div>
     </div>

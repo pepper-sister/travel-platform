@@ -16,7 +16,13 @@ export default function CommentListItemUI({ el, index, params }: IFetchCommentIt
           <div className="row__sort row__between column__center">
             <div className="row__sort gap__8">
               <div className="row__sort gap__4">
-                <Image src="/images/person.png" className="person__img" alt="person" width={24} height={24} />
+                <Image
+                  src="/images/boards-detail/profile.png"
+                  className={styles.profile__img}
+                  alt="프로필"
+                  width={24}
+                  height={24}
+                />
                 <p className="f__14 w__300 c__5F5F5F">{el.writer}</p>
               </div>
 
@@ -26,13 +32,19 @@ export default function CommentListItemUI({ el, index, params }: IFetchCommentIt
             <div className="row__sort gap__8">
               <Image
                 onClick={onClickEditComment}
-                src="/images/edit.png"
+                src="/images/boards-detail/edit.png"
                 className="height__20 click"
                 alt="edit"
                 width={20}
                 height={20}
               />
-              <Image src="/images/close.png" className="height__20 click" alt="close" width={20} height={20} />
+              <Image
+                src="/images/boards-detail/close.png"
+                className="height__20 click"
+                alt="close"
+                width={20}
+                height={20}
+              />
             </div>
           </div>
 

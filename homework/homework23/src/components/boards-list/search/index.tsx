@@ -15,7 +15,7 @@ export default function SearchUI(props: ISearchProps) {
     <div className="width__100 row__sort row__between gap__8">
       <div className="row__sort gap__16">
         <div className={`${styles.search__section} row__sort gap__8 bg__F2F2F2`}>
-          <Image src="/images/search.png" alt="검색" width={24} height={24} />
+          <Image src="/images/boards-list/search.png" alt="검색" width={24} height={24} />
           <input
             type="text"
             className={`${styles.search__input}`}
@@ -32,7 +32,7 @@ export default function SearchUI(props: ISearchProps) {
       </div>
 
       <Link href="/boards/new" className={`${styles.blue__btn} row__sort gap__8`}>
-        <Image className={styles.write__icon} src="/images/write.png" alt="작성" width={24} height={24} />
+        <Image src="/images/boards-list/write.png" className={styles.write__icon} alt="작성" width={24} height={24} />
         {props.isBoard ? "트립토크 등록" : "숙박권 판매하기"}
       </Link>
     </div>
