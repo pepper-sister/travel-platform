@@ -6,3 +6,8 @@
   color: #000000;
   border-bottom: 2px solid #000000;
 }
+
+.profile__img {
+  background-color: #e4e4e4;
+  border-radius: 100px;
+}

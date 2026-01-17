@@ -229,11 +229,6 @@ button {
   cursor: pointer;
 }
 
-.person__img {
-  background-color: #e4e4e4;
-  border-radius: 100px;
-}
-
 .list__section {
   border-radius: 16px;
   box-shadow: 0px 0px 20px 0px #00000014;
