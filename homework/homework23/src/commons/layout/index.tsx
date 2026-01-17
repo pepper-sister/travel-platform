@@ -9,7 +9,7 @@ interface ILayout {
 }
 export default function Layout({ children }: ILayout) {
   const params = useParams();
-  const HIDDEN_BANNER = ["/boards/new", `/boards/${params.boardId}/edit`];
+  const HIDDEN_BANNER = ["/boards/new", `/boards/${params.boardId}/edit`, `/mypage`];
 
   const pathname = usePathname();
   const isHiddenBanner = HIDDEN_BANNER.includes(pathname);
