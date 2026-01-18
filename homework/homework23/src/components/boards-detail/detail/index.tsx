@@ -76,7 +76,7 @@ export default function BoardsDetailUI(props: IBoardDetailData) {
           </div>
           <div className="column__sort column__center gap__4">
             <FavoriteBorderOutlinedIcon className={styles.detail__good__icon} />
-            <p className="f__14 w__400 l__20 c__f66a6a">12</p>
+            <p className="f__14 w__400 l__20 c__F66A6A">12</p>
           </div>
         </div>
       </main>

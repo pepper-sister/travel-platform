@@ -36,7 +36,7 @@ export default function CommentWriteUI(props: IFetchCommentData) {
             <div className="width__100 column__sort gap__8">
               <div className="row__sort gap__4">
                 <p className="c__333333">작성자</p>
-                <p className="c__f66a6a">*</p>
+                <p className="c__F66A6A">*</p>
               </div>
 
               <input
@@ -52,7 +52,7 @@ export default function CommentWriteUI(props: IFetchCommentData) {
             <div className="width__100 column__sort gap__8">
               <div className="row__sort gap__4">
                 <p className="c__333333">비밀번호</p>
-                <p className="c__f66a6a">*</p>
+                <p className="c__F66A6A">*</p>
               </div>
 
               <input

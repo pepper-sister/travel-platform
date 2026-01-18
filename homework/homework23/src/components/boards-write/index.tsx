@@ -41,7 +41,7 @@ export default function BoardsWrite(props: IBoardWriteData) {
             <div className="column__sort gap__8 flex">
               <div className="row__sort gap__4">
                 <p className="c__333333">작성자</p>
-                <p className="c__f66a6a">*</p>
+                <p className="c__F66A6A">*</p>
               </div>
               <input
                 className={`${styles.input__text} ${props.isEdit ? "bg__F2F2F2" : ""}`}
@@ -52,13 +52,13 @@ export default function BoardsWrite(props: IBoardWriteData) {
                 defaultValue={props.data?.fetchBoard.writer ?? ""}
                 disabled={props.isEdit ? true : false}
               />
-              {/* <div className="c__f66a6a">{writerError}</div> */}
+              {/* <div className="c__F66A6A">{writerError}</div> */}
             </div>
             {/* 비밀번호 */}
             <div className="column__sort gap__8 flex">
               <div className="row__sort gap__4">
                 <p className="c__333333">비밀번호</p>
-                <p className="c__f66a6a">*</p>
+                <p className="c__F66A6A">*</p>
               </div>
               <input
                 className={`${styles.input__text} ${props.isEdit ? "bg__F2F2F2" : ""}`}
@@ -67,7 +67,7 @@ export default function BoardsWrite(props: IBoardWriteData) {
                 onChange={onChangePassword}
                 disabled={props.isEdit ? true : false}
               />
-              {/* <div className="c__f66a6a">{passwordError}</div> */}
+              {/* <div className="c__F66A6A">{passwordError}</div> */}
             </div>
           </div>
           <div className="div"></div>
@@ -76,7 +76,7 @@ export default function BoardsWrite(props: IBoardWriteData) {
           <div className="column__sort gap__8">
             <div className="row__sort gap__4">
               <p className="c__333333">제목</p>
-              <p className="c__f66a6a">*</p>
+              <p className="c__F66A6A">*</p>
             </div>
             <input
               className={styles.input__text}
@@ -86,7 +86,7 @@ export default function BoardsWrite(props: IBoardWriteData) {
               onChange={onChangeInputs}
               defaultValue={props.data?.fetchBoard.title}
             />
-            {/* <div className="c__f66a6a">{titleError}</div> */}
+            {/* <div className="c__F66A6A">{titleError}</div> */}
           </div>
           <div className="div"></div>
 
@@ -94,7 +94,7 @@ export default function BoardsWrite(props: IBoardWriteData) {
           <div className="column__sort gap__8">
             <div className="row__sort gap__4">
               <p className="c__333333">내용</p>
-              <p className="c__f66a6a">*</p>
+              <p className="c__F66A6A">*</p>
             </div>
             <textarea
               className={styles.textarea__text}
@@ -103,7 +103,7 @@ export default function BoardsWrite(props: IBoardWriteData) {
               onChange={onChangeInputs}
               defaultValue={props.data?.fetchBoard.contents}
             />
-            {/* <div className="c__f66a6a">{contentsError}</div> */}
+            {/* <div className="c__F66A6A">{contentsError}</div> */}
           </div>
 
           {/* 주소 */}

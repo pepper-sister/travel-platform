@@ -35,24 +35,24 @@ export default function BookMarkUI() {
         <button className={`${styles.search__btn} click`}>검색</button>
       </div>
 
-      <div className={`${styles.detail__section} column__sort gap__8`}>
-        <div className={`${styles.detail__title__section} row__sort row__between`}>
+      <div className="column__sort gap__8 list__section detail__section">
+        <div className="row__sort row__between detail__title__section">
           <div className="row__sort gap__8">
             <p className={styles.detail__num}>번호</p>
             <p className="l__20 c__1C1C1C">상품 명</p>
           </div>
 
           <div className="row__sort gap__8">
-            <p className={styles.detail__title}>판매가격</p>
-            {bookmark ? <p className={styles.detail__title}>판매자</p> : ""}
-            <p className={styles.detail__title}>날짜</p>
+            <p className="detail__title">판매가격</p>
+            {bookmark ? <p className="detail__title">판매자</p> : ""}
+            <p className="detail__title">날짜</p>
           </div>
         </div>
 
         <div className="column__sort gap__12">
           {arr.map((el, index) => {
             return (
-              <div key={el} className={`${styles.item__section} row__sort row__between column__center`}>
+              <div key={el} className="row__sort row__between column__center item__section">
                 <div className="row__sort gap__8">
                   <p className={`${styles.item__num} f__14 w__300 l__20 c__919191`}>243</p>
                   <p
@@ -68,9 +68,9 @@ export default function BookMarkUI() {
                 </div>
 
                 <div className="row__sort gap__8">
-                  <p className={`${styles.item__title} f__14 w__300 l__20 c__333333`}>326,000원</p>
-                  {bookmark ? <p className={`${styles.item__title} f__14 w__300 l__20 c__333333`}>홍길동</p> : ""}
-                  <p className={`${styles.item__title} f__14 w__300 l__20 c__919191`}>2024.12.16</p>
+                  <p className="f__14 w__300 l__20 c__333333 item__title">326,000원</p>
+                  {bookmark ? <p className="f__14 w__300 l__20 c__333333 item__title">홍길동</p> : ""}
+                  <p className="f__14 w__300 l__20 c__919191 item__title">2024.12.16</p>
                 </div>
                 <Image
                   className={styles.delete__icon}
