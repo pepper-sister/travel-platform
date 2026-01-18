@@ -1,6 +1,9 @@
 import Image from "next/image";
 import styles from "./styles.module.css";
 import { useState } from "react";
+import BookMarkUI from "./bookmark";
+import PointUI from "./point";
+import PasswordUI from "./password";
 
 export default function MyPageUI() {
   const [active, setActive] = useState("bookmark");
@@ -72,6 +75,8 @@ export default function MyPageUI() {
             </div>
           </div>
         </div>
+
+        {active === "bookmark" ? <BookMarkUI /> : active === "point" ? <PointUI /> : <PasswordUI />}
       </div>
     </div>
   );
