@@ -1,3 +1,3 @@
 export interface IPaginationProps {
-  onRefetch: (clickPage: number) => void;
+  onRefetch?: (clickPage: number) => void;
 }
