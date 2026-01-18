@@ -1,6 +1,7 @@
 import Image from "next/image";
 import styles from "./styles.module.css";
 import { useState } from "react";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 export default function BookMarkUI() {
   const [bookmark, setBookmark] = useState(false);
@@ -49,7 +50,13 @@ export default function BookMarkUI() {
           </div>
         </div>
 
-        <div className="column__sort gap__12">
+        <InfiniteScroll
+          className="column__sort gap__12"
+          // next={onNext}
+          // hasMore={hasMore}
+          loader={<div>로딩중입니다.</div>}
+          dataLength={arr.length ?? 0}
+        >
           {arr.map((el, index) => {
             return (
               <div key={el} className="row__sort row__between column__center item__section">
@@ -82,7 +89,7 @@ export default function BookMarkUI() {
               </div>
             );
           })}
-        </div>
+        </InfiniteScroll>
       </div>
     </div>
   );
