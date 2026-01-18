@@ -122,7 +122,11 @@ export default function BoardsWrite(props: IBoardWriteData) {
                 우편번호 검색
               </button>
               {isModalOpen && (
-                <Modal open={isModalOpen} onOk={onToggleModal} onCancel={onToggleModal}>
+                <Modal
+                  open={isModalOpen}
+                  okButtonProps={{ style: { display: "none" } }}
+                  cancelButtonProps={{ style: { display: "none" } }}
+                >
                   <DaumPostcodeEmbed onComplete={handleComplete} />
                 </Modal>
               )}
