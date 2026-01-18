@@ -13,7 +13,7 @@ export default function BookMarkUI() {
           onClick={() => {
             setBookmark(false);
           }}
-          className={`${styles.bookmark__btn} ${bookmark === false ? styles.bookmark__btn__active : ""} click`}
+          className={`${bookmark === false ? "mypage__btn__active" : ""} mypage__btn click`}
         >
           나의 상품
         </button>
@@ -21,7 +21,7 @@ export default function BookMarkUI() {
           onClick={() => {
             setBookmark(true);
           }}
-          className={`${styles.bookmark__btn} ${bookmark === true ? styles.bookmark__btn__active : ""} click`}
+          className={`${bookmark === true ? "mypage__btn__active" : ""} mypage__btn click`}
         >
           북마크
         </button>

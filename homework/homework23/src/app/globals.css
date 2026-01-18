@@ -237,3 +237,17 @@ button {
   box-shadow: 0px 0px 20px 0px #00000014;
   padding: 24px 48px;
 }
+
+.mypage__btn {
+  border-radius: 8px;
+  padding: 8px 16px;
+  background-color: #ffffff;
+
+  color: #525252;
+}
+.mypage__btn__active {
+  background-color: #000000;
+
+  font-weight: 600;
+  color: #ffffff;
+}

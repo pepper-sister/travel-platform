@@ -1,17 +1,3 @@
-.bookmark__btn {
-  border-radius: 8px;
-  padding: 8px 16px;
-  background-color: #ffffff;
-
-  color: #525252;
-}
-.bookmark__btn__active {
-  background-color: #000000;
-
-  font-weight: 600;
-  color: #ffffff;
-}
-
 .search__section {
   width: 640px;
   border-radius: 8px;
