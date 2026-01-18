@@ -1,0 +1,82 @@
+.bookmark__btn {
+  border-radius: 8px;
+  padding: 8px 16px;
+  background-color: #ffffff;
+
+  color: #525252;
+}
+.bookmark__btn__active {
+  background-color: #000000;
+
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.search__section {
+  width: 640px;
+  border-radius: 8px;
+  padding: 12px;
+  background-color: #f2f2f2;
+}
+.search__bar {
+  width: 100%;
+  border: none;
+  background-color: transparent;
+}
+.search__btn {
+  border-radius: 8px;
+  padding: 12px 16px;
+  background-color: #000000;
+
+  font-size: 18px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.detail__section {
+  max-height: 656px;
+  box-shadow: 0px 0px 20px 0px #00000014;
+  border-radius: 16px;
+  padding: 24px 48px;
+  overflow: scroll;
+}
+.detail__title__section {
+  padding: 16px 24px;
+}
+.detail__num {
+  width: 64px;
+  color: #1c1c1c;
+  line-height: 20px;
+  text-align: center;
+}
+.detail__title {
+  width: 100px;
+  color: #1c1c1c;
+  line-height: 20px;
+  text-align: center;
+}
+
+.item__section {
+  position: relative;
+  border: 1px solid #f2f2f2;
+  border-radius: 8px;
+  padding: 11px 24px;
+}
+.delete__icon {
+  display: none;
+  position: absolute;
+  top: 10px;
+  right: 8px;
+  cursor: pointer;
+}
+.item__section:hover .delete__icon {
+  display: block;
+}
+.item__num {
+  width: 64px;
+  text-align: center;
+}
+.item__title {
+  width: 100px;
+  text-align: center;
+}
