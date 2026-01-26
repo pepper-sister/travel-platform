@@ -1,5 +1,3 @@
-import { FetchBoardQuery } from "@/commons/graphql/graphql";
-
 export interface BoardAddressInput {
   zipcode?: string;
   address?: string;
@@ -16,5 +14,4 @@ export interface IBoardWriteInputChange {
 
 export interface IBoardWriteData {
   isEdit: boolean;
-  data?: FetchBoardQuery;
 }

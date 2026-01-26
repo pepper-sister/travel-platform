@@ -1,21 +1,27 @@
 "use client";
 
 import { useMutation, useQuery } from "@apollo/client/react";
-import { useRouter } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { ChangeEvent, useRef, useState } from "react";
 import { IBoardWriteInputChange } from "./types";
 import {
   CreateBoardDocument,
   FetchBoardDocument,
-  FetchBoardQuery,
   UpdateBoardDocument,
   UplaodFileDocument,
 } from "@/commons/graphql/graphql";
 import { Modal } from "antd";
 import { Address } from "react-daum-postcode";
 
-export const useBoardsWrite = (data?: FetchBoardQuery) => {
+export const useBoardsWrite = () => {
   const router = useRouter();
+  const params = useParams();
+
+  const { data } = useQuery(FetchBoardDocument, {
+    variables: {
+      boardId: String(params.boardId),
+    },
+  });
 
   const [inputs, setInputs] = useState({
     writer: "",
@@ -184,6 +190,7 @@ export const useBoardsWrite = (data?: FetchBoardQuery) => {
   };
 
   return {
+    data,
     zonecode,
     address,
     detailAddress,

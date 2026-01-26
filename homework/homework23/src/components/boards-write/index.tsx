@@ -9,6 +9,7 @@ import { Modal } from "antd";
 
 export default function BoardsWriteUI(props: IBoardWriteData) {
   const {
+    data,
     zonecode,
     address,
     detailAddress,
@@ -28,7 +29,7 @@ export default function BoardsWriteUI(props: IBoardWriteData) {
     onClickSubmit,
     onClickUpdate,
     fileRef,
-  } = useBoardsWrite(props.data);
+  } = useBoardsWrite();
 
   return (
     <div className="body__sort">
@@ -48,7 +49,7 @@ export default function BoardsWriteUI(props: IBoardWriteData) {
                 type="text"
                 placeholder="작성자 명을 입력해 주세요."
                 onChange={onChangeInputs}
-                defaultValue={props.data?.fetchBoard.writer ?? ""}
+                defaultValue={data?.fetchBoard.writer ?? ""}
                 disabled={props.isEdit ? true : false}
               />
             </div>
@@ -80,7 +81,7 @@ export default function BoardsWriteUI(props: IBoardWriteData) {
               type="text"
               placeholder="제목을 입력해 주세요."
               onChange={onChangeInputs}
-              defaultValue={props.data?.fetchBoard.title}
+              defaultValue={data?.fetchBoard.title}
             />
           </div>
           <div className="div"></div>
@@ -95,7 +96,7 @@ export default function BoardsWriteUI(props: IBoardWriteData) {
               id="contents"
               placeholder="내용을 입력해 주세요."
               onChange={onChangeInputs}
-              defaultValue={props.data?.fetchBoard.contents}
+              defaultValue={data?.fetchBoard.contents}
             />
           </div>
 
@@ -237,7 +238,7 @@ export default function BoardsWriteUI(props: IBoardWriteData) {
             <button
               className={`${styles.blue__btn} click f__18 w__600 c__ffffff`}
               disabled={props.isEdit ? false : isActive}
-              onClick={props.isEdit ? () => onClickUpdate(props.data?.fetchBoard._id ?? "") : onClickSubmit}
+              onClick={props.isEdit ? () => onClickUpdate(data?.fetchBoard._id ?? "") : onClickSubmit}
             >
               {props.isEdit ? "수정" : "등록"}하기
             </button>
