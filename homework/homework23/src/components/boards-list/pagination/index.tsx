@@ -1,9 +1,8 @@
 import styles from "./styles.module.css";
 import { usePagination } from "./hook";
-import { IPaginationProps } from "./types";
 
-export default function PaginationUI(props: IPaginationProps) {
-  const { startPage, activePage, lastPage, onClickPage, onClickPrevPage, onClickNextPage } = usePagination(props);
+export default function PaginationUI() {
+  const { startPage, activePage, lastPage, onClickPage, onClickPrevPage, onClickNextPage } = usePagination();
 
   return (
     <div className="row__sort row__center column__center gap__8">
@@ -22,7 +21,7 @@ export default function PaginationUI(props: IPaginationProps) {
               >
                 {index + startPage}
               </span>
-            )
+            ),
         )}
       </div>
       <span
