@@ -52,7 +52,6 @@ export default function BoardsWriteUI(props: IBoardWriteData) {
                 defaultValue={props.data?.fetchBoard.writer ?? ""}
                 disabled={props.isEdit ? true : false}
               />
-              {/* <div className="c__F66A6A">{writerError}</div> */}
             </div>
             {/* 비밀번호 */}
             <div className="column__sort gap__8 flex">
@@ -67,7 +66,6 @@ export default function BoardsWriteUI(props: IBoardWriteData) {
                 onChange={onChangePassword}
                 disabled={props.isEdit ? true : false}
               />
-              {/* <div className="c__F66A6A">{passwordError}</div> */}
             </div>
           </div>
           <div className="div"></div>
@@ -86,7 +84,6 @@ export default function BoardsWriteUI(props: IBoardWriteData) {
               onChange={onChangeInputs}
               defaultValue={props.data?.fetchBoard.title}
             />
-            {/* <div className="c__F66A6A">{titleError}</div> */}
           </div>
           <div className="div"></div>
 
@@ -103,7 +100,6 @@ export default function BoardsWriteUI(props: IBoardWriteData) {
               onChange={onChangeInputs}
               defaultValue={props.data?.fetchBoard.contents}
             />
-            {/* <div className="c__F66A6A">{contentsError}</div> */}
           </div>
 
           {/* 주소 */}

@@ -31,11 +31,6 @@ export const useBoardsWrite = (data?: FetchBoardQuery) => {
   const [uploadFile] = useMutation(UplaodFileDocument);
   const [youtubeUrl, setYoutubeUrl] = useState(data?.fetchBoard.youtubeUrl ?? "");
 
-  // const [writerError, setWriterError] = useState("");
-  // const [passwordError, setPasswordError] = useState("");
-  // const [titleError, setTitleError] = useState("");
-  // const [contentsError, setContentsError] = useState("");
-
   const [isActive, setIsActive] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
