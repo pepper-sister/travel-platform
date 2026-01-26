@@ -9,27 +9,21 @@ import { Modal } from "antd";
 
 export default function BoardsWriteUI(props: IBoardWriteData) {
   const {
-    data,
-    zonecode,
-    address,
-    detailAddress,
-    youtubeUrl,
-    imageUrl,
-    onChangeInputs,
-    onChangePassword,
+    form,
+    isModalOpen,
     isActive,
+    fileRef,
+    data,
     onToggleModal,
     handleComplete,
-    isModalOpen,
-    onChangeDetailAddress,
-    onChangeYoutubeUrl,
+    onChangeForm,
+    onChangeAddress,
     onClickUpload,
     onChangeFile,
     onClickDelete,
     onClickSubmit,
     onClickUpdate,
-    fileRef,
-  } = useBoardsWrite();
+  } = useBoardsWrite(props);
 
   return (
     <div className="body__sort">
@@ -48,9 +42,9 @@ export default function BoardsWriteUI(props: IBoardWriteData) {
                 id="writer"
                 type="text"
                 placeholder="작성자 명을 입력해 주세요."
-                onChange={onChangeInputs}
-                defaultValue={data?.fetchBoard.writer ?? ""}
-                disabled={props.isEdit ? true : false}
+                onChange={onChangeForm}
+                defaultValue={form.writer ?? ""}
+                disabled={props.isEdit}
               />
             </div>
 
@@ -61,10 +55,11 @@ export default function BoardsWriteUI(props: IBoardWriteData) {
               </div>
               <input
                 className={`${styles.input__text} ${props.isEdit ? "bg__F2F2F2" : ""}`}
+                id="password"
                 type="password"
                 placeholder="비밀번호를 입력해 주세요."
-                onChange={onChangePassword}
-                disabled={props.isEdit ? true : false}
+                onChange={onChangeForm}
+                disabled={props.isEdit}
               />
             </div>
           </div>
@@ -80,8 +75,8 @@ export default function BoardsWriteUI(props: IBoardWriteData) {
               id="title"
               type="text"
               placeholder="제목을 입력해 주세요."
-              onChange={onChangeInputs}
-              defaultValue={data?.fetchBoard.title}
+              onChange={onChangeForm}
+              defaultValue={form.title}
             />
           </div>
           <div className="div"></div>
@@ -95,8 +90,8 @@ export default function BoardsWriteUI(props: IBoardWriteData) {
               className={styles.textarea__text}
               id="contents"
               placeholder="내용을 입력해 주세요."
-              onChange={onChangeInputs}
-              defaultValue={data?.fetchBoard.contents}
+              onChange={onChangeForm}
+              defaultValue={form.contents}
             />
           </div>
 
@@ -109,7 +104,7 @@ export default function BoardsWriteUI(props: IBoardWriteData) {
                 placeholder="01234"
                 maxLength={5}
                 disabled={true}
-                value={zonecode}
+                value={form.address.zipcode}
               />
               <button className={`${styles.white__btn} white__btn`} onClick={onToggleModal}>
                 우편번호 검색
@@ -130,14 +125,14 @@ export default function BoardsWriteUI(props: IBoardWriteData) {
               type="text"
               placeholder="주소를 입력해 주세요."
               disabled={true}
-              value={address}
+              value={form.address.address}
             />
             <input
               className={styles.input__text}
               type="text"
               placeholder="상세주소"
-              onChange={onChangeDetailAddress}
-              value={detailAddress}
+              onChange={onChangeAddress}
+              value={form.address.addressDetail}
             />
           </div>
           <div className="div"></div>
@@ -146,10 +141,11 @@ export default function BoardsWriteUI(props: IBoardWriteData) {
             <p className="c__333333">유튜브 링크</p>
             <input
               className={styles.input__text}
+              id="youtubeUrl"
               type="text"
               placeholder="링크를 입력해 주세요."
-              onChange={onChangeYoutubeUrl}
-              value={youtubeUrl}
+              onChange={onChangeForm}
+              value={form.youtubeUrl}
             />
           </div>
           <div className="div"></div>
@@ -174,10 +170,10 @@ export default function BoardsWriteUI(props: IBoardWriteData) {
               <div className={`${styles.img__section} click`} onClick={onClickUpload}>
                 <div className={styles.img}></div>
                 <div className={`${styles.img__upload} column__sort column__center gap__8`}>
-                  {imageUrl ? (
+                  {form.images ? (
                     <>
                       <Image
-                        src={`https://storage.googleapis.com/${imageUrl}`}
+                        src={`https://storage.googleapis.com/${form.images}`}
                         className={styles.img}
                         alt="사진업로드"
                         width={160}
@@ -237,7 +233,7 @@ export default function BoardsWriteUI(props: IBoardWriteData) {
             <button className={`${styles.white__btn} white__btn f__18 w__600`}>취소</button>
             <button
               className={`${styles.blue__btn} click f__18 w__600 c__ffffff`}
-              disabled={props.isEdit ? false : isActive}
+              disabled={isActive}
               onClick={props.isEdit ? () => onClickUpdate(data?.fetchBoard._id ?? "") : onClickSubmit}
             >
               {props.isEdit ? "수정" : "등록"}하기

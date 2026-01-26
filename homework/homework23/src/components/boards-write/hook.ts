@@ -2,8 +2,7 @@
 
 import { useMutation, useQuery } from "@apollo/client/react";
 import { useParams, useRouter } from "next/navigation";
-import { ChangeEvent, useRef, useState } from "react";
-import { IBoardWriteInputChange } from "./types";
+import { ChangeEvent, useEffect, useRef, useState } from "react";
 import {
   CreateBoardDocument,
   FetchBoardDocument,
@@ -12,10 +11,33 @@ import {
 } from "@/commons/graphql/graphql";
 import { Modal } from "antd";
 import { Address } from "react-daum-postcode";
+import { IBoardWriteData } from "./types";
 
-export const useBoardsWrite = () => {
+export const useBoardsWrite = (props: IBoardWriteData) => {
+  const [form, setForm] = useState({
+    writer: "",
+    password: "",
+    title: "",
+    contents: "",
+    address: {
+      zipcode: "",
+      address: "",
+      addressDetail: "",
+    },
+    youtubeUrl: "",
+    images: "",
+  });
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const isActive = props.isEdit
+    ? !form.title || !form.contents
+    : !form.writer || !form.password || !form.title || !form.contents;
+
   const router = useRouter();
   const params = useParams();
+  const fileRef = useRef<HTMLInputElement>(null);
+  const [uploadFile] = useMutation(UplaodFileDocument);
+  const [createBoard] = useMutation(CreateBoardDocument);
+  const [updateBoard] = useMutation(UpdateBoardDocument);
 
   const { data } = useQuery(FetchBoardDocument, {
     variables: {
@@ -23,29 +45,28 @@ export const useBoardsWrite = () => {
     },
   });
 
-  const [inputs, setInputs] = useState({
-    writer: "",
-    title: "",
-    contents: "",
-  });
-  const [password, setPassword] = useState("");
-  const [zonecode, setZonecode] = useState(data?.fetchBoard.boardAddress?.zipcode ?? "");
-  const [address, setAddress] = useState(data?.fetchBoard.boardAddress?.address ?? "");
-  const [detailAddress, setDetailAddress] = useState(data?.fetchBoard.boardAddress?.addressDetail ?? "");
-  const [imageUrl, setImageUrl] = useState(data?.fetchBoard.images?.[0] ?? "");
-  const fileRef = useRef<HTMLInputElement>(null);
-  const [uploadFile] = useMutation(UplaodFileDocument);
-  const [youtubeUrl, setYoutubeUrl] = useState(data?.fetchBoard.youtubeUrl ?? "");
+  useEffect(() => {
+    if (!data?.fetchBoard) return;
 
-  const [isActive, setIsActive] = useState(true);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+    const board = data.fetchBoard;
+    setForm({
+      writer: board.writer ?? "",
+      password: "",
+      title: board.title ?? "",
+      contents: board.contents ?? "",
+      address: {
+        zipcode: board.boardAddress?.zipcode ?? "",
+        address: board.boardAddress?.address ?? "",
+        addressDetail: board.boardAddress?.addressDetail ?? "",
+      },
+      youtubeUrl: board.youtubeUrl ?? "",
+      images: board.images?.[0] ?? "",
+    });
+  }, [data]);
 
-  const [createBoard] = useMutation(CreateBoardDocument);
-  const [updateBoard] = useMutation(UpdateBoardDocument);
-
-  const { refetch } = useQuery(FetchBoardDocument, {
-    variables: { boardId: data?.fetchBoard._id ?? "" },
-  });
+  const onToggleModal = () => {
+    setIsModalOpen((prev) => !prev);
+  };
 
   const successModal = () => {
     Modal.success({
@@ -66,41 +87,17 @@ export const useBoardsWrite = () => {
     });
   };
 
-  const onChangeInputs = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const userInputs = {
-      ...inputs,
-      [event.target.id]: event.target.value,
-    };
-
-    setInputs(userInputs);
-
-    if (userInputs.writer && password && userInputs.title && userInputs.contents) return setIsActive(false);
-    setIsActive(true);
+  const onChangeForm = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setForm((prev) => ({ ...prev, [event.target.id]: event.target.value }));
   };
 
-  const onChangePassword = (event: ChangeEvent<HTMLInputElement>) => {
-    setPassword(event.target.value);
-
-    if (inputs.writer && event.target.value && inputs.title && inputs.contents) return setIsActive(false);
-    setIsActive(true);
-  };
-
-  const onToggleModal = () => {
-    setIsModalOpen((prev) => !prev);
+  const onChangeAddress = (event: ChangeEvent<HTMLInputElement>) => {
+    setForm((prev) => ({ ...prev, address: { ...prev.address, addressDetail: event.target.value } }));
   };
 
   const handleComplete = (data: Address) => {
-    setZonecode(data.zonecode);
-    setAddress(data.address);
+    setForm((prev) => ({ ...prev, address: { ...prev.address, zipcode: data.zonecode, address: data.address } }));
     onToggleModal();
-  };
-
-  const onChangeDetailAddress = (event: ChangeEvent<HTMLInputElement>) => {
-    setDetailAddress(event.target.value);
-  };
-
-  const onChangeYoutubeUrl = (event: ChangeEvent<HTMLInputElement>) => {
-    setYoutubeUrl(event.target.value);
   };
 
   const onClickUpload = () => {
@@ -110,20 +107,30 @@ export const useBoardsWrite = () => {
   const onChangeFile = async (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (!file) return;
-
     if (file.size > 5 * 1024 * 1024) {
       alert("파일 크기는 최대 5MB입니다.");
       return;
     }
 
     const result = await uploadFile({ variables: { file } });
-
-    setImageUrl(result.data?.uploadFile?.url ?? "");
+    setForm((prev) => ({ ...prev, images: result.data?.uploadFile?.url ?? "" }));
   };
 
   const onClickDelete = (event: React.MouseEvent<HTMLDivElement>) => {
     event.stopPropagation();
-    setImageUrl("");
+    setForm((prev) => ({ ...prev, images: "" }));
+  };
+
+  const inputs = {
+    title: form.title,
+    contents: form.contents,
+    youtubeUrl: form.youtubeUrl,
+    images: [form.images],
+    boardAddress: {
+      zipcode: form.address.zipcode,
+      address: form.address.address,
+      addressDetail: form.address.addressDetail,
+    },
   };
 
   const onClickSubmit = async () => {
@@ -131,17 +138,9 @@ export const useBoardsWrite = () => {
       const result = await createBoard({
         variables: {
           createBoardInput: {
-            writer: inputs.writer,
-            password: password,
-            title: inputs.title,
-            contents: inputs.contents,
-            youtubeUrl: youtubeUrl,
-            boardAddress: {
-              zipcode: zonecode,
-              address: address,
-              addressDetail: detailAddress,
-            },
-            images: [imageUrl],
+            ...inputs,
+            writer: form.writer,
+            password: form.password,
           },
         },
       });
@@ -154,61 +153,37 @@ export const useBoardsWrite = () => {
 
   const onClickUpdate = async (boardId: string) => {
     try {
-      const inputPassword = prompt("글을 입력할때 입력하셨던 비밀번호를 입력해주세요");
+      const password = prompt("글을 입력할때 입력하셨던 비밀번호를 입력해주세요");
 
-      const inputChange: IBoardWriteInputChange = {};
-      if (inputs.title) inputChange.title = inputs.title;
-      if (inputs.contents) inputChange.contents = inputs.contents;
-
-      if (zonecode || address || detailAddress) {
-        inputChange.boardAddress = {};
-
-        inputChange.boardAddress.zipcode = zonecode;
-        inputChange.boardAddress.address = address;
-        inputChange.boardAddress.addressDetail = detailAddress;
-      }
-
-      if (youtubeUrl !== data?.fetchBoard.youtubeUrl) inputChange.youtubeUrl = youtubeUrl;
-
-      if (!data?.fetchBoard.images?.includes(imageUrl)) inputChange.images = [imageUrl];
-
-      const result = await updateBoard({
+      await updateBoard({
         variables: {
-          updateBoardInput: inputChange,
-          password: inputPassword,
-          boardId: boardId,
+          updateBoardInput: inputs,
+          password,
+          boardId,
         },
       });
 
-      await refetch({ boardId: result.data?.updateBoard._id });
-
       successModal();
-      router.push(`/boards/${result.data?.updateBoard._id}`);
+      router.push(`/boards/${boardId}`);
     } catch (error) {
       warningModal(error);
     }
   };
 
   return {
-    data,
-    zonecode,
-    address,
-    detailAddress,
-    youtubeUrl,
-    imageUrl,
-    onChangeInputs,
-    onChangePassword,
+    form,
+    isModalOpen,
     isActive,
+    fileRef,
+    data,
     onToggleModal,
     handleComplete,
-    isModalOpen,
-    onChangeDetailAddress,
-    onChangeYoutubeUrl,
+    onChangeForm,
+    onChangeAddress,
     onClickUpload,
     onChangeFile,
     onClickDelete,
     onClickSubmit,
     onClickUpdate,
-    fileRef,
   };
 };
