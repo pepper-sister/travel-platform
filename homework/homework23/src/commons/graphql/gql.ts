@@ -20,7 +20,7 @@ type Documents = {
     "\n  query fetchBoard($boardId: ID!) {\n    fetchBoard(boardId: $boardId) {\n      _id\n      writer\n      title\n      contents\n      youtubeUrl\n      boardAddress {\n        zipcode\n        address\n        addressDetail\n      }\n      images\n    }\n  }\n": typeof types.FetchBoardDocument,
     "\n  query fetchBoards($endDate: DateTime, $startDate: DateTime, $search: String, $page: Int!) {\n    fetchBoards(endDate: $endDate, startDate: $startDate, search: $search, page: $page) {\n      _id\n      title\n      writer\n      createdAt\n    }\n  }\n": typeof types.FetchBoardsDocument,
     "\n  mutation deleteBoard($boardId: ID!) {\n    deleteBoard(boardId: $boardId)\n  }\n": typeof types.DeleteBoardDocument,
-    "\n  query fetchBoardsCount {\n    fetchBoardsCount\n  }\n": typeof types.FetchBoardsCountDocument,
+    "\n  query fetchBoardsCount($endDate: DateTime, $startDate: DateTime, $search: String) {\n    fetchBoardsCount(endDate: $endDate, startDate: $startDate, search: $search)\n  }\n": typeof types.FetchBoardsCountDocument,
     "\n  mutation createBoard($createBoardInput: CreateBoardInput!) {\n    createBoard(createBoardInput: $createBoardInput) {\n      _id\n    }\n  }\n": typeof types.CreateBoardDocument,
     "\n  mutation updateBoard($updateBoardInput: UpdateBoardInput!, $password: String, $boardId: ID!) {\n    updateBoard(updateBoardInput: $updateBoardInput, password: $password, boardId: $boardId) {\n      _id\n    }\n  }\n": typeof types.UpdateBoardDocument,
     "\n  mutation uplaodFile($file: Upload!) {\n    uploadFile(file: $file) {\n      url\n    }\n  }\n": typeof types.UplaodFileDocument,
@@ -32,7 +32,7 @@ const documents: Documents = {
     "\n  query fetchBoard($boardId: ID!) {\n    fetchBoard(boardId: $boardId) {\n      _id\n      writer\n      title\n      contents\n      youtubeUrl\n      boardAddress {\n        zipcode\n        address\n        addressDetail\n      }\n      images\n    }\n  }\n": types.FetchBoardDocument,
     "\n  query fetchBoards($endDate: DateTime, $startDate: DateTime, $search: String, $page: Int!) {\n    fetchBoards(endDate: $endDate, startDate: $startDate, search: $search, page: $page) {\n      _id\n      title\n      writer\n      createdAt\n    }\n  }\n": types.FetchBoardsDocument,
     "\n  mutation deleteBoard($boardId: ID!) {\n    deleteBoard(boardId: $boardId)\n  }\n": types.DeleteBoardDocument,
-    "\n  query fetchBoardsCount {\n    fetchBoardsCount\n  }\n": types.FetchBoardsCountDocument,
+    "\n  query fetchBoardsCount($endDate: DateTime, $startDate: DateTime, $search: String) {\n    fetchBoardsCount(endDate: $endDate, startDate: $startDate, search: $search)\n  }\n": types.FetchBoardsCountDocument,
     "\n  mutation createBoard($createBoardInput: CreateBoardInput!) {\n    createBoard(createBoardInput: $createBoardInput) {\n      _id\n    }\n  }\n": types.CreateBoardDocument,
     "\n  mutation updateBoard($updateBoardInput: UpdateBoardInput!, $password: String, $boardId: ID!) {\n    updateBoard(updateBoardInput: $updateBoardInput, password: $password, boardId: $boardId) {\n      _id\n    }\n  }\n": types.UpdateBoardDocument,
     "\n  mutation uplaodFile($file: Upload!) {\n    uploadFile(file: $file) {\n      url\n    }\n  }\n": types.UplaodFileDocument,
@@ -79,7 +79,7 @@ export function graphql(source: "\n  mutation deleteBoard($boardId: ID!) {\n    
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\n  query fetchBoardsCount {\n    fetchBoardsCount\n  }\n"): (typeof documents)["\n  query fetchBoardsCount {\n    fetchBoardsCount\n  }\n"];
+export function graphql(source: "\n  query fetchBoardsCount($endDate: DateTime, $startDate: DateTime, $search: String) {\n    fetchBoardsCount(endDate: $endDate, startDate: $startDate, search: $search)\n  }\n"): (typeof documents)["\n  query fetchBoardsCount($endDate: DateTime, $startDate: DateTime, $search: String) {\n    fetchBoardsCount(endDate: $endDate, startDate: $startDate, search: $search)\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */

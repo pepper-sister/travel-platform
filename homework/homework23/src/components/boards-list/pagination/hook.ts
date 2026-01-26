@@ -1,17 +1,23 @@
 "use client";
 
-import { FetchBoardsCountDocument } from "@/commons/graphql/graphql";
 import { useQuery } from "@apollo/client/react";
 import { MouseEvent, useState } from "react";
 import { useBoardsListStore } from "@/commons/stores/boards-list";
+import { FetchBoardsCountDocument } from "@/commons/graphql/graphql";
 
 export const usePagination = () => {
   const [startPage, setStartPage] = useState(1);
   const [activePage, setActivePage] = useState(1);
 
-  const { setPage } = useBoardsListStore();
+  const { endDate, startDate, search, setPage } = useBoardsListStore();
 
-  const { data } = useQuery(FetchBoardsCountDocument);
+  const { data } = useQuery(FetchBoardsCountDocument, {
+    variables: {
+      endDate: endDate,
+      startDate: startDate,
+      search: search,
+    },
+  });
 
   const lastPage = Math.ceil((data?.fetchBoardsCount ?? 10) / 10);
 
