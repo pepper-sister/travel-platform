@@ -2,9 +2,12 @@ import Image from "next/image";
 import styles from "./styles.module.css";
 import { useBoardsList } from "./hook";
 import { IBoardListProps } from "./types";
+import { useBoardsListStore } from "@/commons/stores/boards-list";
 
 export default function BoardsListUI(props: IBoardListProps) {
   const { onClickDetail, onClickDelete } = useBoardsList();
+
+  const { keyword } = useBoardsListStore();
 
   return (
     <div className="column__sort gap__8">
@@ -31,10 +34,10 @@ export default function BoardsListUI(props: IBoardListProps) {
               <p className={`${styles.list__subtitle__64} f__14 w__300 l__20 c__919191`}>{index + 1}</p>
               <p className="f__14 l__20">
                 {el.title
-                  .replaceAll(props.keyword, `@#$${props.keyword}@#$`)
+                  .replaceAll(keyword, `@#$${keyword}@#$`)
                   .split("@#$")
                   .map((el, index) => (
-                    <span key={`${el}_${index}`} style={{ color: el === props.keyword ? "red" : "#1c1c1c" }}>
+                    <span key={`${el}_${index}`} style={{ color: el === keyword ? "red" : "#1c1c1c" }}>
                       {el}
                     </span>
                   ))}

@@ -2,11 +2,14 @@ import _ from "lodash";
 import { ChangeEvent, useState } from "react";
 import { ISearchProps } from "./types";
 import { Dayjs } from "dayjs";
+import { useBoardsListStore } from "@/commons/stores/boards-list";
 
 export const useSearch = (props: ISearchProps) => {
   const [search, setSearch] = useState("");
   const [startDate, setStartDate] = useState<string | undefined>();
   const [endDate, setEndDate] = useState<string | undefined>();
+
+  const { setKeyword } = useBoardsListStore();
 
   const onChangedate = (event: [Dayjs | null, Dayjs | null] | null) => {
     if (!event || !event[0] || !event[1]) {
@@ -23,7 +26,7 @@ export const useSearch = (props: ISearchProps) => {
 
   const searchDeboune = _.debounce((value) => {
     props.refetch({ endDate, startDate, search: value, page: 1 });
-    props.setKeyword(value);
+    setKeyword(value);
   }, 500);
 
   const onChangeSearch = (event: ChangeEvent<HTMLInputElement>) => {
