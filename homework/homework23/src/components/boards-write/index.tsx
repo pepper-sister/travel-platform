@@ -7,7 +7,7 @@ import { IBoardWriteData } from "./types";
 import DaumPostcodeEmbed from "react-daum-postcode";
 import { Modal } from "antd";
 
-export default function BoardsWrite(props: IBoardWriteData) {
+export default function BoardsWriteUI(props: IBoardWriteData) {
   const {
     zonecode,
     address,
