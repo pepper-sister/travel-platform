@@ -3,18 +3,20 @@
 import { FetchBoardsCountDocument } from "@/commons/graphql/graphql";
 import { useQuery } from "@apollo/client/react";
 import { MouseEvent, useState } from "react";
-import { IPaginationProps } from "./types";
+import { useBoardsListStore } from "@/commons/stores/boards-list";
 
-export const usePagination = (props: IPaginationProps) => {
+export const usePagination = () => {
   const [startPage, setStartPage] = useState(1);
   const [activePage, setActivePage] = useState(1);
+
+  const { setPage } = useBoardsListStore();
 
   const { data } = useQuery(FetchBoardsCountDocument);
 
   const lastPage = Math.ceil((data?.fetchBoardsCount ?? 10) / 10);
 
   const onClickPage = (event: MouseEvent<HTMLSpanElement>) => {
-    props.onRefetch(Number(event.currentTarget.id));
+    setPage(Number(event.currentTarget.id));
     setActivePage(Number(event.currentTarget.id));
   };
 
@@ -22,14 +24,14 @@ export const usePagination = (props: IPaginationProps) => {
     if (startPage === 1) return;
     setStartPage(startPage - 5);
     setActivePage(startPage - 5);
-    props.onRefetch(startPage - 5);
+    setPage(startPage - 5);
   };
 
   const onClickNextPage = () => {
     if (startPage + 5 <= lastPage) {
       setStartPage(startPage + 5);
       setActivePage(startPage + 5);
-      props.onRefetch(startPage + 5);
+      setPage(startPage + 5);
     }
   };
 
