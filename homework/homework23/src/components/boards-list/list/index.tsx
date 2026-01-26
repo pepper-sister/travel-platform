@@ -1,12 +1,10 @@
 import Image from "next/image";
 import styles from "./styles.module.css";
 import { useBoardsList } from "./hook";
-import { IBoardListProps } from "./types";
 import { useBoardsListStore } from "@/commons/stores/boards-list";
 
-export default function BoardsListUI(props: IBoardListProps) {
-  const { onClickDetail, onClickDelete } = useBoardsList();
-
+export default function BoardsListUI() {
+  const { data, onClickDetail, onClickDelete } = useBoardsList();
   const { keyword } = useBoardsListStore();
 
   return (
@@ -24,7 +22,7 @@ export default function BoardsListUI(props: IBoardListProps) {
       </div>
 
       <div className="column__sort gap__12">
-        {props.data?.fetchBoards.map((el, index) => (
+        {data?.fetchBoards.map((el, index) => (
           <div
             key={el._id}
             onClick={() => onClickDetail(el._id)}

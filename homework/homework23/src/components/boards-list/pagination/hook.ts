@@ -8,7 +8,6 @@ import { FetchBoardsCountDocument } from "@/commons/graphql/graphql";
 export const usePagination = () => {
   const [startPage, setStartPage] = useState(1);
   const [activePage, setActivePage] = useState(1);
-
   const { endDate, startDate, search, setPage } = useBoardsListStore();
 
   const { data } = useQuery(FetchBoardsCountDocument, {
