@@ -37,7 +37,6 @@ export default function BoardsWriteUI(props: IBoardWriteData) {
 
         <main className="column__sort gap__40">
           <div className="row__sort gap__40">
-            {/* 작성자 */}
             <div className="column__sort gap__8 flex">
               <div className="row__sort gap__4">
                 <p className="c__333333">작성자</p>
@@ -53,7 +52,7 @@ export default function BoardsWriteUI(props: IBoardWriteData) {
                 disabled={props.isEdit ? true : false}
               />
             </div>
-            {/* 비밀번호 */}
+
             <div className="column__sort gap__8 flex">
               <div className="row__sort gap__4">
                 <p className="c__333333">비밀번호</p>
@@ -70,7 +69,6 @@ export default function BoardsWriteUI(props: IBoardWriteData) {
           </div>
           <div className="div"></div>
 
-          {/* 제목 */}
           <div className="column__sort gap__8">
             <div className="row__sort gap__4">
               <p className="c__333333">제목</p>
@@ -87,7 +85,6 @@ export default function BoardsWriteUI(props: IBoardWriteData) {
           </div>
           <div className="div"></div>
 
-          {/* 내용 */}
           <div className="column__sort gap__8">
             <div className="row__sort gap__4">
               <p className="c__333333">내용</p>
@@ -102,7 +99,6 @@ export default function BoardsWriteUI(props: IBoardWriteData) {
             />
           </div>
 
-          {/* 주소 */}
           <div className="column__sort gap__8">
             <p className="c__333333">주소</p>
             <div className="row__sort gap__8">
@@ -145,7 +141,6 @@ export default function BoardsWriteUI(props: IBoardWriteData) {
           </div>
           <div className="div"></div>
 
-          {/* 유튜브 링크 */}
           <div className="column__sort gap__8">
             <p className="c__333333">유튜브 링크</p>
             <input
@@ -158,7 +153,6 @@ export default function BoardsWriteUI(props: IBoardWriteData) {
           </div>
           <div className="div"></div>
 
-          {/* 사진 첨부 */}
           <div className="column__sort gap__8">
             <p className="c__333333">사진 첨부</p>
             <div className="row__sort gap__16">
