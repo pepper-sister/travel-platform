@@ -48,7 +48,7 @@ export const useCommentWrite = (props: IFetchCommentData) => {
           rating: rate,
         },
         password: String(form.password),
-        boardCommentId: props.boardCommentId ?? "",
+        boardCommentId: props.boardCommentId,
       },
     });
 
