@@ -3,15 +3,17 @@
 import Image from "next/image";
 import styles from "./styles.module.css";
 import Link from "next/link";
-import { IBoardDetailData } from "./types";
 import HeartBrokenOutlinedIcon from "@mui/icons-material/HeartBrokenOutlined";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import { Tooltip } from "@mui/material";
+import { useBoardsDetail } from "./hook";
 
-export default function BoardsDetailUI(props: IBoardDetailData) {
+export default function BoardsDetailUI() {
+  const { params, data } = useBoardsDetail();
+
   return (
     <div className="column__sort gap__24">
-      <header className="f__28 w__700 l__36">{props.data?.fetchBoard.title}</header>
+      <header className="f__28 w__700 l__36">{data?.fetchBoard.title}</header>
 
       <main className="column__sort gap__24">
         <div className="column__sort gap__16">
@@ -24,7 +26,7 @@ export default function BoardsDetailUI(props: IBoardDetailData) {
                 width={24}
                 height={24}
               />
-              <p className="f__14 w__300 l__20 c__5F5F5F">{props.data?.fetchBoard.writer}</p>
+              <p className="f__14 w__300 l__20 c__5F5F5F">{data?.fetchBoard.writer}</p>
             </div>
             <p className="f__14 w__300 l__20 c__818181">2024.11.11</p>
           </div>
@@ -32,7 +34,7 @@ export default function BoardsDetailUI(props: IBoardDetailData) {
           <div className="row__sort row__end gap__8">
             <Image src="/images/boards-detail/link.png" alt="link" width={24} height={24} />
             <Tooltip
-              title={props.data?.fetchBoard.boardAddress?.address}
+              title={data?.fetchBoard.boardAddress?.address}
               slotProps={{
                 tooltip: {
                   sx: {
@@ -55,17 +57,17 @@ export default function BoardsDetailUI(props: IBoardDetailData) {
           </div>
         </div>
 
-        {props.data?.fetchBoard.images
+        {data?.fetchBoard.images
           ?.filter((el) => el)
           .map((el) => (
             <Image key={el} src={`https://storage.googleapis.com/${el}`} alt="image" width={160} height={160} />
           ))}
 
-        <p className="w__400">{props.data?.fetchBoard.contents}</p>
+        <p className="w__400">{data?.fetchBoard.contents}</p>
 
-        {props.data?.fetchBoard.youtubeUrl && (
+        {data?.fetchBoard.youtubeUrl && (
           <div className={`${styles.youtube} row__sort row__center`}>
-            <iframe width="822px" height="464px" src={props.data?.fetchBoard.youtubeUrl}></iframe>
+            <iframe width="822px" height="464px" src={data?.fetchBoard.youtubeUrl}></iframe>
           </div>
         )}
 
@@ -87,7 +89,7 @@ export default function BoardsDetailUI(props: IBoardDetailData) {
           <p className="f__14 w__600 l__20 c__000000">목록으로</p>
         </Link>
         <Link
-          href={`/boards/${props.params.boardId}/edit`}
+          href={`/boards/${params.boardId}/edit`}
           className={`${styles.white__btn} white__btn row__sort column__center gap__8`}
         >
           <Image src="/images/boards-detail/edit.png" alt="edit" width={24} height={24} />
