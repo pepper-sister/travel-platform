@@ -7,7 +7,18 @@ export const FETCH_COMMENT = gql`
       writer
       contents
       rating
+      user {
+        _id
+        email
+        name
+        picture
+        createdAt
+        updatedAt
+        deletedAt
+      }
       createdAt
+      updatedAt
+      deletedAt
     }
   }
 `;
