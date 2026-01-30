@@ -5,19 +5,7 @@ import { useCommentWrite } from "./hook";
 import { IFetchCommentData } from "./types";
 
 export default function CommentWriteUI(props: IFetchCommentData) {
-  const {
-    rate,
-    setRate,
-    onChangeWriter,
-    onChangePassword,
-    onChangeComment,
-    onClickSubmit,
-    onClickUpdateComment,
-    writer,
-    password,
-    comment,
-    isActive,
-  } = useCommentWrite(props);
+  const { rate, setRate, form, isActive, onChangeForm, onClickSubmit, onClickUpdateComment } = useCommentWrite(props);
 
   return (
     <div className={`${!props.isCommentEdit && `${styles.comment__write}`} column__sort gap__24`}>
@@ -28,7 +16,7 @@ export default function CommentWriteUI(props: IFetchCommentData) {
         </div>
       )}
 
-      <Rate className={styles.comment__star} value={!props.isCommentEdit ? rate : props.el.rating} onChange={setRate} />
+      <Rate className={styles.comment__star} value={rate} onChange={setRate} />
 
       <div className="column__sort column__right gap__16">
         <div className="column__sort width__100 gap__16">
@@ -40,11 +28,12 @@ export default function CommentWriteUI(props: IFetchCommentData) {
               </div>
 
               <input
+                id="writer"
                 type="text"
-                onChange={onChangeWriter}
+                onChange={onChangeForm}
                 className={`${styles.comment__input}`}
                 placeholder="작성자 명을 입력해 주세요."
-                value={writer ?? ""}
+                value={form.writer ?? ""}
                 disabled={props.isCommentEdit}
               />
             </div>
@@ -56,25 +45,27 @@ export default function CommentWriteUI(props: IFetchCommentData) {
               </div>
 
               <input
+                id="password"
                 type="password"
-                onChange={onChangePassword}
+                onChange={onChangeForm}
                 className={`${styles.comment__input}`}
                 placeholder="비밀번호를 입력해 주세요."
-                value={password}
+                value={form.password}
               />
             </div>
           </div>
 
           <div className={`${styles.comment__textarea__section}`}>
             <textarea
-              onChange={onChangeComment}
+              id="contents"
+              onChange={onChangeForm}
               className={`${styles.comment__textarea} width__100 height__100`}
               maxLength={100}
               placeholder="댓글을 입력해 주세요."
-              value={comment}
+              value={form.contents}
             />
             <p className={`${styles.comment__text__count}`}>
-              {comment.length}
+              {form.contents.length}
               /100
             </p>
           </div>
@@ -84,7 +75,7 @@ export default function CommentWriteUI(props: IFetchCommentData) {
           {props.isCommentEdit && <button className={`${styles.white__btn} white__btn f__18 w__400`}>취소</button>}
 
           <button
-            disabled={isActive}
+            disabled={!isActive}
             onClick={!props.isCommentEdit ? onClickSubmit : onClickUpdateComment}
             className={`${styles.black__btn} f__18 w__600`}
           >
