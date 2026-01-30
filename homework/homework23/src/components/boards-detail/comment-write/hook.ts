@@ -40,12 +40,17 @@ export const useCommentWrite = (props: IFetchCommentData) => {
     });
   };
 
+  const inputs = {
+    contents: form.contents,
+    rating: rate,
+  };
+
   const onClickUpdateComment = async () => {
+    console.log(form);
     await updateBoardComment({
       variables: {
         updateBoardCommentInput: {
-          ...form,
-          rating: rate,
+          ...inputs,
         },
         password: String(form.password),
         boardCommentId: props.boardCommentId,
