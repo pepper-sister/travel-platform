@@ -34,6 +34,7 @@ export default function LoginPage() {
       alert("로그인에 실패했습니다! 다시 시도해 주세요!");
     }
     setAccessToken(accessToken);
+    localStorage.setItem("accessToken", accessToken);
 
     // 3. 로그인 성공 페이지로 이동하기
     router.push("/section22/22-01-login-success");
