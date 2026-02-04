@@ -5,6 +5,7 @@ import { ApolloProvider } from "@apollo/client/react";
 import UploadHttpLink from "apollo-upload-client/UploadHttpLink.mjs";
 import { useEffect } from "react";
 import { useAccessTokenStore } from "../stores/access-token";
+import { useLoginStore } from "../stores/login";
 
 const GLOBAL_STATE = new InMemoryCache();
 
@@ -13,9 +14,12 @@ interface IApolloSetting {
 }
 export default function ApolloSetting(props: IApolloSetting) {
   const { accessToken, setAccessToken } = useAccessTokenStore();
+  const { setIsLoggedIn } = useLoginStore();
 
   useEffect(() => {
-    setAccessToken(localStorage.getItem("accessToken") ?? "");
+    const localStorageAccessToken = localStorage.getItem("accessToken") ?? "";
+    setAccessToken(localStorageAccessToken);
+    if (localStorageAccessToken) setIsLoggedIn(true);
   }, []);
 
   const uploadLink = new UploadHttpLink({
