@@ -3,6 +3,7 @@ import { useRouter } from "next/navigation";
 import { ChangeEvent, useState } from "react";
 import { useAccessTokenStore } from "@/commons/stores/access-token";
 import { CreateUserDocument, LoginUserDocument } from "@/commons/graphql/graphql";
+import { useLoginStore } from "@/commons/stores/login";
 
 export const useSign = () => {
   const [isSignUp, setIsSignUp] = useState(false);
@@ -12,6 +13,7 @@ export const useSign = () => {
 
   const router = useRouter();
   const { setAccessToken } = useAccessTokenStore();
+  const { setIsLoggedIn } = useLoginStore();
   const [loginUser] = useMutation(LoginUserDocument);
   const [createUserInput] = useMutation(CreateUserDocument);
 
@@ -49,6 +51,7 @@ export const useSign = () => {
           return;
         }
         setAccessToken(accessToken);
+        setIsLoggedIn(true);
         localStorage.setItem("accessToken", accessToken);
       } catch (error) {
         alert(error);
