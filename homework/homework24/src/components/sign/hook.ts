@@ -2,7 +2,7 @@ import { useMutation } from "@apollo/client/react";
 import { useRouter } from "next/navigation";
 import { ChangeEvent, useState } from "react";
 import { useAccessTokenStore } from "@/commons/stores/access-token";
-import { LoginUserDocument } from "@/commons/graphql/graphql";
+import { CreateUserDocument, LoginUserDocument } from "@/commons/graphql/graphql";
 
 export const useSign = () => {
   const [isSignUp, setIsSignUp] = useState(false);
@@ -13,6 +13,7 @@ export const useSign = () => {
   const router = useRouter();
   const { setAccessToken } = useAccessTokenStore();
   const [loginUser] = useMutation(LoginUserDocument);
+  const [createUserInput] = useMutation(CreateUserDocument);
 
   const onChangeInput = (event: ChangeEvent<HTMLInputElement>) => {
     setInput((prev) => ({ ...prev, [event.target.id]: event.target.value }));
@@ -53,6 +54,15 @@ export const useSign = () => {
       router.push("/boards");
       return;
     }
+    createUserInput({
+      variables: {
+        createUserInput: {
+          email: input.email,
+          password: input.password,
+          name: input.name,
+        },
+      },
+    });
     showModal();
   };
 
