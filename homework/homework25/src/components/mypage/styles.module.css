@@ -1,0 +1,14 @@
+.myinfo {
+  border: 1px solid #e4e4e4;
+  border-radius: 8px;
+  padding: 24px;
+}
+
+.profile__img {
+  border-radius: 100%;
+}
+
+.myinfo__btn {
+  border-radius: 8px;
+  padding: 8px 12px;
+}

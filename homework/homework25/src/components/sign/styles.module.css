@@ -1,0 +1,24 @@
+.sign__body {
+  width: 400px;
+  padding: 0 40px;
+}
+
+.sign__input {
+  border: 1px solid #d4d3d3;
+  border-radius: 8px;
+  padding: 8px 16px;
+}
+.sign__input::placeholder {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #ababab;
+}
+.sign__input__error {
+  border: 1px solid #f66a6a;
+}
+
+.sign__img {
+  max-height: 100vh;
+  object-fit: cover;
+}
