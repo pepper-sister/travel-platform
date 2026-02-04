@@ -1,5 +1,8 @@
+import { useMutation } from "@apollo/client/react";
 import { useRouter } from "next/navigation";
 import { ChangeEvent, useState } from "react";
+import { useAccessTokenStore } from "@/commons/stores/access-token";
+import { LoginUserDocument } from "@/commons/graphql/graphql";
 
 export const useSign = () => {
   const [isSignUp, setIsSignUp] = useState(false);
@@ -8,12 +11,14 @@ export const useSign = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const router = useRouter();
+  const { setAccessToken } = useAccessTokenStore();
+  const [loginUser] = useMutation(LoginUserDocument);
 
   const onChangeInput = (event: ChangeEvent<HTMLInputElement>) => {
     setInput((prev) => ({ ...prev, [event.target.id]: event.target.value }));
   };
 
-  const onClickSignIn = () => {
+  const onClickSignIn = async () => {
     if (!isSignUp && (!input.email || !input.password)) {
       setError(true);
       return;
@@ -26,6 +31,20 @@ export const useSign = () => {
     setError(false);
 
     if (!isSignUp) {
+      try {
+        const result = await loginUser({
+          variables: {
+            email: input.email,
+            password: input.password,
+          },
+        });
+        const accessToken = result.data?.loginUser.accessToken;
+        setAccessToken(accessToken);
+      } catch (error) {
+        alert(error);
+        return;
+      }
+
       router.push("/boards");
       return;
     }
