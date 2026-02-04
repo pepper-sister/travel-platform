@@ -1,0 +1,21 @@
+.input__password {
+  border: 1px solid #d4d3d3;
+  border-radius: 8px;
+  padding: 12px 16px;
+}
+
+.password__btn {
+  border-radius: 8px;
+  padding: 12px 16px;
+  background-color: #2974e5;
+
+  font-size: 18px;
+  font-weight: 600;
+  color: #ffffff;
+  cursor: pointer;
+}
+.password__btn:disabled {
+  background-color: #c7c7c7;
+  color: #e4e4e4;
+  cursor: auto;
+}
