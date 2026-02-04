@@ -29,6 +29,10 @@ export const useSign = () => {
       setError(true);
       return;
     }
+    if (isSignUp && input.password !== input.passwordCheck) {
+      setError(true);
+      return;
+    }
     setError(false);
 
     if (!isSignUp) {
