@@ -2,13 +2,13 @@ import Image from "next/image";
 import styles from "./styles.module.css";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useLoginStore } from "@/commons/stores/login";
+import { useAccessTokenStore } from "@/commons/stores/access-token";
 
 export default function NavigationUI() {
   const pathname = usePathname();
   const isActive = (path: string) => pathname === path;
 
-  const { accessToken } = useLoginStore();
+  const { accessToken } = useAccessTokenStore();
 
   return (
     <div className="navi__sort">
