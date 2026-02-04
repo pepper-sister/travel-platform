@@ -2,11 +2,13 @@ import Image from "next/image";
 import styles from "./styles.module.css";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useLoginStore } from "@/commons/stores/login";
 
 export default function NavigationUI() {
   const pathname = usePathname();
-
   const isActive = (path: string) => pathname === path;
+
+  const { accessToken } = useLoginStore();
 
   return (
     <div className="navi__sort">
@@ -37,16 +39,29 @@ export default function NavigationUI() {
           </div>
         </div>
 
-        <div className="row__sort gap__4 column__center">
-          <Image
-            src="/images/navigation/profile.png"
-            className={styles.profile__img}
-            alt="person"
-            width={40}
-            height={40}
-          />
-          <Image src="/images/navigation/down_arrow.png" alt="down" width={24} height={24} />
-        </div>
+        {!accessToken ? (
+          <Link href="/sign" className={`${styles.login__btn} row__sort gap__8 column__center`}>
+            <p className="f__14 w__600 l__20 c__ffffff">로그인</p>
+            <Image
+              className={styles.login__btn__img}
+              src="/images/navigation/right_arrow.png"
+              alt="right"
+              width={24}
+              height={24}
+            />
+          </Link>
+        ) : (
+          <div className="row__sort gap__4 column__center">
+            <Image
+              src="/images/navigation/profile.png"
+              className={styles.profile__img}
+              alt="person"
+              width={40}
+              height={40}
+            />
+            <Image src="/images/navigation/down_arrow.png" alt="down" width={24} height={24} />
+          </div>
+        )}
       </div>
     </div>
   );
