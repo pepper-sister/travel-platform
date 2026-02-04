@@ -7,6 +7,14 @@
   border-bottom: 2px solid #000000;
 }
 
+.login__btn {
+  padding: 8px 12px;
+  border-radius: 100px;
+  background-color: #000000;
+}
+.login__btn__img {
+  filter: invert(1);
+}
 .profile__img {
   background-color: #e4e4e4;
   border-radius: 100px;
