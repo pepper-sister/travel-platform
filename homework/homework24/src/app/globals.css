@@ -135,6 +135,9 @@ button {
 }
 
 /* font */
+.f__12 {
+  font-size: 12px;
+}
 .f__14 {
   font-size: 14px;
 }
@@ -236,6 +239,12 @@ button {
   border-radius: 8px;
   border: 1px solid #000000;
   background-color: #ffffff;
+  cursor: pointer;
+}
+.blue__btn {
+  border-radius: 8px;
+  padding: 12px 16px;
+  background-color: #2974e5;
   cursor: pointer;
 }
 
