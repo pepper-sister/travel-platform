@@ -252,13 +252,7 @@ export default function BoardsWriteUI(props: IBoardWriteData) {
                 <div className={styles.img__section}>
                   <div className={styles.img}></div>
                   <div className={`${styles.img__upload} column__sort column__center gap__8`}>
-                    <Image
-                      src="/images/boards-write/add.png"
-                      className={styles.img__plus}
-                      alt="사진업로드"
-                      width={0}
-                      height={0}
-                    />
+                    <Image src="/images/boards-write/add.png" alt="사진업로드" width={40} height={40} />
                     <p className="w__400 c__777777">클릭해서 사진 업로드</p>
                   </div>
                 </div>
@@ -288,13 +282,7 @@ export default function BoardsWriteUI(props: IBoardWriteData) {
                     </>
                   ) : (
                     <>
-                      <Image
-                        src="/images/boards-write/add.png"
-                        className={styles.img__plus}
-                        alt="사진업로드"
-                        width={0}
-                        height={0}
-                      />
+                      <Image src="/images/boards-write/add.png" alt="사진업로드" width={40} height={40} />
                       <p className="w__400 c__777777">클릭해서 사진 업로드</p>
                     </>
                   )}
@@ -314,13 +302,7 @@ export default function BoardsWriteUI(props: IBoardWriteData) {
                 <div className={styles.img__section}>
                   <div className={styles.img}></div>
                   <div className={`${styles.img__upload} column__sort column__center gap__8`}>
-                    <Image
-                      src="/images/boards-write/add.png"
-                      className={styles.img__plus}
-                      alt="사진업로드"
-                      width={0}
-                      height={0}
-                    />
+                    <Image src="/images/boards-write/add.png" alt="사진업로드" width={40} height={40} />
                     <p className="w__400 c__777777">클릭해서 사진 업로드</p>
                   </div>
                 </div>
