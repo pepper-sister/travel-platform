@@ -10,7 +10,14 @@ interface ILayout {
 export default function Layout({ children }: ILayout) {
   const params = useParams();
   const HIDDEN_NAVIGATION = ["/sign"];
-  const HIDDEN_BANNER = ["/boards/new", `/boards/${params.boardId}/edit`, "/mypage", "/sign"];
+  const HIDDEN_BANNER = [
+    "/boards/new",
+    `/boards/${params.boardId}/edit`,
+    "/mypage",
+    "/sign",
+    `/purchase/${params.productId}`,
+    `/purchase/${params.productId}/edit`,
+  ];
 
   const pathname = usePathname();
   const isHiddenNavigation = HIDDEN_NAVIGATION.includes(pathname);
