@@ -50,7 +50,8 @@ export const useBoardsWrite = (props: IBoardWriteData) => {
         !form.contents ||
         !form.price ||
         !form.travelproductAddress.zipcode ||
-        !form.travelproductAddress.addressDetail
+        !form.travelproductAddress.addressDetail ||
+        !form.images
       : !form.writer || !form.password || !form.title || !form.contents;
 
   const router = useRouter();
