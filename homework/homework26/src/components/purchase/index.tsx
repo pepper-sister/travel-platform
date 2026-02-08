@@ -108,7 +108,7 @@ export default function PurchaseUI() {
             </button>
           </div>
 
-          <SearchUI isBoard={false} />
+          <SearchUI isBoard={false} isPurchase={true} />
 
           <div className="column__sort gap__32">
             <div className={`${styles.reserve__icon__section} row__sort row__between`}>

@@ -6,7 +6,7 @@ import { ISearchProps } from "./types";
 import { DatePicker } from "antd";
 
 export default function SearchUI(props: ISearchProps) {
-  const { onChangedate, onChangeSearch, onClickSearch } = useSearch();
+  const { onChangedate, onChangeSearch, onClickSearch } = useSearch(props);
 
   const { RangePicker } = DatePicker;
   const dateFormat = "YYYY/MM/DD";
