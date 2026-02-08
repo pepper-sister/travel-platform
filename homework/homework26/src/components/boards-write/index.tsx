@@ -44,11 +44,11 @@ function BoardsWriteUI(props: IBoardWriteData) {
               </div>
               <input
                 className={`${styles.input__text} ${props.isEdit ? "bg__F2F2F2" : ""}`}
-                id="writer"
+                id={isPurchase ? "name" : "writer"}
                 type="text"
                 placeholder={isPurchase ? "상품명을 입력해 주세요." : "작성자 명을 입력해 주세요."}
                 onChange={onChangeForm}
-                defaultValue={form.writer ?? ""}
+                defaultValue={isPurchase ? form.name : form.writer}
                 disabled={props.isEdit}
               />
             </div>
@@ -80,11 +80,11 @@ function BoardsWriteUI(props: IBoardWriteData) {
             </div>
             <input
               className={styles.input__text}
-              id="title"
+              id={isPurchase ? "remarks" : "title"}
               type="text"
               placeholder={isPurchase ? "상품을 한줄로 요약해 주세요." : "제목을 입력해 주세요."}
               onChange={onChangeForm}
-              defaultValue={form.title}
+              defaultValue={isPurchase ? form.remarks : form.title}
             />
           </div>
           <div className="div"></div>
@@ -112,11 +112,11 @@ function BoardsWriteUI(props: IBoardWriteData) {
                 </div>
                 <input
                   className={styles.input__text}
-                  id="won"
+                  id="price"
                   type="number"
                   placeholder="판매 가격을 입력해 주세요.(원 단위)"
                   onChange={onChangeForm}
-                  defaultValue={form.title}
+                  defaultValue={form.price ?? form.price}
                 />
               </div>
 
@@ -125,11 +125,11 @@ function BoardsWriteUI(props: IBoardWriteData) {
                 <p className="c__333333">태그 입력</p>
                 <input
                   className={styles.input__text}
-                  id="tag"
+                  id="tags"
                   type="text"
                   placeholder="태그를 입력해 주세요."
                   onChange={onChangeForm}
-                  defaultValue={form.title}
+                  defaultValue={form.tags}
                 />
               </div>
               <div className="div"></div>
@@ -139,9 +139,12 @@ function BoardsWriteUI(props: IBoardWriteData) {
           )}
 
           <div className="row__sort gap__40">
-            <div className="column__sort gap__40">
-              <div className={`${isPurchase ? styles.purchase__address : ""} column__sort gap__8`}>
-                <p className="c__333333">주소</p>
+            <div className={`${isPurchase ? styles.purchase__address : "flex"} column__sort gap__40`}>
+              <div className="column__sort gap__8">
+                <div className="row__sort gap__4">
+                  <p className="c__333333">주소</p>
+                  {isPurchase ? <p className="c__F66A6A">*</p> : ""}
+                </div>
                 <div className="row__sort gap__8">
                   <input
                     className={styles.input__number}
@@ -149,7 +152,7 @@ function BoardsWriteUI(props: IBoardWriteData) {
                     placeholder="01234"
                     maxLength={5}
                     disabled={true}
-                    value={form.address.zipcode}
+                    value={isPurchase ? form.travelproductAddress.zipcode : form.boardAddress.zipcode}
                   />
                   <button className={`${styles.white__btn} white__btn`} onClick={onToggleModal}>
                     우편번호 검색
@@ -169,8 +172,9 @@ function BoardsWriteUI(props: IBoardWriteData) {
                   className={styles.input__text}
                   type="text"
                   placeholder={isPurchase ? "상세주소를 입력해 주세요." : "주소를 입력해 주세요."}
-                  disabled={true}
-                  value={form.address.address}
+                  onChange={onChangeAddress}
+                  disabled={!isPurchase}
+                  defaultValue={isPurchase ? form.travelproductAddress.addressDetail : form.boardAddress.address}
                 />
                 {isPurchase ? (
                   ""
@@ -180,7 +184,7 @@ function BoardsWriteUI(props: IBoardWriteData) {
                     type="text"
                     placeholder="상세주소"
                     onChange={onChangeAddress}
-                    value={form.address.addressDetail}
+                    value={form.boardAddress.addressDetail}
                   />
                 )}
               </div>
@@ -193,6 +197,7 @@ function BoardsWriteUI(props: IBoardWriteData) {
                       type="text"
                       placeholder="주소를 먼저 입력해 주세요."
                       disabled={true}
+                      value={form.travelproductAddress.lat ?? form.travelproductAddress.lat}
                     />
                   </div>
                   <div className="column__sort gap__8">
@@ -202,6 +207,7 @@ function BoardsWriteUI(props: IBoardWriteData) {
                       type="text"
                       placeholder="주소를 먼저 입력해 주세요."
                       disabled={true}
+                      value={form.travelproductAddress.lng ?? form.travelproductAddress.lng}
                     />
                   </div>
                 </div>

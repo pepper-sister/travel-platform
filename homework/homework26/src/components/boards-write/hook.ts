@@ -5,6 +5,7 @@ import { useParams, useRouter } from "next/navigation";
 import { ChangeEvent, useEffect, useRef, useState } from "react";
 import {
   CreateBoardDocument,
+  CreateTravelproductDocument,
   FetchBoardDocument,
   UpdateBoardDocument,
   UplaodFileDocument,
@@ -12,6 +13,7 @@ import {
 import { Modal } from "antd";
 import { Address } from "react-daum-postcode";
 import { IBoardWriteData } from "./types";
+import { usePurchaseStore } from "@/commons/stores/purchase";
 
 export const useBoardsWrite = (props: IBoardWriteData) => {
   const [form, setForm] = useState({
@@ -19,18 +21,37 @@ export const useBoardsWrite = (props: IBoardWriteData) => {
     password: "",
     title: "",
     contents: "",
-    address: {
+    boardAddress: {
       zipcode: "",
       address: "",
       addressDetail: "",
     },
     youtubeUrl: "",
     images: "",
+
+    name: "",
+    remarks: "",
+    price: undefined,
+    tags: [""],
+    travelproductAddress: {
+      zipcode: "",
+      addressDetail: "",
+      lat: undefined,
+      lng: undefined,
+    },
   });
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const { isPurchase } = usePurchaseStore();
   const isActive = props.isEdit
     ? !form.title || !form.contents
-    : !form.writer || !form.password || !form.title || !form.contents;
+    : isPurchase
+      ? !form.name ||
+        !form.remarks ||
+        !form.contents ||
+        !form.price ||
+        !form.travelproductAddress.zipcode ||
+        !form.travelproductAddress.addressDetail
+      : !form.writer || !form.password || !form.title || !form.contents;
 
   const router = useRouter();
   const params = useParams();
@@ -38,6 +59,7 @@ export const useBoardsWrite = (props: IBoardWriteData) => {
   const [uploadFile] = useMutation(UplaodFileDocument);
   const [createBoard] = useMutation(CreateBoardDocument);
   const [updateBoard] = useMutation(UpdateBoardDocument);
+  const [createTravelProduct] = useMutation(CreateTravelproductDocument);
 
   const { data } = useQuery(FetchBoardDocument, {
     variables: {
@@ -49,19 +71,22 @@ export const useBoardsWrite = (props: IBoardWriteData) => {
     if (!data?.fetchBoard) return;
 
     const board = data.fetchBoard;
-    setForm({
-      writer: board.writer ?? "",
-      password: "",
-      title: board.title ?? "",
-      contents: board.contents ?? "",
-      address: {
-        zipcode: board.boardAddress?.zipcode ?? "",
-        address: board.boardAddress?.address ?? "",
-        addressDetail: board.boardAddress?.addressDetail ?? "",
-      },
-      youtubeUrl: board.youtubeUrl ?? "",
-      images: board.images?.[0] ?? "",
-    });
+    if (!isPurchase) {
+      setForm({
+        ...form,
+        writer: board.writer ?? "",
+        password: "",
+        title: board.title ?? "",
+        contents: board.contents ?? "",
+        boardAddress: {
+          zipcode: board.boardAddress?.zipcode ?? "",
+          address: board.boardAddress?.address ?? "",
+          addressDetail: board.boardAddress?.addressDetail ?? "",
+        },
+        youtubeUrl: board.youtubeUrl ?? "",
+        images: board.images?.[0] ?? "",
+      });
+    }
   }, [data]);
 
   const onToggleModal = () => {
@@ -92,11 +117,29 @@ export const useBoardsWrite = (props: IBoardWriteData) => {
   };
 
   const onChangeAddress = (event: ChangeEvent<HTMLInputElement>) => {
-    setForm((prev) => ({ ...prev, address: { ...prev.address, addressDetail: event.target.value } }));
+    if (!isPurchase) {
+      setForm((prev) => ({ ...prev, boardAddress: { ...prev.boardAddress, addressDetail: event.target.value } }));
+      return;
+    }
+    setForm((prev) => ({
+      ...prev,
+      travelproductAddress: { ...prev.travelproductAddress, addressDetail: event.target.value },
+    }));
   };
 
   const handleComplete = (data: Address) => {
-    setForm((prev) => ({ ...prev, address: { ...prev.address, zipcode: data.zonecode, address: data.address } }));
+    if (!isPurchase) {
+      setForm((prev) => ({
+        ...prev,
+        boardAddress: { ...prev.boardAddress, zipcode: data.zonecode, address: data.address },
+      }));
+    } else {
+      setForm((prev) => ({
+        ...prev,
+        travelproductAddress: { ...prev.travelproductAddress, zipcode: data.zonecode },
+      }));
+    }
+
     onToggleModal();
   };
 
@@ -125,27 +168,56 @@ export const useBoardsWrite = (props: IBoardWriteData) => {
     title: form.title,
     contents: form.contents,
     youtubeUrl: form.youtubeUrl,
-    images: [form.images],
     boardAddress: {
-      zipcode: form.address.zipcode,
-      address: form.address.address,
-      addressDetail: form.address.addressDetail,
+      ...form.boardAddress,
     },
+    images: [form.images],
+  };
+
+  const travelInputs = {
+    name: form.name,
+    remarks: form.remarks,
+    contents: form.contents,
+    price: Number(form.price) ?? 0,
+    tags: form.tags,
+    travelproductAddress: {
+      ...form.travelproductAddress,
+      lat: Number(form.travelproductAddress.lat) ?? 0,
+      lng: Number(form.travelproductAddress.lng) ?? 0,
+    },
+    images: [form.images],
   };
 
   const onClickSubmit = async () => {
+    if (!isPurchase) {
+      try {
+        const result = await createBoard({
+          variables: {
+            createBoardInput: {
+              ...inputs,
+              writer: form.writer,
+              password: form.password,
+            },
+          },
+        });
+
+        router.push(`/boards/${result.data?.createBoard._id}`);
+      } catch (error) {
+        errorModal(error);
+      }
+      return;
+    }
+
     try {
-      const result = await createBoard({
+      const result = await createTravelProduct({
         variables: {
-          createBoardInput: {
-            ...inputs,
-            writer: form.writer,
-            password: form.password,
+          createTravelproductInput: {
+            ...travelInputs,
           },
         },
       });
 
-      router.push(`/boards/${result.data?.createBoard._id}`);
+      router.push(`/purchase/${result.data?.createTravelproduct._id}`);
     } catch (error) {
       errorModal(error);
     }
