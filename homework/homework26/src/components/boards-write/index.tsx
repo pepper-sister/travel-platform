@@ -6,11 +6,10 @@ import { useBoardsWrite } from "./hook";
 import { IBoardWriteData } from "./types";
 import DaumPostcodeEmbed from "react-daum-postcode";
 import { Modal } from "antd";
-import Link from "next/link";
-import { useLoginStore } from "@/commons/stores/login";
 import { usePurchaseStore } from "@/commons/stores/purchase";
+import { withLogin } from "@/commons/hocs/withLogin";
 
-export default function BoardsWriteUI(props: IBoardWriteData) {
+function BoardsWriteUI(props: IBoardWriteData) {
   const {
     form,
     isModalOpen,
@@ -27,7 +26,6 @@ export default function BoardsWriteUI(props: IBoardWriteData) {
     onClickSubmit,
     onClickUpdate,
   } = useBoardsWrite(props);
-  const { isLoggedIn } = useLoginStore();
   const { isPurchase } = usePurchaseStore();
 
   return (
@@ -324,19 +322,8 @@ export default function BoardsWriteUI(props: IBoardWriteData) {
           </div>
         </footer>
       </div>
-
-      <Modal open={!isLoggedIn} closable={false} footer={null}>
-        <div className="column__sort column__center gap__24">
-          <div className="column__sort column__center gap__12">
-            <h1 className="f__18 w__600">로그인이 필요한 기능입니다.</h1>
-            <Image src="/images/sign/logo.png" alt="logo" width={78} height={48} />
-          </div>
-
-          <Link href="/sign" className="blue__btn f__14 w__600 l__20 c__ffffff">
-            로그인 하러가기
-          </Link>
-        </div>
-      </Modal>
     </div>
   );
 }
+
+export default withLogin(BoardsWriteUI);
