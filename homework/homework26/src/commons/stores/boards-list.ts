@@ -1,6 +1,23 @@
 import { create } from "zustand";
 
-export const useBoardsListStore = create((set) => ({
+interface BoardsListStoreState {
+  keyword: string;
+  setKeyword: (value: string) => void;
+
+  endDate: undefined | string;
+  setEndDate: (value: string) => void;
+
+  startDate: undefined | string;
+  setStartDate: (value: string) => void;
+
+  search: string;
+  setSearch: (value: string) => void;
+
+  page: number;
+  setPage: (value: number) => void;
+}
+
+export const useBoardsListStore = create<BoardsListStoreState>((set) => ({
   keyword: "",
   setKeyword: (newKeyword: string) => set(() => ({ keyword: newKeyword })),
 

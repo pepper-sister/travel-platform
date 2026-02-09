@@ -1,6 +1,11 @@
 import { create } from "zustand";
 
-export const useAccessTokenStore = create((set) => ({
+interface AccessTokenStoreState {
+  accessToken: string;
+  setAccessToken: (value: string) => void;
+}
+
+export const useAccessTokenStore = create<AccessTokenStoreState>((set) => ({
   accessToken: "",
   setAccessToken: (newAccessToken: string) => set(() => ({ accessToken: newAccessToken })),
 }));

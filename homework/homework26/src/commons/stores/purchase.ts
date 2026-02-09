@@ -1,6 +1,11 @@
 import { create } from "zustand";
 
-export const usePurchaseStore = create((set) => ({
+interface PurchaseStoreState {
+  isPurchase: boolean;
+  setIsPurchase: (value: boolean) => void;
+}
+
+export const usePurchaseStore = create<PurchaseStoreState>((set) => ({
   isPurchase: false,
   setIsPurchase: (newIsPurchase: boolean) => set(() => ({ isPurchase: newIsPurchase })),
 }));
