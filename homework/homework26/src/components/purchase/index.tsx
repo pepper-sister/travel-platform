@@ -152,7 +152,7 @@ export default function PurchaseUI() {
             <div className={styles.reserve__section}>
               {data?.fetchTravelproducts.map((el) => {
                 return (
-                  <Link href={`/purchase/${el._id}`}>
+                  <Link key={el._id} href={`/purchase/${el._id}`}>
                     <div className="column__sort gap__12">
                       <div className={`${styles.lodging__img}`}>
                         <Image
