@@ -16,13 +16,13 @@ export default function PurchaseDetailUI() {
                 <Image
                   style={{ filter: "invert(1)" }}
                   alt="delete"
+                  className="click"
                   src="/images/purchase-detail/delete.png"
                   width={24}
                   height={24}
+                  onClick={onClickDeleteProduct}
                 />
-                <div className="click" onClick={onClickDeleteProduct}>
-                  <Image alt="link" src="/images/purchase-detail/link.png" width={24} height={24} />
-                </div>
+                <Image alt="link" src="/images/purchase-detail/link.png" width={24} height={24} />
                 <Image alt="location" src="/images/purchase-detail/location.png" width={24} height={24} />
                 <div className={`${styles.bookmark__icon} row__sort column__center`}>
                   <Image
@@ -54,7 +54,7 @@ export default function PurchaseDetailUI() {
               alt="사진"
               width={640}
               height={480}
-              style={{ borderRadius: "8px" }}
+              style={{ objectFit: "cover", borderRadius: "8px" }}
             />
 
             <div className={`${styles.product__img__section} column__sort gap__16`}>
@@ -70,7 +70,7 @@ export default function PurchaseDetailUI() {
                       alt="숙소상세사진"
                       width={180}
                       height={136}
-                      style={{ opacity: active === index ? 1 : 0.5, objectFit: "fill", borderRadius: "8px" }}
+                      style={{ opacity: active === index ? 1 : 0.5, objectFit: "cover", borderRadius: "8px" }}
                     />
                   </div>
                 );
