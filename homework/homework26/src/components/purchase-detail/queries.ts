@@ -9,6 +9,7 @@ export const FETCH_TRAVEL_PRODUCT = gql`
       price
       tags
       images
+      pickedCount
       travelproductAddress {
         lat
         lng
