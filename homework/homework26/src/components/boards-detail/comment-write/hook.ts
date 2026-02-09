@@ -3,14 +3,15 @@
 import { ChangeEvent, useState } from "react";
 import { useMutation } from "@apollo/client/react";
 import { CreateBoardCommentDocument, UpdateBoardCommentDocument } from "@/commons/graphql/graphql";
-import { IFetchCommentData } from "./types";
+import { CommentWriteProps } from "./types";
 
-export const useCommentWrite = (props: IFetchCommentData) => {
-  const [rate, setRate] = useState(props.isCommentEdit ? props.el.rating : 3);
+export const useCommentWrite = (props: CommentWriteProps) => {
+  const isEditMode = "isCommentEdit" in props && props.isCommentEdit;
+  const [rate, setRate] = useState(isEditMode ? props.el.rating : 3);
   const [form, setForm] = useState({
-    writer: props.isCommentEdit ? props.el.writer : "",
+    writer: isEditMode ? props.el.writer : "",
     password: "",
-    contents: props.isCommentEdit ? props.el.contents : "",
+    contents: isEditMode ? props.el.contents : "",
   });
   const isActive = form.writer && form.password && form.contents;
 
@@ -46,7 +47,8 @@ export const useCommentWrite = (props: IFetchCommentData) => {
   };
 
   const onClickUpdateComment = async () => {
-    console.log(form);
+    if (!isEditMode) return;
+
     await updateBoardComment({
       variables: {
         updateBoardCommentInput: {
