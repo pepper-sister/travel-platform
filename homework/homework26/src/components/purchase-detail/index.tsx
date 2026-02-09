@@ -60,7 +60,7 @@ export default function PurchaseDetailUI() {
             <div className={`${styles.product__img__section} column__sort gap__16`}>
               {productImages.map((el, index) => {
                 return (
-                  <div className={`${styles.product__detail__img} click`} onClick={() => setActive(index)}>
+                  <div key={el} className={`${styles.product__detail__img} click`} onClick={() => setActive(index)}>
                     <Image
                       src={
                         el && el.trim() !== ""
