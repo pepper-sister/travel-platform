@@ -1,0 +1,4 @@
+[build]
+base = "homework/homework26"
+command = "yarn build"
+publish = ".netlify"
