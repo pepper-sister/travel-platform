@@ -52,8 +52,8 @@ export default function BookMarkUI() {
 
         <InfiniteScroll
           className="column__sort gap__12"
-          // next={onNext}
-          // hasMore={hasMore}
+          next={() => {}}
+          hasMore={false}
           loader={<div>로딩중입니다.</div>}
           dataLength={arr.length ?? 0}
         >
