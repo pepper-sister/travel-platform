@@ -26,6 +26,7 @@ type Documents = {
     "\n  mutation uplaodFile($file: Upload!) {\n    uploadFile(file: $file) {\n      url\n    }\n  }\n": typeof types.UplaodFileDocument,
     "\n  mutation createTravelproduct($createTravelproductInput: CreateTravelproductInput!) {\n    createTravelproduct(createTravelproductInput: $createTravelproductInput) {\n      _id\n    }\n  }\n": typeof types.CreateTravelproductDocument,
     "\n  query fetchTravelproduct($travelproductId: ID!) {\n    fetchTravelproduct(travelproductId: $travelproductId) {\n      name\n      remarks\n      contents\n      price\n      tags\n      images\n      pickedCount\n      travelproductAddress {\n        lat\n        lng\n      }\n    }\n  }\n": typeof types.FetchTravelproductDocument,
+    "\n  mutation deleteTravelproduct($travelproductId: ID!) {\n    deleteTravelproduct(travelproductId: $travelproductId)\n  }\n": typeof types.DeleteTravelproductDocument,
     "\n  query fetchTravelproducts($isSoldout: Boolean, $search: String, $page: Int) {\n    fetchTravelproducts(isSoldout: $isSoldout, search: $search, page: $page) {\n      _id\n      name\n      remarks\n      price\n      tags\n      images\n      pickedCount\n    }\n  }\n": typeof types.FetchTravelproductsDocument,
     "\n  mutation loginUser($email: String!, $password: String!) {\n    loginUser(email: $email, password: $password) {\n      accessToken\n    }\n  }\n": typeof types.LoginUserDocument,
     "\n  mutation createUser($createUserInput: CreateUserInput!) {\n    createUser(createUserInput: $createUserInput) {\n      _id\n    }\n  }\n": typeof types.CreateUserDocument,
@@ -43,6 +44,7 @@ const documents: Documents = {
     "\n  mutation uplaodFile($file: Upload!) {\n    uploadFile(file: $file) {\n      url\n    }\n  }\n": types.UplaodFileDocument,
     "\n  mutation createTravelproduct($createTravelproductInput: CreateTravelproductInput!) {\n    createTravelproduct(createTravelproductInput: $createTravelproductInput) {\n      _id\n    }\n  }\n": types.CreateTravelproductDocument,
     "\n  query fetchTravelproduct($travelproductId: ID!) {\n    fetchTravelproduct(travelproductId: $travelproductId) {\n      name\n      remarks\n      contents\n      price\n      tags\n      images\n      pickedCount\n      travelproductAddress {\n        lat\n        lng\n      }\n    }\n  }\n": types.FetchTravelproductDocument,
+    "\n  mutation deleteTravelproduct($travelproductId: ID!) {\n    deleteTravelproduct(travelproductId: $travelproductId)\n  }\n": types.DeleteTravelproductDocument,
     "\n  query fetchTravelproducts($isSoldout: Boolean, $search: String, $page: Int) {\n    fetchTravelproducts(isSoldout: $isSoldout, search: $search, page: $page) {\n      _id\n      name\n      remarks\n      price\n      tags\n      images\n      pickedCount\n    }\n  }\n": types.FetchTravelproductsDocument,
     "\n  mutation loginUser($email: String!, $password: String!) {\n    loginUser(email: $email, password: $password) {\n      accessToken\n    }\n  }\n": types.LoginUserDocument,
     "\n  mutation createUser($createUserInput: CreateUserInput!) {\n    createUser(createUserInput: $createUserInput) {\n      _id\n    }\n  }\n": types.CreateUserDocument,
@@ -110,6 +112,10 @@ export function graphql(source: "\n  mutation createTravelproduct($createTravelp
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(source: "\n  query fetchTravelproduct($travelproductId: ID!) {\n    fetchTravelproduct(travelproductId: $travelproductId) {\n      name\n      remarks\n      contents\n      price\n      tags\n      images\n      pickedCount\n      travelproductAddress {\n        lat\n        lng\n      }\n    }\n  }\n"): (typeof documents)["\n  query fetchTravelproduct($travelproductId: ID!) {\n    fetchTravelproduct(travelproductId: $travelproductId) {\n      name\n      remarks\n      contents\n      price\n      tags\n      images\n      pickedCount\n      travelproductAddress {\n        lat\n        lng\n      }\n    }\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\n  mutation deleteTravelproduct($travelproductId: ID!) {\n    deleteTravelproduct(travelproductId: $travelproductId)\n  }\n"): (typeof documents)["\n  mutation deleteTravelproduct($travelproductId: ID!) {\n    deleteTravelproduct(travelproductId: $travelproductId)\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */

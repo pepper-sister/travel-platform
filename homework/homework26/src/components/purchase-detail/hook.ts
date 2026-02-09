@@ -1,5 +1,5 @@
-import { FetchTravelproductDocument } from "@/commons/graphql/graphql";
-import { useQuery } from "@apollo/client/react";
+import { DeleteTravelproductDocument, FetchTravelproductDocument } from "@/commons/graphql/graphql";
+import { useMutation, useQuery } from "@apollo/client/react";
 import { useParams } from "next/navigation";
 import { useState } from "react";
 
@@ -11,9 +11,18 @@ export const usePurchaseDetail = () => {
       travelproductId: String(params.productId),
     },
   });
+  const [deleteTravelproduct] = useMutation(DeleteTravelproductDocument);
 
   const images = data?.fetchTravelproduct.images ?? [];
   const productImages = images.length >= 4 ? images : [...images, ...Array(4 - images.length).fill("")];
 
-  return { active, setActive, data, productImages };
+  const onClickDeleteProduct = () => {
+    deleteTravelproduct({
+      variables: {
+        travelproductId: String(params.productId),
+      },
+    });
+  };
+
+  return { onClickDeleteProduct, active, setActive, data, productImages };
 };

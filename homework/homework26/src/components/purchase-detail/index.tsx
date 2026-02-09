@@ -3,7 +3,7 @@ import { usePurchaseDetail } from "./hook";
 import styles from "./styles.module.css";
 
 export default function PurchaseDetailUI() {
-  const { active, setActive, data, productImages } = usePurchaseDetail();
+  const { onClickDeleteProduct, active, setActive, data, productImages } = usePurchaseDetail();
 
   return (
     <div className="body__sort">
@@ -20,7 +20,9 @@ export default function PurchaseDetailUI() {
                   width={24}
                   height={24}
                 />
-                <Image alt="link" src="/images/purchase-detail/link.png" width={24} height={24} />
+                <div className="click" onClick={onClickDeleteProduct}>
+                  <Image alt="link" src="/images/purchase-detail/link.png" width={24} height={24} />
+                </div>
                 <Image alt="location" src="/images/purchase-detail/location.png" width={24} height={24} />
                 <div className={`${styles.bookmark__icon} row__sort column__center`}>
                   <Image
@@ -36,21 +38,17 @@ export default function PurchaseDetailUI() {
             </div>
             <h2 className="c__777777">{data?.fetchTravelproduct.remarks}</h2>
             <h3 className="l__20 c__2974E5">
-              {data?.fetchTravelproduct.tags?.map((el) => {
-                return `#${el} `;
-              })}
+              {data?.fetchTravelproduct.tags?.length
+                ? data?.fetchTravelproduct.tags?.map((el) => `#${el}`).join(" ")
+                : "\u00A0"}
             </h3>
           </div>
 
           <div className="row__sort gap__24">
             <Image
               src={
-                active === 0
-                  ? data?.fetchTravelproduct.images &&
-                    data?.fetchTravelproduct.images.length > 0 &&
-                    data?.fetchTravelproduct.images[0].trim() !== ""
-                    ? `https://storage.googleapis.com/${data?.fetchTravelproduct.images}`
-                    : `/images/purchase-detail/image${active + 1}.jpg`
+                productImages[active] && productImages[active].trim() !== ""
+                  ? `https://storage.googleapis.com/${productImages[active]}`
                   : `/images/purchase-detail/image${active + 1}.jpg`
               }
               alt="사진"
