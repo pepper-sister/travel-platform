@@ -152,13 +152,13 @@ export default function PurchaseUI() {
             <div className={styles.reserve__section}>
               {data?.fetchTravelproducts.map((el) => {
                 return (
-                  <div key={el._id} className="column__sort gap__12">
-                    <Link href={`/purchase/${el._id}`}>
+                  <Link href={`/purchase/${el._id}`}>
+                    <div className="column__sort gap__12">
                       <div className={`${styles.lodging__img}`}>
                         <Image
                           src={
-                            el.images && el.images.length > 0 && el.images[0].trim() !== ""
-                              ? `https://storage.googleapis.com/${el.images}`
+                            el.images?.[0] && el.images[0].trim() !== ""
+                              ? `https://storage.googleapis.com/${el.images[0]}`
                               : "/images/purchase/lodging1.jpg"
                           }
                           alt="숙소"
@@ -183,9 +183,7 @@ export default function PurchaseUI() {
 
                         <div className="column__sort gap__12">
                           <p className="f__14 w__400 l__20 c__2974E5">
-                            {el.tags?.map((el) => {
-                              return `#${el} `;
-                            })}
+                            {el.tags?.length ? el.tags.map((tag) => `#${tag}`).join(" ") : "\u00A0"}
                           </p>
                           <div className="row__sort row__between column__center">
                             <div className="row__sort column__center gap__4">
@@ -206,8 +204,8 @@ export default function PurchaseUI() {
                           </div>
                         </div>
                       </div>
-                    </Link>
-                  </div>
+                    </div>
+                  </Link>
                 );
               })}
             </div>
