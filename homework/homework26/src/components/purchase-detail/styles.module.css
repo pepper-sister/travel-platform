@@ -7,8 +7,8 @@
 
 .product__img,
 .product__detail__img {
-  border-radius: 8px;
   object-fit: cover;
+  position: relative;
 }
 .product__img__section {
   max-height: 480px;

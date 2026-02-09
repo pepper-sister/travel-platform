@@ -10,5 +10,8 @@ export const usePurchaseDetail = () => {
     },
   });
 
-  return { data };
+  const images = data?.fetchTravelproduct.images ?? [];
+  const productImages = images.length >= 4 ? images : [...images, ...Array(4 - images.length).fill("")];
+
+  return { data, productImages };
 };

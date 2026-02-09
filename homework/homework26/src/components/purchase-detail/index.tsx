@@ -3,7 +3,7 @@ import { usePurchaseDetail } from "./hook";
 import styles from "./styles.module.css";
 
 export default function PurchaseDetailUI() {
-  const { data } = usePurchaseDetail();
+  const { data, productImages } = usePurchaseDetail();
 
   return (
     <div className="body__sort">
@@ -30,58 +30,58 @@ export default function PurchaseDetailUI() {
                     width={24}
                     height={24}
                   />
-                  <p className="f__14 l__20 c__ffffff">24</p>
+                  <p className="f__14 l__20 c__ffffff">{data?.fetchTravelproduct.pickedCount}</p>
                 </div>
               </div>
             </div>
             <h2 className="c__777777">{data?.fetchTravelproduct.remarks}</h2>
-            <h3 className="l__20 c__2974E5">{data?.fetchTravelproduct.tags}</h3>
+            <h3 className="l__20 c__2974E5">
+              {data?.fetchTravelproduct.tags?.map((el) => {
+                return `#${el} `;
+              })}
+            </h3>
           </div>
 
           <div className="row__sort gap__24">
             <Image
-              src={`https://storage.googleapis.com/${data?.fetchTravelproduct.images}`}
+              src={
+                data?.fetchTravelproduct.images &&
+                data?.fetchTravelproduct.images.length > 0 &&
+                data?.fetchTravelproduct.images[0].trim() !== ""
+                  ? `https://storage.googleapis.com/${data?.fetchTravelproduct.images}`
+                  : "/images/purchase-detail/image1.jpg"
+              }
               alt="사진"
               className={styles.product__img}
               width={640}
               height={480}
+              style={{ borderRadius: "8px" }}
             />
 
             <div className={`${styles.product__img__section} column__sort gap__16`}>
-              <Image
-                src="/images/purchase-detail/image1.jpg"
-                alt="상세사진"
-                className={styles.product__img}
-                width={180}
-                height={136}
-              />
-              <Image
-                src="/images/purchase-detail/image2.jpg"
-                alt="상세사진"
-                className={styles.product__detail__img}
-                width={180}
-                height={136}
-              />
-              <Image
-                src="/images/purchase-detail/image3.jpg"
-                alt="상세사진"
-                className={styles.product__detail__img}
-                width={180}
-                height={136}
-              />
-              <Image
-                src="/images/purchase-detail/image4.jpg"
-                alt="상세사진"
-                className={styles.product__detail__img}
-                width={180}
-                height={136}
-              />
+              {productImages.map((el, index) => {
+                return (
+                  <div className={index === 0 ? styles.product__img : styles.product__detail__img}>
+                    <Image
+                      src={
+                        el && el.trim() !== ""
+                          ? `https://storage.googleapis.com/${el}`
+                          : `/images/purchase-detail/image${index + 1}.jpg`
+                      }
+                      alt="숙소상세사진"
+                      width={180}
+                      height={136}
+                      style={{ objectFit: "fill", borderRadius: "8px" }}
+                    />
+                  </div>
+                );
+              })}
             </div>
 
             <div className="flex column__sort gap__24">
               <div className={`${styles.price__section} column__sort gap__20`}>
                 <div className="column__sort gap__8">
-                  <h4 className="f__24 w__700 l__32">{data?.fetchTravelproduct.price}원</h4>
+                  <h4 className="f__24 w__700 l__32">{data?.fetchTravelproduct.price?.toLocaleString()}원</h4>
                   <ul className="column__sort gap__4">
                     <li className={`${styles.price__txt} f__14 w__400 l__20 c__5F5F5F`}>
                       숙박권은 트립트립에서 포인트 충전 후 구매하실 수 있습니다.
