@@ -3,7 +3,7 @@ import { usePurchaseDetail } from "./hook";
 import styles from "./styles.module.css";
 
 export default function PurchaseDetailUI() {
-  const { data, productImages } = usePurchaseDetail();
+  const { active, setActive, data, productImages } = usePurchaseDetail();
 
   return (
     <div className="body__sort">
@@ -45,14 +45,15 @@ export default function PurchaseDetailUI() {
           <div className="row__sort gap__24">
             <Image
               src={
-                data?.fetchTravelproduct.images &&
-                data?.fetchTravelproduct.images.length > 0 &&
-                data?.fetchTravelproduct.images[0].trim() !== ""
-                  ? `https://storage.googleapis.com/${data?.fetchTravelproduct.images}`
-                  : "/images/purchase-detail/image1.jpg"
+                active === 0
+                  ? data?.fetchTravelproduct.images &&
+                    data?.fetchTravelproduct.images.length > 0 &&
+                    data?.fetchTravelproduct.images[0].trim() !== ""
+                    ? `https://storage.googleapis.com/${data?.fetchTravelproduct.images}`
+                    : `/images/purchase-detail/image${active + 1}.jpg`
+                  : `/images/purchase-detail/image${active + 1}.jpg`
               }
               alt="사진"
-              className={styles.product__img}
               width={640}
               height={480}
               style={{ borderRadius: "8px" }}
@@ -61,7 +62,7 @@ export default function PurchaseDetailUI() {
             <div className={`${styles.product__img__section} column__sort gap__16`}>
               {productImages.map((el, index) => {
                 return (
-                  <div className={index === 0 ? styles.product__img : styles.product__detail__img}>
+                  <div className={`${styles.product__detail__img} click`} onClick={() => setActive(index)}>
                     <Image
                       src={
                         el && el.trim() !== ""
@@ -71,7 +72,7 @@ export default function PurchaseDetailUI() {
                       alt="숙소상세사진"
                       width={180}
                       height={136}
-                      style={{ objectFit: "fill", borderRadius: "8px" }}
+                      style={{ opacity: active === index ? 1 : 0.5, objectFit: "fill", borderRadius: "8px" }}
                     />
                   </div>
                 );
