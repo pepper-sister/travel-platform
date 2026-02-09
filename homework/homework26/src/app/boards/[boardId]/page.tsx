@@ -6,12 +6,12 @@ import BoardsDetailUI from "@/components/boards-detail/detail";
 import { useBoardsDetail } from "@/components/boards-detail/detail/hook";
 
 export default function BoardsDetail() {
-  const { params, data } = useBoardsDetail();
+  const { params } = useBoardsDetail();
 
   return (
     <div className="body__sort">
       <div className="body">
-        <BoardsDetailUI params={params} data={data} />
+        <BoardsDetailUI />
         <CommentWriteUI params={params} />
         <CommentListUI params={params} />
       </div>
