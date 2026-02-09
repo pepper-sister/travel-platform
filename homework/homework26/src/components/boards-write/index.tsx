@@ -248,7 +248,7 @@ function BoardsWriteUI(props: IBoardWriteData) {
           )}
 
           <div className="column__sort gap__8">
-            <div className="column__sort gap__8">
+            <div className="row__sort gap__4">
               <p className="c__333333">사진 첨부</p>
               {isPurchase ? <p className="c__F66A6A">*</p> : ""}
             </div>
