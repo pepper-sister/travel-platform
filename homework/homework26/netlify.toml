@@ -1,4 +1,2 @@
-[build]
-base = "homework/homework26"
-command = "yarn build"
-
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
