@@ -5,17 +5,14 @@
   box-shadow: 0px 0px 8px 0px #00000040;
 }
 
-.product__img,
-.product__detail__img {
-  object-fit: cover;
-  position: relative;
-}
 .product__img__section {
   max-height: 480px;
   overflow-y: scroll;
 }
 .product__detail__img {
-  opacity: 50%;
+  position: relative;
+  width: 180px;
+  height: 136px;
 }
 
 .price__section {
