@@ -4,11 +4,11 @@ interface BoardsListStoreState {
   keyword: string;
   setKeyword: (value: string) => void;
 
-  endDate: undefined | string;
-  setEndDate: (value: string) => void;
+  endDate: string | undefined;
+  setEndDate: (value: string | undefined) => void;
 
-  startDate: undefined | string;
-  setStartDate: (value: string) => void;
+  startDate: string | undefined;
+  setStartDate: (value: string | undefined) => void;
 
   search: string;
   setSearch: (value: string) => void;
