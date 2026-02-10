@@ -23,13 +23,23 @@ export const useBoardsList = () => {
     router.push(`/boards/${boardId}`);
   };
 
-  const onClickDelete = (event: MouseEvent<HTMLImageElement>, boardId: string) => {
+  const onClickDelete = async (event: MouseEvent<HTMLImageElement>, boardId: string) => {
     event.stopPropagation();
-    deleteBoard({
+    await deleteBoard({
       variables: {
         boardId: boardId,
       },
-      refetchQueries: [{ query: FetchBoardsDocument }],
+      refetchQueries: [
+        {
+          query: FetchBoardsDocument,
+          variables: {
+            endDate: endDate,
+            startDate: startDate,
+            search: search,
+            page: page,
+          },
+        },
+      ],
     });
   };
 
