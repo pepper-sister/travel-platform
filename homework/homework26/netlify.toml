@@ -1,4 +1,0 @@
-[build]
-  base = "homework/homework26"
-  command = "npm run build"
-  publish = "/next"
