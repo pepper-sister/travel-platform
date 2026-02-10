@@ -10,12 +10,8 @@ export const useSearch = (props: ISearchProps) => {
   const { setIsPurchase } = usePurchaseStore();
 
   useEffect(() => {
-    if (props.isPurchase) {
-      setIsPurchase(true);
-      return;
-    }
-    setIsPurchase(false);
-  }, []);
+    setIsPurchase(!!props.isPurchase);
+  }, [props.isPurchase, setIsPurchase]);
 
   const onChangedate = (event: [Dayjs | null, Dayjs | null] | null) => {
     if (!event || !event[0] || !event[1]) {

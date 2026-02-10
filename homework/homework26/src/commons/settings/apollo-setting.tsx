@@ -20,7 +20,7 @@ export default function ApolloSetting(props: IApolloSetting) {
     const localStorageAccessToken = localStorage.getItem("accessToken") ?? "";
     setAccessToken(localStorageAccessToken);
     if (localStorageAccessToken) setIsLoggedIn(true);
-  }, []);
+  }, [setAccessToken, setIsLoggedIn]);
 
   const uploadLink = new UploadHttpLink({
     uri: "http://main-practice.codebootcamp.co.kr/graphql",
