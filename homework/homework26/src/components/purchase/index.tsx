@@ -5,7 +5,7 @@ import { usePurchase } from "./hook";
 import Link from "next/link";
 
 export default function PurchaseUI() {
-  const { data, active, onClickActive } = usePurchase();
+  const { active, onClickActive, reserveIcon, data } = usePurchase();
 
   return (
     <div className="body__sort">
@@ -106,42 +106,12 @@ export default function PurchaseUI() {
           <SearchUI isBoard={false} isPurchase={true} />
           <div className="column__sort gap__32">
             <div className={`${styles.reserve__icon__section} row__sort row__between`}>
-              <div className={`${styles.reserve__icon} column__sort column__center gap__8 click`}>
-                <Image src="/images/purchase/single.png" alt="1인 전용" width={40} height={40} />
-                <p className="c__333333">1인 전용</p>
-              </div>
-              <div className={`${styles.reserve__icon} column__sort column__center gap__8 click`}>
-                <Image src="/images/purchase/apartment.png" alt="아파트" width={40} height={40} />
-                <p className="c__333333">아파트</p>
-              </div>
-              <div className={`${styles.reserve__icon} column__sort column__center gap__8 click`}>
-                <Image src="/images/purchase/hotel.png" alt="호텔" width={40} height={40} />
-                <p className="c__333333">호텔</p>
-              </div>
-              <div className={`${styles.reserve__icon} column__sort column__center gap__8 click`}>
-                <Image src="/images/purchase/camp.png" alt="캠핑" width={40} height={40} />
-                <p className="c__333333">캠핑</p>
-              </div>
-              <div className={`${styles.reserve__icon} column__sort column__center gap__8 click`}>
-                <Image src="/images/purchase/service.png" alt="룸 서비스 가능" width={40} height={40} />
-                <p className="c__333333">룸 서비스 가능</p>
-              </div>
-              <div className={`${styles.reserve__icon} column__sort column__center gap__8 click`}>
-                <Image src="/images/purchase/fire.png" alt="불멍" width={40} height={40} />
-                <p className="c__333333">불멍</p>
-              </div>
-              <div className={`${styles.reserve__icon} column__sort column__center gap__8 click`}>
-                <Image src="/images/purchase/spa.png" alt="반신욕&스파" width={40} height={40} />
-                <p className="c__333333">반신욕&스파</p>
-              </div>
-              <div className={`${styles.reserve__icon} column__sort column__center gap__8 click`}>
-                <Image src="/images/purchase/house.png" alt="바다 위 숙소" width={40} height={40} />
-                <p className="c__333333">바다 위 숙소</p>
-              </div>
-              <div className={`${styles.reserve__icon} column__sort column__center gap__8 click`}>
-                <Image src="/images/purchase/planterior.png" alt="플랜테리어" width={40} height={40} />
-                <p className="c__333333">플랜테리어</p>
-              </div>
+              {reserveIcon.map(([key, value]) => (
+                <div key={key} className={`${styles.reserve__icon} column__sort column__center gap__8 click`}>
+                  <Image src={`/images/purchase/${key}.png`} alt={value} width={40} height={40} />
+                  <p className="c__333333">{value}</p>
+                </div>
+              ))}
             </div>
             <div className={styles.reserve__section}>
               {data?.fetchTravelproducts.map((el) => {
