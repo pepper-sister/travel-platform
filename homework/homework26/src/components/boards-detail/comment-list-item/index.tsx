@@ -2,11 +2,11 @@ import Image from "next/image";
 import { Rate } from "antd";
 import styles from "./styles.module.css";
 import { IFetchCommentItemData } from "./types";
-import { useCommentListItem } from "./hook";
 import CommentWriteUI from "../comment-write";
+import { useBoardsDetailStore } from "@/commons/stores/boards-detail";
 
-export default function CommentListItemUI({ el, index, params }: IFetchCommentItemData) {
-  const { isCommentEdit, setIsCommentEdit, onClickEditComment } = useCommentListItem();
+export default function CommentListItemUI({ el, index }: IFetchCommentItemData) {
+  const { isCommentEdit, setIsCommentEdit } = useBoardsDetailStore();
 
   return (
     <div className="width__100 column__sort gap__40">
@@ -31,7 +31,7 @@ export default function CommentListItemUI({ el, index, params }: IFetchCommentIt
 
             <div className="row__sort gap__8">
               <Image
-                onClick={onClickEditComment}
+                onClick={() => setIsCommentEdit(!isCommentEdit)}
                 src="/images/boards-detail/edit.png"
                 className="height__20 click"
                 alt="edit"
@@ -53,13 +53,7 @@ export default function CommentListItemUI({ el, index, params }: IFetchCommentIt
           <p className="f__14 w__400 c__818181">{el.createdAt.slice(0, 10)}</p>
         </div>
       ) : (
-        <CommentWriteUI
-          params={params}
-          isCommentEdit={isCommentEdit}
-          setIsCommentEdit={setIsCommentEdit}
-          el={el}
-          boardCommentId={el._id}
-        />
+        <CommentWriteUI el={el} boardCommentId={el._id} />
       )}
     </div>
   );

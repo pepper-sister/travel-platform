@@ -2,15 +2,16 @@ import Image from "next/image";
 import styles from "./styles.module.css";
 import { Rate } from "antd";
 import { useCommentWrite } from "./hook";
-import { CommentWriteProps } from "./types";
+import { ICommentEditProps } from "./types";
+import { useBoardsDetailStore } from "@/commons/stores/boards-detail";
 
-export default function CommentWriteUI(props: CommentWriteProps) {
-  const isEditMode = "isCommentEdit" in props && props.isCommentEdit;
+export default function CommentWriteUI(props: ICommentEditProps) {
   const { rate, setRate, form, isActive, onChangeForm, onClickSubmit, onClickUpdateComment } = useCommentWrite(props);
+  const { isCommentEdit } = useBoardsDetailStore();
 
   return (
-    <div className={`${!isEditMode && `${styles.comment__write}`} column__sort gap__24`}>
-      {!isEditMode && (
+    <div className={`${!isCommentEdit && `${styles.comment__write}`} column__sort gap__24`}>
+      {!isCommentEdit && (
         <div className="row__sort gap__8">
           <Image src="/images/boards-detail/chat.png" alt="chat" width={24} height={24} />
           <p className="w__600">댓글</p>
@@ -35,7 +36,7 @@ export default function CommentWriteUI(props: CommentWriteProps) {
                 className={`${styles.comment__input}`}
                 placeholder="작성자 명을 입력해 주세요."
                 value={form.writer ?? ""}
-                disabled={isEditMode}
+                disabled={isCommentEdit}
               />
             </div>
 
@@ -73,14 +74,14 @@ export default function CommentWriteUI(props: CommentWriteProps) {
         </div>
 
         <div className="row__sort gap__16">
-          {isEditMode && <button className={`${styles.white__btn} white__btn f__18 w__400`}>취소</button>}
+          {isCommentEdit && <button className={`${styles.white__btn} white__btn f__18 w__400`}>취소</button>}
 
           <button
             disabled={!isActive}
-            onClick={!isEditMode ? onClickSubmit : onClickUpdateComment}
+            onClick={!isCommentEdit ? onClickSubmit : onClickUpdateComment}
             className={`${styles.black__btn} f__18 w__600`}
           >
-            {isEditMode ? "수정 하기" : "댓글 등록"}
+            {isCommentEdit ? "수정 하기" : "댓글 등록"}
           </button>
         </div>
       </div>
