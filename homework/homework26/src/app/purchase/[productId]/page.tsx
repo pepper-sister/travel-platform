@@ -8,8 +8,8 @@ import PurchaseDetailTitleUI from "@/components/purchase-detail/purchase-detail-
 
 export default function PurchaseDetail() {
   return (
-    <div className="body__sort">
-      <div className="body column__sort gap__40">
+    <div className="row__sort row__center">
+      <div className="width__1280px padding__40__20 column__sort gap__40">
         <div className="column__sort gap__24">
           <PurchaseDetailTitleUI />
           <div className="row__sort gap__24">

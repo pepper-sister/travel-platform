@@ -15,7 +15,7 @@ export default function PurchaseListInfoUI({ el }: IPurchaseListProps) {
           <div className="row__sort column__center gap__4">
             <Image
               src="/images/purchase/purchase-list/profile.jpg"
-              className={styles.profile__img}
+              className="br__100"
               alt="프로필"
               width={24}
               height={24}

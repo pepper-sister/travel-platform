@@ -22,7 +22,7 @@ export default function PurchaseDetailImageUI() {
         {productImages.map((el, index) => (
           <div
             key={`${el}-${index}`}
-            className={`${styles.product__detail__img} click`}
+            className={`${styles.product__detail__img} relative click`}
             onClick={() => setActive(index)}
           >
             <Image

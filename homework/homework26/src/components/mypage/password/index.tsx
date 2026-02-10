@@ -17,7 +17,7 @@ export default function PasswordUI() {
           </div>
           <input
             onChange={onChangePasswordInput}
-            className={styles.input__password}
+            className={`${styles.input__password} input__border`}
             type="password"
             placeholder="새 비밀번호를 입력해 주세요."
           />
@@ -29,13 +29,17 @@ export default function PasswordUI() {
           </div>
           <input
             onChange={onChangePasswordInputCheck}
-            className={styles.input__password}
+            className={`${styles.input__password} input__border`}
             type="password"
             placeholder="새 비밀번호를 확인해 주세요."
           />
         </div>
       </div>
-      <button onClick={showPasswordModal} className={`${styles.password__btn}`} disabled={password}>
+      <button
+        onClick={showPasswordModal}
+        className={`${styles.password__btn} br__8 padding__12__16 click bg__2974E5 f__18 w__600 c__ffffff`}
+        disabled={password}
+      >
         비밀번호 변경
       </button>
       <Modal

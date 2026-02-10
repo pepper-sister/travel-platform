@@ -3,15 +3,15 @@ import styles from "./styles.module.css";
 
 export default function PurchaseEventUI() {
   return (
-    <div className={`${styles.event__section} row__sort row__between`}>
-      <div className={styles.event__img}>
+    <div className={`${styles.event__section} relative br__16 row__sort row__between bg__CCCBB4`}>
+      <div className={`${styles.event__img} relative`}>
         <Image src="/images/purchase/purchase-event/event.jpg" alt="특가숙소" fill style={{ objectFit: "cover" }} />
         <div className={styles.event__cover}></div>
       </div>
-      <div className={`${styles.event__txt__section} column__sort column__right row__center gap__18`}>
+      <div className="padding__48 column__sort column__right row__center gap__18">
         <div className="row__sort gap__16">
-          <p className={`${styles.event__txt} f__18 w__700 l__130 c__ffffff`}>‘솔로트립&apos; 독점 숙소</p>
-          <p className={`${styles.event__txt} f__18 w__700 l__130 c__ffffff`}>9.24 얼리버드 오픈 예약</p>
+          <p className="btn__border bg__ABAA8C f__18 w__700 l__130 c__ffffff">‘솔로트립&apos; 독점 숙소</p>
+          <p className="btn__border bg__ABAA8C f__18 w__700 l__130 c__ffffff">9.24 얼리버드 오픈 예약</p>
         </div>
         <div className="column__sort column__right">
           <h2 className="f__34 w__700 l__130">천만 관객이 사랑한</h2>

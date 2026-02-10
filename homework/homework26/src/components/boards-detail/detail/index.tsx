@@ -20,7 +20,7 @@ export default function BoardsDetailUI() {
             <div className="row__sort gap__4 column__center">
               <Image
                 src="/images/boards-detail/profile.png"
-                className={styles.profile__img}
+                className="br__100 bg__E4E4E4"
                 alt="person"
                 width={24}
                 height={24}
@@ -43,7 +43,7 @@ export default function BoardsDetailUI() {
                     fontFamily: "pretendard",
                     fontSize: "14px",
                     lineHeight: "20px",
-                    border: "1px solid var(--gray-100, #E4E4E4)",
+                    border: "1px solid #E4E4E4",
                     boxShadow: "0px 2px 6px 2px #00000026",
                     margin: "0 !important",
                     padding: "8px 12px",
@@ -62,7 +62,7 @@ export default function BoardsDetailUI() {
           ))}
         <p className="w__400">{data?.fetchBoard.contents}</p>
         {data?.fetchBoard.youtubeUrl && (
-          <div className={`${styles.youtube} row__sort row__center`}>
+          <div className="relative padding__24 row__sort row__center bg__F2F2F2">
             <iframe width="822px" height="464px" src={data?.fetchBoard.youtubeUrl}></iframe>
           </div>
         )}
@@ -79,13 +79,13 @@ export default function BoardsDetailUI() {
       </main>
 
       <footer className="row__sort row__center gap__24">
-        <Link href={`/boards`} className={`${styles.white__btn} white__btn row__sort column__center gap__8`}>
+        <Link href={`/boards`} className="white__btn br__8 padding__8__12 row__sort column__center gap__8">
           <Image src="/images/boards-detail/menu.png" alt="menu" width={24} height={24} />
           <p className="f__14 w__600 l__20 c__000000">목록으로</p>
         </Link>
         <Link
           href={`/boards/${params.boardId}/edit`}
-          className={`${styles.white__btn} white__btn row__sort column__center gap__8`}
+          className="white__btn br__8 padding__8__12 row__sort column__center gap__8"
         >
           <Image src="/images/boards-detail/edit.png" alt="edit" width={24} height={24} />
           <p className="f__14 w__600 l__20 c__000000">수정하기</p>

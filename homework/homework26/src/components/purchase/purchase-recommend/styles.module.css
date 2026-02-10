@@ -1,8 +1,5 @@
 .lodging__img {
-  position: relative;
-  width: 100%;
   aspect-ratio: 1 / 1;
-  border-radius: 16px;
   overflow: hidden;
 }
 .lodging__img__cover {
@@ -15,19 +12,11 @@
   position: absolute;
   top: 24px;
   right: 24px;
-  background: #00000066;
-  border-radius: 8px;
-  padding: 4px 8px;
-}
-.bookmark__img {
-  filter: invert(1);
 }
 
 .lodging__txt__section {
   position: absolute;
   bottom: 0;
-  width: 100%;
-  padding: 24px;
 }
 .lodging__txt {
   overflow: hidden;

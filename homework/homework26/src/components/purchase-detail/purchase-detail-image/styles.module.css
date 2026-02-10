@@ -3,7 +3,6 @@
   overflow-y: scroll;
 }
 .product__detail__img {
-  position: relative;
   width: 180px;
   height: 136px;
 }

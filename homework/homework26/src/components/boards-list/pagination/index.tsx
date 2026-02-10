@@ -1,17 +1,18 @@
 import { usePagination } from "./hook";
+import styles from "./styles.module.css";
 
 export default function PaginationUI() {
   const { startPage, activePage, lastPage, onClickPage, onClickPrevPage, onClickNextPage } = usePagination();
 
   return (
     <div className="row__sort row__center column__center gap__8">
-      <span className={`${activePage <= 5 ? "c__C7C7C7" : "c__333333 click"}`} onClick={onClickPrevPage}>{`<`}</span>
+      <span className={`${activePage <= 5 ? "c__C7C7C7" : "click c__333333"}`} onClick={onClickPrevPage}>{`<`}</span>
       <div className="row__sort gap__16">
         {new Array(5).fill(" ").map(
           (_, index) =>
             index + startPage <= lastPage && (
               <span
-                className={`${activePage === index + startPage ? "bg__F2F2F2 c__000000" : "c__777777"} l__32 click pagination__number`}
+                className={`${styles.pagination__number} ${activePage === index + startPage ? "bg__F2F2F2 c__000000" : "c__777777"} br__8 click l__32 text__center`}
                 key={index + startPage}
                 id={String(index + startPage)}
                 onClick={onClickPage}
@@ -22,7 +23,7 @@ export default function PaginationUI() {
         )}
       </div>
       <span
-        className={`${startPage + 5 > lastPage ? "c__C7C7C7" : "c__333333 click"}`}
+        className={`${startPage + 5 > lastPage ? "c__C7C7C7" : "click c__333333"}`}
         onClick={onClickNextPage}
       >{`>`}</span>
     </div>

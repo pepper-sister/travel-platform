@@ -8,7 +8,7 @@ export default function SignUI() {
 
   return (
     <div className="row__sort column__center">
-      <div className={`${styles.sign__body} column__sort column__center gap__24`}>
+      <div className={`${styles.sign__body} padding__0__40 column__sort column__center gap__24`}>
         {isSignUp ? "" : <Image src="/images/sign/logo.png" alt="logo" width={120} height={75} />}
         <h1 className="f__18 w__600">{isSignUp ? "회원가입" : "트립트립에 오신걸 환영합니다."}</h1>
         <div className="width__100 column__sort column__center gap__16">
@@ -28,7 +28,7 @@ export default function SignUI() {
               <input
                 id="email"
                 onChange={onChangeInput}
-                className={`${styles.sign__input} ${error ? styles.sign__input__error : ""}`}
+                className={`${styles.sign__input} ${error ? "border__F66A6A" : "border__D4D3D3"} btn__border`}
                 type="text"
                 value={input.email}
                 placeholder="이메일을 입력해 주세요."
@@ -44,7 +44,7 @@ export default function SignUI() {
                 <input
                   id="name"
                   onChange={onChangeInput}
-                  className={`${styles.sign__input} ${error ? styles.sign__input__error : ""}`}
+                  className={`${styles.sign__input} ${error ? "border__F66A6A" : "border__D4D3D3"} btn__border`}
                   type="text"
                   placeholder="이름을 입력해 주세요."
                 />
@@ -65,7 +65,7 @@ export default function SignUI() {
               <input
                 id="password"
                 onChange={onChangeInput}
-                className={`${styles.sign__input} ${error ? styles.sign__input__error : ""}`}
+                className={`${styles.sign__input} ${error ? "border__F66A6A" : "border__D4D3D3"} btn__border`}
                 type="password"
                 value={input.password}
                 placeholder="비밀번호를 입력해 주세요."
@@ -87,7 +87,7 @@ export default function SignUI() {
                 <input
                   id="passwordCheck"
                   onChange={onChangeInput}
-                  className={`${styles.sign__input} ${error ? styles.sign__input__error : ""}`}
+                  className={`${styles.sign__input} ${error ? "border__F66A6A" : "border__D4D3D3"} btn__border`}
                   type="password"
                   placeholder="비밀번호를 한번 더 입력해 주세요."
                 />
@@ -98,13 +98,16 @@ export default function SignUI() {
             )}
           </div>
         </div>
-        <button onClick={onClickSignIn} className="width__100 blue__btn f__18 w__600 c__ffffff">
+        <button
+          onClick={onClickSignIn}
+          className="width__100 bg__2974E5 br__8 padding__12__16 click f__18 w__600 c__ffffff"
+        >
           {isSignUp ? "회원가입" : "로그인"}
         </button>
         {isSignUp ? (
           ""
         ) : (
-          <button onClick={onClickSignUp} className="bg__transparent f__14 w__400 l__20 c__333333 click">
+          <button onClick={onClickSignUp} className="click bg__transparent f__14 w__400 l__20 c__333333">
             회원가입
           </button>
         )}
@@ -116,7 +119,10 @@ export default function SignUI() {
             <h1 className="f__18 w__600">회원가입을 축하 드려요.</h1>
             <Image src="/images/sign/logo.png" alt="logo" width={78} height={48} />
           </div>
-          <button onClick={onClickSignUp} className="blue__btn f__14 w__600 l__20 c__ffffff">
+          <button
+            onClick={onClickSignUp}
+            className="bg__2974E5 br__8 padding__12__16 click f__14 w__600 l__20 c__ffffff"
+          >
             로그인 하기
           </button>
         </div>

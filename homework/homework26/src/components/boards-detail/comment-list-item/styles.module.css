@@ -1,12 +1,7 @@
-.profile__img {
-  background-color: #e4e4e4;
-  border-radius: 100px;
+.div__line {
+  margin-top: 40px;
 }
 
-.comment__star {
-  display: flex;
-  gap: 8px;
-}
 .comment__star li {
   width: 24px;
   display: flex !important;

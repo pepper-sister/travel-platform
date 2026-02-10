@@ -6,8 +6,8 @@ import BoardsDetailUI from "@/components/boards-detail/detail";
 
 export default function BoardsDetail() {
   return (
-    <div className="body__sort">
-      <div className="body">
+    <div className="row__sort row__center">
+      <div className="width__1280px padding__40__20">
         <BoardsDetailUI />
         <CommentWriteUI />
         <CommentListUI />

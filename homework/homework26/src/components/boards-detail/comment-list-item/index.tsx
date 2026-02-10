@@ -10,7 +10,7 @@ export default function CommentListItemUI({ el, index }: IFetchCommentItemData) 
 
   return (
     <div className="width__100 column__sort gap__40">
-      {index !== 0 && <div className="div margin__top__40"></div>}
+      {index !== 0 && <div className={`${styles.div__line} div`}></div>}
       {!isCommentEdit ? (
         <div className="column__sort gap__8">
           <div className="row__sort row__between column__center">
@@ -18,31 +18,25 @@ export default function CommentListItemUI({ el, index }: IFetchCommentItemData) 
               <div className="row__sort gap__4">
                 <Image
                   src="/images/boards-detail/profile.png"
-                  className={styles.profile__img}
+                  className="br__100 bg__E4E4E4"
                   alt="프로필"
                   width={24}
                   height={24}
                 />
                 <p className="f__14 w__300 c__5F5F5F">{el.writer}</p>
               </div>
-              <Rate className={styles.comment__star} value={el.rating} disabled={true} />
+              <Rate className={`${styles.comment__star} row__sort gap__8`} value={el.rating} disabled={true} />
             </div>
             <div className="row__sort gap__8">
               <Image
                 onClick={() => setIsCommentEdit(!isCommentEdit)}
                 src="/images/boards-detail/edit.png"
-                className="height__20 click"
+                className="click"
                 alt="edit"
                 width={20}
                 height={20}
               />
-              <Image
-                src="/images/boards-detail/close.png"
-                className="height__20 click"
-                alt="close"
-                width={20}
-                height={20}
-              />
+              <Image src="/images/boards-detail/close.png" className="click" alt="close" width={20} height={20} />
             </div>
           </div>
           <p className="w__400 c__333333">{el.contents}</p>

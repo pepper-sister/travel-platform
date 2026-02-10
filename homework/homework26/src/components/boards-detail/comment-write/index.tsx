@@ -10,14 +10,14 @@ export default function CommentWriteUI(props: ICommentEditProps) {
   const { isCommentEdit } = useBoardsDetailStore();
 
   return (
-    <div className={`${!isCommentEdit && `${styles.comment__write}`} column__sort gap__24`}>
+    <div className={`${!isCommentEdit && "padding__40__0"} column__sort gap__24`}>
       {!isCommentEdit && (
         <div className="row__sort gap__8">
           <Image src="/images/boards-detail/chat.png" alt="chat" width={24} height={24} />
           <p className="w__600">댓글</p>
         </div>
       )}
-      <Rate className={styles.comment__star} value={rate} onChange={setRate} />
+      <Rate className={`${styles.comment__star} row__sort gap__8`} value={rate} onChange={setRate} />
       <div className="column__sort column__right gap__16">
         <div className="column__sort width__100 gap__16">
           <div className={`${styles.comment__input__section} row__sort gap__16`}>
@@ -30,7 +30,7 @@ export default function CommentWriteUI(props: ICommentEditProps) {
                 id="writer"
                 type="text"
                 onChange={onChangeForm}
-                className={`${styles.comment__input}`}
+                className={`${styles.comment__input} input__border`}
                 placeholder="작성자 명을 입력해 주세요."
                 value={form.writer ?? ""}
                 disabled={isCommentEdit}
@@ -45,18 +45,18 @@ export default function CommentWriteUI(props: ICommentEditProps) {
                 id="password"
                 type="password"
                 onChange={onChangeForm}
-                className={`${styles.comment__input}`}
+                className={`${styles.comment__input} input__border`}
                 placeholder="비밀번호를 입력해 주세요."
                 value={form.password}
               />
             </div>
           </div>
 
-          <div className={`${styles.comment__textarea__section}`}>
+          <div className={`${styles.comment__textarea__section} relative`}>
             <textarea
               id="contents"
               onChange={onChangeForm}
-              className={`${styles.comment__textarea} width__100 height__100`}
+              className={`${styles.comment__textarea} width__100 height__100 input__border`}
               maxLength={100}
               placeholder="댓글을 입력해 주세요."
               value={form.contents}
@@ -68,11 +68,11 @@ export default function CommentWriteUI(props: ICommentEditProps) {
           </div>
         </div>
         <div className="row__sort gap__16">
-          {isCommentEdit && <button className={`${styles.white__btn} white__btn f__18 w__400`}>취소</button>}
+          {isCommentEdit && <button className="white__btn br__8 padding__12__16 f__18 w__400">취소</button>}
           <button
             disabled={!isActive}
             onClick={!isCommentEdit ? onClickSubmit : onClickUpdateComment}
-            className={`${styles.black__btn} f__18 w__600`}
+            className={`${styles.edit__btn} bg__000000 br__8 padding__12__16 click f__18 w__600 c__ffffff`}
           >
             {isCommentEdit ? "수정 하기" : "댓글 등록"}
           </button>

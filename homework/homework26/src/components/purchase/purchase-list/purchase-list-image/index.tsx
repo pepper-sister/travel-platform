@@ -4,7 +4,7 @@ import { IPurchaseListProps } from "../types";
 
 export default function PurchaseListImageUI({ el }: IPurchaseListProps) {
   return (
-    <div className={`${styles.lodging__img}`}>
+    <div className={`${styles.lodging__img} width__100 relative br__16`}>
       <Image
         src={
           el.images?.[0] && el.images[0].trim() !== ""
@@ -15,10 +15,10 @@ export default function PurchaseListImageUI({ el }: IPurchaseListProps) {
         fill
         style={{ objectFit: "cover" }}
       />
-      <div className={`${styles.reserve__bookmark__section} row__sort column__center`}>
+      <div className={`${styles.reserve__bookmark__section} br__8 padding__4__8 row__sort column__center bg__00000066`}>
         <Image
           src="/images/purchase/purchase-list/bookmark.png"
-          className={styles.bookmark__img}
+          className="filter"
           alt="북마크"
           width={24}
           height={24}

@@ -7,7 +7,7 @@ export default function PurchaseDetailSellerUI() {
 
   return (
     <div className="flex column__sort gap__24">
-      <div className={`${styles.price__section} column__sort gap__20`}>
+      <div className="br__8 padding__24 border__E4E4E4 column__sort gap__20">
         <div className="column__sort gap__8">
           <h4 className="f__24 w__700 l__32">{data?.fetchTravelproduct.price?.toLocaleString()}원</h4>
           <ul className="column__sort gap__4">
@@ -19,13 +19,13 @@ export default function PurchaseDetailSellerUI() {
             </li>
           </ul>
         </div>
-        <button className="blue__btn c__ffffff">구매하기</button>
+        <button className="bg__2974E5 br__8 padding__12__16 click c__ffffff">구매하기</button>
       </div>
-      <div className={`${styles.seller__section} column__sort gap__12`}>
+      <div className="br__8 padding__24 column__sort gap__12 bg__F2F2F2">
         <h4 className="f__20 w__700 l__28">판매자</h4>
         <div className="row__sort column__center gap__4">
           <Image
-            className={styles.purchase__profile}
+            className={`${styles.purchase__profile} br__100`}
             src="/images/purchase-detail/purchase-detail-seller/profile.jpg"
             alt="profile"
             width={40}

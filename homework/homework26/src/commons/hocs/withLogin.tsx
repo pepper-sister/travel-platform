@@ -27,7 +27,7 @@ export const withLogin =
             <Image src="/images/sign/logo.png" alt="logo" width={78} height={48} />
           </div>
 
-          <Link href="/sign" className="blue__btn f__14 w__600 l__20 c__ffffff">
+          <Link href="/sign" className="bg__2974E5 br__8 padding__12__16 click f__14 w__600 l__20 c__ffffff">
             로그인 하러가기
           </Link>
         </div>

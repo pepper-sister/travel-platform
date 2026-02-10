@@ -1,5 +1,4 @@
 import Image from "next/image";
-import styles from "./styles.module.css";
 import { usePurchaseDetailTitle } from "./hook";
 import { usePurchaseDetail } from "../hook";
 
@@ -15,7 +14,7 @@ export default function PurchaseDetailTitleUI() {
           {titleIcon.map((el) => (
             <Image
               key={el}
-              style={{ filter: el === "delete" ? "invert(1)" : "", cursor: "pointer" }}
+              className={`${el === "delete" ? "filter" : ""} click`}
               alt={el}
               src={`/images/purchase-detail/purchase-detail-title/${el}.png`}
               width={24}
@@ -23,9 +22,9 @@ export default function PurchaseDetailTitleUI() {
               onClick={el === "delete" ? onClickDeleteProduct : () => {}}
             />
           ))}
-          <div className={`${styles.bookmark__icon} row__sort column__center`}>
+          <div className="br__8 padding__4__8 row__sort column__center bg__00000066">
             <Image
-              style={{ filter: "invert(1)" }}
+              className="filter"
               alt="bookmark"
               src="/images/purchase-detail/purchase-detail-title/bookmark.png"
               width={24}

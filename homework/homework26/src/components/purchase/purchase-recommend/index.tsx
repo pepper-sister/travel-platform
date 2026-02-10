@@ -10,7 +10,7 @@ export default function PurchaseRecommendUI() {
       <h1 className="f__28 w__700 l__36">2026 끝여름 낭만있게 마무리 하고 싶다면?</h1>
       <div className="width__100 row__sort gap__24">
         {recommendLodging.map(([key, value], index) => (
-          <div key={key} className={styles.lodging__img}>
+          <div key={key} className={`${styles.lodging__img} width__100 relative br__16`}>
             <Image
               src={`/images/purchase/purchase-recommend/lodging${index + 1}.jpg`}
               alt="숙소"
@@ -19,17 +19,17 @@ export default function PurchaseRecommendUI() {
               style={{ objectFit: "cover" }}
             />
             <div className={styles.lodging__img__cover}></div>
-            <div className={`${styles.bookmark__section} row__sort column__center`}>
+            <div className={`${styles.bookmark__section} br__8 padding__4__8 row__sort column__center bg__00000066`}>
               <Image
                 src="/images/purchase/purchase-recommend/bookmark.png"
-                className={styles.bookmark__img}
+                className="filter"
                 alt="북마크"
                 width={24}
                 height={24}
               />
               <p className="f__14 l__20 c__ffffff">24</p>
             </div>
-            <div className={`${styles.lodging__txt__section} column__sort gap__8`}>
+            <div className={`${styles.lodging__txt__section} width__100 padding__24 column__sort gap__8`}>
               <div className="column__sort gap__4">
                 <h3 className="f__24 w__700 l__32 c__ffffff">{key}</h3>
                 <p className={`${styles.lodging__txt} f__20 c__ffffff`}>{value}</p>
