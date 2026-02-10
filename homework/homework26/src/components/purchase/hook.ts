@@ -1,14 +1,14 @@
 import { FetchTravelproductsDocument } from "@/commons/graphql/graphql";
+import { usePurchaseStore } from "@/commons/stores/purchase";
 import { useQuery } from "@apollo/client/react";
-import { useState } from "react";
 
 export const usePurchase = () => {
-  const [active, setActive] = useState(true);
+  const { isActive } = usePurchaseStore();
   const { data } = useQuery(FetchTravelproductsDocument, {
     variables: {
-      isSoldout: !active,
+      isSoldout: !isActive,
     },
   });
 
-  return { active, setActive, data };
+  return { data };
 };

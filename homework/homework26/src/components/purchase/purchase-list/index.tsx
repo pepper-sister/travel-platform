@@ -1,9 +1,8 @@
-import { usePurchase } from "../hook";
 import styles from "./styles.module.css";
 import Link from "next/link";
-
 import PurchaseListImageUI from "./purchase-list-image";
 import PurchaseListInfoUI from "./purchase-list-info";
+import { usePurchase } from "../hook";
 
 export default function PurchaseListUI() {
   const { data } = usePurchase();

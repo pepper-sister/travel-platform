@@ -1,6 +1,7 @@
 "use client";
 
 import SearchUI from "@/components/boards-list/search";
+import { usePurchase } from "@/components/purchase/hook";
 import PurchaseButtonUI from "@/components/purchase/purchase-button";
 import PurchaseEventUI from "@/components/purchase/purchase-event";
 import PurchaseListUI from "@/components/purchase/purchase-list";
