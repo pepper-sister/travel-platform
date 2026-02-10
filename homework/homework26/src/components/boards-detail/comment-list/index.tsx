@@ -1,10 +1,9 @@
-import { IFetchCommentData } from "./types";
 import { useCommentList } from "./hook";
 import InfiniteScroll from "react-infinite-scroll-component";
 import CommentListItemUI from "../comment-list-item";
 
-export default function CommentListUI(props: IFetchCommentData) {
-  const { data, onNext, hasMore } = useCommentList(props);
+export default function CommentListUI() {
+  const { data, onNext, hasMore } = useCommentList();
 
   return (
     <InfiniteScroll
@@ -15,9 +14,7 @@ export default function CommentListUI(props: IFetchCommentData) {
       dataLength={data?.fetchBoardComments.length ?? 0}
     >
       {data?.fetchBoardComments && data.fetchBoardComments.length > 0 ? (
-        data?.fetchBoardComments.map((el, index) => (
-          <CommentListItemUI key={el._id} el={el} index={index} params={props.params} />
-        ))
+        data?.fetchBoardComments.map((el, index) => <CommentListItemUI key={el._id} el={el} index={index} />)
       ) : (
         <p className="f__14 w__400 l__20 c__777777">등록된 댓글이 없습니다.</p>
       )}

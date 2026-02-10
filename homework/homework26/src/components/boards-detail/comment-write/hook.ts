@@ -3,15 +3,18 @@
 import { ChangeEvent, useState } from "react";
 import { useMutation } from "@apollo/client/react";
 import { CreateBoardCommentDocument, UpdateBoardCommentDocument } from "@/commons/graphql/graphql";
-import { CommentWriteProps } from "./types";
+import { useParams } from "next/navigation";
+import { ICommentEditProps } from "./types";
+import { useBoardsDetailStore } from "@/commons/stores/boards-detail";
 
-export const useCommentWrite = (props: CommentWriteProps) => {
-  const isEditMode = "isCommentEdit" in props && props.isCommentEdit;
-  const [rate, setRate] = useState(isEditMode ? props.el.rating : 3);
+export const useCommentWrite = (props: ICommentEditProps) => {
+  const params = useParams();
+  const { isCommentEdit, setIsCommentEdit } = useBoardsDetailStore();
+  const [rate, setRate] = useState(isCommentEdit ? (props.el?.rating ?? 3) : 3);
   const [form, setForm] = useState({
-    writer: isEditMode ? props.el.writer : "",
+    writer: isCommentEdit ? (props.el?.writer ?? "") : "",
     password: "",
-    contents: isEditMode ? props.el.contents : "",
+    contents: isCommentEdit ? (props.el?.contents ?? "") : "",
   });
   const isActive = form.writer && form.password && form.contents;
 
@@ -29,7 +32,7 @@ export const useCommentWrite = (props: CommentWriteProps) => {
           ...form,
           rating: rate,
         },
-        boardId: String(props.params.boardId),
+        boardId: String(params.boardId),
       },
       refetchQueries: ["fetchBoardComments"],
     });
@@ -47,7 +50,7 @@ export const useCommentWrite = (props: CommentWriteProps) => {
   };
 
   const onClickUpdateComment = async () => {
-    if (!isEditMode) return;
+    if (!isCommentEdit) return;
 
     await updateBoardComment({
       variables: {
@@ -55,11 +58,11 @@ export const useCommentWrite = (props: CommentWriteProps) => {
           ...inputs,
         },
         password: String(form.password),
-        boardCommentId: props.boardCommentId,
+        boardCommentId: props.boardCommentId ?? "",
       },
     });
 
-    props.setIsCommentEdit(false);
+    setIsCommentEdit(!isCommentEdit);
   };
 
   return {
