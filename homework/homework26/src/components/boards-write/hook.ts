@@ -17,6 +17,7 @@ import { useBoardsWriteStore } from "@/commons/stores/boards-write";
 
 export const useBoardsWrite = () => {
   const { isBoardEdit } = useBoardsWriteStore();
+  const { isPurchase } = usePurchaseStore();
   const [form, setForm] = useState({
     writer: "",
     password: "",
@@ -41,8 +42,6 @@ export const useBoardsWrite = () => {
       lng: undefined,
     },
   });
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const { isPurchase } = usePurchaseStore();
   const isActive = isBoardEdit
     ? !form.title || !form.contents
     : isPurchase
@@ -54,20 +53,19 @@ export const useBoardsWrite = () => {
         !form.travelproductAddress.addressDetail ||
         !form.images
       : !form.writer || !form.password || !form.title || !form.contents;
-
   const router = useRouter();
   const params = useParams();
-  const fileRef = useRef<HTMLInputElement>(null);
-  const [uploadFile] = useMutation(UplaodFileDocument);
-  const [createBoard] = useMutation(CreateBoardDocument);
-  const [updateBoard] = useMutation(UpdateBoardDocument);
-  const [createTravelProduct] = useMutation(CreateTravelproductDocument);
-
   const { data } = useQuery(FetchBoardDocument, {
     variables: {
       boardId: String(params.boardId),
     },
   });
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const fileRef = useRef<HTMLInputElement>(null);
+  const [uploadFile] = useMutation(UplaodFileDocument);
+  const [createBoard] = useMutation(CreateBoardDocument);
+  const [updateBoard] = useMutation(UpdateBoardDocument);
+  const [createTravelProduct] = useMutation(CreateTravelproductDocument);
 
   useEffect(() => {
     if (!data?.fetchBoard || isPurchase) return;
@@ -176,20 +174,6 @@ export const useBoardsWrite = () => {
     images: [form.images],
   };
 
-  const travelInputs = {
-    name: form.name,
-    remarks: form.remarks,
-    contents: form.contents,
-    price: Number(form.price) ?? 0,
-    tags: form.tags,
-    travelproductAddress: {
-      ...form.travelproductAddress,
-      lat: Number(form.travelproductAddress.lat) ?? 0,
-      lng: Number(form.travelproductAddress.lng) ?? 0,
-    },
-    images: [form.images],
-  };
-
   const onClickSubmit = async () => {
     if (!isPurchase) {
       try {
@@ -214,7 +198,17 @@ export const useBoardsWrite = () => {
       const result = await createTravelProduct({
         variables: {
           createTravelproductInput: {
-            ...travelInputs,
+            name: form.name,
+            remarks: form.remarks,
+            contents: form.contents,
+            price: Number(form.price) ?? 0,
+            tags: form.tags,
+            travelproductAddress: {
+              ...form.travelproductAddress,
+              lat: Number(form.travelproductAddress.lat) ?? 0,
+              lng: Number(form.travelproductAddress.lng) ?? 0,
+            },
+            images: [form.images],
           },
         },
       });

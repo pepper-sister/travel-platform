@@ -7,8 +7,7 @@ import { MouseEvent } from "react";
 import { useBoardsListStore } from "@/commons/stores/boards-list";
 
 export const useBoardsList = () => {
-  const [deleteBoard] = useMutation(DeleteBoardDocument);
-
+  const router = useRouter();
   const { endDate, startDate, search, page } = useBoardsListStore();
   const { data } = useQuery(FetchBoardsDocument, {
     variables: {
@@ -18,8 +17,7 @@ export const useBoardsList = () => {
       page: page,
     },
   });
-
-  const router = useRouter();
+  const [deleteBoard] = useMutation(DeleteBoardDocument);
 
   const onClickDetail = (boardId: string) => {
     router.push(`/boards/${boardId}`);

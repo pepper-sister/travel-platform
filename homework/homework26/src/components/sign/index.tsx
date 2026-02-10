@@ -11,12 +11,10 @@ export default function SignUI() {
       <div className={`${styles.sign__body} column__sort column__center gap__24`}>
         {isSignUp ? "" : <Image src="/images/sign/logo.png" alt="logo" width={120} height={75} />}
         <h1 className="f__18 w__600">{isSignUp ? "회원가입" : "트립트립에 오신걸 환영합니다."}</h1>
-
         <div className="width__100 column__sort column__center gap__16">
           <p className="f__14 l__20 c__333333">
             {isSignUp ? "회원가입을 위해 아래 빈칸을 모두 채워 주세요." : "트립트립에 로그인 하세요."}
           </p>
-
           <div className="column__sort width__100 gap__12">
             <div className="column__sort gap__8">
               {isSignUp ? (
@@ -37,14 +35,12 @@ export default function SignUI() {
               />
               {isSignUp && error ? <p className="f__12 w__400 l__20 c__F66A6A">이메일을 입력해 주세요.</p> : ""}
             </div>
-
             {isSignUp ? (
               <div className="column__sort gap__8">
                 <div className="row__sort gap__4">
                   <p className="f__12 w__400 l__20 c__333333">이름</p>
                   <p className="c__F66A6A">*</p>
                 </div>
-
                 <input
                   id="name"
                   onChange={onChangeInput}
@@ -57,7 +53,6 @@ export default function SignUI() {
             ) : (
               ""
             )}
-
             <div className="column__sort gap__8">
               {isSignUp ? (
                 <div className="row__sort gap__4">
@@ -83,14 +78,12 @@ export default function SignUI() {
                 ""
               )}
             </div>
-
             {isSignUp ? (
               <div className="column__sort gap__8">
                 <div className="row__sort gap__4">
                   <p className="f__12 w__400 l__20 c__333333">비밀번호 확인</p>
                   <p className="c__F66A6A">*</p>
                 </div>
-
                 <input
                   id="passwordCheck"
                   onChange={onChangeInput}
@@ -105,7 +98,6 @@ export default function SignUI() {
             )}
           </div>
         </div>
-
         <button onClick={onClickSignIn} className="width__100 blue__btn f__18 w__600 c__ffffff">
           {isSignUp ? "회원가입" : "로그인"}
         </button>
@@ -117,16 +109,13 @@ export default function SignUI() {
           </button>
         )}
       </div>
-
       <Image className={styles.sign__img} src="/images/sign/background.jpg" alt="배경" width={1520} height={1080} />
-
       <Modal open={isModalOpen} closable={false} footer={null}>
         <div className="column__sort column__center gap__24">
           <div className="column__sort column__center gap__12">
             <h1 className="f__18 w__600">회원가입을 축하 드려요.</h1>
             <Image src="/images/sign/logo.png" alt="logo" width={78} height={48} />
           </div>
-
           <button onClick={onClickSignUp} className="blue__btn f__14 w__600 l__20 c__ffffff">
             로그인 하기
           </button>

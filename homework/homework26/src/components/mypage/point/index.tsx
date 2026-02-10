@@ -41,7 +41,6 @@ export default function PointUI() {
           판매내역
         </button>
       </div>
-
       <div className="column__sort gap__24 list__section">
         <div className="column__sort gap__8">
           <div className="row__sort detail__title__section">
@@ -54,7 +53,6 @@ export default function PointUI() {
                   {active === "total" ? "내용" : active === "charge" ? "결제 ID" : "상품 명"}
                 </p>
               </div>
-
               <div className={`${active === "total" ? "flex__grow" : ""} row__sort gap__8`}>
                 <p className={`${active === "total" ? "flex__grow" : "detail__title"} l__20 c__1C1C1C text__center`}>
                   {active === "total" ? "거래 및 충전 내역" : active === "charge" ? "충전내역" : "거래내역"}
@@ -64,7 +62,6 @@ export default function PointUI() {
               </div>
             </div>
           </div>
-
           <div className="column__sort gap__12">
             {arr.map((el, index) => {
               return (
@@ -72,7 +69,6 @@ export default function PointUI() {
                   <div className={`${active !== "total" ? "row__between" : ""} width__100 row__sort gap__8`}>
                     <div className="row__sort gap__8">
                       <p className="f__14 w__300 l__20 c__919191 item__title">2024.12.16</p>
-
                       {active === "charge" ? (
                         <p className="f__14 l__20 c__1C1C1C">abcd1243</p>
                       ) : active !== "total" ? (
@@ -85,7 +81,6 @@ export default function PointUI() {
                         <p className="f__14 w__700 l__20 c__2974E5 item__title">판매</p>
                       )}
                     </div>
-
                     <div className={`${active === "total" ? "flex__grow" : ""} row__sort gap__8`}>
                       {active === "purchase" ? (
                         <p className="f__14 w__700 l__20 c__F66A6A item__title">-1,000,000</p>
@@ -104,7 +99,6 @@ export default function PointUI() {
                           +1,000,000
                         </p>
                       )}
-
                       <p className="f__14 l__20 item__title">1,222,000</p>
                       {active === "purchase" ? <p className="f__14 w__300 l__20 c__333333 item__title">홍길동</p> : ""}
                     </div>
@@ -114,7 +108,6 @@ export default function PointUI() {
             })}
           </div>
         </div>
-
         <PaginationUI />
       </div>
     </div>

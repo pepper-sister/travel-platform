@@ -14,7 +14,6 @@ export default function BoardsDetailUI() {
   return (
     <div className="column__sort gap__24">
       <header className="f__28 w__700 l__36">{data?.fetchBoard.title}</header>
-
       <main className="column__sort gap__24">
         <div className="column__sort gap__16">
           <div className="row__sort row__between column__center">
@@ -56,21 +55,17 @@ export default function BoardsDetailUI() {
             </Tooltip>
           </div>
         </div>
-
         {data?.fetchBoard.images
           ?.filter((el) => el)
           .map((el) => (
             <Image key={el} src={`https://storage.googleapis.com/${el}`} alt="image" width={160} height={160} />
           ))}
-
         <p className="w__400">{data?.fetchBoard.contents}</p>
-
         {data?.fetchBoard.youtubeUrl && (
           <div className={`${styles.youtube} row__sort row__center`}>
             <iframe width="822px" height="464px" src={data?.fetchBoard.youtubeUrl}></iframe>
           </div>
         )}
-
         <div className="row__sort row__center gap__24">
           <div className="column__sort column__center gap__4">
             <HeartBrokenOutlinedIcon className={styles.detail__bad__icon} />
@@ -96,7 +91,6 @@ export default function BoardsDetailUI() {
           <p className="f__14 w__600 l__20 c__000000">수정하기</p>
         </Link>
       </footer>
-
       <div className="div"></div>
     </div>
   );

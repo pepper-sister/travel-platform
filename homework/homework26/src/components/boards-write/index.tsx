@@ -73,7 +73,6 @@ function BoardsWriteUI() {
             )}
           </div>
           <div className="div"></div>
-
           <div className="column__sort gap__8">
             <div className="row__sort gap__4">
               <p className="c__333333">{isPurchase ? "한줄 요약" : "제목"}</p>
@@ -89,7 +88,6 @@ function BoardsWriteUI() {
             />
           </div>
           <div className="div"></div>
-
           <div className="column__sort gap__8">
             <div className="row__sort gap__4">
               <p className="c__333333">{isPurchase ? "상품 설명" : "내용"}</p>
@@ -138,7 +136,6 @@ function BoardsWriteUI() {
           ) : (
             ""
           )}
-
           <div className="row__sort gap__40">
             <div className={`${isPurchase ? styles.purchase__address : "flex"} column__sort gap__40`}>
               <div className="column__sort gap__8">
@@ -228,7 +225,6 @@ function BoardsWriteUI() {
             )}
           </div>
           <div className="div"></div>
-
           {isPurchase ? (
             ""
           ) : (
@@ -247,7 +243,6 @@ function BoardsWriteUI() {
               <div className="div"></div>
             </>
           )}
-
           <div className="column__sort gap__8">
             <div className="row__sort gap__4">
               <p className="c__333333">사진 첨부</p>
@@ -265,7 +260,6 @@ function BoardsWriteUI() {
                   </div>
                 </div>
               )}
-
               <div className={`${styles.img__section} click`} onClick={onClickUpload}>
                 <div className={styles.img}></div>
                 <div className={`${styles.img__upload} column__sort column__center gap__8`}>
@@ -303,7 +297,6 @@ function BoardsWriteUI() {
                 ref={fileRef}
                 accept="image/jpeg,image/png"
               />
-
               {isPurchase ? (
                 ""
               ) : (

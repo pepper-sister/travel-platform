@@ -25,10 +25,8 @@ export default function CommentListItemUI({ el, index }: IFetchCommentItemData) 
                 />
                 <p className="f__14 w__300 c__5F5F5F">{el.writer}</p>
               </div>
-
               <Rate className={styles.comment__star} value={el.rating} disabled={true} />
             </div>
-
             <div className="row__sort gap__8">
               <Image
                 onClick={() => setIsCommentEdit(!isCommentEdit)}
@@ -47,9 +45,7 @@ export default function CommentListItemUI({ el, index }: IFetchCommentItemData) 
               />
             </div>
           </div>
-
           <p className="w__400 c__333333">{el.contents}</p>
-
           <p className="f__14 w__400 c__818181">{el.createdAt.slice(0, 10)}</p>
         </div>
       ) : (

@@ -9,7 +9,6 @@ export const usePagination = () => {
   const [startPage, setStartPage] = useState(1);
   const [activePage, setActivePage] = useState(1);
   const { endDate, startDate, search, setPage } = useBoardsListStore();
-
   const { data } = useQuery(FetchBoardsCountDocument, {
     variables: {
       endDate: endDate,
@@ -17,7 +16,6 @@ export const usePagination = () => {
       search: search,
     },
   });
-
   const lastPage = Math.ceil((data?.fetchBoardsCount ?? 10) / 10);
 
   const onClickPage = (event: MouseEvent<HTMLSpanElement>) => {

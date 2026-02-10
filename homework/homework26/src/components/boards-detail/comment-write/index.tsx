@@ -17,9 +17,7 @@ export default function CommentWriteUI(props: ICommentEditProps) {
           <p className="w__600">댓글</p>
         </div>
       )}
-
       <Rate className={styles.comment__star} value={rate} onChange={setRate} />
-
       <div className="column__sort column__right gap__16">
         <div className="column__sort width__100 gap__16">
           <div className={`${styles.comment__input__section} row__sort gap__16`}>
@@ -28,7 +26,6 @@ export default function CommentWriteUI(props: ICommentEditProps) {
                 <p className="c__333333">작성자</p>
                 <p className="c__F66A6A">*</p>
               </div>
-
               <input
                 id="writer"
                 type="text"
@@ -39,13 +36,11 @@ export default function CommentWriteUI(props: ICommentEditProps) {
                 disabled={isCommentEdit}
               />
             </div>
-
             <div className="width__100 column__sort gap__8">
               <div className="row__sort gap__4">
                 <p className="c__333333">비밀번호</p>
                 <p className="c__F66A6A">*</p>
               </div>
-
               <input
                 id="password"
                 type="password"
@@ -72,10 +67,8 @@ export default function CommentWriteUI(props: ICommentEditProps) {
             </p>
           </div>
         </div>
-
         <div className="row__sort gap__16">
           {isCommentEdit && <button className={`${styles.white__btn} white__btn f__18 w__400`}>취소</button>}
-
           <button
             disabled={!isActive}
             onClick={!isCommentEdit ? onClickSubmit : onClickUpdateComment}

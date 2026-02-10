@@ -14,13 +14,11 @@ export default function BoardsListUI() {
           <p className={`${styles.list__subtitle__64} l__20 c__1C1C1C`}>번호</p>
           <p className="l__20 c__1C1C1C">제목</p>
         </div>
-
         <div className="row__sort gap__8">
           <p className={`${styles.list__subtitle__100} l__20 c__1C1C1C`}>작성자</p>
           <p className={`${styles.list__subtitle__100} l__20 c__1C1C1C`}>날짜</p>
         </div>
       </div>
-
       <div className="column__sort gap__12">
         {data?.fetchBoards.map((el, index) => (
           <div
@@ -41,7 +39,6 @@ export default function BoardsListUI() {
                   ))}
               </p>
             </div>
-
             <div className="row__sort gap__8">
               <p className={`${styles.list__subtitle__100} f__14 w__300 l__20 c__333333`}>{el.writer}</p>
               <p className={`${styles.list__subtitle__100} f__14 w__300 l__20 c__919191`}>

@@ -13,10 +13,8 @@ function MyPageUI() {
     <div className="body__sort">
       <div className="body column__sort gap__40">
         <h1 className="f__28 w__700 l__36">마이페이지</h1>
-
         <div className={`${styles.myinfo} column__sort gap__12`}>
           <h2 className="f__18 w__600">내 정보</h2>
-
           <div className="row__sort column__center gap__4">
             <Image
               src="/images/mypage/profile.jpg"
@@ -28,7 +26,6 @@ function MyPageUI() {
             <p className="l__20 c__333333">김상훈</p>
           </div>
           <div className="div" />
-
           <div className="row__sort column__center gap__8">
             <Image src="/images/mypage/wallet.png" alt="지갑" width={24} height={24} />
             <div className="row__sort gap__4">
@@ -37,7 +34,6 @@ function MyPageUI() {
             </div>
           </div>
           <div className="div" />
-
           <div className="column__sort gap__8">
             <div
               onClick={() => {
@@ -50,7 +46,6 @@ function MyPageUI() {
               <p className={active === "bookmark" ? "w__600" : "w__400"}>거래내역&북마크</p>
               <Image src="/images/mypage/right_arrow.png" alt="right" width={20} height={20} />
             </div>
-
             <div
               onClick={() => {
                 setActive("point");
@@ -62,7 +57,6 @@ function MyPageUI() {
               <p className={active === "point" ? "w__600" : "w__400"}>포인트 사용 내역</p>
               <Image src="/images/mypage/right_arrow.png" alt="right" width={20} height={20} />
             </div>
-
             <div
               onClick={() => {
                 setActive("password");
@@ -76,7 +70,6 @@ function MyPageUI() {
             </div>
           </div>
         </div>
-
         {active === "bookmark" ? <BookMarkUI /> : active === "point" ? <PointUI /> : <PasswordUI />}
       </div>
     </div>

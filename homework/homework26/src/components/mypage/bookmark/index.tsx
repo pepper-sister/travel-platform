@@ -27,7 +27,6 @@ export default function BookMarkUI() {
           북마크
         </button>
       </div>
-
       <div className="row__sort row__end gap__16">
         <div className={`${styles.search__section} row__sort gap__8`}>
           <Image src="/images/mypage/search.png" alt="검색" width={24} height={24} />
@@ -35,21 +34,18 @@ export default function BookMarkUI() {
         </div>
         <button className={`${styles.search__btn} click`}>검색</button>
       </div>
-
       <div className="column__sort gap__8 list__section detail__section">
         <div className="row__sort row__between detail__title__section">
           <div className="row__sort gap__8">
             <p className={styles.detail__num}>번호</p>
             <p className="l__20 c__1C1C1C">상품 명</p>
           </div>
-
           <div className="row__sort gap__8">
             <p className="detail__title">판매가격</p>
             {bookmark ? <p className="detail__title">판매자</p> : ""}
             <p className="detail__title">날짜</p>
           </div>
         </div>
-
         <InfiniteScroll
           className="column__sort gap__12"
           next={() => {}}
@@ -73,7 +69,6 @@ export default function BookMarkUI() {
                     ""
                   )}
                 </div>
-
                 <div className="row__sort gap__8">
                   <p className="f__14 w__300 l__20 c__333333 item__title">326,000원</p>
                   {bookmark ? <p className="f__14 w__300 l__20 c__333333 item__title">홍길동</p> : ""}

@@ -43,7 +43,6 @@ export default function PurchaseDetailUI() {
                 : "\u00A0"}
             </h3>
           </div>
-
           <div className="row__sort gap__24">
             <Image
               src={
@@ -56,7 +55,6 @@ export default function PurchaseDetailUI() {
               height={480}
               style={{ objectFit: "cover", borderRadius: "8px" }}
             />
-
             <div className={`${styles.product__img__section} column__sort gap__16`}>
               {productImages.map((el, index) => {
                 return (
@@ -76,7 +74,6 @@ export default function PurchaseDetailUI() {
                 );
               })}
             </div>
-
             <div className="flex column__sort gap__24">
               <div className={`${styles.price__section} column__sort gap__20`}>
                 <div className="column__sort gap__8">
@@ -109,34 +106,28 @@ export default function PurchaseDetailUI() {
           </div>
         </div>
         <div className="div"></div>
-
         <div className="column__sort gap__16">
           <h3 className="f__20 w__700 l__28 c__333333">상세 설명</h3>
           <p className="w__400 c__333333">{data?.fetchTravelproduct.contents}</p>
         </div>
         <div className="div"></div>
-
         <div className="column__sort gap__16">
           <h3 className="f__20 w__700 l__28 c__333333">상세 위치</h3>
           <div className={styles.product__location}></div>
         </div>
-
         <div className="column__sort gap__24">
           <div className="row__sort gap__8">
             <Image src="/images/purchase-detail/chat.png" alt="chat" width={24} height={24} />
             <p className="w__600">문의하기</p>
           </div>
-
           <div className="column__sort column__right gap__16">
             <div className={`${styles.textarea__section} width__100 column__sort`}>
               <textarea className={styles.textarea} placeholder="문의사항을 입력해 주세요." maxLength={100} />
               <p className={`${styles.textarea__count} c__ABABAB`}>/100</p>
             </div>
-
             <button className={`${styles.qna__btn} black__btn c__ffffff`}>문의 하기</button>
           </div>
         </div>
-
         <div className="row__sort row__center">
           <p className="f__14 w__400 l__20 c__777777">등록된 문의사항이 없습니다.</p>
         </div>

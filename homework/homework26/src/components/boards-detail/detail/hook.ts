@@ -6,7 +6,6 @@ import { FetchBoardDocument } from "@/commons/graphql/graphql";
 
 export const useBoardsDetail = () => {
   const params = useParams();
-
   const { data } = useQuery(FetchBoardDocument, {
     variables: { boardId: String(params.boardId) },
   });

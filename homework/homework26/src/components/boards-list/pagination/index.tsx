@@ -1,4 +1,3 @@
-import styles from "./styles.module.css";
 import { usePagination } from "./hook";
 
 export default function PaginationUI() {
@@ -12,9 +11,7 @@ export default function PaginationUI() {
           (_, index) =>
             index + startPage <= lastPage && (
               <span
-                className={`${styles.pagination__number} ${
-                  activePage === index + startPage ? "bg__F2F2F2 c__000000" : "c__777777"
-                } l__32 click`}
+                className={`${activePage === index + startPage ? "bg__F2F2F2 c__000000" : "c__777777"} l__32 click pagination__number`}
                 key={index + startPage}
                 id={String(index + startPage)}
                 onClick={onClickPage}

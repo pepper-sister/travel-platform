@@ -6,14 +6,13 @@ import { CreateUserDocument, LoginUserDocument } from "@/commons/graphql/graphql
 import { useLoginStore } from "@/commons/stores/login";
 
 export const useSign = () => {
+  const router = useRouter();
+  const { setAccessToken } = useAccessTokenStore();
+  const { setIsLoggedIn } = useLoginStore();
   const [isSignUp, setIsSignUp] = useState(false);
   const [input, setInput] = useState({ email: "", name: "", password: "", passwordCheck: "" });
   const [error, setError] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const router = useRouter();
-  const { setAccessToken } = useAccessTokenStore();
-  const { setIsLoggedIn } = useLoginStore();
   const [loginUser] = useMutation(LoginUserDocument);
   const [createUserInput] = useMutation(CreateUserDocument);
 

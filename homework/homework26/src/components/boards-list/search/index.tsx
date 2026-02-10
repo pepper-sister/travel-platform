@@ -7,7 +7,6 @@ import { DatePicker } from "antd";
 
 export default function SearchUI(props: ISearchProps) {
   const { onChangedate, onChangeSearch, onClickSearch } = useSearch(props);
-
   const { RangePicker } = DatePicker;
   const dateFormat = "YYYY/MM/DD";
 
@@ -23,14 +22,11 @@ export default function SearchUI(props: ISearchProps) {
             placeholder="제목을 검색해 주세요."
           />
         </div>
-
         <RangePicker className={styles.search__date} format={dateFormat} onChange={onChangedate} />
-
         <button className={styles.black__btn} onClick={onClickSearch}>
           검색
         </button>
       </div>
-
       <Link href="/boards/new" className={`${styles.blue__btn} row__sort gap__8`}>
         <Image src="/images/boards-list/write.png" className={styles.write__icon} alt="작성" width={24} height={24} />
         {props.isBoard ? "트립토크 등록" : "숙박권 판매하기"}
