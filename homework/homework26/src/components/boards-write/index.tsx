@@ -3,13 +3,13 @@
 import Image from "next/image";
 import styles from "./styles.module.css";
 import { useBoardsWrite } from "./hook";
-import { IBoardWriteData } from "./types";
 import DaumPostcodeEmbed from "react-daum-postcode";
 import { Modal } from "antd";
 import { usePurchaseStore } from "@/commons/stores/purchase";
 import { withLogin } from "@/commons/hocs/withLogin";
+import { useBoardsWriteStore } from "@/commons/stores/boards-write";
 
-function BoardsWriteUI(props: IBoardWriteData) {
+function BoardsWriteUI() {
   const {
     form,
     isModalOpen,
@@ -25,14 +25,15 @@ function BoardsWriteUI(props: IBoardWriteData) {
     onClickDelete,
     onClickSubmit,
     onClickUpdate,
-  } = useBoardsWrite(props);
+  } = useBoardsWrite();
+  const { isBoardEdit } = useBoardsWriteStore();
   const { isPurchase } = usePurchaseStore();
 
   return (
     <div className="body__sort">
       <div className="body column__sort gap__40">
         <header className="f__20 w__700 l__28">
-          {isPurchase ? "숙박권 판매하기" : `게시물 ${props.isEdit ? "수정" : "등록"}`}
+          {isPurchase ? "숙박권 판매하기" : `게시물 ${isBoardEdit ? "수정" : "등록"}`}
         </header>
 
         <main className="column__sort gap__40">
@@ -43,13 +44,13 @@ function BoardsWriteUI(props: IBoardWriteData) {
                 <p className="c__F66A6A">*</p>
               </div>
               <input
-                className={`${styles.input__text} ${props.isEdit ? "bg__F2F2F2" : ""}`}
+                className={`${styles.input__text} ${isBoardEdit ? "bg__F2F2F2" : ""}`}
                 id={isPurchase ? "name" : "writer"}
                 type="text"
                 placeholder={isPurchase ? "상품명을 입력해 주세요." : "작성자 명을 입력해 주세요."}
                 onChange={onChangeForm}
                 defaultValue={isPurchase ? form.name : form.writer}
-                disabled={props.isEdit}
+                disabled={isBoardEdit}
               />
             </div>
             {isPurchase ? (
@@ -61,12 +62,12 @@ function BoardsWriteUI(props: IBoardWriteData) {
                   <p className="c__F66A6A">*</p>
                 </div>
                 <input
-                  className={`${styles.input__text} ${props.isEdit ? "bg__F2F2F2" : ""}`}
+                  className={`${styles.input__text} ${isBoardEdit ? "bg__F2F2F2" : ""}`}
                   id="password"
                   type="password"
                   placeholder="비밀번호를 입력해 주세요."
                   onChange={onChangeForm}
-                  disabled={props.isEdit}
+                  disabled={isBoardEdit}
                 />
               </div>
             )}
@@ -324,9 +325,9 @@ function BoardsWriteUI(props: IBoardWriteData) {
             <button
               className={`${styles.blue__btn} click f__18 w__600 c__ffffff`}
               disabled={isActive}
-              onClick={props.isEdit ? () => onClickUpdate(data?.fetchBoard._id ?? "") : onClickSubmit}
+              onClick={isBoardEdit ? () => onClickUpdate(data?.fetchBoard._id ?? "") : onClickSubmit}
             >
-              {props.isEdit ? "수정" : "등록"}하기
+              {isBoardEdit ? "수정" : "등록"}하기
             </button>
           </div>
         </footer>

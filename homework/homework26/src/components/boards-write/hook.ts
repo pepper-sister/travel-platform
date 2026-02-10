@@ -12,10 +12,11 @@ import {
 } from "@/commons/graphql/graphql";
 import { Modal } from "antd";
 import { Address } from "react-daum-postcode";
-import { IBoardWriteData } from "./types";
 import { usePurchaseStore } from "@/commons/stores/purchase";
+import { useBoardsWriteStore } from "@/commons/stores/boards-write";
 
-export const useBoardsWrite = (props: IBoardWriteData) => {
+export const useBoardsWrite = () => {
+  const { isBoardEdit } = useBoardsWriteStore();
   const [form, setForm] = useState({
     writer: "",
     password: "",
@@ -42,7 +43,7 @@ export const useBoardsWrite = (props: IBoardWriteData) => {
   });
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { isPurchase } = usePurchaseStore();
-  const isActive = props.isEdit
+  const isActive = isBoardEdit
     ? !form.title || !form.contents
     : isPurchase
       ? !form.name ||
@@ -69,12 +70,12 @@ export const useBoardsWrite = (props: IBoardWriteData) => {
   });
 
   useEffect(() => {
-    if (!data?.fetchBoard) return;
+    if (!data?.fetchBoard || isPurchase) return;
 
     const board = data.fetchBoard;
     if (!isPurchase) {
-      setForm({
-        ...form,
+      setForm((prev) => ({
+        ...prev,
         writer: board.writer ?? "",
         password: "",
         title: board.title ?? "",
@@ -86,9 +87,9 @@ export const useBoardsWrite = (props: IBoardWriteData) => {
         },
         youtubeUrl: board.youtubeUrl ?? "",
         images: board.images?.[0] ?? "",
-      });
+      }));
     }
-  }, [data]);
+  }, [data?.fetchBoard, isPurchase]);
 
   const onToggleModal = () => {
     setIsModalOpen((prev) => !prev);
