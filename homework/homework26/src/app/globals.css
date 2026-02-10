@@ -67,6 +67,9 @@ button {
   width: 1280px;
   padding: 20px 20px;
 }
+.padding__8__16 {
+  padding: 8px 16px;
+}
 
 /* row 정렬 */
 .row__sort {

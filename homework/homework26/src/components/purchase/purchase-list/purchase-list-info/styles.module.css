@@ -1,0 +1,9 @@
+.lodging__txt {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.profile__img {
+  border-radius: 100%;
+}

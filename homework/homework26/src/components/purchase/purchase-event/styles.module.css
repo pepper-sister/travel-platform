@@ -1,0 +1,26 @@
+.event__section {
+  position: relative;
+  background-color: #cccbb4;
+  overflow: hidden;
+  max-height: 240px;
+  border-radius: 16px;
+}
+.event__img {
+  position: relative;
+  width: 40%;
+  aspect-ratio: 1 / 1;
+}
+.event__cover {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(204, 203, 180, 0) 63.44%, #cccbb4 88.18%);
+}
+
+.event__txt__section {
+  padding: 48px;
+}
+.event__txt {
+  padding: 8px 16px;
+  border-radius: 8px;
+  background-color: #abaa8c;
+}
