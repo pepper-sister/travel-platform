@@ -1,0 +1,18 @@
+.price__section {
+  border: 1px solid #e4e4e4;
+  border-radius: 8px;
+  padding: 24px;
+}
+.price__txt {
+  list-style-position: inside;
+}
+
+.seller__section {
+  border-radius: 8px;
+  background-color: #f2f2f2;
+  padding: 24px;
+}
+.purchase__profile {
+  border-radius: 100%;
+  object-fit: cover;
+}

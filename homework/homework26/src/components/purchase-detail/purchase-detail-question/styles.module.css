@@ -1,0 +1,18 @@
+.textarea__section {
+  position: relative;
+}
+.textarea {
+  height: 144px;
+  border: 1px solid #d4d3d3;
+  border-radius: 8px;
+  padding: 12px 16px;
+  resize: none;
+}
+.textarea__count {
+  position: absolute;
+  right: 16px;
+  bottom: 12px;
+}
+.qna__btn {
+  padding: 12px 16px;
+}
