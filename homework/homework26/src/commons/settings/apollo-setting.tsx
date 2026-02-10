@@ -23,7 +23,7 @@ export default function ApolloSetting(props: IApolloSetting) {
   }, [setAccessToken, setIsLoggedIn]);
 
   const uploadLink = new UploadHttpLink({
-    uri: "http://main-practice.codebootcamp.co.kr/graphql",
+    uri: "https://main-practice.codebootcamp.co.kr/graphql",
     headers: { Authorization: `Bearer ${accessToken}` },
   });
 
