@@ -4,7 +4,7 @@ import { Rate } from "antd";
 import { useCommentWrite } from "./hook";
 import { ICommentEditProps } from "./types";
 
-export default function CommentWriteUI(props: ICommentEditProps) {
+export default function BoardsCommentWriteUI(props: ICommentEditProps) {
   const { rate, setRate, form, isActive, onChangeForm, onClickSubmit } = useCommentWrite(props);
 
   return (
