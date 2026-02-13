@@ -17,7 +17,7 @@ export default function Banner() {
         return (
           <SwiperSlide key={index} className={styles.banner__style}>
             <Image
-              src={`images/banner/banner${index + 1}.png`}
+              src={`/images/banner/banner${index + 1}.png`}
               className={`${styles.banner__image} width__100`}
               alt="배너이미지"
               width={0}
