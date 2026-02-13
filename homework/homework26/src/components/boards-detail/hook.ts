@@ -1,5 +1,3 @@
-"use client";
-
 import { useQuery } from "@apollo/client/react";
 import { useParams } from "next/navigation";
 import { FetchBoardDocument } from "@/commons/graphql/graphql";
