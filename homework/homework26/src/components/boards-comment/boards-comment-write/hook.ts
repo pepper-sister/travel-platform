@@ -2,6 +2,7 @@ import { ChangeEvent, useState } from "react";
 import { useMutation } from "@apollo/client/react";
 import { CreateBoardCommentDocument } from "@/commons/graphql/graphql";
 import { useParams } from "next/navigation";
+import { usePurchaseStore } from "@/commons/stores/purchase";
 
 export const useBoardsCommentWrite = () => {
   const params = useParams();
@@ -11,7 +12,8 @@ export const useBoardsCommentWrite = () => {
     password: "",
     contents: "",
   });
-  const isActive = form.writer && form.password && form.contents;
+  const { isPurchase } = usePurchaseStore();
+  const isActive = isPurchase ? form.contents : form.writer && form.password && form.contents;
 
   const [createBoardComment] = useMutation(CreateBoardCommentDocument);
 
