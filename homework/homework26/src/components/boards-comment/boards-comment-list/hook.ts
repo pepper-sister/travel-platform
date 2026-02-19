@@ -1,11 +1,9 @@
-"use client";
-
 import { FetchBoardCommentsDocument } from "@/commons/graphql/graphql";
 import { useQuery } from "@apollo/client/react";
 import { useParams } from "next/navigation";
 import { useState } from "react";
 
-export const useCommentList = () => {
+export const useBoardsCommentList = () => {
   const params = useParams();
   const [hasMore, setHasMore] = useState(true);
   const { data, fetchMore } = useQuery(FetchBoardCommentsDocument, {
@@ -13,7 +11,7 @@ export const useCommentList = () => {
   });
 
   const onNext = () => {
-    if (data === undefined) return;
+    if (!data) return;
 
     fetchMore({
       variables: {

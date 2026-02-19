@@ -1,9 +1,9 @@
 import BoardsCommentItemUI from "../boards-comment-item";
-import { useCommentList } from "./hook";
 import InfiniteScroll from "react-infinite-scroll-component";
+import { useBoardsCommentList } from "./hook";
 
 export default function BoardsCommentListUI() {
-  const { data, onNext, hasMore } = useCommentList();
+  const { data, onNext, hasMore } = useBoardsCommentList();
 
   return (
     <InfiniteScroll
