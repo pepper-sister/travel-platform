@@ -1,6 +1,6 @@
 import { FetchBoardCommentsQuery, FetchTravelproductQuestionsQuery } from "@/commons/graphql/graphql";
 
-export interface IFetchCommentItemData {
+export interface IFetchItemData {
   el:
     | FetchBoardCommentsQuery["fetchBoardComments"][0]
     | FetchTravelproductQuestionsQuery["fetchTravelproductQuestions"][0];

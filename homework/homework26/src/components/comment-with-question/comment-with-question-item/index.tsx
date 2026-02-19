@@ -1,20 +1,20 @@
 import Image from "next/image";
 import { Rate } from "antd";
 import styles from "./styles.module.css";
-import { IFetchCommentItemData } from "./types";
-import BoardsCommentEditUI from "../boards-comment-edit";
-import { useBoardsCommentItem } from "./hook";
+import { IFetchItemData } from "./types";
+import { useCommentWithQuestionItem } from "./hook";
 import { usePurchaseStore } from "@/commons/stores/purchase";
+import CommentWithQuestionEditUI from "../comment-with-question-edit";
 
-export default function BoardsCommentItemUI({ el, index }: IFetchCommentItemData) {
-  const { isEdit, setIsEdit } = useBoardsCommentItem();
+export default function CommentWithQuestionItemUI({ el, index }: IFetchItemData) {
+  const { isEdit, setIsEdit } = useCommentWithQuestionItem();
   const { isPurchase } = usePurchaseStore();
 
   return (
     <div className="width__100 column__sort gap__40">
       {index !== 0 && <div className={`${styles.div__line} div`}></div>}
       {isEdit && !isPurchase ? (
-        <BoardsCommentEditUI el={el} isEdit={isEdit} setIsEdit={setIsEdit} />
+        <CommentWithQuestionEditUI el={el} isEdit={isEdit} setIsEdit={setIsEdit} />
       ) : (
         <div className="column__sort gap__40">
           <div className="column__sort gap__8">
@@ -49,7 +49,7 @@ export default function BoardsCommentItemUI({ el, index }: IFetchCommentItemData
             <p className="w__400 c__333333">{el.contents}</p>
             <p className="f__14 w__400 c__818181">{el.createdAt.slice(0, 10)}</p>
           </div>
-          {isEdit && isPurchase ? <BoardsCommentEditUI el={el} isEdit={isEdit} setIsEdit={setIsEdit} /> : ""}
+          {isEdit && isPurchase ? <CommentWithQuestionEditUI el={el} isEdit={isEdit} setIsEdit={setIsEdit} /> : ""}
         </div>
       )}
     </div>

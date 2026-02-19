@@ -4,7 +4,7 @@ import { useQuery } from "@apollo/client/react";
 import { useParams, usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
-export const useBoardsCommentList = () => {
+export const useCommentWithQuestionList = () => {
   const [hasMore, setHasMore] = useState(true);
   const params = useParams();
   const pathname = usePathname();

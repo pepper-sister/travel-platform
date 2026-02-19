@@ -4,7 +4,7 @@ import { CreateBoardCommentDocument, CreateTravelproductQuestionDocument } from 
 import { useParams } from "next/navigation";
 import { usePurchaseStore } from "@/commons/stores/purchase";
 
-export const useBoardsCommentWrite = () => {
+export const useCommentWithQuestionWrite = () => {
   const params = useParams();
   const [rate, setRate] = useState(3);
   const [form, setForm] = useState({

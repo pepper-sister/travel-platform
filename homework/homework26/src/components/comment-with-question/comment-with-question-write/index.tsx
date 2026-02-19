@@ -1,19 +1,19 @@
-import { Rate } from "antd";
+import Image from "next/image";
 import styles from "./styles.module.css";
-import { useBoardsCommentEdit } from "./hook";
-import { ICommentEditProps } from "./types";
+import { Rate } from "antd";
+import { useCommentWithQuestionWrite } from "./hook";
 import { usePurchaseStore } from "@/commons/stores/purchase";
 
-export default function BoardsCommentEditUI({ el, isEdit, setIsEdit }: ICommentEditProps) {
-  const { rate, setRate, form, isActive, onChangeForm, onClickUpdateComment } = useBoardsCommentEdit({
-    el,
-    isEdit,
-    setIsEdit,
-  });
+export default function CommentWithQuestionWriteUI() {
+  const { rate, setRate, form, isActive, onChangeForm, onClickSubmit } = useCommentWithQuestionWrite();
   const { isPurchase } = usePurchaseStore();
 
   return (
-    <div className="column__sort gap__24">
+    <div className="padding__40__0 column__sort gap__24">
+      <div className="row__sort gap__8">
+        <Image src="/images/boards-detail/chat.png" alt="chat" width={24} height={24} />
+        <p className="w__600">{isPurchase ? "문의하기" : "댓글"}</p>
+      </div>
       {isPurchase ? (
         ""
       ) : (
@@ -29,7 +29,14 @@ export default function BoardsCommentEditUI({ el, isEdit, setIsEdit }: ICommentE
                 <p className="c__333333">작성자</p>
                 <p className="c__F66A6A">*</p>
               </div>
-              <input disabled={true} className={`${styles.comment__input} input__border`} value={form.writer ?? ""} />
+              <input
+                id="writer"
+                type="text"
+                onChange={onChangeForm}
+                className={`${styles.comment__input} input__border`}
+                placeholder="작성자 명을 입력해 주세요."
+                value={form.writer ?? ""}
+              />
             </div>
             <div className="width__100 column__sort gap__8">
               <div className="row__sort gap__4">
@@ -62,18 +69,13 @@ export default function BoardsCommentEditUI({ el, isEdit, setIsEdit }: ICommentE
               /100
             </p>
           </div>
-          <div className="row__sort gap__16">
-            <button onClick={() => setIsEdit(!isEdit)} className="white__btn br__8 padding__12__16">
-              취소
-            </button>
-            <button
-              disabled={!isActive}
-              onClick={onClickUpdateComment}
-              className={`${styles.edit__btn} bg__000000 br__8 padding__12__16 click f__18 w__600 c__ffffff`}
-            >
-              수정 하기
-            </button>
-          </div>
+          <button
+            disabled={!isActive}
+            onClick={onClickSubmit}
+            className={`${styles.submit__btn} bg__000000 br__8 padding__12__16 click f__18 w__600 c__ffffff`}
+          >
+            {isPurchase ? "문의 하기" : "댓글 등록"}
+          </button>
         </div>
       </div>
     </div>

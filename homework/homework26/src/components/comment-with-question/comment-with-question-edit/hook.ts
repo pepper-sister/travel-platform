@@ -1,10 +1,10 @@
 import { ChangeEvent, useState } from "react";
 import { useMutation } from "@apollo/client/react";
 import { UpdateBoardCommentDocument, UpdateTravelproductQuestionDocument } from "@/commons/graphql/graphql";
-import { ICommentEditProps } from "./types";
+import { IEditProps } from "./types";
 import { usePurchaseStore } from "@/commons/stores/purchase";
 
-export const useBoardsCommentEdit = (props: ICommentEditProps) => {
+export const useCommentWithQuestionEdit = (props: IEditProps) => {
   const [rate, setRate] = useState("rating" in props.el ? props.el.rating : 0);
   const [form, setForm] = useState({
     writer: "writer" in props.el ? (props.el.writer ?? "") : "",

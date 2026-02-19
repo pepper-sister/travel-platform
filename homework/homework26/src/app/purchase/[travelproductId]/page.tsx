@@ -1,7 +1,7 @@
 "use client";
 
-import BoardsCommentListUI from "@/components/boards-comment/boards-comment-list";
-import BoardsCommentWriteUI from "@/components/boards-comment/boards-comment-write";
+import CommentWithQuestionListUI from "@/components/comment-with-question/comment-with-question-list";
+import CommentWithQuestionWriteUI from "@/components/comment-with-question/comment-with-question-write";
 import PurchaseDetailContentsUI from "@/components/purchase-detail/purchase-detail-contents";
 import PurchaseDetailImageUI from "@/components/purchase-detail/purchase-detail-image";
 import PurchaseDetailSellerUI from "@/components/purchase-detail/purchase-detail-seller";
@@ -19,8 +19,8 @@ export default function PurchaseDetail() {
           </div>
         </div>
         <PurchaseDetailContentsUI />
-        <BoardsCommentWriteUI />
-        <BoardsCommentListUI />
+        <CommentWithQuestionWriteUI />
+        <CommentWithQuestionListUI />
       </div>
     </div>
   );

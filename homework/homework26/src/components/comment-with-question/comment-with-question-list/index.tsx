@@ -1,10 +1,10 @@
-import BoardsCommentItemUI from "../boards-comment-item";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { useBoardsCommentList } from "./hook";
+import { useCommentWithQuestionList } from "./hook";
 import { usePurchaseStore } from "@/commons/stores/purchase";
+import CommentWithQuestionItemUI from "../comment-with-question-item";
 
-export default function BoardsCommentListUI() {
-  const { data, onNext, hasMore } = useBoardsCommentList();
+export default function CommentWithQuestionListUI() {
+  const { data, onNext, hasMore } = useCommentWithQuestionList();
   const { isPurchase } = usePurchaseStore();
 
   return (
@@ -16,7 +16,7 @@ export default function BoardsCommentListUI() {
       dataLength={data?.length ?? 0}
     >
       {data && data.length > 0 ? (
-        data?.map((el, index) => <BoardsCommentItemUI key={el._id} el={el} index={index} />)
+        data?.map((el, index) => <CommentWithQuestionItemUI key={el._id} el={el} index={index} />)
       ) : (
         <p className="f__14 w__400 l__20 c__777777">
           {isPurchase ? "등록된 문의사항이 없습니다." : "등록된 댓글이 없습니다."}
