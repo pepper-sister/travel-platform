@@ -1,18 +1,21 @@
 import { ChangeEvent, useState } from "react";
 import { useMutation } from "@apollo/client/react";
-import { UpdateBoardCommentDocument } from "@/commons/graphql/graphql";
+import { UpdateBoardCommentDocument, UpdateTravelproductQuestionDocument } from "@/commons/graphql/graphql";
 import { ICommentEditProps } from "./types";
+import { usePurchaseStore } from "@/commons/stores/purchase";
 
 export const useBoardsCommentEdit = (props: ICommentEditProps) => {
-  const [rate, setRate] = useState(props.el.rating);
+  const [rate, setRate] = useState("rating" in props.el ? props.el.rating : 0);
   const [form, setForm] = useState({
-    writer: props.el.writer,
+    writer: "writer" in props.el ? (props.el.writer ?? "") : "",
     password: "",
-    contents: props.el.contents,
+    contents: props.el.contents ?? "",
   });
-  const isActive = form.password && form.contents;
+  const { isPurchase } = usePurchaseStore();
+  const isActive = isPurchase ? form.contents : form.password && form.contents;
 
   const [updateBoardComment] = useMutation(UpdateBoardCommentDocument);
+  const [updateTravelproductQuestion] = useMutation(UpdateTravelproductQuestionDocument);
 
   const onChangeForm = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm((prev) => ({ ...prev, [event.target.id]: event.target.value }));
@@ -20,17 +23,29 @@ export const useBoardsCommentEdit = (props: ICommentEditProps) => {
 
   const onClickUpdateComment = async () => {
     try {
-      await updateBoardComment({
-        variables: {
-          updateBoardCommentInput: {
-            contents: form.contents,
-            rating: rate,
+      if (isPurchase) {
+        await updateTravelproductQuestion({
+          variables: {
+            updateTravelproductQuestionInput: {
+              contents: form.contents,
+            },
+            travelproductQuestionId: props.el?._id ?? "",
           },
-          password: String(form.password),
-          boardCommentId: props.el?._id ?? "",
-        },
-      });
-      props.setIsEdit(!props.isEdit);
+        });
+        props.setIsEdit(!props.isEdit);
+      } else {
+        await updateBoardComment({
+          variables: {
+            updateBoardCommentInput: {
+              contents: form.contents,
+              rating: rate,
+            },
+            password: String(form.password),
+            boardCommentId: props.el?._id ?? "",
+          },
+        });
+        props.setIsEdit(!props.isEdit);
+      }
     } catch (error) {
       alert(error);
     }

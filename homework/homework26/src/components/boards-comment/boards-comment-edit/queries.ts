@@ -30,3 +30,30 @@ export const UPDATE_COMMENT = gql`
     }
   }
 `;
+
+export const UPDATE_QUESTION = gql`
+  mutation updateTravelproductQuestion(
+    $updateTravelproductQuestionInput: UpdateTravelproductQuestionInput!
+    $travelproductQuestionId: ID!
+  ) {
+    updateTravelproductQuestion(
+      updateTravelproductQuestionInput: $updateTravelproductQuestionInput
+      travelproductQuestionId: $travelproductQuestionId
+    ) {
+      _id
+      contents
+      user {
+        _id
+        email
+        name
+        picture
+        createdAt
+        updatedAt
+        deletedAt
+      }
+      createdAt
+      updatedAt
+      deletedAt
+    }
+  }
+`;
