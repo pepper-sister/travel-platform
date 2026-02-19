@@ -1,9 +1,7 @@
 import Image from "next/image";
-import { useState } from "react";
+import { IInfoProps } from "./types";
 
-export default function InfoUI() {
-  const [active, setActive] = useState("bookmark");
-
+export default function InfoUI({ active, setActive }: IInfoProps) {
   return (
     <div className="br__8 padding__24 border__E4E4E4 column__sort gap__12">
       <h2 className="f__18 w__600">내 정보</h2>
