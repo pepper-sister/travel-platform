@@ -22,3 +22,24 @@ export const FETCH_COMMENT = gql`
     }
   }
 `;
+
+export const FETCH_QUESTION = gql`
+  query fetchTravelproductQuestions($page: Int, $travelproductId: ID!) {
+    fetchTravelproductQuestions(page: $page, travelproductId: $travelproductId) {
+      _id
+      contents
+      user {
+        _id
+        email
+        name
+        picture
+        createdAt
+        updatedAt
+        deletedAt
+      }
+      createdAt
+      updatedAt
+      deletedAt
+    }
+  }
+`;
