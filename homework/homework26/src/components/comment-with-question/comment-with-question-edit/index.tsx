@@ -1,8 +1,8 @@
 import { Rate } from "antd";
 import styles from "./styles.module.css";
 import { IEditProps } from "./types";
-import { usePurchaseStore } from "@/commons/stores/purchase";
 import { useCommentWithQuestionEdit } from "./hook";
+import { useVoucherStore } from "@/commons/stores/voucher";
 
 export default function CommentWithQuestionEditUI({ el, isEdit, setIsEdit }: IEditProps) {
   const { rate, setRate, form, isActive, onChangeForm, onClickUpdateComment } = useCommentWithQuestionEdit({
@@ -10,17 +10,13 @@ export default function CommentWithQuestionEditUI({ el, isEdit, setIsEdit }: IEd
     isEdit,
     setIsEdit,
   });
-  const { isPurchase } = usePurchaseStore();
+  const { isVoucher } = useVoucherStore();
 
   return (
     <div className="column__sort gap__24">
-      {isPurchase ? (
-        ""
-      ) : (
-        <Rate className={`${styles.comment__star} row__sort gap__8`} value={rate} onChange={setRate} />
-      )}
+      {isVoucher ? "" : <Rate className={`${styles.comment__star} row__sort gap__8`} value={rate} onChange={setRate} />}
       <div className="width__100 column__sort gap__16">
-        {isPurchase ? (
+        {isVoucher ? (
           ""
         ) : (
           <div className={`${styles.comment__input__section} row__sort gap__16`}>
@@ -54,7 +50,7 @@ export default function CommentWithQuestionEditUI({ el, isEdit, setIsEdit }: IEd
               onChange={onChangeForm}
               className={`${styles.comment__textarea} width__100 height__100 input__border`}
               maxLength={100}
-              placeholder={`${isPurchase ? "문의사항" : "댓글"}을 입력해 주세요.`}
+              placeholder={`${isVoucher ? "문의사항" : "댓글"}을 입력해 주세요.`}
               value={form.contents}
             />
             <p className={`${styles.comment__text__count}`}>

@@ -1,11 +1,11 @@
 import InfiniteScroll from "react-infinite-scroll-component";
 import { useCommentWithQuestionList } from "./hook";
-import { usePurchaseStore } from "@/commons/stores/purchase";
 import CommentWithQuestionItemUI from "../comment-with-question-item";
+import { useVoucherStore } from "@/commons/stores/voucher";
 
 export default function CommentWithQuestionListUI() {
   const { data, onNext, hasMore } = useCommentWithQuestionList();
-  const { isPurchase } = usePurchaseStore();
+  const { isVoucher } = useVoucherStore();
 
   return (
     <InfiniteScroll
@@ -19,7 +19,7 @@ export default function CommentWithQuestionListUI() {
         data?.map((el, index) => <CommentWithQuestionItemUI key={el._id} el={el} index={index} />)
       ) : (
         <p className="f__14 w__400 l__20 c__777777">
-          {isPurchase ? "등록된 문의사항이 없습니다." : "등록된 댓글이 없습니다."}
+          {isVoucher ? "등록된 문의사항이 없습니다." : "등록된 댓글이 없습니다."}
         </p>
       )}
     </InfiniteScroll>

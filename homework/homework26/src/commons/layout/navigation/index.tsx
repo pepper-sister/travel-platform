@@ -23,8 +23,8 @@ export default function NavigationUI() {
               트립토크
             </Link>
             <Link
-              href="/purchase"
-              className={`${isActive("/purchase") ? `${styles.navigation__active} w__700 c__000000` : "c__333333"} padding__8`}
+              href="/voucher"
+              className={`${isActive("/voucher") ? `${styles.navigation__active} w__700 c__000000` : "c__333333"} padding__8`}
             >
               숙박권 구매
             </Link>
@@ -38,7 +38,10 @@ export default function NavigationUI() {
         </div>
 
         {!accessToken ? (
-          <Link href="/sign" className="br__100 padding__8__12 row__sort gap__8 column__center bg__000000">
+          <Link
+            href="/signin-with-signup"
+            className="br__100 padding__8__12 row__sort gap__8 column__center bg__000000"
+          >
             <p className="f__14 w__600 l__20 c__ffffff">로그인</p>
             <Image className="filter" src="/images/navigation/right_arrow.png" alt="right" width={24} height={24} />
           </Link>

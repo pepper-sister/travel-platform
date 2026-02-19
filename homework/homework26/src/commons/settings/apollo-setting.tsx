@@ -5,7 +5,7 @@ import { ApolloProvider } from "@apollo/client/react";
 import UploadHttpLink from "apollo-upload-client/UploadHttpLink.mjs";
 import { useEffect } from "react";
 import { useAccessTokenStore } from "../stores/access-token";
-import { useLoginStore } from "../stores/login";
+import { useSigninWithSignupStore } from "../stores/signin-with-signup";
 
 const GLOBAL_STATE = new InMemoryCache();
 
@@ -14,7 +14,7 @@ interface IApolloSetting {
 }
 export default function ApolloSetting(props: IApolloSetting) {
   const { accessToken, setAccessToken } = useAccessTokenStore();
-  const { setIsLoggedIn } = useLoginStore();
+  const { setIsLoggedIn } = useSigninWithSignupStore();
 
   useEffect(() => {
     const localStorageAccessToken = localStorage.getItem("accessToken") ?? "";

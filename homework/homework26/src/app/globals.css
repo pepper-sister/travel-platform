@@ -45,6 +45,9 @@ button {
 .width__100px {
   width: 100px;
 }
+.width__400px {
+  width: 400px;
+}
 .width__1280px {
   width: 1280px;
 }
@@ -332,4 +335,9 @@ button {
   border-radius: 16px;
   box-shadow: 0px 0px 20px 0px #00000014;
   padding: 24px 48px;
+}
+
+.sign__img {
+  max-height: 100vh;
+  object-fit: cover;
 }

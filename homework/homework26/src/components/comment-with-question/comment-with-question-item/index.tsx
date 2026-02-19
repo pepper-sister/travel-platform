@@ -3,17 +3,17 @@ import { Rate } from "antd";
 import styles from "./styles.module.css";
 import { IFetchItemData } from "./types";
 import { useCommentWithQuestionItem } from "./hook";
-import { usePurchaseStore } from "@/commons/stores/purchase";
 import CommentWithQuestionEditUI from "../comment-with-question-edit";
+import { useVoucherStore } from "@/commons/stores/voucher";
 
 export default function CommentWithQuestionItemUI({ el, index }: IFetchItemData) {
   const { isEdit, setIsEdit } = useCommentWithQuestionItem();
-  const { isPurchase } = usePurchaseStore();
+  const { isVoucher } = useVoucherStore();
 
   return (
     <div className="width__100 column__sort gap__40">
       {index !== 0 && <div className={`${styles.div__line} div`}></div>}
-      {isEdit && !isPurchase ? (
+      {isEdit && !isVoucher ? (
         <CommentWithQuestionEditUI el={el} isEdit={isEdit} setIsEdit={setIsEdit} />
       ) : (
         <div className="column__sort gap__40">
@@ -22,7 +22,7 @@ export default function CommentWithQuestionItemUI({ el, index }: IFetchItemData)
               <div className="row__sort gap__8">
                 <div className="row__sort gap__4">
                   <Image
-                    src="/images/boards-detail/profile.png"
+                    src="/images/comment-with-question/profile.png"
                     className="br__100 bg__E4E4E4"
                     alt="프로필"
                     width={24}
@@ -37,19 +37,25 @@ export default function CommentWithQuestionItemUI({ el, index }: IFetchItemData)
               <div className="row__sort gap__8">
                 <Image
                   onClick={() => setIsEdit(!isEdit)}
-                  src="/images/boards-detail/edit.png"
+                  src="/images/comment-with-question/edit.png"
                   className="click"
                   alt="edit"
                   width={20}
                   height={20}
                 />
-                <Image src="/images/boards-detail/close.png" className="click" alt="close" width={20} height={20} />
+                <Image
+                  src="/images/comment-with-question/close.png"
+                  className="click"
+                  alt="close"
+                  width={20}
+                  height={20}
+                />
               </div>
             </div>
             <p className="w__400 c__333333">{el.contents}</p>
             <p className="f__14 w__400 c__818181">{el.createdAt.slice(0, 10)}</p>
           </div>
-          {isEdit && isPurchase ? <CommentWithQuestionEditUI el={el} isEdit={isEdit} setIsEdit={setIsEdit} /> : ""}
+          {isEdit && isVoucher ? <CommentWithQuestionEditUI el={el} isEdit={isEdit} setIsEdit={setIsEdit} /> : ""}
         </div>
       )}
     </div>

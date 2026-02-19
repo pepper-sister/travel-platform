@@ -1,7 +1,10 @@
 "use client";
 
-import BoardsWriteUI from "@/components/boards-write";
+import { withLogin } from "@/commons/hocs/withLogin";
+import CreateBoardWithVoucherUI from "@/components/create-board-with-voucher";
 
-export default function BoardsEdit() {
-  return <BoardsWriteUI />;
+function BoardsEdit() {
+  return <CreateBoardWithVoucherUI />;
 }
+
+export default withLogin(BoardsEdit);

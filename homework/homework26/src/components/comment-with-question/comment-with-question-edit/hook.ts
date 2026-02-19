@@ -2,7 +2,7 @@ import { ChangeEvent, useState } from "react";
 import { useMutation } from "@apollo/client/react";
 import { UpdateBoardCommentDocument, UpdateTravelproductQuestionDocument } from "@/commons/graphql/graphql";
 import { IEditProps } from "./types";
-import { usePurchaseStore } from "@/commons/stores/purchase";
+import { useVoucherStore } from "@/commons/stores/voucher";
 
 export const useCommentWithQuestionEdit = (props: IEditProps) => {
   const [rate, setRate] = useState("rating" in props.el ? props.el.rating : 0);
@@ -11,8 +11,8 @@ export const useCommentWithQuestionEdit = (props: IEditProps) => {
     password: "",
     contents: props.el.contents ?? "",
   });
-  const { isPurchase } = usePurchaseStore();
-  const isActive = isPurchase ? form.contents : form.password && form.contents;
+  const { isVoucher } = useVoucherStore();
+  const isActive = isVoucher ? form.contents : form.password && form.contents;
 
   const [updateBoardComment] = useMutation(UpdateBoardCommentDocument);
   const [updateTravelproductQuestion] = useMutation(UpdateTravelproductQuestionDocument);
@@ -23,7 +23,7 @@ export const useCommentWithQuestionEdit = (props: IEditProps) => {
 
   const onClickUpdateComment = async () => {
     try {
-      if (isPurchase) {
+      if (isVoucher) {
         await updateTravelproductQuestion({
           variables: {
             updateTravelproductQuestionInput: {

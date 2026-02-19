@@ -9,14 +9,14 @@ interface ILayout {
 }
 export default function Layout({ children }: ILayout) {
   const params = useParams();
-  const HIDDEN_NAVIGATION = ["/sign"];
+  const HIDDEN_NAVIGATION = ["/signin-with-signup"];
   const HIDDEN_BANNER = [
     "/boards/new",
     `/boards/${params.boardId}/edit`,
     "/mypage",
-    "/sign",
-    `/purchase/${params.travelproductId}`,
-    `/purchase/${params.travelproductId}/edit`,
+    "/signin-with-signup",
+    `/voucher/${params.travelproductId}`,
+    `/voucher/${params.travelproductId}/edit`,
   ];
 
   const pathname = usePathname();

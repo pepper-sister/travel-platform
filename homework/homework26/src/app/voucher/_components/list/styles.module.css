@@ -1,0 +1,22 @@
+.reserve__section {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 32px;
+}
+
+.lodging__img {
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+}
+
+.reserve__bookmark__section {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+}
+
+.lodging__txt {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

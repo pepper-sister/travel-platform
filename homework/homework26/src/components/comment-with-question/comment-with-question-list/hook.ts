@@ -1,5 +1,5 @@
 import { FetchBoardCommentsDocument, FetchTravelproductQuestionsDocument } from "@/commons/graphql/graphql";
-import { usePurchaseStore } from "@/commons/stores/purchase";
+import { useVoucherStore } from "@/commons/stores/voucher";
 import { useQuery } from "@apollo/client/react";
 import { useParams, usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -8,27 +8,27 @@ export const useCommentWithQuestionList = () => {
   const [hasMore, setHasMore] = useState(true);
   const params = useParams();
   const pathname = usePathname();
-  const isPurchase = pathname.includes("purchase");
-  const { setIsPurchase } = usePurchaseStore();
+  const isVoucher = pathname.includes("voucher");
+  const { setIsVoucher } = useVoucherStore();
 
   useEffect(() => {
-    setIsPurchase(isPurchase);
-  }, [isPurchase, setIsPurchase]);
+    setIsVoucher(isVoucher);
+  }, [isVoucher, setIsVoucher]);
 
   const commentQuery = useQuery(FetchBoardCommentsDocument, {
     variables: { boardId: String(params.boardId) },
-    skip: isPurchase,
+    skip: isVoucher,
   });
   const questionQuery = useQuery(FetchTravelproductQuestionsDocument, {
     variables: { travelproductId: String(params.travelproductId) },
-    skip: !isPurchase,
+    skip: !isVoucher,
   });
-  const data = isPurchase ? questionQuery.data?.fetchTravelproductQuestions : commentQuery.data?.fetchBoardComments;
+  const data = isVoucher ? questionQuery.data?.fetchTravelproductQuestions : commentQuery.data?.fetchBoardComments;
 
   const onNext = () => {
     if (!data) return;
 
-    if (isPurchase) {
+    if (isVoucher) {
       questionQuery.fetchMore({
         variables: {
           page: Math.ceil(data.length / 10) + 1,

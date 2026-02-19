@@ -2,7 +2,7 @@ import { ChangeEvent, useState } from "react";
 import { useMutation } from "@apollo/client/react";
 import { CreateBoardCommentDocument, CreateTravelproductQuestionDocument } from "@/commons/graphql/graphql";
 import { useParams } from "next/navigation";
-import { usePurchaseStore } from "@/commons/stores/purchase";
+import { useVoucherStore } from "@/commons/stores/voucher";
 
 export const useCommentWithQuestionWrite = () => {
   const params = useParams();
@@ -12,8 +12,8 @@ export const useCommentWithQuestionWrite = () => {
     password: "",
     contents: "",
   });
-  const { isPurchase } = usePurchaseStore();
-  const isActive = isPurchase ? form.contents : form.writer && form.password && form.contents;
+  const { isVoucher } = useVoucherStore();
+  const isActive = isVoucher ? form.contents : form.writer && form.password && form.contents;
 
   const [createBoardComment] = useMutation(CreateBoardCommentDocument);
   const [createTravelproductQuestion] = useMutation(CreateTravelproductQuestionDocument);
@@ -24,7 +24,7 @@ export const useCommentWithQuestionWrite = () => {
 
   const onClickSubmit = async () => {
     try {
-      if (isPurchase) {
+      if (isVoucher) {
         await createTravelproductQuestion({
           variables: {
             createTravelproductQuestionInput: {
