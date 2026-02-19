@@ -10,7 +10,7 @@ export const usePurchaseDetailTitle = () => {
   const onClickDeleteProduct = () => {
     deleteTravelproduct({
       variables: {
-        travelproductId: String(params.productId),
+        travelproductId: String(params.travelproductId),
       },
     });
   };

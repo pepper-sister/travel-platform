@@ -6,7 +6,7 @@ export const usePurchaseDetail = () => {
   const params = useParams();
   const { data } = useQuery(FetchTravelproductDocument, {
     variables: {
-      travelproductId: String(params.productId),
+      travelproductId: String(params.travelproductId),
     },
   });
 

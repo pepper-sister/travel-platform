@@ -15,8 +15,8 @@ export default function Layout({ children }: ILayout) {
     `/boards/${params.boardId}/edit`,
     "/mypage",
     "/sign",
-    `/purchase/${params.productId}`,
-    `/purchase/${params.productId}/edit`,
+    `/purchase/${params.travelproductId}`,
+    `/purchase/${params.travelproductId}/edit`,
   ];
 
   const pathname = usePathname();
