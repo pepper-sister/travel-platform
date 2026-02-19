@@ -68,7 +68,7 @@ export default function PointUI() {
             {arr.map((el, index) => {
               return (
                 <div
-                  key={el}
+                  key={`${el}+${index}`}
                   className="relative br__8 padding__11__24 border__F2F2F2 row__sort row__between column__center"
                 >
                   <div className={`${active !== "total" ? "row__between" : ""} width__100 row__sort gap__8`}>

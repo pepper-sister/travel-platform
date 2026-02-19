@@ -56,7 +56,7 @@ export default function BookMarkUI() {
           {arr.map((el, index) => {
             return (
               <div
-                key={el}
+                key={`${el}+${index}`}
                 className={`${styles.item__section} relative br__8 padding__11__24 border__F2F2F2 row__sort row__between column__center`}
               >
                 <div className="row__sort gap__8">
