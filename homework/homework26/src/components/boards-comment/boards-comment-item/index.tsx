@@ -2,16 +2,18 @@ import Image from "next/image";
 import { Rate } from "antd";
 import styles from "./styles.module.css";
 import { IFetchCommentItemData } from "./types";
-import { useBoardsDetailStore } from "@/commons/stores/boards-detail";
-import BoardsCommentWriteUI from "../boards-comment-write";
+import BoardsCommentEditUI from "../boards-comment-edit";
+import { useBoardsCommentItem } from "./hook";
 
 export default function BoardsCommentItemUI({ el, index }: IFetchCommentItemData) {
-  const { isCommentEdit, setIsCommentEdit } = useBoardsDetailStore();
+  const { isEdit, setIsEdit } = useBoardsCommentItem();
 
   return (
     <div className="width__100 column__sort gap__40">
       {index !== 0 && <div className={`${styles.div__line} div`}></div>}
-      {!isCommentEdit ? (
+      {isEdit ? (
+        <BoardsCommentEditUI el={el} isEdit={isEdit} setIsEdit={setIsEdit} />
+      ) : (
         <div className="column__sort gap__8">
           <div className="row__sort row__between column__center">
             <div className="row__sort gap__8">
@@ -29,7 +31,7 @@ export default function BoardsCommentItemUI({ el, index }: IFetchCommentItemData
             </div>
             <div className="row__sort gap__8">
               <Image
-                onClick={() => setIsCommentEdit(!isCommentEdit)}
+                onClick={() => setIsEdit(!isEdit)}
                 src="/images/boards-detail/edit.png"
                 className="click"
                 alt="edit"
@@ -42,8 +44,6 @@ export default function BoardsCommentItemUI({ el, index }: IFetchCommentItemData
           <p className="w__400 c__333333">{el.contents}</p>
           <p className="f__14 w__400 c__818181">{el.createdAt.slice(0, 10)}</p>
         </div>
-      ) : (
-        <BoardsCommentWriteUI el={el} boardCommentId={el._id} />
       )}
     </div>
   );
