@@ -38,8 +38,14 @@ export default function ListUI() {
                 </p>
                 <div className="row__sort row__between column__center">
                   <div className="row__sort column__center gap__4">
-                    <Image src="/images/voucher/profile.jpg" className="br__100" alt="프로필" width={24} height={24} />
-                    <p className="f__14 w__300 l__20 c__5F5F5F">빈얀트리</p>
+                    <Image
+                      src={el.seller?.picture ?? "/images/voucher/profile.jpg"}
+                      className="br__100"
+                      alt="프로필"
+                      width={24}
+                      height={24}
+                    />
+                    <p className="f__14 w__300 l__20 c__5F5F5F">{el.seller?.name}</p>
                   </div>
                   <div className="row__sort gap__4">
                     <p className="w__600 c__1C1C1C">{el.price?.toLocaleString()}</p>

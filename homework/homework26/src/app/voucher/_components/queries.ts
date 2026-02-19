@@ -10,6 +10,15 @@ export const FETCH_TRAVEL_PRODUCTS = gql`
       tags
       images
       pickedCount
+      seller {
+        _id
+        email
+        name
+        picture
+        createdAt
+        updatedAt
+        deletedAt
+      }
     }
   }
 `;
