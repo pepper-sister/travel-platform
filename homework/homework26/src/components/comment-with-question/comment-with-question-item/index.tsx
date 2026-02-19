@@ -7,7 +7,7 @@ import CommentWithQuestionEditUI from "../comment-with-question-edit";
 import { useVoucherStore } from "@/commons/stores/voucher";
 
 export default function CommentWithQuestionItemUI({ el, index }: IFetchItemData) {
-  const { isEdit, setIsEdit } = useCommentWithQuestionItem();
+  const { isEdit, setIsEdit, onClickDelete } = useCommentWithQuestionItem({ el });
   const { isVoucher } = useVoucherStore();
 
   return (
@@ -44,6 +44,7 @@ export default function CommentWithQuestionItemUI({ el, index }: IFetchItemData)
                   height={20}
                 />
                 <Image
+                  onClick={onClickDelete}
                   src="/images/comment-with-question/close.png"
                   className="click"
                   alt="close"
