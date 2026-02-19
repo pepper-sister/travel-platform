@@ -1,6 +1,6 @@
 import { ChangeEvent, useState } from "react";
 import { useMutation } from "@apollo/client/react";
-import { CreateBoardCommentDocument } from "@/commons/graphql/graphql";
+import { CreateBoardCommentDocument, CreateTravelproductQuestionDocument } from "@/commons/graphql/graphql";
 import { useParams } from "next/navigation";
 import { usePurchaseStore } from "@/commons/stores/purchase";
 
@@ -16,22 +16,39 @@ export const useBoardsCommentWrite = () => {
   const isActive = isPurchase ? form.contents : form.writer && form.password && form.contents;
 
   const [createBoardComment] = useMutation(CreateBoardCommentDocument);
+  const [createTravelproductQuestion] = useMutation(CreateTravelproductQuestionDocument);
 
   const onChangeForm = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm((prev) => ({ ...prev, [event.target.id]: event.target.value }));
   };
 
   const onClickSubmit = async () => {
-    await createBoardComment({
-      variables: {
-        createBoardCommentInput: {
-          ...form,
-          rating: rate,
-        },
-        boardId: String(params.boardId),
-      },
-      refetchQueries: ["fetchBoardComments"],
-    });
+    try {
+      if (isPurchase) {
+        await createTravelproductQuestion({
+          variables: {
+            createTravelproductQuestionInput: {
+              contents: form.contents,
+            },
+            travelproductId: String(params.travelproductId),
+          },
+          refetchQueries: ["fetchTravelproductQuestions"],
+        });
+      } else {
+        await createBoardComment({
+          variables: {
+            createBoardCommentInput: {
+              ...form,
+              rating: rate,
+            },
+            boardId: String(params.boardId),
+          },
+          refetchQueries: ["fetchBoardComments"],
+        });
+      }
+    } catch (error) {
+      alert(error);
+    }
 
     setForm({
       writer: "",

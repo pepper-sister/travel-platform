@@ -22,3 +22,30 @@ export const CREATE_COMMENT = gql`
     }
   }
 `;
+
+export const CREATE_QUESTION = gql`
+  mutation createTravelproductQuestion(
+    $createTravelproductQuestionInput: CreateTravelproductQuestionInput!
+    $travelproductId: ID!
+  ) {
+    createTravelproductQuestion(
+      createTravelproductQuestionInput: $createTravelproductQuestionInput
+      travelproductId: $travelproductId
+    ) {
+      _id
+      contents
+      user {
+        _id
+        email
+        name
+        picture
+        createdAt
+        updatedAt
+        deletedAt
+      }
+      createdAt
+      updatedAt
+      deletedAt
+    }
+  }
+`;
