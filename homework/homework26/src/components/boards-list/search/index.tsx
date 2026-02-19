@@ -2,11 +2,12 @@ import Link from "next/link";
 import styles from "./styles.module.css";
 import Image from "next/image";
 import { useSearch } from "./hook";
-import { ISearchProps } from "./types";
 import { DatePicker } from "antd";
+import { usePurchaseStore } from "@/commons/stores/purchase";
 
-export default function SearchUI(props: ISearchProps) {
-  const { onChangedate, onChangeSearch, onClickSearch } = useSearch(props);
+export default function SearchUI() {
+  const { isPurchase } = usePurchaseStore();
+  const { onChangedate, onChangeSearch, onClickSearch } = useSearch();
   const { RangePicker } = DatePicker;
   const dateFormat = "YYYY/MM/DD";
 
@@ -36,7 +37,7 @@ export default function SearchUI(props: ISearchProps) {
         className="bg__2974E5 br__8 padding__12__16 click row__sort gap__8 f__18 w__600 c__ffffff"
       >
         <Image src="/images/boards-list/write.png" className="filter" alt="작성" width={24} height={24} />
-        {props.isBoard ? "트립토크 등록" : "숙박권 판매하기"}
+        {isPurchase ? "숙박권 판매하기" : "트립토크 등록"}
       </Link>
     </div>
   );

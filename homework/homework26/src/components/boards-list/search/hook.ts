@@ -1,17 +1,10 @@
 import _ from "lodash";
-import { ChangeEvent, useEffect } from "react";
+import { ChangeEvent } from "react";
 import { Dayjs } from "dayjs";
 import { useBoardsListStore } from "@/commons/stores/boards-list";
-import { ISearchProps } from "./types";
-import { usePurchaseStore } from "@/commons/stores/purchase";
 
-export const useSearch = (props: ISearchProps) => {
+export const useSearch = () => {
   const { setEndDate, setStartDate, search, setSearch, setKeyword } = useBoardsListStore();
-  const { setIsPurchase } = usePurchaseStore();
-
-  useEffect(() => {
-    setIsPurchase(!!props.isPurchase);
-  }, [props.isPurchase, setIsPurchase]);
 
   const onChangedate = (event: [Dayjs | null, Dayjs | null] | null) => {
     if (!event || !event[0] || !event[1]) {

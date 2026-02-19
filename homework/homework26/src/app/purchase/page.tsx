@@ -16,7 +16,7 @@ export default function Purchase() {
         <div className="column__sort gap__24">
           <h2 className="f__28 w__700 l__36">여기에서만 예약할 수 있는 숙소</h2>
           <PurchaseButtonUI />
-          <SearchUI isBoard={false} isPurchase={true} />
+          <SearchUI />
           <div className="column__sort gap__32">
             <PurchaseMenuUI />
             <PurchaseListUI />
