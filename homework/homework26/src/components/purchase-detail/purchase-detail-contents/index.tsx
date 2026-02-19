@@ -9,7 +9,12 @@ export default function PurchaseDetailContentsUI() {
       <div className="div"></div>
       <div className="column__sort gap__16">
         <h3 className="f__20 w__700 l__28 c__333333">상세 설명</h3>
-        <p className="w__400 c__333333">{data?.fetchTravelproduct.contents}</p>
+        <div
+          className="w__400 c__333333"
+          dangerouslySetInnerHTML={{
+            __html: data?.fetchTravelproduct.contents ?? "",
+          }}
+        />
       </div>
       <div className="div"></div>
       <div className="column__sort gap__16">
