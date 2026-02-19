@@ -1,0 +1,41 @@
+.comment__star li {
+  width: 24px;
+  display: flex !important;
+  justify-content: center;
+  margin: 0 !important;
+}
+.comment__star :global(.ant-rate-star-full svg) {
+  fill: #fada67;
+}
+.comment__star :global(.ant-rate-star-zero svg) {
+  fill: #c7c7c7;
+}
+
+.comment__input__section {
+  width: 640px;
+}
+.comment__textarea__section {
+  height: 144px;
+}
+
+.comment__input:disabled {
+  background-color: #f2f2f2;
+  cursor: auto;
+}
+.comment__text__count {
+  position: absolute;
+  right: 16px;
+  bottom: 12px;
+}
+.comment__input::placeholder,
+.comment__textarea::placeholder,
+.comment__text__count {
+  font-weight: 400;
+  color: #ababab;
+}
+
+.edit__btn:disabled {
+  background-color: #c7c7c7;
+  color: #e4e4e4;
+  cursor: auto;
+}
