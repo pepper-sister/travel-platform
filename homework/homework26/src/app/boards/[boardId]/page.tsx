@@ -24,7 +24,7 @@ export default function BoardsDetail() {
               <LocationUI data={data?.fetchBoard} />
             </div>
             <ContentsUI data={data?.fetchBoard} />
-            <LikeDislikeUI />
+            <LikeDislikeUI data={data?.fetchBoard} />
           </div>
           <ButtonUI />
           <div className="div"></div>
