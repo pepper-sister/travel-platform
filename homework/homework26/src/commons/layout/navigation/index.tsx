@@ -14,7 +14,7 @@ export default function NavigationUI() {
     <div className="row__sort row__center">
       <div className="width__1280px padding__20__20 row__sort row__between column__center">
         <div className="row__sort gap__24 column__center">
-          <Image src="/images/navigation/logo.png" alt="logo" width={52} height={32} />
+          <Image src="/images/navigation/logo.png" alt="logo" width={52} height={32} priority />
           <div className="row__sort gap__16">
             <Link
               href="/boards"
