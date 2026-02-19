@@ -34,7 +34,7 @@
   color: #ababab;
 }
 
-.edit__btn:disabled {
+.submit__btn:disabled {
   background-color: #c7c7c7;
   color: #e4e4e4;
   cursor: auto;

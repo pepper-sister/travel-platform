@@ -1,11 +1,10 @@
 import Image from "next/image";
 import styles from "./styles.module.css";
 import { Rate } from "antd";
-import { useCommentWrite } from "./hook";
-import { ICommentEditProps } from "./types";
+import { useBoardsCommentWrite } from "./hook";
 
-export default function BoardsCommentWriteUI(props: ICommentEditProps) {
-  const { rate, setRate, form, isActive, onChangeForm, onClickSubmit } = useCommentWrite(props);
+export default function BoardsCommentWriteUI() {
+  const { rate, setRate, form, isActive, onChangeForm, onClickSubmit } = useBoardsCommentWrite();
 
   return (
     <div className="padding__40__0 column__sort gap__24">
