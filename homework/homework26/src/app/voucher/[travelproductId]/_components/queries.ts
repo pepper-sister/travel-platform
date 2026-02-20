@@ -14,6 +14,12 @@ export const FETCH_TRAVEL_PRODUCT = gql`
         lat
         lng
       }
+      seller {
+        _id
+        email
+        name
+        picture
+      }
     }
   }
 `;
