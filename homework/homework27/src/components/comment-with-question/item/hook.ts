@@ -4,7 +4,7 @@ import { useMutation } from "@apollo/client/react";
 import { useState } from "react";
 import { IFetchItemData } from "./types";
 
-export const useCommentWithQuestionItem = ({ el }: IFetchItemData) => {
+export const useItem = ({ el }: IFetchItemData) => {
   const [isEdit, setIsEdit] = useState(false);
   const { isVoucher } = useVoucherStore();
 

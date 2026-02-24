@@ -1,13 +1,13 @@
 "use client";
 
-import CommentWithQuestionListUI from "@/components/comment-with-question/comment-with-question-list";
-import CommentWithQuestionWriteUI from "@/components/comment-with-question/comment-with-question-write";
 import { useBoardsDetail } from "./_components/hook";
 import TitleUI from "./_components/title";
 import LocationUI from "./_components/location";
 import ContentsUI from "./_components/contents";
 import LikeDislikeUI from "./_components/like-dislike";
 import ButtonUI from "./_components/button";
+import WriteUI from "@/components/comment-with-question/write";
+import ListUI from "@/components/comment-with-question/list";
 
 export default function BoardsDetail() {
   const { data } = useBoardsDetail();
@@ -29,8 +29,8 @@ export default function BoardsDetail() {
           <ButtonUI />
           <div className="div"></div>
         </div>
-        <CommentWithQuestionWriteUI />
-        <CommentWithQuestionListUI />
+        <WriteUI />
+        <ListUI />
       </div>
     </div>
   );

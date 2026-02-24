@@ -1,11 +1,11 @@
 "use client";
 
-import CommentWithQuestionListUI from "@/components/comment-with-question/comment-with-question-list";
-import CommentWithQuestionWriteUI from "@/components/comment-with-question/comment-with-question-write";
 import TitleUI from "./_components/title";
 import ImageUI from "./_components/image";
 import SellerUI from "./_components/seller";
 import ContentsUI from "./_components/contents";
+import ListUI from "@/components/comment-with-question/list";
+import WriteUI from "@/components/comment-with-question/write";
 
 export default function VoucherDetail() {
   return (
@@ -19,8 +19,8 @@ export default function VoucherDetail() {
           </div>
         </div>
         <ContentsUI />
-        <CommentWithQuestionWriteUI />
-        <CommentWithQuestionListUI />
+        <WriteUI />
+        <ListUI />
       </div>
     </div>
   );

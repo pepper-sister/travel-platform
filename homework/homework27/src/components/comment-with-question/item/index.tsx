@@ -2,19 +2,19 @@ import Image from "next/image";
 import { Rate } from "antd";
 import styles from "./styles.module.css";
 import { IFetchItemData } from "./types";
-import { useCommentWithQuestionItem } from "./hook";
-import CommentWithQuestionEditUI from "../comment-with-question-edit";
+import { useItem } from "./hook";
 import { useVoucherStore } from "@/commons/stores/voucher";
+import EditUI from "../edit";
 
-export default function CommentWithQuestionItemUI({ el, index }: IFetchItemData) {
-  const { isEdit, setIsEdit, onClickDelete } = useCommentWithQuestionItem({ el });
+export default function ItemUI({ el, index }: IFetchItemData) {
+  const { isEdit, setIsEdit, onClickDelete } = useItem({ el });
   const { isVoucher } = useVoucherStore();
 
   return (
     <div className="width__100 column__sort gap__40">
       {index !== 0 && <div className={`${styles.div__line} div`}></div>}
       {isEdit && !isVoucher ? (
-        <CommentWithQuestionEditUI el={el} isEdit={isEdit} setIsEdit={setIsEdit} />
+        <EditUI el={el} isEdit={isEdit} setIsEdit={setIsEdit} />
       ) : (
         <div className="column__sort gap__40">
           <div className="column__sort gap__8">
@@ -56,7 +56,7 @@ export default function CommentWithQuestionItemUI({ el, index }: IFetchItemData)
             <p className="w__400 c__333333">{el.contents}</p>
             <p className="f__14 w__400 c__818181">{el.createdAt.slice(0, 10)}</p>
           </div>
-          {isEdit && isVoucher ? <CommentWithQuestionEditUI el={el} isEdit={isEdit} setIsEdit={setIsEdit} /> : ""}
+          {isEdit && isVoucher ? <EditUI el={el} isEdit={isEdit} setIsEdit={setIsEdit} /> : ""}
         </div>
       )}
     </div>

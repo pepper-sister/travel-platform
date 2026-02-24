@@ -4,7 +4,7 @@ import { UpdateBoardCommentDocument, UpdateTravelproductQuestionDocument } from 
 import { IEditProps } from "./types";
 import { useVoucherStore } from "@/commons/stores/voucher";
 
-export const useCommentWithQuestionEdit = (props: IEditProps) => {
+export const useEdit = (props: IEditProps) => {
   const [rate, setRate] = useState("rating" in props.el ? props.el.rating : 0);
   const [form, setForm] = useState({
     writer: "writer" in props.el ? (props.el.writer ?? "") : "",
