@@ -4,11 +4,12 @@ import { gql } from "@apollo/client";
 import { useQuery } from "@apollo/client/react";
 
 const FETCH_BOARDS = gql`
-  query fetchBoards {
+  query fetchBoards2 {
     fetchBoards {
       _id
       writer
       title
+      likeCount # 더 많아지면? 추가요청 필요
     }
   }
 `;
