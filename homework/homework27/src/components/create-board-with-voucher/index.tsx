@@ -29,11 +29,11 @@ export default function CreateBoardWithVoucherUI() {
   return (
     <div className="row__sort row__center">
       <div className="width__1280px padding__40__20 column__sort gap__40">
-        <header className="f__20 w__700 l__28">
+        <div className="f__20 w__700 l__28">
           {isVoucher ? "숙박권 판매하기" : `게시물 ${isBoardEdit ? "수정" : "등록"}`}
-        </header>
+        </div>
 
-        <main className="column__sort gap__40">
+        <div className="column__sort gap__40">
           <div className="row__sort gap__40">
             <div className="column__sort gap__8 flex">
               <div className="row__sort gap__4">
@@ -310,9 +310,9 @@ export default function CreateBoardWithVoucherUI() {
               )}
             </div>
           </div>
-        </main>
+        </div>
 
-        <footer className="row__sort row__end">
+        <div className="row__sort row__end">
           <div className="row__sort gap__16">
             <button className="white__btn br__8 padding__12__16 f__18 w__600">취소</button>
             <button
@@ -323,7 +323,7 @@ export default function CreateBoardWithVoucherUI() {
               {isBoardEdit ? "수정" : "등록"}하기
             </button>
           </div>
-        </footer>
+        </div>
       </div>
     </div>
   );
