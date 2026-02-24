@@ -1,19 +1,13 @@
 import { FetchBoardCommentsDocument, FetchTravelproductQuestionsDocument } from "@/commons/graphql/graphql";
-import { useVoucherStore } from "@/commons/stores/voucher";
 import { useQuery } from "@apollo/client/react";
 import { useParams, usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export const useList = () => {
   const [hasMore, setHasMore] = useState(true);
   const params = useParams();
   const pathname = usePathname();
   const isVoucher = pathname.includes("voucher");
-  const { setIsVoucher } = useVoucherStore();
-
-  useEffect(() => {
-    setIsVoucher(isVoucher);
-  }, [isVoucher, setIsVoucher]);
 
   const commentQuery = useQuery(FetchBoardCommentsDocument, {
     variables: { boardId: String(params.boardId) },
