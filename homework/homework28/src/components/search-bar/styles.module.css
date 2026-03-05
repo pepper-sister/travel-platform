@@ -1,0 +1,14 @@
+.search__input {
+  width: 520px;
+}
+.search__input::placeholder {
+  color: #919191;
+  font-weight: 400;
+}
+
+.search__date {
+  border: none;
+}
+.search__date:hover {
+  background-color: #f2f2f2;
+}
