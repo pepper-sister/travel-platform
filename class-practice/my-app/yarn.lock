@@ -251,6 +251,16 @@
     "@babel/helper-string-parser" "^7.27.1"
     "@babel/helper-validator-identifier" "^7.28.5"
 
+"@codecampyj/ui@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.npmjs.org/@codecampyj/ui/-/ui-1.2.0.tgz#ca602f95b7b3d870a22e0aa091d2dfe231b3e513"
+  integrity sha512-R9sn9r//7FQSqsicnnHGdO55k8rKarkmjm9LNRwsgZvsq+x6DehBRXHeI9YEuHzxGV125T7JoZLEOK22QkS8Sw==
+  dependencies:
+    next "14.2.35"
+    react "^18"
+    react-dom "^18"
+    react-hook-form "^7.71.1"
+
 "@emnapi/core@^1.4.3":
   version "1.8.1"
   resolved "https://registry.yarnpkg.com/@emnapi/core/-/core-1.8.1.tgz#fd9efe721a616288345ffee17a1f26ac5dd01349"
