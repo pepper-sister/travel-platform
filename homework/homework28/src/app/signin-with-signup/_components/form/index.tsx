@@ -1,4 +1,4 @@
-import { FormInput } from "@/components/inputbase";
+import { InputForm } from "@/commons/ui/inputbase";
 import { IFormProps } from "./types";
 import { useFormContext } from "react-hook-form";
 
@@ -22,7 +22,7 @@ export default function FormUI({ isSignUp }: IFormProps) {
           ) : (
             ""
           )}
-          <FormInput name="email" className="sign__input" type="text" placeholder="이메일을 입력해 주세요." />
+          <InputForm name="email" className="sign__input" type="text" placeholder="이메일을 입력해 주세요." />
           {errors.email && <p className="f__12 w__400 l__20 c__F66A6A">{String(errors.email.message)}</p>}
         </div>
         {isSignUp ? (
@@ -31,7 +31,7 @@ export default function FormUI({ isSignUp }: IFormProps) {
               <p className="f__12 w__400 l__20 c__333333">이름</p>
               <p className="c__F66A6A">*</p>
             </div>
-            <FormInput name="name" className="sign__input" type="text" placeholder="이름을 입력해 주세요." />
+            <InputForm name="name" className="sign__input" type="text" placeholder="이름을 입력해 주세요." />
             {errors.name && <p className="f__12 w__400 l__20 c__F66A6A">{String(errors.name.message)}</p>}
           </div>
         ) : (
@@ -46,7 +46,7 @@ export default function FormUI({ isSignUp }: IFormProps) {
           ) : (
             ""
           )}
-          <FormInput name="password" className="sign__input" type="password" placeholder="비밀번호를 입력해 주세요." />
+          <InputForm name="password" className="sign__input" type="password" placeholder="비밀번호를 입력해 주세요." />
           {errors.password && <p className="f__12 w__400 l__20 c__F66A6A">{String(errors.password.message)}</p>}
         </div>
         {isSignUp ? (
@@ -55,7 +55,7 @@ export default function FormUI({ isSignUp }: IFormProps) {
               <p className="f__12 w__400 l__20 c__333333">비밀번호 확인</p>
               <p className="c__F66A6A">*</p>
             </div>
-            <FormInput
+            <InputForm
               name="passwordCheck"
               className="sign__input"
               type="password"

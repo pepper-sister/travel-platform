@@ -27,6 +27,6 @@ function InputBase<T extends FieldValues>(props: IInputBaseProps<T>) {
   );
 }
 
-export function FormInput<T extends FieldValues>(props: IInputBaseProps<T>) {
+export function InputForm<T extends FieldValues>(props: IInputBaseProps<T>) {
   return <InputBase<T> {...props} />;
 }
