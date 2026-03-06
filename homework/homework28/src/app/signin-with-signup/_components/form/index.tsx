@@ -1,4 +1,4 @@
-import { InputForm } from "@/commons/ui/inputbase";
+import { InputForm } from "@peppersister/ui";
 import { IFormProps } from "./types";
 import { useFormContext } from "react-hook-form";
 
