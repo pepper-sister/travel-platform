@@ -1,87 +1,72 @@
 import { useMutation } from "@apollo/client/react";
 import { useRouter } from "next/navigation";
-import { ChangeEvent, useState } from "react";
+import { useState } from "react";
 import { useAccessTokenStore } from "@/commons/stores/access-token";
 import { CreateUserDocument, LoginUserDocument } from "@/commons/graphql/graphql";
 import { useSigninWithSignupStore } from "@/commons/stores/signin-with-signup";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { schema, IForm } from "./schema";
 
 export const useSigninWithSignup = () => {
+  const methods = useForm<IForm>({
+    resolver: zodResolver(schema),
+    mode: "onChange",
+  });
   const router = useRouter();
   const { setAccessToken } = useAccessTokenStore();
   const { setIsLoggedIn } = useSigninWithSignupStore();
   const [isSignUp, setIsSignUp] = useState(false);
-  const [input, setInput] = useState({ email: "", name: "", password: "", passwordCheck: "" });
-  const [error, setError] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [loginUser] = useMutation(LoginUserDocument);
   const [createUserInput] = useMutation(CreateUserDocument);
 
-  const onChangeInput = (event: ChangeEvent<HTMLInputElement>) => {
-    setInput((prev) => ({ ...prev, [event.target.id]: event.target.value }));
-  };
-
-  const onClickSignIn = async () => {
-    if (!isSignUp && (!input.email || !input.password)) {
-      setError(true);
-      return;
-    }
-
-    if (isSignUp && (!input.email || !input.name || !input.password || !input.passwordCheck)) {
-      setError(true);
-      return;
-    }
-    if (isSignUp && input.password !== input.passwordCheck) {
-      setError(true);
-      return;
-    }
-    setError(false);
-
+  const onClickSignIn: SubmitHandler<IForm> = async (data) => {
+    console.log(data);
     if (!isSignUp) {
       try {
         const result = await loginUser({
           variables: {
-            email: input.email,
-            password: input.password,
+            email: data.email,
+            password: data.password,
           },
         });
         const accessToken = result.data?.loginUser.accessToken;
-        if (accessToken === undefined) {
-          alert("로그인에 실패했습니다! 다시 시도해 주세요!");
+        if (!accessToken) {
+          alert("로그인에 실패했습니다!");
           return;
         }
         setAccessToken(accessToken);
         setIsLoggedIn(true);
         localStorage.setItem("accessToken", accessToken);
+        router.push("/boards");
       } catch (error) {
         alert(error);
         return;
       }
-
-      router.push("/boards");
       return;
     }
-    createUserInput({
-      variables: {
-        createUserInput: {
-          email: input.email,
-          password: input.password,
-          name: input.name,
+    try {
+      await createUserInput({
+        variables: {
+          createUserInput: {
+            email: data.email,
+            password: data.password,
+            name: data.name ?? "",
+          },
         },
-      },
-    });
-    showModal();
+      });
+      setIsModalOpen(true);
+    } catch (error) {
+      console.error(error);
+      alert("회원가입에 실패했습니다.");
+    }
   };
 
   const onClickSignUp = () => {
     setIsSignUp((prev) => !prev);
-    setError(false);
-    setInput({ email: "", name: "", password: "", passwordCheck: "" });
     setIsModalOpen(false);
   };
 
-  const showModal = () => {
-    setIsModalOpen(true);
-  };
-
-  return { isSignUp, input, error, isModalOpen, onChangeInput, onClickSignIn, onClickSignUp };
+  return { methods, isSignUp, isModalOpen, onClickSignIn, onClickSignUp };
 };
