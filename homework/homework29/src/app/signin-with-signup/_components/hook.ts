@@ -22,7 +22,6 @@ export const useSigninWithSignup = () => {
   const [createUserInput] = useMutation(CreateUserDocument);
 
   const onClickSignIn: SubmitHandler<IForm> = async (data) => {
-    console.log(data);
     if (!isSignUp) {
       try {
         const result = await loginUser({
@@ -38,7 +37,6 @@ export const useSigninWithSignup = () => {
         }
         setAccessToken(accessToken);
         setIsLoggedIn(true);
-        localStorage.setItem("accessToken", accessToken);
         router.push("/boards");
       } catch (error) {
         alert(error);

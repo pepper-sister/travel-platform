@@ -12,8 +12,6 @@ export default function SigninWithSignup() {
   const { methods, isSignUp, isModalOpen, onClickSignIn, onClickSignUp } = useSigninWithSignup();
   const { reset } = methods;
   const { handleSubmit } = methods;
-  const { formState } = methods;
-  console.log(formState.errors);
 
   useEffect(() => {
     reset();
