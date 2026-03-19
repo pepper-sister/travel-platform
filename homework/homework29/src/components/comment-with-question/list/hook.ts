@@ -1,0 +1,64 @@
+import { FetchBoardCommentsDocument, FetchTravelproductQuestionsDocument } from "@/commons/graphql/graphql";
+import { useQuery } from "@apollo/client/react";
+import { useParams, usePathname } from "next/navigation";
+import { useState } from "react";
+
+export const useList = () => {
+  const [hasMore, setHasMore] = useState(true);
+  const params = useParams();
+  const pathname = usePathname();
+  const isVoucher = pathname.includes("voucher");
+
+  const commentQuery = useQuery(FetchBoardCommentsDocument, {
+    variables: { boardId: String(params.boardId) },
+    skip: isVoucher,
+  });
+  const questionQuery = useQuery(FetchTravelproductQuestionsDocument, {
+    variables: { travelproductId: String(params.travelproductId) },
+    skip: !isVoucher,
+  });
+  const data = isVoucher ? questionQuery.data?.fetchTravelproductQuestions : commentQuery.data?.fetchBoardComments;
+
+  const onNext = () => {
+    if (!data) return;
+
+    if (isVoucher) {
+      questionQuery.fetchMore({
+        variables: {
+          page: Math.ceil(data.length / 10) + 1,
+        },
+        updateQuery: (prev, { fetchMoreResult }) => {
+          if (!fetchMoreResult.fetchTravelproductQuestions.length) {
+            setHasMore(false);
+            return prev;
+          }
+
+          return {
+            fetchTravelproductQuestions: [
+              ...prev.fetchTravelproductQuestions,
+              ...fetchMoreResult.fetchTravelproductQuestions,
+            ],
+          };
+        },
+      });
+    } else {
+      commentQuery.fetchMore({
+        variables: {
+          page: Math.ceil(data.length / 10) + 1,
+        },
+        updateQuery: (prev, { fetchMoreResult }) => {
+          if (!fetchMoreResult.fetchBoardComments.length) {
+            setHasMore(false);
+            return prev;
+          }
+
+          return {
+            fetchBoardComments: [...prev.fetchBoardComments, ...fetchMoreResult.fetchBoardComments],
+          };
+        },
+      });
+    }
+  };
+
+  return { data, onNext, hasMore };
+};
