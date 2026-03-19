@@ -6,6 +6,7 @@ import { useApolloClient, useLazyQuery, useQuery } from "@apollo/client/react";
 const FETCH_USER_LOGGED_IN = gql`
   query fetchUserLoggedIn {
     fetchUserLoggedIn {
+      _id
       email
       name
     }

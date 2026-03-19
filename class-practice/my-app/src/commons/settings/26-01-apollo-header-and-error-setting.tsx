@@ -38,10 +38,12 @@ export default function ApolloHeaderAndErrorSetting(props: IApolloSetting) {
 
   const errorLink = new ErrorLink(({ error, operation, forward }) => {
     // 1. 에러를 캐치
-    if (typeof error !== "undefined") {
-      for (const err of error) {
-        // 1-2. 해당 에러가 토큰만료 에러인지 체크
-        if (err.extensions?.code === "UNAUTHENTICATED") {
+    if (error instanceof Error) {
+      if ("bodyText" in error && typeof error.bodyText === "string") {
+        const body = JSON.parse(error.bodyText);
+        const code = body.errors?.[0].extensions.code;
+        if (code === "UNAUTHENTICATED") {
+          // 1-2. 해당 에러가 토큰만료 에러인지 체크
           return new Observable((observer) => {
             // 2. refreshToken으로 accessToken 재발급 받기
             getAccessToken().then((newAccessToken) => {
@@ -53,13 +55,13 @@ export default function ApolloHeaderAndErrorSetting(props: IApolloSetting) {
                   Authorization: `Bearer ${newAccessToken}`, // 3-2. 토큰만 새걸로 바꿔치기
                 },
               });
-            });
 
-            return forward(operation).subscribe({
-              next: observer.next.bind(observer),
-              error: observer.error.bind(observer),
-              complete: observer.complete.bind(observer),
-            }); // 3-3. 바꿔치기된 API 재전송하기
+              forward(operation).subscribe({
+                next: observer.next.bind(observer),
+                error: observer.error.bind(observer),
+                complete: observer.complete.bind(observer),
+              }); // 3-3. 바꿔치기된 API 재전송하기
+            });
           });
         }
       }
@@ -68,7 +70,9 @@ export default function ApolloHeaderAndErrorSetting(props: IApolloSetting) {
 
   const uploadLink = new UploadHttpLink({
     uri: "https://main-practice.codebootcamp.co.kr/graphql",
-    headers: { Authorization: `Bearer ${accessToken}` },
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+    },
     credentials: "include",
   });
 
