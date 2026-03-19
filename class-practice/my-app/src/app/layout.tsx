@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import Layout from "@/commons/layout";
-import ApolloHeaderAndErrorSetting from "@/commons/settings/26-01-apollo-header-and-error-setting";
+import ApolloHeaderAndErrorSettingRefresh from "@/commons/settings/26-02-apollo-header-and-error-setting-refresh";
 
 const 철수의폰트 = localFont({
   src: "./fonts/GeistVF.woff",
@@ -45,9 +45,11 @@ export default function RootLayout({ children }: IProps) {
         {/* <ApolloUploadSetting> */}
         {/* <ApolloHeaderSetting> */}
         {/* <ApolloHeaderSettingLocalStorage> */}
-        <ApolloHeaderAndErrorSetting>
+        {/* <ApolloHeaderAndErrorSetting> */}
+        <ApolloHeaderAndErrorSettingRefresh>
           <Layout>{children}</Layout>
-        </ApolloHeaderAndErrorSetting>
+        </ApolloHeaderAndErrorSettingRefresh>
+        {/* </ApolloHeaderAndErrorSetting> */}
         {/* </ApolloHeaderSettingLocalStorage> */}
         {/* </ApolloHeaderSetting> */}
         {/* </ApolloUploadSetting> */}
