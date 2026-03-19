@@ -5,19 +5,21 @@ import Link from "next/link";
 import { useEffect } from "react";
 import Image from "next/image";
 import { useSigninWithSignupStore } from "../stores/signin-with-signup";
+import { useLoadStore } from "../stores/load";
+import { useAccessTokenStore } from "../stores/access-token";
 
 // prettier-ignore
-export const withLogin =
-  <P extends object>(Component: React.ComponentType<P>) => (props: P) => {
+export const withLogin = <P extends object>(Component: React.ComponentType<P>) => (props: P) => {
   const { isLoggedIn, setIsLoggedIn } = useSigninWithSignupStore();
+  const { isLoaded } = useLoadStore();
+  const { accessToken } = useAccessTokenStore()
 
   useEffect(() => {
-    const token = localStorage.getItem("accessToken")
-    if (token) {
-      setIsLoggedIn(true)
-    }
-  }, [setIsLoggedIn]);
+    if (!isLoaded) return;
+    if (accessToken) setIsLoggedIn(true);
+  }, [isLoaded, accessToken]);
 
+  if (!isLoaded) return null;
   if (!isLoggedIn) {
     return (
       <Modal open={!isLoggedIn} closable={false} footer={null}>
