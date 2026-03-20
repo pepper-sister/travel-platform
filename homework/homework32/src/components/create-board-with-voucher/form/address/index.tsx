@@ -33,7 +33,7 @@ export default function AddressUI({ form, setForm, isModalOpen, setIsModalOpen }
         geocoder.addressSearch(form.travelproductAddress.address, function (result: any, status: any) {
           setForm((prev) => ({
             ...prev,
-            travelproductAddress: { ...prev.travelproductAddress, lat: result[0].x, lng: result[0].y },
+            travelproductAddress: { ...prev.travelproductAddress, lat: result[0].y, lng: result[0].x },
           }));
           if (status === window.kakao.maps.services.Status.OK) {
             const coords = new window.kakao.maps.LatLng(result[0].y, result[0].x);
