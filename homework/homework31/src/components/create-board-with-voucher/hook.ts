@@ -29,6 +29,7 @@ export const useCreateBoardWithVoucher = () => {
     tags: [""],
     travelproductAddress: {
       zipcode: "",
+      address: "",
       addressDetail: "",
       lat: undefined,
       lng: undefined,

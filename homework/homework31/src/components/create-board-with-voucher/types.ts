@@ -20,6 +20,7 @@ export interface IFormProps {
     tags: string[];
     travelproductAddress: {
       zipcode: string;
+      address: string;
       addressDetail: string;
       lat: number | undefined;
       lng: number | undefined;

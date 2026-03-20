@@ -21,7 +21,7 @@ export const useZipcode = ({ setForm, setIsModalOpen }: Props) => {
     } else {
       setForm((prev) => ({
         ...prev,
-        travelproductAddress: { ...prev.travelproductAddress, zipcode: data.zonecode },
+        travelproductAddress: { ...prev.travelproductAddress, zipcode: data.zonecode, address: data.address },
       }));
     }
     onToggleModal();
