@@ -1,0 +1,13 @@
+.event__section {
+  overflow: hidden;
+  max-height: 240px;
+}
+.event__img {
+  width: 40%;
+  aspect-ratio: 1 / 1;
+}
+.event__cover {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(204, 203, 180, 0) 63.44%, #cccbb4 88.18%);
+}
