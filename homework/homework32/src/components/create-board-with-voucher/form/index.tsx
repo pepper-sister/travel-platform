@@ -25,7 +25,7 @@ export default function FormUI({ form, setForm, onChangeForm, isModalOpen, setIs
       <div className="div"></div>
       <TitleUI form={form} onChangeForm={onChangeForm} />
       <div className="div"></div>
-      <ContentsUI form={form} onChangeForm={onChangeForm} />
+      <ContentsUI form={form} setForm={setForm} onChangeForm={onChangeForm} />
       {isVoucher ? (
         <>
           <div className="div"></div>
