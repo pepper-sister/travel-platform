@@ -15,6 +15,7 @@ export default function Layout({ children }: ILayout) {
     `/boards/${params.boardId}/edit`,
     "/mypage",
     "/signin-with-signup",
+    "/voucher/new",
     `/voucher/${params.travelproductId}`,
     `/voucher/${params.travelproductId}/edit`,
   ];
