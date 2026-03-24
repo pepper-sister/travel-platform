@@ -1,6 +1,12 @@
 import Image from "next/image";
 import styles from "./styles.module.css";
-import { IImageProps } from "./types";
+import { MouseEvent } from "react";
+
+type IImageProps = {
+  images: [];
+  onClickUpload: () => void;
+  onClickDelete: (event: MouseEvent<HTMLDivElement>) => void;
+};
 
 export default function ImageUploadUI({ images, onClickUpload, onClickDelete }: IImageProps) {
   return (
