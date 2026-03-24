@@ -33,7 +33,7 @@ export default function SearchBarUI() {
         </button>
       </div>
       <Link
-        href="/boards/new"
+        href={isVoucher ? "/voucher/new" : "/boards/new"}
         className="bg__2974E5 br__8 padding__12__16 click row__sort gap__8 f__18 w__600 c__ffffff"
       >
         <Image src="/images/search-bar/write.png" className="filter" alt="작성" width={24} height={24} />
