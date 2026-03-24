@@ -9,7 +9,6 @@ export const useCreateVoucher = () => {
       contents: "",
       price: undefined,
       tags: [],
-      youtubeUrl: "",
       travelproductAddress: {
         zipcode: "",
         address: "",
