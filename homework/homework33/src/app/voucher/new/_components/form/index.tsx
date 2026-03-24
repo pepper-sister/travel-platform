@@ -1,4 +1,3 @@
-import ReactQuill from "react-quill";
 import { UseFormReturn } from "react-hook-form";
 import { Controller } from "react-hook-form";
 import AddressUI from "./address";
@@ -6,6 +5,12 @@ import ImagesUI from "./images";
 import TagUI from "./tag";
 import styles from "./styles.module.css";
 import "react-quill/dist/quill.snow.css";
+import dynamic from "next/dynamic";
+
+const ReactQuill = dynamic(() => import("react-quill"), {
+  ssr: false,
+  loading: () => <div className={styles.editor}>에디터 로딩 중...</div>,
+});
 
 export default function FormUI({ register, control, setValue, watch }: UseFormReturn<any>) {
   return (
