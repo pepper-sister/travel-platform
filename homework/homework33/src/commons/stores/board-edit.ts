@@ -1,11 +1,11 @@
 import { create } from "zustand";
 
-interface CreateBoardWithVoucherStoreState {
+interface BoardEditStoreState {
   isBoardEdit: boolean;
   setIsBoardEdit: (value: boolean) => void;
 }
 
-export const useCreateBoardWithVoucherStore = create<CreateBoardWithVoucherStoreState>((set) => ({
+export const useBoardEditStore = create<BoardEditStoreState>((set) => ({
   isBoardEdit: false,
   setIsBoardEdit: (newIsBoardEdit: boolean) => set(() => ({ isBoardEdit: newIsBoardEdit })),
 }));
