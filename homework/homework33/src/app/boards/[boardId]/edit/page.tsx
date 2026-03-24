@@ -1,10 +1,10 @@
 "use client";
 
 import { withLogin } from "@/commons/hocs/withLogin";
-import CreateBoardWithVoucherUI from "@/components/create-board-with-voucher";
+import CreateBoardUI from "../../new/_components";
 
 function BoardsEdit() {
-  return <CreateBoardWithVoucherUI />;
+  return <CreateBoardUI />;
 }
 
 export default withLogin(BoardsEdit);
