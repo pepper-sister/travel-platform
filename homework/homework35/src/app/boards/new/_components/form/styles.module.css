@@ -1,0 +1,12 @@
+.input__text::placeholder {
+  font-weight: 400;
+  color: #ababab;
+}
+
+.textarea__text {
+  height: 336px;
+}
+.textarea__text::placeholder {
+  font-weight: 400;
+  color: #ababab;
+}
