@@ -27,7 +27,6 @@ export const useImages = ({ setValue }: ImagesProps) => {
     const fileReader = new FileReader();
     fileReader.readAsDataURL(file);
     fileReader.onload = (event) => {
-      console.log(event.target?.result);
       if (typeof event.target?.result === "string") setImageUrl(event.target?.result);
     };
 
@@ -42,6 +41,10 @@ export const useImages = ({ setValue }: ImagesProps) => {
     event.stopPropagation();
     setImageUrl("");
     setValue("images", "");
+
+    if (fileRef.current) {
+      fileRef.current.value = "";
+    }
   };
 
   return {
