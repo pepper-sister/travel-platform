@@ -2,7 +2,6 @@ import styles from "./styles.module.css";
 import ZipcodeUI from "./zipcode";
 import { UseFormRegister, UseFormSetValue, UseFormWatch } from "react-hook-form";
 import { useAddress } from "./hook";
-import { memo } from "react";
 
 type AddressProps = {
   register: UseFormRegister<any>;
@@ -10,7 +9,7 @@ type AddressProps = {
   watch: UseFormWatch<any>;
 };
 
-function AddressUI({ register, setValue, watch }: AddressProps) {
+export default function AddressUI({ register, setValue, watch }: AddressProps) {
   const { address } = useAddress({ setValue, watch });
 
   return (
@@ -62,5 +61,3 @@ function AddressUI({ register, setValue, watch }: AddressProps) {
     </div>
   );
 }
-
-export default memo(AddressUI);
