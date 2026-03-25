@@ -1,13 +1,14 @@
 import { UseFormSetValue, UseFormWatch } from "react-hook-form";
 import { useImages } from "./hook";
 import ImageUploadUI from "./image-upload";
+import { memo } from "react";
 
 type ImagesProps = {
   setValue: UseFormSetValue<any>;
   watch: UseFormWatch<any>;
 };
 
-export default function ImagesUI({ setValue, watch }: ImagesProps) {
+function ImagesUI({ setValue, watch }: ImagesProps) {
   const { fileRef, onClickUpload, onChangeFile, onClickDelete } = useImages({ setValue });
   const images = watch("images") || [];
 
@@ -30,3 +31,5 @@ export default function ImagesUI({ setValue, watch }: ImagesProps) {
     </div>
   );
 }
+
+export default memo(ImagesUI);

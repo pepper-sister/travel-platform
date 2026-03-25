@@ -3,13 +3,14 @@ import styles from "./styles.module.css";
 import DaumPostcodeEmbed from "react-daum-postcode";
 import { useZipcode } from "./hook";
 import { UseFormSetValue, UseFormWatch } from "react-hook-form";
+import { memo } from "react";
 
 type ZipcodeProps = {
   setValue: UseFormSetValue<any>;
   watch: UseFormWatch<any>;
 };
 
-export default function ZipcodeUI({ setValue, watch }: ZipcodeProps) {
+function ZipcodeUI({ setValue, watch }: ZipcodeProps) {
   const { isModalOpen, onToggleModal, handleComplete } = useZipcode({ setValue });
   const zipcode = watch("travelproductAddress.zipcode");
 
@@ -38,3 +39,5 @@ export default function ZipcodeUI({ setValue, watch }: ZipcodeProps) {
     </div>
   );
 }
+
+export default memo(ZipcodeUI);
