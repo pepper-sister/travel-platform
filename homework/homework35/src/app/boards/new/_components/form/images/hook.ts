@@ -43,7 +43,6 @@ export const useImages = ({ index, setValue, getValues, watch }: ImagesProps) =>
     const images = getValues("images") || [];
     const newImages = [...images];
     newImages[currentIndex] = url;
-    console.log(newImages);
 
     setValue("images", newImages);
   };
