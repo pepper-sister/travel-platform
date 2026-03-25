@@ -1,6 +1,7 @@
 import ZipcodeUI from "./zipcode";
 import { UseFormRegister, UseFormSetValue, UseFormWatch } from "react-hook-form";
 import styles from "./styles.module.css";
+import { memo } from "react";
 
 type AddressProps = {
   register: UseFormRegister<any>;
@@ -8,7 +9,7 @@ type AddressProps = {
   watch: UseFormWatch<any>;
 };
 
-export default function AddressUI({ register, setValue, watch }: AddressProps) {
+function AddressUI({ register, setValue, watch }: AddressProps) {
   return (
     <div className="row__sort gap__40">
       <div className="flex column__sort gap__40">
@@ -36,3 +37,5 @@ export default function AddressUI({ register, setValue, watch }: AddressProps) {
     </div>
   );
 }
+
+export default memo(AddressUI);
