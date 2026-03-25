@@ -32,7 +32,15 @@ export const useWrite = () => {
             },
             travelproductId: String(params.travelproductId),
           },
-          refetchQueries: ["fetchTravelproductQuestions"],
+          update(cache, { data }) {
+            cache.modify({
+              fields: {
+                fetchTravelproductQuestions: (prev) => {
+                  return [data?.createTravelproductQuestion, ...prev];
+                },
+              },
+            });
+          },
         });
       } else {
         await createBoardComment({
@@ -43,7 +51,15 @@ export const useWrite = () => {
             },
             boardId: String(params.boardId),
           },
-          refetchQueries: ["fetchBoardComments"],
+          update(cache, { data }) {
+            cache.modify({
+              fields: {
+                fetchBoardComments: (prev) => {
+                  return [data?.createBoardComment, ...prev];
+                },
+              },
+            });
+          },
         });
       }
     } catch (error) {

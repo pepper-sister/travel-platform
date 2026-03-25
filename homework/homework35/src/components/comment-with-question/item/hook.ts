@@ -19,14 +19,34 @@ export const useItem = ({ el }: IFetchItemData) => {
             password: prompt("비밀번호를 입력해주세요"),
             boardCommentId: el?._id,
           },
-          refetchQueries: ["fetchBoardComments"],
+          update(cache, { data }) {
+            cache.modify({
+              fields: {
+                fetchBoardComments: (prev, { readField }) => {
+                  const deletedId = data?.deleteBoardComment;
+                  const filteredPrev = prev.filter((el: any) => readField("_id", el) !== deletedId);
+                  return [...filteredPrev];
+                },
+              },
+            });
+          },
         });
       } else {
         await deleteTravelproductQuestion({
           variables: {
             travelproductQuestionId: el._id,
           },
-          refetchQueries: ["fetchTravelproductQuestions"],
+          update(cache, { data }) {
+            cache.modify({
+              fields: {
+                fetchTravelproductQuestions: (prev, { readField }) => {
+                  const deletedId = data?.deleteTravelproductQuestion;
+                  const filteredPrev = prev.filter((el: any) => readField("_id", el) !== deletedId);
+                  return [...filteredPrev];
+                },
+              },
+            });
+          },
         });
       }
     } catch (error) {

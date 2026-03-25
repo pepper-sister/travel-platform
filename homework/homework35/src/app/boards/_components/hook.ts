@@ -9,12 +9,7 @@ export const useList = () => {
 
   const { endDate, startDate, search, page } = useBoardsListStore();
   const { data } = useQuery(FetchBoardsDocument, {
-    variables: {
-      endDate: endDate,
-      startDate: startDate,
-      search: search,
-      page: page,
-    },
+    variables: { endDate, startDate, search, page },
   });
 
   const [deleteBoard] = useMutation(DeleteBoardDocument);
@@ -25,21 +20,20 @@ export const useList = () => {
 
   const onClickDelete = async (event: MouseEvent<HTMLImageElement>, boardId: string) => {
     event.stopPropagation();
+
     await deleteBoard({
-      variables: {
-        boardId: boardId,
-      },
-      refetchQueries: [
-        {
-          query: FetchBoardsDocument,
-          variables: {
-            endDate: endDate,
-            startDate: startDate,
-            search: search,
-            page: page,
+      variables: { boardId },
+      update(cache, { data }) {
+        cache.modify({
+          fields: {
+            fetchBoards: (prev, { readField }) => {
+              const deletedId = data?.deleteBoard;
+              const filteredPrev = prev.filter((el: any) => readField("_id", el) !== deletedId);
+              return [...filteredPrev];
+            },
           },
-        },
-      ],
+        });
+      },
     });
   };
 
