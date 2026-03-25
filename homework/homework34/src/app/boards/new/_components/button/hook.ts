@@ -7,10 +7,12 @@ import { useFormContext } from "react-hook-form";
 
 export const useButton = () => {
   const { isBoardEdit } = useBoardEditStore();
-  const { watch, formState } = useFormContext();
+  const { watch } = useFormContext();
+  const writer = watch("writer");
+  const password = watch("password");
   const title = watch("title");
   const contents = watch("contents");
-  const isActive = isBoardEdit ? title && contents : formState.isValid;
+  const isActive = isBoardEdit ? title && contents : writer && password && title && contents;
 
   const router = useRouter();
   const [createBoard] = useMutation(CreateBoardDocument);
