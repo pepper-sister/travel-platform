@@ -3,6 +3,7 @@ import AddressUI from "./address";
 import ImagesUI from "./images";
 import styles from "./styles.module.css";
 import { UseFormReturn } from "react-hook-form";
+import { v4 as uuidv4 } from "uuid";
 
 export default function FormUI({ register, setValue, getValues, watch }: UseFormReturn<any>) {
   const { isBoardEdit } = useBoardEditStore();
@@ -76,7 +77,7 @@ export default function FormUI({ register, setValue, getValues, watch }: UseForm
         <p className="c__333333">사진 첨부</p>
         <div className="row__sort gap__16">
           {[0, 1, 2].map((_, index) => (
-            <ImagesUI key={index} index={index} setValue={setValue} getValues={getValues} watch={watch} />
+            <ImagesUI key={uuidv4()} index={index} setValue={setValue} getValues={getValues} watch={watch} />
           ))}
         </div>
       </div>
