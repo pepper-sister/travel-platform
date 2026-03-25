@@ -50,7 +50,7 @@ export default function BookMarkUI() {
           className="column__sort gap__12"
           next={() => {}}
           hasMore={false}
-          loader={<div>로딩중입니다.</div>}
+          loader={<div></div>}
           dataLength={arr.length ?? 0}
         >
           {arr.map((el, index) => {

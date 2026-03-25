@@ -12,7 +12,7 @@ export default function ListUI() {
       className="column__sort column__center"
       next={onNext}
       hasMore={hasMore}
-      loader={<div>로딩중입니다.</div>}
+      loader={<div></div>}
       dataLength={data?.length ?? 0}
     >
       {data && data.length > 0 ? (
