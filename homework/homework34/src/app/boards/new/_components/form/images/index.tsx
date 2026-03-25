@@ -11,12 +11,16 @@ type ImagesProps = {
 };
 
 function ImagesUI({ index, setValue, getValues, watch }: ImagesProps) {
-  const { fileRef, onClickUpload, onChangeFile, onClickDelete } = useImages({ setValue, getValues });
-  const images = watch("images") || [];
+  const { imageUrl, fileRef, onClickUpload, onChangeFile, onClickDelete } = useImages({
+    index,
+    setValue,
+    getValues,
+    watch,
+  });
 
   return (
     <>
-      <ImageUploadUI images={images} index={index} onClickUpload={onClickUpload} onClickDelete={onClickDelete} />
+      <ImageUploadUI index={index} imageUrl={imageUrl} onClickUpload={onClickUpload} onClickDelete={onClickDelete} />
       <input
         type="file"
         onChange={onChangeFile}

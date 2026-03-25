@@ -2,13 +2,13 @@ import Image from "next/image";
 import styles from "../styles.module.css";
 
 type IImageProps = {
-  images: string[];
   index: number;
+  imageUrl: string;
   onClickUpload: (index: number) => void;
   onClickDelete: (index: number) => void;
 };
 
-export default function ImageUploadUI({ images, index, onClickUpload, onClickDelete }: IImageProps) {
+export default function ImageUploadUI({ index, imageUrl, onClickUpload, onClickDelete }: IImageProps) {
   return (
     <div
       className="relative click"
@@ -18,10 +18,10 @@ export default function ImageUploadUI({ images, index, onClickUpload, onClickDel
     >
       <div className={`${styles.img} br__8 bg__F2F2F2`}></div>
       <div className={`${styles.img__upload} width__100 column__sort column__center gap__8`}>
-        {images[index] ? (
+        {imageUrl ? (
           <>
             <Image
-              src={`https://storage.googleapis.com/${images[index]}`}
+              src={imageUrl}
               className={`${styles.img} br__8 bg__F2F2F2`}
               alt="사진업로드"
               width={160}
