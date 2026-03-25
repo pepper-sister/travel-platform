@@ -53,8 +53,11 @@ export const useImages = ({ index, setValue, getValues, watch }: ImagesProps) =>
     const images = getValues("images") || [];
     const newImages = [...images];
     newImages[index] = "";
-
     setValue("images", newImages);
+
+    if (fileRef.current) {
+      fileRef.current.value = "";
+    }
   };
 
   return {
