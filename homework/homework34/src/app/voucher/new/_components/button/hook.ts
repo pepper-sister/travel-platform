@@ -2,8 +2,19 @@ import { CreateTravelproductDocument } from "@/commons/graphql/graphql";
 import { useMutation } from "@apollo/client/react";
 import { Modal } from "antd";
 import { useRouter } from "next/navigation";
+import { useFormContext } from "react-hook-form";
 
 export const useButton = () => {
+  const { watch } = useFormContext();
+  const name = watch("name");
+  const remarks = watch("remarks");
+  const contents = watch("contents");
+  const price = watch("price");
+  const address = watch("travelproductAddress.address") && watch("travelproductAddress.addressDetail");
+  const images = watch("images[0]");
+
+  const isActive = name && remarks && contents && price && address && images;
+
   const router = useRouter();
   const [createTravelProduct] = useMutation(CreateTravelproductDocument);
 
@@ -40,5 +51,5 @@ export const useButton = () => {
     }
   };
 
-  return { onClickSubmit };
+  return { isActive, onClickSubmit };
 };
