@@ -1,5 +1,5 @@
 import { useMutation } from "@apollo/client/react";
-import { ChangeEvent, useRef } from "react";
+import { ChangeEvent, useRef, useState } from "react";
 import { UplaodFileDocument } from "@/commons/graphql/graphql";
 import { UseFormSetValue } from "react-hook-form";
 
@@ -8,6 +8,7 @@ type ImagesProps = {
 };
 
 export const useImages = ({ setValue }: ImagesProps) => {
+  const [imageUrl, setImageUrl] = useState("");
   const fileRef = useRef<HTMLInputElement>(null);
   const [uploadFile] = useMutation(UplaodFileDocument);
 
@@ -23,6 +24,13 @@ export const useImages = ({ setValue }: ImagesProps) => {
       return;
     }
 
+    const fileReader = new FileReader();
+    fileReader.readAsDataURL(file);
+    fileReader.onload = (event) => {
+      console.log(event.target?.result);
+      if (typeof event.target?.result === "string") setImageUrl(event.target?.result);
+    };
+
     const result = await uploadFile({ variables: { file } });
     const url = result.data?.uploadFile?.url;
     if (!url) return;
@@ -32,10 +40,12 @@ export const useImages = ({ setValue }: ImagesProps) => {
 
   const onClickDelete = (event: React.MouseEvent<HTMLDivElement>) => {
     event.stopPropagation();
+    setImageUrl("");
     setValue("images", "");
   };
 
   return {
+    imageUrl,
     fileRef,
     onClickUpload,
     onChangeFile,

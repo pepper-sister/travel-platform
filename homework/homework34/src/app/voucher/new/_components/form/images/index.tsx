@@ -1,16 +1,14 @@
-import { UseFormSetValue, UseFormWatch } from "react-hook-form";
+import { UseFormSetValue } from "react-hook-form";
 import { useImages } from "./hook";
 import ImageUploadUI from "./image-upload";
 import { memo } from "react";
 
 type ImagesProps = {
   setValue: UseFormSetValue<any>;
-  watch: UseFormWatch<any>;
 };
 
-function ImagesUI({ setValue, watch }: ImagesProps) {
-  const { fileRef, onClickUpload, onChangeFile, onClickDelete } = useImages({ setValue });
-  const images = watch("images") || [];
+function ImagesUI({ setValue }: ImagesProps) {
+  const { imageUrl, fileRef, onClickUpload, onChangeFile, onClickDelete } = useImages({ setValue });
 
   return (
     <div className="column__sort gap__8">
@@ -19,7 +17,7 @@ function ImagesUI({ setValue, watch }: ImagesProps) {
         <p className="c__F66A6A">*</p>
       </div>
       <div className="row__sort gap__16">
-        <ImageUploadUI images={images} onClickUpload={onClickUpload} onClickDelete={onClickDelete} />
+        <ImageUploadUI imageUrl={imageUrl} onClickUpload={onClickUpload} onClickDelete={onClickDelete} />
         <input
           type="file"
           onChange={onChangeFile}

@@ -72,7 +72,7 @@ export default function FormUI({ register, control, setValue, watch }: UseFormRe
       <div className="div"></div>
       <AddressUI register={register} setValue={setValue} watch={watch} />
       <div className="div"></div>
-      <ImagesUI setValue={setValue} watch={watch} />
+      <ImagesUI setValue={setValue} />
     </div>
   );
 }

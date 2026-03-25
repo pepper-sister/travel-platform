@@ -3,20 +3,20 @@ import styles from "./styles.module.css";
 import { MouseEvent } from "react";
 
 type IImageProps = {
-  images: [];
+  imageUrl: string;
   onClickUpload: () => void;
   onClickDelete: (event: MouseEvent<HTMLDivElement>) => void;
 };
 
-export default function ImageUploadUI({ images, onClickUpload, onClickDelete }: IImageProps) {
+export default function ImageUploadUI({ imageUrl, onClickUpload, onClickDelete }: IImageProps) {
   return (
     <div className="relative click" onClick={onClickUpload}>
       <div className={`${styles.img} br__8 bg__F2F2F2`}></div>
       <div className={`${styles.img__upload} width__100 column__sort column__center gap__8`}>
-        {images.length ? (
+        {imageUrl ? (
           <>
             <Image
-              src={`https://storage.googleapis.com/${images}`}
+              src={imageUrl}
               className={`${styles.img} br__8 bg__F2F2F2`}
               alt="사진업로드"
               width={160}
