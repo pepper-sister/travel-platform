@@ -6,8 +6,15 @@ import SellerUI from "./_components/seller";
 import ContentsUI from "./_components/contents";
 import ListUI from "@/components/comment-with-question/list";
 import WriteUI from "@/components/comment-with-question/write";
+import { useVoucherStore } from "@/commons/stores/voucher";
+import { useEffect } from "react";
 
 export default function VoucherDetail() {
+  const { setIsVoucher } = useVoucherStore();
+  useEffect(() => {
+    setIsVoucher(true);
+  }, []);
+
   return (
     <div className="row__sort row__center">
       <div className="width__1280px padding__40__20 column__sort gap__40">
