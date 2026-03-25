@@ -1,0 +1,12 @@
+.voucher__address {
+  width: 396px;
+}
+
+.input__text::placeholder {
+  font-weight: 400;
+  color: #ababab;
+}
+.input__number::placeholder {
+  font-weight: 400;
+  color: #919191;
+}

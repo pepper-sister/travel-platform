@@ -1,0 +1,24 @@
+import { gql } from "@apollo/client";
+
+export const FETCH_TRAVEL_PRODUCTS = gql`
+  query fetchTravelproducts($isSoldout: Boolean, $search: String, $page: Int) {
+    fetchTravelproducts(isSoldout: $isSoldout, search: $search, page: $page) {
+      _id
+      name
+      remarks
+      price
+      tags
+      images
+      pickedCount
+      seller {
+        _id
+        email
+        name
+        picture
+        createdAt
+        updatedAt
+        deletedAt
+      }
+    }
+  }
+`;

@@ -1,0 +1,12 @@
+.input__text::placeholder {
+  font-weight: 400;
+  color: #ababab;
+}
+
+.input__number {
+  width: 82px;
+}
+.input__number::placeholder {
+  font-weight: 400;
+  color: #ababab;
+}
