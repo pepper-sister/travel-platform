@@ -1,0 +1,9 @@
+.img__delete {
+  display: none;
+  position: absolute;
+  top: 11px;
+  right: 8px;
+}
+.list__list:hover .img__delete {
+  display: block;
+}
