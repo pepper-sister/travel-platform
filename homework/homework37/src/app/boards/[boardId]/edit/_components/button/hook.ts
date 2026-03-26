@@ -1,4 +1,4 @@
-import { CreateBoardDocument, UpdateBoardDocument, UpdateBoardMutationVariables } from "@/commons/graphql/graphql";
+import { UpdateBoardDocument, UpdateBoardMutationVariables } from "@/commons/graphql/graphql";
 import { useMutation } from "@apollo/client/react";
 import { Modal } from "antd";
 import { useRouter } from "next/navigation";
@@ -11,7 +11,6 @@ export const useButton = () => {
   const isActive = title && contents;
 
   const router = useRouter();
-  const [createBoard] = useMutation(CreateBoardDocument);
   const [updateBoard] = useMutation(UpdateBoardDocument);
 
   const successModal = () => {
@@ -20,41 +19,10 @@ export const useButton = () => {
     });
   };
 
-  const errorModal = (error: unknown) => {
-    Modal.error({
-      title: "에러가 발생하였습니다. 다시 시도해 주세요.",
-      content: String(error),
-    });
-  };
-
   const warningModal = (error: unknown) => {
     Modal.warning({
       content: String(error),
     });
-  };
-
-  const onClickSubmit = async (data: any) => {
-    try {
-      const result = await createBoard({
-        variables: {
-          createBoardInput: {
-            writer: data.writer,
-            password: data.password,
-            title: data.title,
-            contents: data.contents,
-            youtubeUrl: data.youtubeUrl,
-            boardAddress: {
-              ...data.boardAddress,
-            },
-            images: data.images,
-          },
-        },
-      });
-
-      router.push(`/boards/${result.data?.createBoard._id}`);
-    } catch (error) {
-      errorModal(error);
-    }
   };
 
   const onClickUpdate = async (data: any) => {
@@ -87,5 +55,5 @@ export const useButton = () => {
     }
   };
 
-  return { isActive, onClickSubmit, onClickUpdate };
+  return { isActive, onClickUpdate };
 };
