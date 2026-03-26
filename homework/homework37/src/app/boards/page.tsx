@@ -1,5 +1,3 @@
-"use client";
-
 import PaginationUI from "@/components/pagination";
 import ListUI from "./_components";
 import SearchBarUI from "@/components/search-bar";

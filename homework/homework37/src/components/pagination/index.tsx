@@ -1,3 +1,5 @@
+"use client";
+
 import { usePagination } from "./hook";
 import styles from "./styles.module.css";
 
