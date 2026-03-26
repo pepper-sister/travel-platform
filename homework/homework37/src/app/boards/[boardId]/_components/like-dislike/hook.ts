@@ -1,0 +1,58 @@
+import { DislikeBoardDocument, FetchBoardDocument, LikeBoardDocument } from "@/commons/graphql/graphql";
+import { useMutation, useQuery } from "@apollo/client/react";
+import { useParams } from "next/navigation";
+
+export const useLikeDislike = () => {
+  const params = useParams();
+  const boardId = String(params.boardId);
+  const { data } = useQuery(FetchBoardDocument, {
+    variables: { boardId },
+  });
+
+  const [likeBoard] = useMutation(LikeBoardDocument);
+  const [dislikeBoard] = useMutation(DislikeBoardDocument);
+
+  const onClickLike = () => {
+    likeBoard({
+      variables: {
+        boardId,
+      },
+      optimisticResponse: {
+        likeBoard: (data?.fetchBoard.likeCount ?? 0) + 1,
+      },
+      update: (cache, { data }) => {
+        cache.modify({
+          id: cache.identify({ __typename: "Board", _id: boardId }),
+          fields: {
+            likeCount() {
+              return data?.likeBoard;
+            },
+          },
+        });
+      },
+    });
+  };
+
+  const onClickDislike = () => {
+    dislikeBoard({
+      variables: {
+        boardId,
+      },
+      optimisticResponse: {
+        dislikeBoard: (data?.fetchBoard.dislikeCount ?? 0) + 1,
+      },
+      update: (cache, { data }) => {
+        cache.modify({
+          id: cache.identify({ __typename: "Board", _id: boardId }),
+          fields: {
+            dislikeCount() {
+              return data?.dislikeBoard;
+            },
+          },
+        });
+      },
+    });
+  };
+
+  return { data, onClickLike, onClickDislike };
+};
