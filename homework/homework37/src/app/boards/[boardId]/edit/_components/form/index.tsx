@@ -15,8 +15,9 @@ export default function FormUI({ register, setValue, getValues, watch }: UseForm
           </div>
           <input
             {...register("writer")}
-            className={`${styles.input__text} input__border`}
+            className={`${styles.input__text} bg__F2F2F2 input__border`}
             placeholder="작성자 명을 입력해 주세요."
+            disabled={true}
           />
         </div>
         <div className="column__sort gap__8 flex">
@@ -26,8 +27,9 @@ export default function FormUI({ register, setValue, getValues, watch }: UseForm
           </div>
           <input
             {...register("password")}
-            className={`${styles.input__text} input__border`}
+            className={`${styles.input__text} bg__F2F2F2 input__border`}
             placeholder="비밀번호를 입력해 주세요."
+            disabled={true}
           />
         </div>
       </div>

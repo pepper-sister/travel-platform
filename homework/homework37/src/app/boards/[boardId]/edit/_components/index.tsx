@@ -9,7 +9,7 @@ export default function CreateBoardUI() {
   return (
     <div className="row__sort row__center">
       <div className="width__1280px padding__40__20 column__sort gap__40">
-        <div className="f__20 w__700 l__28">게시물 등록</div>
+        <div className="f__20 w__700 l__28">게시물 수정</div>
         <FormProvider {...methods}>
           <form>
             <FormUI {...methods} />

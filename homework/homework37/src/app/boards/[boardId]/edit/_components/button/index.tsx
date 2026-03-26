@@ -3,7 +3,7 @@ import styles from "./styles.module.css";
 import { useFormContext } from "react-hook-form";
 
 export default function ButtonUI() {
-  const { isActive, onClickSubmit } = useButton();
+  const { isActive, onClickUpdate } = useButton();
   const { handleSubmit } = useFormContext();
 
   return (
@@ -13,9 +13,9 @@ export default function ButtonUI() {
         <button
           className={`${styles.submit__btn} bg__2974E5 br__8 padding__12__16 click f__18 w__600 c__ffffff`}
           disabled={!isActive}
-          onClick={handleSubmit(onClickSubmit)}
+          onClick={handleSubmit(onClickUpdate)}
         >
-          등록하기
+          수정하기
         </button>
       </div>
     </div>
