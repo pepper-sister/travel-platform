@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useButton } from "./hook";
 
 export default function ButtonUI() {
-  const { params, onClickEdit } = useButton();
+  const { params } = useButton();
 
   return (
     <div className="row__sort row__center gap__24">
@@ -16,9 +16,7 @@ export default function ButtonUI() {
         className="white__btn br__8 padding__8__12 row__sort column__center gap__8"
       >
         <Image src="/images/boards-detail/edit.png" alt="edit" width={24} height={24} />
-        <p className="f__14 w__600 l__20 c__000000" onClick={onClickEdit}>
-          수정하기
-        </p>
+        <p className="f__14 w__600 l__20 c__000000">수정하기</p>
       </Link>
     </div>
   );

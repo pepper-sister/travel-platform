@@ -1,10 +1,10 @@
 "use client";
 
 import { withLogin } from "@/commons/hocs/withLogin";
-import CreateBoardUI from "../../new/_components";
+import EditBoardUI from "./_components";
 
 function BoardsEdit() {
-  return <CreateBoardUI />;
+  return <EditBoardUI />;
 }
 
 export default withLogin(BoardsEdit);

@@ -3,7 +3,7 @@ import ButtonUI from "./button";
 import FormUI from "./form";
 import { FormProvider } from "react-hook-form";
 
-export default function CreateBoardUI() {
+export default function EditBoardUI() {
   const { methods } = useCreateBoard();
 
   return (
