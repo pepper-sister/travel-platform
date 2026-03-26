@@ -1,3 +1,5 @@
+"use client";
+
 import styles from "./styles.module.css";
 import { useVoucher } from "../hook";
 import ItemUI from "../item";

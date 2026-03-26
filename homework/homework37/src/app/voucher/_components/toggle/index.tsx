@@ -1,3 +1,5 @@
+"use client";
+
 import { useVoucherStore } from "@/commons/stores/voucher";
 
 export default function ToggleUI() {
