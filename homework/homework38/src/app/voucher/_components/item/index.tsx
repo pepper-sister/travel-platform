@@ -3,12 +3,15 @@ import Link from "next/link";
 import styles from "./styles.module.css";
 import { FetchTravelproductsQuery } from "@/commons/graphql/graphql";
 import { memo } from "react";
+import { useKeywordStore } from "@/commons/stores/keyword";
 
 interface IItemUIProps {
   el: FetchTravelproductsQuery["fetchTravelproducts"][number];
 }
 
 function ItemUI({ el }: IItemUIProps) {
+  const { keyword } = useKeywordStore();
+
   return (
     <Link href={`/voucher/${el._id}`}>
       <div className="column__sort gap__12">
@@ -31,7 +34,16 @@ function ItemUI({ el }: IItemUIProps) {
           </div>
         </div>
         <div className="column__sort gap__4">
-          <h3 className={`${styles.lodging__txt} c__333333`}>{el.name}</h3>
+          <h3 className={styles.lodging__txt}>
+            {el.name
+              .replaceAll(keyword, `@#$${keyword}@#$`)
+              .split("@#$")
+              .map((el, index) => (
+                <span key={`${el}_${index}`} style={{ color: el === keyword ? "red" : "#333333" }}>
+                  {el}
+                </span>
+              ))}
+          </h3>
           <p className={`${styles.lodging__txt} f__14 w__400 l__20 c__5F5F5F`}>{el.remarks}</p>
           <div className="column__sort gap__12">
             <p className="f__14 w__400 l__20 c__2974E5">
