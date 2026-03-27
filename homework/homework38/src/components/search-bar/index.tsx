@@ -25,11 +25,16 @@ export default function SearchBarUI() {
             placeholder="제목을 검색해 주세요."
           />
         </div>
-        <RangePicker
-          className={`${styles.search__date} click bg__F2F2F2`}
-          format={dateFormat}
-          onChange={onChangedate}
-        />
+        {isVoucher ? (
+          ""
+        ) : (
+          <RangePicker
+            className={`${styles.search__date} click bg__F2F2F2`}
+            format={dateFormat}
+            onChange={onChangedate}
+          />
+        )}
+
         <button className="bg__000000 br__8 padding__12__16 click f__18 w__600 c__ffffff" onClick={onClickSearch}>
           검색
         </button>
