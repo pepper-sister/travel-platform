@@ -1,15 +1,18 @@
 import { useMutation, useQuery } from "@apollo/client/react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { DeleteBoardDocument, FetchBoardsDocument } from "@/commons/graphql/graphql";
 import { MouseEvent } from "react";
-import { useBoardsListStore } from "@/commons/stores/boards-list";
 
 export const useList = () => {
   const router = useRouter();
+  const searchParams = useSearchParams();
 
-  const { endDate, startDate, search, page } = useBoardsListStore();
+  const endDate = searchParams.get("endDate");
+  const startDate = searchParams.get("startDate");
+  const search = searchParams.get("search");
+  const page = searchParams.get("page") ?? 1;
   const { data } = useQuery(FetchBoardsDocument, {
-    variables: { endDate, startDate, search, page },
+    variables: { endDate, startDate, search, page: Number(page) },
   });
 
   const [deleteBoard] = useMutation(DeleteBoardDocument);

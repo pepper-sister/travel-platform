@@ -1,12 +1,15 @@
 import { useQuery } from "@apollo/client/react";
-import { MouseEvent, useState } from "react";
-import { useBoardsListStore } from "@/commons/stores/boards-list";
+import { MouseEvent, useEffect, useState } from "react";
 import { FetchBoardsCountDocument } from "@/commons/graphql/graphql";
+import { useSearchParams } from "next/navigation";
 
 export const usePagination = () => {
-  const [startPage, setStartPage] = useState(1);
-  const [activePage, setActivePage] = useState(1);
-  const { endDate, startDate, search, setPage } = useBoardsListStore();
+  const searchParams = useSearchParams();
+
+  const activePage = Number(searchParams.get("page") ?? 1);
+  const endDate = searchParams.get("endDate");
+  const startDate = searchParams.get("startDate");
+  const search = searchParams.get("search");
   const { data } = useQuery(FetchBoardsCountDocument, {
     variables: {
       endDate: endDate,
@@ -14,25 +17,41 @@ export const usePagination = () => {
       search: search,
     },
   });
+
+  const [startPage, setStartPage] = useState(1);
   const lastPage = Math.ceil((data?.fetchBoardsCount ?? 10) / 10);
 
+  useEffect(() => {
+    if (activePage === 1) {
+      setStartPage(1);
+    }
+  }, [activePage]);
+
+  const updatePageUrl = (page: number) => {
+    const params = new URLSearchParams(searchParams.toString());
+    params.set("page", String(page));
+
+    if (!params.get("search")) params.delete("search");
+    if (!params.get("startDate")) params.delete("startDate");
+    if (!params.get("endDate")) params.delete("endDate");
+
+    window.history.pushState(null, "", `?${params.toString()}`);
+  };
+
   const onClickPage = (event: MouseEvent<HTMLSpanElement>) => {
-    setPage(Number(event.currentTarget.id));
-    setActivePage(Number(event.currentTarget.id));
+    updatePageUrl(Number(event.currentTarget.id));
   };
 
   const onClickPrevPage = () => {
     if (startPage === 1) return;
     setStartPage(startPage - 5);
-    setActivePage(startPage - 5);
-    setPage(startPage - 5);
+    updatePageUrl(startPage - 5);
   };
 
   const onClickNextPage = () => {
     if (startPage + 5 <= lastPage) {
       setStartPage(startPage + 5);
-      setActivePage(startPage + 5);
-      setPage(startPage + 5);
+      updatePageUrl(startPage + 5);
     }
   };
 

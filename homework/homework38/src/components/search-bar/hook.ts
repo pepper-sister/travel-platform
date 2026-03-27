@@ -1,25 +1,42 @@
 import _ from "lodash";
-import { ChangeEvent } from "react";
+import { ChangeEvent, useCallback, useState } from "react";
 import { Dayjs } from "dayjs";
-import { useBoardsListStore } from "@/commons/stores/boards-list";
+import { useSearchParams } from "next/navigation";
+import { useKeywordStore } from "@/commons/stores/keyword";
 
 export const useSearchBar = () => {
-  const { setEndDate, setStartDate, search, setSearch, setKeyword } = useBoardsListStore();
+  const { setKeyword } = useKeywordStore();
+  const [search, setSearch] = useState("");
+  const searchParams = useSearchParams();
 
-  const onChangedate = (event: [Dayjs | null, Dayjs | null] | null) => {
-    if (!event || !event[0] || !event[1]) {
-      setStartDate(undefined);
-      setEndDate(undefined);
-      return;
-    }
+  const updateUrl = (newParams: Record<string, string | undefined>) => {
+    const params = new URLSearchParams(searchParams.toString());
 
-    setStartDate(event[0].format("YYYY-MM-DD"));
-    setEndDate(event[1].format("YYYY-MM-DD"));
+    Object.entries(newParams).forEach(([key, value]) => {
+      if (value) {
+        params.set(key, value);
+      } else {
+        params.delete(key);
+      }
+    });
+
+    params.set("page", "1");
+    window.history.pushState(null, "", `?${params.toString()}`);
   };
 
-  const searchDeboune = _.debounce((value) => {
-    setKeyword(value);
-  }, 500);
+  const onChangedate = (event: [Dayjs | null, Dayjs | null] | null) => {
+    const start = event?.[0] ? event[0].format("YYYY-MM-DD") : "";
+    const end = event?.[1] ? event[1].format("YYYY-MM-DD") : "";
+
+    updateUrl({ startDate: start, endDate: end });
+  };
+
+  const searchDeboune = useCallback(
+    _.debounce((value) => {
+      setKeyword(value);
+    }, 500),
+    [],
+  );
 
   const onChangeSearch = (event: ChangeEvent<HTMLInputElement>) => {
     setSearch(event.target.value);
@@ -27,7 +44,7 @@ export const useSearchBar = () => {
   };
 
   const onClickSearch = () => {
-    setSearch(search);
+    updateUrl({ search: search });
   };
 
   return { onChangedate, onChangeSearch, onClickSearch };
