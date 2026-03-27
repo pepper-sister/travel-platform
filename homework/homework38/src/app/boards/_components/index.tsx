@@ -3,11 +3,11 @@
 import Image from "next/image";
 import styles from "./styles.module.css";
 import { useList } from "./hook";
-import { useBoardsListStore } from "@/commons/stores/boards-list";
+import { useKeywordStore } from "@/commons/stores/keyword";
 
 export default function ListUI() {
   const { data, onClickDetail, onClickDelete } = useList();
-  const { keyword } = useBoardsListStore();
+  const { keyword } = useKeywordStore();
 
   return (
     <div className="column__sort gap__8">
