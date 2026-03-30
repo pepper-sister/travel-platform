@@ -38,6 +38,7 @@
 
 ### 🏷️ 숙박권 구매 - 등록
 
+<img width="600" alt="숙박권구매" src="https://github.com/user-attachments/assets/bbc6315d-b6a5-466e-b402-e60b66d27c93" />
 <img width="600" alt="숙박권등록" src="https://github.com/user-attachments/assets/c850b5ca-6805-4182-974f-7222e3eca43c" />
 
 - 다양한 숙박 상품 정보를 카드 형태의 UI로 시각화 및 필터링 기능 제공
@@ -48,7 +49,6 @@
 ### 💳 숙박권 구매 - 숙박권 상세/결제
 
 <img width="600" alt="숙박권상세" src="https://github.com/user-attachments/assets/de31df87-038e-4980-84c7-d0c4f3387ed8" />
-<img width="600" alt="숙박권구매" src="https://github.com/user-attachments/assets/bbc6315d-b6a5-466e-b402-e60b66d27c93" />
 
 - 숙박 시설 상세 정보 및 이용 수칙 안내
 - 결제 API 연동을 통한 실시간 상품 구매 프로세스 구축
