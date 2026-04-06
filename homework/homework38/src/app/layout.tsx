@@ -9,10 +9,11 @@ export const metadata: Metadata = {
   description: "여행 플랫폼",
 };
 
-export default function RootLayout({ children }: { children: ReactNode }) {
+export default function RootLayout({ children, modal }: { children: ReactNode; modal: ReactNode }) {
   return (
     <html lang="ko">
       <body className="antialiased">
+        <div>{modal}</div>
         <ApolloSetting>
           <Layout>{children}</Layout>
         </ApolloSetting>

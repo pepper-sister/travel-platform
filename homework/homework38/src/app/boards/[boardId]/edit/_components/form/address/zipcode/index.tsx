@@ -1,18 +1,16 @@
-import { Modal } from "antd";
 import styles from "../styles.module.css";
-import DaumPostcodeEmbed from "react-daum-postcode";
-import { useZipcode } from "./hook";
-import { UseFormSetValue, UseFormWatch } from "react-hook-form";
+import { UseFormWatch } from "react-hook-form";
 import { memo } from "react";
+import Link from "next/link";
+import { useParams } from "next/navigation";
 
 type ZipcodeProps = {
-  setValue: UseFormSetValue<any>;
   watch: UseFormWatch<any>;
 };
 
-function ZipcodeUI({ setValue, watch }: ZipcodeProps) {
-  const { isModalOpen, onToggleModal, handleComplete } = useZipcode({ setValue });
+function ZipcodeUI({ watch }: ZipcodeProps) {
   const zipcode = watch("boardAddress.zipcode");
+  const { boardId } = useParams();
 
   return (
     <div className="row__sort gap__8">
@@ -24,18 +22,9 @@ function ZipcodeUI({ setValue, watch }: ZipcodeProps) {
         disabled={true}
         value={zipcode}
       />
-      <button type="button" className="white__btn br__8 padding__12__16" onClick={onToggleModal}>
+      <Link href={`/boards/${boardId}/edit/zipcode-modal`} className="white__btn br__8 padding__12__16 c__000000">
         우편번호 검색
-      </button>
-      {isModalOpen && (
-        <Modal
-          open={isModalOpen}
-          okButtonProps={{ style: { display: "none" } }}
-          cancelButtonProps={{ style: { display: "none" } }}
-        >
-          <DaumPostcodeEmbed onComplete={handleComplete} />
-        </Modal>
-      )}
+      </Link>
     </div>
   );
 }

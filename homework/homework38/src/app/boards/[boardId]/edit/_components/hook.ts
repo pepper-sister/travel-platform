@@ -1,6 +1,7 @@
 import { FetchBoardDocument } from "@/commons/graphql/graphql";
 import { useQuery } from "@apollo/client/react";
-import { useParams } from "next/navigation";
+import { useParams, useSearchParams } from "next/navigation";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 
 export const useCreateBoard = () => {
@@ -27,6 +28,15 @@ export const useCreateBoard = () => {
       ...data?.fetchBoard,
     },
   });
+
+  const searchParams = useSearchParams();
+  useEffect(() => {
+    const zipcode = searchParams.get("zonecode");
+    const address = searchParams.get("address");
+
+    if (zipcode) methods.setValue("boardAddress.zipcode", zipcode);
+    if (address) methods.setValue("boardAddress.address", address);
+  }, [searchParams, methods]);
 
   return { methods };
 };
