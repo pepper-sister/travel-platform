@@ -1,3 +1,5 @@
+import { useSearchParams } from "next/navigation";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 
 export const useCreateVoucher = () => {
@@ -19,6 +21,15 @@ export const useCreateVoucher = () => {
       images: [],
     },
   });
+
+  const searchParams = useSearchParams();
+  useEffect(() => {
+    const zipcode = searchParams.get("zipcode");
+    const address = searchParams.get("address");
+
+    if (zipcode) methods.setValue("travelproductAddress.zipcode", zipcode);
+    if (address) methods.setValue("travelproductAddress.address", address);
+  }, [searchParams, methods]);
 
   return { methods };
 };
