@@ -1,15 +1,14 @@
 import ZipcodeUI from "./zipcode";
-import { UseFormRegister, UseFormSetValue, UseFormWatch } from "react-hook-form";
+import { UseFormRegister, UseFormWatch } from "react-hook-form";
 import styles from "./styles.module.css";
 import { memo } from "react";
 
 type AddressProps = {
   register: UseFormRegister<any>;
-  setValue: UseFormSetValue<any>;
   watch: UseFormWatch<any>;
 };
 
-function AddressUI({ register, setValue, watch }: AddressProps) {
+function AddressUI({ register, watch }: AddressProps) {
   return (
     <div className="row__sort gap__40">
       <div className="flex column__sort gap__40">
@@ -17,7 +16,7 @@ function AddressUI({ register, setValue, watch }: AddressProps) {
           <div className="row__sort gap__4">
             <p className="c__333333">주소</p>
           </div>
-          <ZipcodeUI setValue={setValue} watch={watch} />
+          <ZipcodeUI watch={watch} />
           <>
             <input
               {...register("boardAddress.address")}
