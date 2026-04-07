@@ -31,7 +31,7 @@ export const useCreateBoard = () => {
 
   const searchParams = useSearchParams();
   useEffect(() => {
-    const zipcode = searchParams.get("zonecode");
+    const zipcode = searchParams.get("zipcode");
     const address = searchParams.get("address");
 
     if (zipcode) methods.setValue("boardAddress.zipcode", zipcode);

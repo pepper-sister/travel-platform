@@ -1,6 +1,5 @@
 import styles from "../styles.module.css";
 import { UseFormWatch } from "react-hook-form";
-import { memo } from "react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 
@@ -8,7 +7,7 @@ type ZipcodeProps = {
   watch: UseFormWatch<any>;
 };
 
-function ZipcodeUI({ watch }: ZipcodeProps) {
+export default function ZipcodeUI({ watch }: ZipcodeProps) {
   const zipcode = watch("boardAddress.zipcode");
   const { boardId } = useParams();
 
@@ -28,5 +27,3 @@ function ZipcodeUI({ watch }: ZipcodeProps) {
     </div>
   );
 }
-
-export default memo(ZipcodeUI);
