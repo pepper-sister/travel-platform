@@ -9,6 +9,7 @@ export const useCreateBoard = () => {
   const { data } = useQuery(FetchBoardDocument, {
     variables: {
       boardId: String(params.boardId),
+      isBoardForAddressSet: true,
     },
   });
   const methods = useForm({

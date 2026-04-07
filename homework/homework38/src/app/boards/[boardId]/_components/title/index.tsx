@@ -1,7 +1,6 @@
 import Image from "next/image";
-import { IFetchBoardData } from "../types";
 
-export default function TitleUI({ data }: IFetchBoardData) {
+export default function TitleUI({ data }: any) {
   return (
     <div className="row__sort row__between column__center">
       <div className="row__sort gap__4 column__center">

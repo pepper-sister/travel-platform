@@ -6,7 +6,7 @@ export const useLikeDislike = () => {
   const params = useParams();
   const boardId = String(params.boardId);
   const { data } = useQuery(FetchBoardDocument, {
-    variables: { boardId },
+    variables: { boardId, isBoardForLikeSet: true },
   });
 
   const [likeBoard] = useMutation(LikeBoardDocument);
