@@ -1,10 +1,9 @@
-import { UseFormReturn } from "react-hook-form";
+import { useFormContext } from "react-hook-form";
 import { Controller } from "react-hook-form";
 import AddressUI from "./address";
 import ImagesUI from "./images";
 import TagUI from "./tag";
 import styles from "./styles.module.css";
-import "react-quill/dist/quill.snow.css";
 import dynamic from "next/dynamic";
 
 const ReactQuill = dynamic(() => import("react-quill"), {
@@ -12,7 +11,9 @@ const ReactQuill = dynamic(() => import("react-quill"), {
   loading: () => <div className={styles.editor}>에디터 로딩 중...</div>,
 });
 
-export default function FormUI({ register, control, setValue, watch }: UseFormReturn<any>) {
+export default function FormUI() {
+  const { register, control, setValue, watch } = useFormContext();
+
   return (
     <div className="column__sort gap__40">
       <div className="row__sort gap__40">

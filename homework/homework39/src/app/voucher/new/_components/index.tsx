@@ -12,7 +12,7 @@ export default function CreateVoucherUI() {
         <div className="f__20 w__700 l__28">숙박권 판매하기</div>
         <FormProvider {...methods}>
           <form>
-            <FormUI {...methods} />
+            <FormUI />
           </form>
           <ButtonUI />
         </FormProvider>
