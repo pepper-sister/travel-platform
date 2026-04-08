@@ -7,6 +7,8 @@ export const useVoucherDetail = () => {
   const { data } = useQuery(FetchTravelproductDocument, {
     variables: {
       travelproductId: String(params.travelproductId),
+      isTravelProductForAddressSet: true,
+      isTravelProductForSellerSet: true,
     },
   });
 
