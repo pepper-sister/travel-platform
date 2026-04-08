@@ -23,6 +23,7 @@ export default function FormUI() {
             <p className="c__F66A6A">*</p>
           </div>
           <input
+            role="input-name"
             {...register("name")}
             className={`${styles.input__text} input__border`}
             placeholder="상품명을 입력해 주세요."
@@ -36,6 +37,7 @@ export default function FormUI() {
           <p className="c__F66A6A">*</p>
         </div>
         <input
+          role="input-remarks"
           {...register("remarks")}
           className={`${styles.input__text} input__border`}
           placeholder="상품을 한줄로 요약해 주세요."
@@ -63,6 +65,7 @@ export default function FormUI() {
           <p className="c__F66A6A">*</p>
         </div>
         <input
+          role="input-price"
           {...register("price")}
           className={`${styles.input__text} input__border`}
           placeholder="판매 가격을 입력해 주세요.(원 단위)"
