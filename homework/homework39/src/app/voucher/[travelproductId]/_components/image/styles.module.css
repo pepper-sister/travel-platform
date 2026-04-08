@@ -1,0 +1,8 @@
+.product__img__section {
+  max-height: 480px;
+  overflow-y: scroll;
+}
+.product__detail__img {
+  width: 180px;
+  height: 136px;
+}
