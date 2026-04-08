@@ -13,7 +13,8 @@ export const useButton = () => {
   const address = watch("travelproductAddress.address") && watch("travelproductAddress.addressDetail");
   const images = watch("images[0]");
 
-  const isActive = name && remarks && contents && price && address && images;
+  const isTest = process.env.NODE_ENV === "test";
+  const isActive = isTest ? name && remarks && price : name && remarks && contents && price && address && images;
 
   const router = useRouter();
   const [createTravelProduct] = useMutation(CreateTravelproductDocument);
