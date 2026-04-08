@@ -5966,6 +5966,11 @@ jest-environment-node@30.3.0:
     jest-util "30.3.0"
     jest-validate "30.3.0"
 
+jest-fixed-jsdom@^0.0.11:
+  version "0.0.11"
+  resolved "https://registry.npmjs.org/jest-fixed-jsdom/-/jest-fixed-jsdom-0.0.11.tgz#67b5d5c4e9821bfb1e09a43139bfb0b9f4ec4f18"
+  integrity sha512-3UkjgM79APnmLVDnelrxdwz4oybD5qw6NLyayl7iCX8C8tJHeqjL9fmNrRlIrNiVJSXkF5t9ZPJ+xlM0kSwwYg==
+
 jest-haste-map@30.3.0:
   version "30.3.0"
   resolved "https://registry.npmjs.org/jest-haste-map/-/jest-haste-map-30.3.0.tgz#1ea6843e6e45c077d91270666a4fcba958c24cd5"
