@@ -4,12 +4,18 @@ const gql = graphql.link("http://mock.com/graphql");
 
 export const apis = [
   gql.mutation("createTravelproduct", ({ variables }) => {
-    const { _id } = variables.createTravelproductInput;
+    const { name, remarks, contents, price, travelproductAddress, images } = variables.createTravelproductInput;
+    console.log(variables);
 
     return HttpResponse.json({
       data: {
         createTravelproduct: {
-          _id,
+          name,
+          remarks,
+          contents,
+          price,
+          travelproductAddress,
+          images,
           __typename: "Travelproduct",
         },
       },
