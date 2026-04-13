@@ -4,8 +4,9 @@ import EventUI from "./_components/event";
 import ToggleUI from "./_components/toggle";
 import MenuUI from "./_components/menu";
 import ListUI from "./_components/list";
+import { Suspense } from "react";
 
-export default function Voucher() {
+function VoucherContents() {
   return (
     <div className="row__sort row__center">
       <div className="width__1280px padding__40__20 column__sort gap__64">
@@ -22,5 +23,13 @@ export default function Voucher() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function Voucher() {
+  return (
+    <Suspense fallback={<div>로딩 중...</div>}>
+      <VoucherContents />
+    </Suspense>
   );
 }

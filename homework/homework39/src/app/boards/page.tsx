@@ -1,8 +1,9 @@
 import PaginationUI from "@/components/pagination";
 import ListUI from "./_components";
 import SearchBarUI from "@/components/search-bar";
+import { Suspense } from "react";
 
-export default function BoardsList() {
+function BoardsListContents() {
   return (
     <div className="row__sort row__center">
       <div className="width__1280px padding__40__20 column__sort gap__24">
@@ -14,5 +15,13 @@ export default function BoardsList() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function BoardsList() {
+  return (
+    <Suspense fallback={<div>로딩 중...</div>}>
+      <BoardsListContents />
+    </Suspense>
   );
 }
