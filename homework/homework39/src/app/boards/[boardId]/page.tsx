@@ -21,10 +21,10 @@ export default function BoardsDetail() {
             <div className="column__sort gap__16">
               <TitleUI data={data?.fetchBoard} />
               <div className="div"></div>
-              <LocationUI data={data?.fetchBoard} />
+              <LocationUI data={data?.fetchBoard as any} />
             </div>
-            <ContentsUI data={data?.fetchBoard} />
-            <LikeDislikeUI data={data?.fetchBoard} />
+            <ContentsUI data={data?.fetchBoard as any} />
+            <LikeDislikeUI data={data?.fetchBoard as any} />
           </div>
           <ButtonUI />
           <div className="div"></div>

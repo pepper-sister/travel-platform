@@ -13,12 +13,14 @@ export const useLikeDislike = () => {
   const [dislikeBoard] = useMutation(DislikeBoardDocument);
 
   const onClickLike = () => {
+    if (!data?.fetchBoard) return;
+
     likeBoard({
       variables: {
         boardId,
       },
       optimisticResponse: {
-        likeBoard: (data?.fetchBoard.likeCount ?? 0) + 1,
+        likeBoard: ((data.fetchBoard as any).likeCount ?? 0) + 1,
       },
       update: (cache, { data }) => {
         cache.modify({
@@ -34,12 +36,14 @@ export const useLikeDislike = () => {
   };
 
   const onClickDislike = () => {
+    if (!data?.fetchBoard) return;
+
     dislikeBoard({
       variables: {
         boardId,
       },
       optimisticResponse: {
-        dislikeBoard: (data?.fetchBoard.dislikeCount ?? 0) + 1,
+        dislikeBoard: ((data.fetchBoard as any).dislikeCount ?? 0) + 1,
       },
       update: (cache, { data }) => {
         cache.modify({

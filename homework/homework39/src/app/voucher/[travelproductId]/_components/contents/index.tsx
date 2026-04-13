@@ -11,7 +11,8 @@ export default function ContentsUI() {
   const APP_KEY = process.env.NEXT_PUBLIC_KAKAO_KEY;
 
   useEffect(() => {
-    if (!data?.fetchTravelproduct.travelproductAddress) return;
+    const product = data?.fetchTravelproduct as any;
+    if (!product?.travelproductAddress) return;
 
     const script = document.createElement("script");
     script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${APP_KEY}&autoload=false&libraries=services`;
@@ -19,8 +20,8 @@ export default function ContentsUI() {
 
     script.onload = () => {
       window.kakao.maps.load(function () {
-        const lat = data.fetchTravelproduct.travelproductAddress?.lat;
-        const lng = data.fetchTravelproduct.travelproductAddress?.lng;
+        const lat = product.fetchTravelproduct.travelproductAddress?.lat;
+        const lng = product.fetchTravelproduct.travelproductAddress?.lng;
         const container = document.getElementById("map");
         const options = {
           center: new window.kakao.maps.LatLng(lat, lng),

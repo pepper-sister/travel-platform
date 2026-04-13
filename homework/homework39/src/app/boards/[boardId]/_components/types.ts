@@ -1,5 +1,5 @@
-import { FetchBoardQuery } from "@/commons/graphql/graphql";
+import { BoardForAddressSetFragment, BoardForLikeSetFragment, FetchBoardQuery } from "@/commons/graphql/graphql";
 
 export interface IFetchBoardData {
-  data?: FetchBoardQuery["fetchBoard"];
+  data?: FetchBoardQuery["fetchBoard"] & BoardForLikeSetFragment & BoardForAddressSetFragment;
 }

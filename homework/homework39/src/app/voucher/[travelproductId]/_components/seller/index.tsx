@@ -41,12 +41,12 @@ export default function SellerUI() {
         <div className="row__sort column__center gap__4">
           <Image
             className={`${styles.voucher__profile} br__100`}
-            src={data?.fetchTravelproduct.seller?.picture ?? "/images/voucher-detail/profile.jpg"}
+            src={(data?.fetchTravelproduct as any).seller?.picture ?? "/images/voucher-detail/profile.jpg"}
             alt="profile"
             width={40}
             height={40}
           />
-          <p className="l__20 c__333333">{data?.fetchTravelproduct.seller?.name}</p>
+          <p className="l__20 c__333333">{(data?.fetchTravelproduct as any).seller?.name}</p>
         </div>
       </div>
 
