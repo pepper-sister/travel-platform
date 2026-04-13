@@ -57,7 +57,7 @@ export default function FormUI({ register, setValue, getValues, watch }: UseForm
           placeholder="내용을 입력해 주세요."
         />
       </div>
-      <AddressUI register={register} setValue={setValue} watch={watch} />
+      <AddressUI register={register} watch={watch} />
       <div className="div"></div>
       <>
         <div className="column__sort gap__8">

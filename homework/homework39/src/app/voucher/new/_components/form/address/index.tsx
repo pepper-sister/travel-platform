@@ -20,7 +20,7 @@ export default function AddressUI({ register, setValue, watch }: AddressProps) {
             <p className="c__333333">주소</p>
             <p className="c__F66A6A">*</p>
           </div>
-          <ZipcodeUI setValue={setValue} watch={watch} />
+          <ZipcodeUI watch={watch} />
           <input
             {...register("travelproductAddress.addressDetail")}
             className={`${styles.input__text} input__border`}
