@@ -21,7 +21,8 @@ type Documents = {
     "\n  mutation uplaodFile($file: Upload!) {\n    uploadFile(file: $file) {\n      url\n    }\n  }\n": typeof types.UplaodFileDocument,
     "\n  query fetchBoards($endDate: DateTime, $startDate: DateTime, $search: String, $page: Int!) {\n    fetchBoards(endDate: $endDate, startDate: $startDate, search: $search, page: $page) {\n      _id\n      title\n      writer\n      createdAt\n    }\n  }\n": typeof types.FetchBoardsDocument,
     "\n  mutation deleteBoard($boardId: ID!) {\n    deleteBoard(boardId: $boardId)\n  }\n": typeof types.DeleteBoardDocument,
-    "\n  query fetchTravelproductsIPicked($search: String, $page: Int) {\n    fetchTravelproductsIPicked(search: $search, page: $page) {\n      name\n      price\n      seller {\n        name\n      }\n      createdAt\n    }\n  }\n": typeof types.FetchTravelproductsIPickedDocument,
+    "\n  query fetchTravelproductsISold($search: String, $page: Int) {\n    fetchTravelproductsISold(search: $search, page: $page) {\n      _id\n      name\n      price\n      soldAt\n      createdAt\n    }\n  }\n": typeof types.FetchTravelproductsISoldDocument,
+    "\n  query fetchTravelproductsIPicked($search: String, $page: Int) {\n    fetchTravelproductsIPicked(search: $search, page: $page) {\n      _id\n      name\n      price\n      seller {\n        name\n      }\n      createdAt\n    }\n  }\n": typeof types.FetchTravelproductsIPickedDocument,
     "\n  mutation loginUser($email: String!, $password: String!) {\n    loginUser(email: $email, password: $password) {\n      accessToken\n    }\n  }\n": typeof types.LoginUserDocument,
     "\n  mutation createUser($createUserInput: CreateUserInput!) {\n    createUser(createUserInput: $createUserInput) {\n      _id\n      email\n    }\n  }\n": typeof types.CreateUserDocument,
     "\n  mutation createPointTransactionOfLoading($paymentId: ID!) {\n    createPointTransactionOfLoading(paymentId: $paymentId) {\n      _id\n    }\n  }\n": typeof types.CreatePointTransactionOfLoadingDocument,
@@ -58,7 +59,8 @@ const documents: Documents = {
     "\n  mutation uplaodFile($file: Upload!) {\n    uploadFile(file: $file) {\n      url\n    }\n  }\n": types.UplaodFileDocument,
     "\n  query fetchBoards($endDate: DateTime, $startDate: DateTime, $search: String, $page: Int!) {\n    fetchBoards(endDate: $endDate, startDate: $startDate, search: $search, page: $page) {\n      _id\n      title\n      writer\n      createdAt\n    }\n  }\n": types.FetchBoardsDocument,
     "\n  mutation deleteBoard($boardId: ID!) {\n    deleteBoard(boardId: $boardId)\n  }\n": types.DeleteBoardDocument,
-    "\n  query fetchTravelproductsIPicked($search: String, $page: Int) {\n    fetchTravelproductsIPicked(search: $search, page: $page) {\n      name\n      price\n      seller {\n        name\n      }\n      createdAt\n    }\n  }\n": types.FetchTravelproductsIPickedDocument,
+    "\n  query fetchTravelproductsISold($search: String, $page: Int) {\n    fetchTravelproductsISold(search: $search, page: $page) {\n      _id\n      name\n      price\n      soldAt\n      createdAt\n    }\n  }\n": types.FetchTravelproductsISoldDocument,
+    "\n  query fetchTravelproductsIPicked($search: String, $page: Int) {\n    fetchTravelproductsIPicked(search: $search, page: $page) {\n      _id\n      name\n      price\n      seller {\n        name\n      }\n      createdAt\n    }\n  }\n": types.FetchTravelproductsIPickedDocument,
     "\n  mutation loginUser($email: String!, $password: String!) {\n    loginUser(email: $email, password: $password) {\n      accessToken\n    }\n  }\n": types.LoginUserDocument,
     "\n  mutation createUser($createUserInput: CreateUserInput!) {\n    createUser(createUserInput: $createUserInput) {\n      _id\n      email\n    }\n  }\n": types.CreateUserDocument,
     "\n  mutation createPointTransactionOfLoading($paymentId: ID!) {\n    createPointTransactionOfLoading(paymentId: $paymentId) {\n      _id\n    }\n  }\n": types.CreatePointTransactionOfLoadingDocument,
@@ -133,7 +135,11 @@ export function graphql(source: "\n  mutation deleteBoard($boardId: ID!) {\n    
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\n  query fetchTravelproductsIPicked($search: String, $page: Int) {\n    fetchTravelproductsIPicked(search: $search, page: $page) {\n      name\n      price\n      seller {\n        name\n      }\n      createdAt\n    }\n  }\n"): (typeof documents)["\n  query fetchTravelproductsIPicked($search: String, $page: Int) {\n    fetchTravelproductsIPicked(search: $search, page: $page) {\n      name\n      price\n      seller {\n        name\n      }\n      createdAt\n    }\n  }\n"];
+export function graphql(source: "\n  query fetchTravelproductsISold($search: String, $page: Int) {\n    fetchTravelproductsISold(search: $search, page: $page) {\n      _id\n      name\n      price\n      soldAt\n      createdAt\n    }\n  }\n"): (typeof documents)["\n  query fetchTravelproductsISold($search: String, $page: Int) {\n    fetchTravelproductsISold(search: $search, page: $page) {\n      _id\n      name\n      price\n      soldAt\n      createdAt\n    }\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\n  query fetchTravelproductsIPicked($search: String, $page: Int) {\n    fetchTravelproductsIPicked(search: $search, page: $page) {\n      _id\n      name\n      price\n      seller {\n        name\n      }\n      createdAt\n    }\n  }\n"): (typeof documents)["\n  query fetchTravelproductsIPicked($search: String, $page: Int) {\n    fetchTravelproductsIPicked(search: $search, page: $page) {\n      _id\n      name\n      price\n      seller {\n        name\n      }\n      createdAt\n    }\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
