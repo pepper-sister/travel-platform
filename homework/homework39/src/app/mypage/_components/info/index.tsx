@@ -1,19 +1,28 @@
 import Image from "next/image";
 import { IInfoProps } from "./types";
+import { useLoggedIn } from "@/commons/libraries/is-logged-in";
 
 export default function InfoUI({ active, setActive }: IInfoProps) {
+  const { data } = useLoggedIn();
+
   return (
     <div className="br__8 padding__24 border__E4E4E4 column__sort gap__12">
       <h2 className="f__18 w__600">내 정보</h2>
       <div className="row__sort column__center gap__4">
-        <Image src="/images/mypage/profile.jpg" className="br__100" alt="프로필" width={40} height={40} />
-        <p className="l__20 c__333333">김상훈</p>
+        <Image
+          src={`${data?.fetchUserLoggedIn.picture ? data?.fetchUserLoggedIn.picture : "/images/mypage/profile.jpg"}`}
+          className="br__100"
+          alt="프로필"
+          width={40}
+          height={40}
+        />
+        <p className="l__20 c__333333">{data?.fetchUserLoggedIn.name}</p>
       </div>
       <div className="div" />
       <div className="row__sort column__center gap__8">
         <Image src="/images/mypage/wallet.png" alt="지갑" width={24} height={24} />
         <div className="row__sort gap__4">
-          <p className="f__20">23,000</p>
+          <p className="f__20">{data?.fetchUserLoggedIn.userPoint?.amount.toLocaleString()}</p>
           <p className="f__20">P</p>
         </div>
       </div>
