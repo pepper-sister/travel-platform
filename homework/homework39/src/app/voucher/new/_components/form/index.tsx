@@ -5,6 +5,7 @@ import ImagesUI from "./images";
 import TagUI from "./tag";
 import styles from "./styles.module.css";
 import dynamic from "next/dynamic";
+import "react-quill/dist/quill.snow.css";
 
 const ReactQuill = dynamic(() => import("react-quill"), {
   ssr: false,
@@ -54,7 +55,14 @@ export default function FormUI() {
           name="contents"
           control={control}
           render={({ field }) => (
-            <ReactQuill {...field} className={styles.editor} placeholder="내용을 입력해 주세요." theme="snow" />
+            <ReactQuill
+              value={field.value || ""}
+              onChange={field.onChange}
+              onBlur={field.onBlur}
+              className={styles.editor}
+              placeholder="내용을 입력해 주세요."
+              theme="snow"
+            />
           )}
         />
       </div>
