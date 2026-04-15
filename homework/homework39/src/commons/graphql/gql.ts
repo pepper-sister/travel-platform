@@ -21,18 +21,20 @@ type Documents = {
     "\n  mutation uplaodFile($file: Upload!) {\n    uploadFile(file: $file) {\n      url\n    }\n  }\n": typeof types.UplaodFileDocument,
     "\n  query fetchBoards($endDate: DateTime, $startDate: DateTime, $search: String, $page: Int!) {\n    fetchBoards(endDate: $endDate, startDate: $startDate, search: $search, page: $page) {\n      _id\n      title\n      writer\n      createdAt\n    }\n  }\n": typeof types.FetchBoardsDocument,
     "\n  mutation deleteBoard($boardId: ID!) {\n    deleteBoard(boardId: $boardId)\n  }\n": typeof types.DeleteBoardDocument,
+    "\n  query fetchTravelproductsIPicked($search: String, $page: Int) {\n    fetchTravelproductsIPicked(search: $search, page: $page) {\n      name\n      price\n      seller {\n        name\n      }\n      createdAt\n    }\n  }\n": typeof types.FetchTravelproductsIPickedDocument,
     "\n  mutation loginUser($email: String!, $password: String!) {\n    loginUser(email: $email, password: $password) {\n      accessToken\n    }\n  }\n": typeof types.LoginUserDocument,
     "\n  mutation createUser($createUserInput: CreateUserInput!) {\n    createUser(createUserInput: $createUserInput) {\n      _id\n      email\n    }\n  }\n": typeof types.CreateUserDocument,
     "\n  mutation createPointTransactionOfLoading($paymentId: ID!) {\n    createPointTransactionOfLoading(paymentId: $paymentId) {\n      _id\n    }\n  }\n": typeof types.CreatePointTransactionOfLoadingDocument,
     "\n  mutation createPointTransactionOfBuyingAndSelling($useritemId: ID!) {\n    createPointTransactionOfBuyingAndSelling(useritemId: $useritemId) {\n      _id\n    }\n  }\n": typeof types.CreatePointTransactionOfBuyingAndSellingDocument,
     "\n  mutation deleteTravelproduct($travelproductId: ID!) {\n    deleteTravelproduct(travelproductId: $travelproductId)\n  }\n": typeof types.DeleteTravelproductDocument,
+    "\n  mutation toggleTravelproductPick($travelproductId: ID!) {\n    toggleTravelproductPick(travelproductId: $travelproductId)\n  }\n": typeof types.ToggleTravelproductPickDocument,
     "\n  query fetchTravelproducts($isSoldout: Boolean, $search: String, $page: Int) {\n    fetchTravelproducts(isSoldout: $isSoldout, search: $search, page: $page) {\n      _id\n      name\n      remarks\n      price\n      tags\n      images\n      pickedCount\n      seller {\n        _id\n        email\n        name\n        picture\n        createdAt\n        updatedAt\n        deletedAt\n      }\n    }\n  }\n": typeof types.FetchTravelproductsDocument,
     "\n  mutation createTravelproduct($createTravelproductInput: CreateTravelproductInput!) {\n    createTravelproduct(createTravelproductInput: $createTravelproductInput) {\n      _id\n    }\n  }\n": typeof types.CreateTravelproductDocument,
     "\n  fragment BoardForAddressSet on Board {\n    boardAddress {\n      zipcode\n      address\n      addressDetail\n    }\n  }\n": typeof types.BoardForAddressSetFragmentDoc,
     "\n  fragment BoardForDateSet on Board {\n    createdAt\n    updatedAt\n    deletedAt\n  }\n": typeof types.BoardForDateSetFragmentDoc,
     "\n  fragment BoardForLikeSet on Board {\n    likeCount\n    dislikeCount\n  }\n": typeof types.BoardForLikeSetFragmentDoc,
     "\n  fragment BoardForUserSet on Board {\n    user {\n      _id\n      email\n      name\n      picture\n      createdAt\n      updatedAt\n      deletedAt\n    }\n  }\n": typeof types.BoardForUserSetFragmentDoc,
-    "\n  fragment TravelproductForAddressSet on Travelproduct {\n    travelproductAddress {\n      lat\n      lng\n    }\n  }\n": typeof types.TravelproductForAddressSetFragmentDoc,
+    "\n  fragment TravelproductForAddressSet on Travelproduct {\n    travelproductAddress {\n      address\n      lat\n      lng\n    }\n  }\n": typeof types.TravelproductForAddressSetFragmentDoc,
     "\n  fragment TravelproductForSellerSet on Travelproduct {\n    seller {\n      _id\n      email\n      name\n      picture\n    }\n  }\n": typeof types.TravelproductForSellerSetFragmentDoc,
     "\n  \n  \n  \n  \n\n  query fetchBoard(\n    $boardId: ID!\n    $isBoardForLikeSet: Boolean = false\n    $isBoardForAddressSet: Boolean = false\n    $isBoardForUserSet: Boolean = false\n    $isBoardForDateSet: Boolean = false\n  ) {\n    fetchBoard(boardId: $boardId) {\n      _id\n      writer\n      title\n      contents\n      youtubeUrl\n      images\n\n      ...BoardForLikeSet @include(if: $isBoardForLikeSet)\n      ...BoardForAddressSet @include(if: $isBoardForAddressSet)\n      ...BoardForUserSet @include(if: $isBoardForUserSet)\n      ...BoardForDateSet @include(if: $isBoardForDateSet)\n    }\n  }\n": typeof types.FetchBoardDocument,
     "\n  \n  \n\n  query fetchTravelproduct(\n    $travelproductId: ID!\n    $isTravelProductForAddressSet: Boolean = false\n    $isTravelProductForSellerSet: Boolean = false\n  ) {\n    fetchTravelproduct(travelproductId: $travelproductId) {\n      _id\n      name\n      remarks\n      contents\n      price\n      tags\n      images\n      pickedCount\n\n      ...TravelproductForAddressSet @include(if: $isTravelProductForAddressSet)\n      ...TravelproductForSellerSet @include(if: $isTravelProductForSellerSet)\n    }\n  }\n": typeof types.FetchTravelproductDocument,
@@ -56,18 +58,20 @@ const documents: Documents = {
     "\n  mutation uplaodFile($file: Upload!) {\n    uploadFile(file: $file) {\n      url\n    }\n  }\n": types.UplaodFileDocument,
     "\n  query fetchBoards($endDate: DateTime, $startDate: DateTime, $search: String, $page: Int!) {\n    fetchBoards(endDate: $endDate, startDate: $startDate, search: $search, page: $page) {\n      _id\n      title\n      writer\n      createdAt\n    }\n  }\n": types.FetchBoardsDocument,
     "\n  mutation deleteBoard($boardId: ID!) {\n    deleteBoard(boardId: $boardId)\n  }\n": types.DeleteBoardDocument,
+    "\n  query fetchTravelproductsIPicked($search: String, $page: Int) {\n    fetchTravelproductsIPicked(search: $search, page: $page) {\n      name\n      price\n      seller {\n        name\n      }\n      createdAt\n    }\n  }\n": types.FetchTravelproductsIPickedDocument,
     "\n  mutation loginUser($email: String!, $password: String!) {\n    loginUser(email: $email, password: $password) {\n      accessToken\n    }\n  }\n": types.LoginUserDocument,
     "\n  mutation createUser($createUserInput: CreateUserInput!) {\n    createUser(createUserInput: $createUserInput) {\n      _id\n      email\n    }\n  }\n": types.CreateUserDocument,
     "\n  mutation createPointTransactionOfLoading($paymentId: ID!) {\n    createPointTransactionOfLoading(paymentId: $paymentId) {\n      _id\n    }\n  }\n": types.CreatePointTransactionOfLoadingDocument,
     "\n  mutation createPointTransactionOfBuyingAndSelling($useritemId: ID!) {\n    createPointTransactionOfBuyingAndSelling(useritemId: $useritemId) {\n      _id\n    }\n  }\n": types.CreatePointTransactionOfBuyingAndSellingDocument,
     "\n  mutation deleteTravelproduct($travelproductId: ID!) {\n    deleteTravelproduct(travelproductId: $travelproductId)\n  }\n": types.DeleteTravelproductDocument,
+    "\n  mutation toggleTravelproductPick($travelproductId: ID!) {\n    toggleTravelproductPick(travelproductId: $travelproductId)\n  }\n": types.ToggleTravelproductPickDocument,
     "\n  query fetchTravelproducts($isSoldout: Boolean, $search: String, $page: Int) {\n    fetchTravelproducts(isSoldout: $isSoldout, search: $search, page: $page) {\n      _id\n      name\n      remarks\n      price\n      tags\n      images\n      pickedCount\n      seller {\n        _id\n        email\n        name\n        picture\n        createdAt\n        updatedAt\n        deletedAt\n      }\n    }\n  }\n": types.FetchTravelproductsDocument,
     "\n  mutation createTravelproduct($createTravelproductInput: CreateTravelproductInput!) {\n    createTravelproduct(createTravelproductInput: $createTravelproductInput) {\n      _id\n    }\n  }\n": types.CreateTravelproductDocument,
     "\n  fragment BoardForAddressSet on Board {\n    boardAddress {\n      zipcode\n      address\n      addressDetail\n    }\n  }\n": types.BoardForAddressSetFragmentDoc,
     "\n  fragment BoardForDateSet on Board {\n    createdAt\n    updatedAt\n    deletedAt\n  }\n": types.BoardForDateSetFragmentDoc,
     "\n  fragment BoardForLikeSet on Board {\n    likeCount\n    dislikeCount\n  }\n": types.BoardForLikeSetFragmentDoc,
     "\n  fragment BoardForUserSet on Board {\n    user {\n      _id\n      email\n      name\n      picture\n      createdAt\n      updatedAt\n      deletedAt\n    }\n  }\n": types.BoardForUserSetFragmentDoc,
-    "\n  fragment TravelproductForAddressSet on Travelproduct {\n    travelproductAddress {\n      lat\n      lng\n    }\n  }\n": types.TravelproductForAddressSetFragmentDoc,
+    "\n  fragment TravelproductForAddressSet on Travelproduct {\n    travelproductAddress {\n      address\n      lat\n      lng\n    }\n  }\n": types.TravelproductForAddressSetFragmentDoc,
     "\n  fragment TravelproductForSellerSet on Travelproduct {\n    seller {\n      _id\n      email\n      name\n      picture\n    }\n  }\n": types.TravelproductForSellerSetFragmentDoc,
     "\n  \n  \n  \n  \n\n  query fetchBoard(\n    $boardId: ID!\n    $isBoardForLikeSet: Boolean = false\n    $isBoardForAddressSet: Boolean = false\n    $isBoardForUserSet: Boolean = false\n    $isBoardForDateSet: Boolean = false\n  ) {\n    fetchBoard(boardId: $boardId) {\n      _id\n      writer\n      title\n      contents\n      youtubeUrl\n      images\n\n      ...BoardForLikeSet @include(if: $isBoardForLikeSet)\n      ...BoardForAddressSet @include(if: $isBoardForAddressSet)\n      ...BoardForUserSet @include(if: $isBoardForUserSet)\n      ...BoardForDateSet @include(if: $isBoardForDateSet)\n    }\n  }\n": types.FetchBoardDocument,
     "\n  \n  \n\n  query fetchTravelproduct(\n    $travelproductId: ID!\n    $isTravelProductForAddressSet: Boolean = false\n    $isTravelProductForSellerSet: Boolean = false\n  ) {\n    fetchTravelproduct(travelproductId: $travelproductId) {\n      _id\n      name\n      remarks\n      contents\n      price\n      tags\n      images\n      pickedCount\n\n      ...TravelproductForAddressSet @include(if: $isTravelProductForAddressSet)\n      ...TravelproductForSellerSet @include(if: $isTravelProductForSellerSet)\n    }\n  }\n": types.FetchTravelproductDocument,
@@ -129,6 +133,10 @@ export function graphql(source: "\n  mutation deleteBoard($boardId: ID!) {\n    
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
+export function graphql(source: "\n  query fetchTravelproductsIPicked($search: String, $page: Int) {\n    fetchTravelproductsIPicked(search: $search, page: $page) {\n      name\n      price\n      seller {\n        name\n      }\n      createdAt\n    }\n  }\n"): (typeof documents)["\n  query fetchTravelproductsIPicked($search: String, $page: Int) {\n    fetchTravelproductsIPicked(search: $search, page: $page) {\n      name\n      price\n      seller {\n        name\n      }\n      createdAt\n    }\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
 export function graphql(source: "\n  mutation loginUser($email: String!, $password: String!) {\n    loginUser(email: $email, password: $password) {\n      accessToken\n    }\n  }\n"): (typeof documents)["\n  mutation loginUser($email: String!, $password: String!) {\n    loginUser(email: $email, password: $password) {\n      accessToken\n    }\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
@@ -146,6 +154,10 @@ export function graphql(source: "\n  mutation createPointTransactionOfBuyingAndS
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(source: "\n  mutation deleteTravelproduct($travelproductId: ID!) {\n    deleteTravelproduct(travelproductId: $travelproductId)\n  }\n"): (typeof documents)["\n  mutation deleteTravelproduct($travelproductId: ID!) {\n    deleteTravelproduct(travelproductId: $travelproductId)\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\n  mutation toggleTravelproductPick($travelproductId: ID!) {\n    toggleTravelproductPick(travelproductId: $travelproductId)\n  }\n"): (typeof documents)["\n  mutation toggleTravelproductPick($travelproductId: ID!) {\n    toggleTravelproductPick(travelproductId: $travelproductId)\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
@@ -173,7 +185,7 @@ export function graphql(source: "\n  fragment BoardForUserSet on Board {\n    us
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\n  fragment TravelproductForAddressSet on Travelproduct {\n    travelproductAddress {\n      lat\n      lng\n    }\n  }\n"): (typeof documents)["\n  fragment TravelproductForAddressSet on Travelproduct {\n    travelproductAddress {\n      lat\n      lng\n    }\n  }\n"];
+export function graphql(source: "\n  fragment TravelproductForAddressSet on Travelproduct {\n    travelproductAddress {\n      address\n      lat\n      lng\n    }\n  }\n"): (typeof documents)["\n  fragment TravelproductForAddressSet on Travelproduct {\n    travelproductAddress {\n      address\n      lat\n      lng\n    }\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
