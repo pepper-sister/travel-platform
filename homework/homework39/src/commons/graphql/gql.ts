@@ -23,6 +23,10 @@ type Documents = {
     "\n  mutation deleteBoard($boardId: ID!) {\n    deleteBoard(boardId: $boardId)\n  }\n": typeof types.DeleteBoardDocument,
     "\n  query fetchTravelproductsISold($search: String, $page: Int) {\n    fetchTravelproductsISold(search: $search, page: $page) {\n      _id\n      name\n      price\n      soldAt\n      createdAt\n    }\n  }\n": typeof types.FetchTravelproductsISoldDocument,
     "\n  query fetchTravelproductsIPicked($search: String, $page: Int) {\n    fetchTravelproductsIPicked(search: $search, page: $page) {\n      _id\n      name\n      price\n      seller {\n        name\n      }\n      createdAt\n    }\n  }\n": typeof types.FetchTravelproductsIPickedDocument,
+    "\n  query fetchPointTransactions($search: String, $page: Int) {\n    fetchPointTransactions(search: $search, page: $page) {\n      _id\n      amount\n      balance\n      status\n      travelproduct {\n        name\n      }\n      createdAt\n    }\n  }\n": typeof types.FetchPointTransactionsDocument,
+    "\n  query fetchPointTransactionsOfLoading($search: String, $page: Int) {\n    fetchPointTransactionsOfLoading(search: $search, page: $page) {\n      _id\n      amount\n      balance\n      status\n      travelproduct {\n        name\n      }\n      createdAt\n    }\n  }\n": typeof types.FetchPointTransactionsOfLoadingDocument,
+    "\n  query fetchPointTransactionsOfBuying($search: String, $page: Int) {\n    fetchPointTransactionsOfBuying(search: $search, page: $page) {\n      _id\n      amount\n      balance\n      status\n      travelproduct {\n        name\n      }\n      createdAt\n    }\n  }\n": typeof types.FetchPointTransactionsOfBuyingDocument,
+    "\n  query fetchPointTransactionsOfSelling($search: String, $page: Int) {\n    fetchPointTransactionsOfSelling(search: $search, page: $page) {\n      _id\n      amount\n      balance\n      status\n      travelproduct {\n        name\n      }\n      createdAt\n    }\n  }\n": typeof types.FetchPointTransactionsOfSellingDocument,
     "\n  mutation loginUser($email: String!, $password: String!) {\n    loginUser(email: $email, password: $password) {\n      accessToken\n    }\n  }\n": typeof types.LoginUserDocument,
     "\n  mutation createUser($createUserInput: CreateUserInput!) {\n    createUser(createUserInput: $createUserInput) {\n      _id\n      email\n    }\n  }\n": typeof types.CreateUserDocument,
     "\n  mutation createPointTransactionOfLoading($paymentId: ID!) {\n    createPointTransactionOfLoading(paymentId: $paymentId) {\n      _id\n    }\n  }\n": typeof types.CreatePointTransactionOfLoadingDocument,
@@ -61,6 +65,10 @@ const documents: Documents = {
     "\n  mutation deleteBoard($boardId: ID!) {\n    deleteBoard(boardId: $boardId)\n  }\n": types.DeleteBoardDocument,
     "\n  query fetchTravelproductsISold($search: String, $page: Int) {\n    fetchTravelproductsISold(search: $search, page: $page) {\n      _id\n      name\n      price\n      soldAt\n      createdAt\n    }\n  }\n": types.FetchTravelproductsISoldDocument,
     "\n  query fetchTravelproductsIPicked($search: String, $page: Int) {\n    fetchTravelproductsIPicked(search: $search, page: $page) {\n      _id\n      name\n      price\n      seller {\n        name\n      }\n      createdAt\n    }\n  }\n": types.FetchTravelproductsIPickedDocument,
+    "\n  query fetchPointTransactions($search: String, $page: Int) {\n    fetchPointTransactions(search: $search, page: $page) {\n      _id\n      amount\n      balance\n      status\n      travelproduct {\n        name\n      }\n      createdAt\n    }\n  }\n": types.FetchPointTransactionsDocument,
+    "\n  query fetchPointTransactionsOfLoading($search: String, $page: Int) {\n    fetchPointTransactionsOfLoading(search: $search, page: $page) {\n      _id\n      amount\n      balance\n      status\n      travelproduct {\n        name\n      }\n      createdAt\n    }\n  }\n": types.FetchPointTransactionsOfLoadingDocument,
+    "\n  query fetchPointTransactionsOfBuying($search: String, $page: Int) {\n    fetchPointTransactionsOfBuying(search: $search, page: $page) {\n      _id\n      amount\n      balance\n      status\n      travelproduct {\n        name\n      }\n      createdAt\n    }\n  }\n": types.FetchPointTransactionsOfBuyingDocument,
+    "\n  query fetchPointTransactionsOfSelling($search: String, $page: Int) {\n    fetchPointTransactionsOfSelling(search: $search, page: $page) {\n      _id\n      amount\n      balance\n      status\n      travelproduct {\n        name\n      }\n      createdAt\n    }\n  }\n": types.FetchPointTransactionsOfSellingDocument,
     "\n  mutation loginUser($email: String!, $password: String!) {\n    loginUser(email: $email, password: $password) {\n      accessToken\n    }\n  }\n": types.LoginUserDocument,
     "\n  mutation createUser($createUserInput: CreateUserInput!) {\n    createUser(createUserInput: $createUserInput) {\n      _id\n      email\n    }\n  }\n": types.CreateUserDocument,
     "\n  mutation createPointTransactionOfLoading($paymentId: ID!) {\n    createPointTransactionOfLoading(paymentId: $paymentId) {\n      _id\n    }\n  }\n": types.CreatePointTransactionOfLoadingDocument,
@@ -140,6 +148,22 @@ export function graphql(source: "\n  query fetchTravelproductsISold($search: Str
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(source: "\n  query fetchTravelproductsIPicked($search: String, $page: Int) {\n    fetchTravelproductsIPicked(search: $search, page: $page) {\n      _id\n      name\n      price\n      seller {\n        name\n      }\n      createdAt\n    }\n  }\n"): (typeof documents)["\n  query fetchTravelproductsIPicked($search: String, $page: Int) {\n    fetchTravelproductsIPicked(search: $search, page: $page) {\n      _id\n      name\n      price\n      seller {\n        name\n      }\n      createdAt\n    }\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\n  query fetchPointTransactions($search: String, $page: Int) {\n    fetchPointTransactions(search: $search, page: $page) {\n      _id\n      amount\n      balance\n      status\n      travelproduct {\n        name\n      }\n      createdAt\n    }\n  }\n"): (typeof documents)["\n  query fetchPointTransactions($search: String, $page: Int) {\n    fetchPointTransactions(search: $search, page: $page) {\n      _id\n      amount\n      balance\n      status\n      travelproduct {\n        name\n      }\n      createdAt\n    }\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\n  query fetchPointTransactionsOfLoading($search: String, $page: Int) {\n    fetchPointTransactionsOfLoading(search: $search, page: $page) {\n      _id\n      amount\n      balance\n      status\n      travelproduct {\n        name\n      }\n      createdAt\n    }\n  }\n"): (typeof documents)["\n  query fetchPointTransactionsOfLoading($search: String, $page: Int) {\n    fetchPointTransactionsOfLoading(search: $search, page: $page) {\n      _id\n      amount\n      balance\n      status\n      travelproduct {\n        name\n      }\n      createdAt\n    }\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\n  query fetchPointTransactionsOfBuying($search: String, $page: Int) {\n    fetchPointTransactionsOfBuying(search: $search, page: $page) {\n      _id\n      amount\n      balance\n      status\n      travelproduct {\n        name\n      }\n      createdAt\n    }\n  }\n"): (typeof documents)["\n  query fetchPointTransactionsOfBuying($search: String, $page: Int) {\n    fetchPointTransactionsOfBuying(search: $search, page: $page) {\n      _id\n      amount\n      balance\n      status\n      travelproduct {\n        name\n      }\n      createdAt\n    }\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\n  query fetchPointTransactionsOfSelling($search: String, $page: Int) {\n    fetchPointTransactionsOfSelling(search: $search, page: $page) {\n      _id\n      amount\n      balance\n      status\n      travelproduct {\n        name\n      }\n      createdAt\n    }\n  }\n"): (typeof documents)["\n  query fetchPointTransactionsOfSelling($search: String, $page: Int) {\n    fetchPointTransactionsOfSelling(search: $search, page: $page) {\n      _id\n      amount\n      balance\n      status\n      travelproduct {\n        name\n      }\n      createdAt\n    }\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
