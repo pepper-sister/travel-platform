@@ -3,14 +3,11 @@ import styles from "./styles.module.css";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useAccessTokenStore } from "@/commons/stores/access-token";
-import { useVoucherStore } from "@/commons/stores/voucher";
 
 export default function NavigationUI() {
   const pathname = usePathname();
   const isActive = (path: string) => pathname === path;
-
   const { accessToken } = useAccessTokenStore();
-  const { setIsVoucher } = useVoucherStore();
 
   return (
     <div className="row__sort row__center">
@@ -20,14 +17,12 @@ export default function NavigationUI() {
           <div className="row__sort gap__16">
             <Link
               href="/boards"
-              onClick={() => setIsVoucher(false)}
               className={`${isActive("/boards") ? `${styles.navigation__active} w__700 c__000000` : "c__333333"} padding__8`}
             >
               트립토크
             </Link>
             <Link
               href="/voucher"
-              onClick={() => setIsVoucher(true)}
               className={`${isActive("/voucher") ? `${styles.navigation__active} w__700 c__000000` : "c__333333"} padding__8`}
             >
               숙박권 구매

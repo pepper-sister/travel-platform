@@ -1,12 +1,20 @@
+"use client";
+
 import SearchBarUI from "@/components/search-bar";
 import RecommendUI from "./_components/recommend";
 import EventUI from "./_components/event";
 import ToggleUI from "./_components/toggle";
 import MenuUI from "./_components/menu";
 import ListUI from "./_components/list";
-import { Suspense } from "react";
+import { Suspense, useEffect } from "react";
+import { useVoucherStore } from "@/commons/stores/voucher";
 
 function VoucherContents() {
+  const { setIsVoucher } = useVoucherStore();
+  useEffect(() => {
+    setIsVoucher(true);
+  }, []);
+
   return (
     <div className="row__sort row__center">
       <div className="width__1280px padding__40__20 column__sort gap__64">

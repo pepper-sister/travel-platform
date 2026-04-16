@@ -5,7 +5,7 @@ import { useSearchParams } from "next/navigation";
 import { useEffect } from "react";
 
 export const useVoucher = () => {
-  const { setIsVoucher, isReservable } = useVoucherStore();
+  const { isReservable } = useVoucherStore();
   const searchParams = useSearchParams();
 
   useEffect(() => {
@@ -15,8 +15,6 @@ export const useVoucher = () => {
       params.delete("endDate");
       window.history.replaceState(null, "", `?${params.toString()}`);
     }
-
-    setIsVoucher(true);
   }, []);
 
   const search = searchParams.get("search");

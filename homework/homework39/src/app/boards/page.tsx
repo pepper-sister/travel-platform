@@ -1,9 +1,17 @@
+"use client";
+
 import PaginationUI from "@/components/pagination";
 import ListUI from "./_components";
 import SearchBarUI from "@/components/search-bar";
-import { Suspense } from "react";
+import { Suspense, useEffect } from "react";
+import { useVoucherStore } from "@/commons/stores/voucher";
 
 function BoardsListContents() {
+  const { setIsVoucher } = useVoucherStore();
+  useEffect(() => {
+    setIsVoucher(false);
+  }, []);
+
   return (
     <div className="row__sort row__center">
       <div className="width__1280px padding__40__20 column__sort gap__24">
