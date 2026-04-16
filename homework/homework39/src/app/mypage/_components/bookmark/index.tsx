@@ -7,7 +7,6 @@ import { useBookMark } from "./hook";
 export default function BookMarkUI() {
   const [bookmark, setBookmark] = useState(false);
   const { data, result, onClickDeleteProduct, onClickDeleteBookMark } = useBookMark();
-  console.log(data);
 
   return (
     <div className="column__sort gap__24">
