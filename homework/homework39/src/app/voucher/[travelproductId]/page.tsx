@@ -1,3 +1,5 @@
+"use client";
+
 import TitleUI from "./_components/title";
 import ImageUI from "./_components/image";
 import SellerUI from "./_components/seller";
