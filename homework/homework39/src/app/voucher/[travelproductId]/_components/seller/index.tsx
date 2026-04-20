@@ -40,8 +40,8 @@ export default function SellerUI() {
         <h4 className="f__20 w__700 l__28">판매자</h4>
         <div className="row__sort column__center gap__4">
           <Image
-            className={`${styles.voucher__profile} br__100`}
-            src={(data?.fetchTravelproduct as any)?.seller?.picture ?? "/images/voucher-detail/profile.jpg"}
+            className={`${styles.voucher__profile} br__100 bg__E4E4E4`}
+            src={(data?.fetchTravelproduct as any)?.seller?.picture ?? "/images/voucher-detail/profile.png"}
             alt="profile"
             width={40}
             height={40}

@@ -52,8 +52,8 @@ function ItemUI({ el }: IItemUIProps) {
             <div className="row__sort row__between column__center">
               <div className="row__sort column__center gap__4">
                 <Image
-                  src={el.seller?.picture ?? "/images/voucher/profile.jpg"}
-                  className="br__100"
+                  src={el.seller?.picture ?? "/images/voucher/profile.png"}
+                  className="br__100 bg__E4E4E4"
                   alt="프로필"
                   width={24}
                   height={24}

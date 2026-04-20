@@ -5,7 +5,7 @@ export default function TitleUI({ data }: any) {
     <div className="row__sort row__between column__center">
       <div className="row__sort gap__4 column__center">
         <Image
-          src={data?.user?.picture ?? "/images/boards-detail/profile.jpg"}
+          src={data?.user?.picture ?? "/images/boards-detail/profile.png"}
           className="br__100 bg__E4E4E4"
           alt="person"
           width={24}

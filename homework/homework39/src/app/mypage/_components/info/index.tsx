@@ -10,8 +10,8 @@ export default function InfoUI({ active, setActive }: IInfoProps) {
       <h2 className="f__18 w__600">내 정보</h2>
       <div className="row__sort column__center gap__4">
         <Image
-          src={`${data?.fetchUserLoggedIn.picture ? data?.fetchUserLoggedIn.picture : "/images/mypage/profile.jpg"}`}
-          className="br__100"
+          src={`${data?.fetchUserLoggedIn.picture ? data?.fetchUserLoggedIn.picture : "/images/mypage/profile.png"}`}
+          className="br__100 bg__E4E4E4"
           alt="프로필"
           width={40}
           height={40}
