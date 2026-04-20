@@ -34,6 +34,7 @@ type Documents = {
     "\n  mutation deleteTravelproduct($travelproductId: ID!) {\n    deleteTravelproduct(travelproductId: $travelproductId)\n  }\n": typeof types.DeleteTravelproductDocument,
     "\n  mutation toggleTravelproductPick($travelproductId: ID!) {\n    toggleTravelproductPick(travelproductId: $travelproductId)\n  }\n": typeof types.ToggleTravelproductPickDocument,
     "\n  query fetchTravelproducts($isSoldout: Boolean, $search: String, $page: Int) {\n    fetchTravelproducts(isSoldout: $isSoldout, search: $search, page: $page) {\n      _id\n      name\n      remarks\n      price\n      tags\n      images\n      pickedCount\n      seller {\n        _id\n        email\n        name\n        picture\n        createdAt\n        updatedAt\n        deletedAt\n      }\n    }\n  }\n": typeof types.FetchTravelproductsDocument,
+    "\n  query fetchTravelproductsOfTheBest {\n    fetchTravelproductsOfTheBest {\n      _id\n      name\n      contents\n      price\n      images\n      pickedCount\n    }\n  }\n": typeof types.FetchTravelproductsOfTheBestDocument,
     "\n  mutation createTravelproduct($createTravelproductInput: CreateTravelproductInput!) {\n    createTravelproduct(createTravelproductInput: $createTravelproductInput) {\n      _id\n    }\n  }\n": typeof types.CreateTravelproductDocument,
     "\n  fragment BoardForAddressSet on Board {\n    boardAddress {\n      zipcode\n      address\n      addressDetail\n    }\n  }\n": typeof types.BoardForAddressSetFragmentDoc,
     "\n  fragment BoardForDateSet on Board {\n    createdAt\n    updatedAt\n    deletedAt\n  }\n": typeof types.BoardForDateSetFragmentDoc,
@@ -76,6 +77,7 @@ const documents: Documents = {
     "\n  mutation deleteTravelproduct($travelproductId: ID!) {\n    deleteTravelproduct(travelproductId: $travelproductId)\n  }\n": types.DeleteTravelproductDocument,
     "\n  mutation toggleTravelproductPick($travelproductId: ID!) {\n    toggleTravelproductPick(travelproductId: $travelproductId)\n  }\n": types.ToggleTravelproductPickDocument,
     "\n  query fetchTravelproducts($isSoldout: Boolean, $search: String, $page: Int) {\n    fetchTravelproducts(isSoldout: $isSoldout, search: $search, page: $page) {\n      _id\n      name\n      remarks\n      price\n      tags\n      images\n      pickedCount\n      seller {\n        _id\n        email\n        name\n        picture\n        createdAt\n        updatedAt\n        deletedAt\n      }\n    }\n  }\n": types.FetchTravelproductsDocument,
+    "\n  query fetchTravelproductsOfTheBest {\n    fetchTravelproductsOfTheBest {\n      _id\n      name\n      contents\n      price\n      images\n      pickedCount\n    }\n  }\n": types.FetchTravelproductsOfTheBestDocument,
     "\n  mutation createTravelproduct($createTravelproductInput: CreateTravelproductInput!) {\n    createTravelproduct(createTravelproductInput: $createTravelproductInput) {\n      _id\n    }\n  }\n": types.CreateTravelproductDocument,
     "\n  fragment BoardForAddressSet on Board {\n    boardAddress {\n      zipcode\n      address\n      addressDetail\n    }\n  }\n": types.BoardForAddressSetFragmentDoc,
     "\n  fragment BoardForDateSet on Board {\n    createdAt\n    updatedAt\n    deletedAt\n  }\n": types.BoardForDateSetFragmentDoc,
@@ -192,6 +194,10 @@ export function graphql(source: "\n  mutation toggleTravelproductPick($travelpro
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(source: "\n  query fetchTravelproducts($isSoldout: Boolean, $search: String, $page: Int) {\n    fetchTravelproducts(isSoldout: $isSoldout, search: $search, page: $page) {\n      _id\n      name\n      remarks\n      price\n      tags\n      images\n      pickedCount\n      seller {\n        _id\n        email\n        name\n        picture\n        createdAt\n        updatedAt\n        deletedAt\n      }\n    }\n  }\n"): (typeof documents)["\n  query fetchTravelproducts($isSoldout: Boolean, $search: String, $page: Int) {\n    fetchTravelproducts(isSoldout: $isSoldout, search: $search, page: $page) {\n      _id\n      name\n      remarks\n      price\n      tags\n      images\n      pickedCount\n      seller {\n        _id\n        email\n        name\n        picture\n        createdAt\n        updatedAt\n        deletedAt\n      }\n    }\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\n  query fetchTravelproductsOfTheBest {\n    fetchTravelproductsOfTheBest {\n      _id\n      name\n      contents\n      price\n      images\n      pickedCount\n    }\n  }\n"): (typeof documents)["\n  query fetchTravelproductsOfTheBest {\n    fetchTravelproductsOfTheBest {\n      _id\n      name\n      contents\n      price\n      images\n      pickedCount\n    }\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
