@@ -1,8 +1,31 @@
+.product__img {
+  width: 640px;
+  height: 480px;
+}
 .product__img__section {
   max-height: 480px;
   overflow-y: scroll;
 }
+.product__detail__img__section {
+  width: 180px;
+  height: 136px;
+}
 .product__detail__img {
   width: 180px;
   height: 136px;
+}
+
+@media (max-width: 1139px) {
+  .product__img {
+    width: 400px;
+    height: 300px;
+  }
+  .product__detail__img__section {
+    width: 56px;
+    height: 42px;
+  }
+  .product__detail__img {
+    width: 56px;
+    height: 42px;
+  }
 }

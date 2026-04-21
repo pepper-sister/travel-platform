@@ -30,8 +30,10 @@ export default function SigninWithSignup() {
           className="sign__img"
           src="/images/signin-with-signup/background.jpg"
           alt="배경"
-          width={1520}
-          height={1080}
+          width={0}
+          height={0}
+          sizes="100vw"
+          style={{ width: "calc(100% - 400px)", height: "100vh", objectFit: "cover" }}
         />
         <ModalUI isModalOpen={isModalOpen} onClickSignUp={onClickSignUp} />
       </form>

@@ -2,3 +2,9 @@
   width: 844px;
   height: 280px;
 }
+
+@media (max-width: 1279px) {
+  .product__location {
+    width: 100%;
+  }
+}

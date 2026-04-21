@@ -341,3 +341,9 @@ button {
   max-height: 100vh;
   object-fit: cover;
 }
+
+@media (max-width: 1279px) {
+  .width__1280px {
+    width: 100%;
+  }
+}

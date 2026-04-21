@@ -19,23 +19,24 @@ function BoardsListContents() {
   }, []);
 
   const { data } = useQuery(FetchBoardsOfTheBestDocument);
-  console.log(data);
 
   return (
     <div className="row__sort row__center">
       <div className="width__1280px padding__40__20 column__sort gap__40">
         <div className="column__sort gap__24">
           <div className="f__28 w__700 l__36">오늘 핫한 트립토크</div>
-          <div className="row__sort row__between gap__32">
+          <div className={`${styles.best__boards} row__sort row__between gap__32`}>
             {data?.fetchBoardsOfTheBest.slice(0, 4).map((el) => (
-              <Link href={`/boards/${el._id}`} key={el._id} className="row__sort gap__8 width__100">
+              <Link href={`/boards/${el._id}`} key={el._id} className="row__sort gap__8">
                 <Image
                   src={`https://storage.googleapis.com/${el.images?.[0]}`}
                   alt="게시글"
-                  width={0}
-                  height={0}
-                  sizes="100vw"
-                  style={{ width: "40%", height: "152px", borderRadius: "8px", objectFit: "cover" }}
+                  width={112}
+                  height={152}
+                  style={{
+                    borderRadius: "8px",
+                    objectFit: "cover",
+                  }}
                 />
                 <div className="width__100 column__sort row__between">
                   <div className="column__sort gap__8">

@@ -14,15 +14,17 @@ export default function ImageUI() {
             : `/images/voucher-detail/image${active + 1}.jpg`
         }
         alt="사진"
-        width={640}
-        height={480}
+        width={0}
+        height={0}
+        sizes="100vw"
+        className={styles.product__img}
         style={{ objectFit: "cover", borderRadius: "8px" }}
       />
       <div className={`${styles.product__img__section} column__sort gap__16`}>
         {productImages.map((el, index) => (
           <div
             key={`${el}-${index}`}
-            className={`${styles.product__detail__img} relative click`}
+            className={`${styles.product__detail__img__section} relative click`}
             onClick={() => setActive(index)}
           >
             <Image
@@ -32,8 +34,10 @@ export default function ImageUI() {
                   : `/images/voucher-detail/image${index + 1}.jpg`
               }
               alt="숙소상세사진"
-              width={180}
-              height={136}
+              width={0}
+              height={0}
+              sizes="100vw"
+              className={styles.product__detail__img}
               style={{ opacity: active === index ? 1 : 0.5, objectFit: "cover", borderRadius: "8px" }}
             />
           </div>
