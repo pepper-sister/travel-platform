@@ -55,5 +55,9 @@ export const useButton = () => {
     }
   };
 
-  return { isActive, onClickUpdate };
+  const onClickCancel = () => {
+    router.back();
+  };
+
+  return { isActive, onClickCancel, onClickUpdate };
 };

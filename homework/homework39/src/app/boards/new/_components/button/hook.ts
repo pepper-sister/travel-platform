@@ -46,5 +46,9 @@ export const useButton = () => {
     }
   };
 
-  return { isActive, onClickSubmit };
+  const onClickCancel = () => {
+    router.back();
+  };
+
+  return { isActive, onClickCancel, onClickSubmit };
 };
