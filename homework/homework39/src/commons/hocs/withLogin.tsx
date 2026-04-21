@@ -29,7 +29,7 @@ export const withLogin =
     if (!isLoaded) return null;
     if (!isLoggedIn) {
       return (
-        <Modal open={!isLoggedIn} closable={false} footer={null}>
+        <Modal centered open={!isLoggedIn} closable={false} footer={null}>
           <div className="column__sort column__center gap__24">
             <div className="column__sort column__center gap__12">
               <h1 className="f__18 w__600">로그인이 필요한 기능입니다.</h1>

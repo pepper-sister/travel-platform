@@ -4,7 +4,7 @@ import { IModalProps } from "./types";
 
 export default function ModalUI({ isModalOpen, onClickSignUp }: IModalProps) {
   return (
-    <Modal open={isModalOpen} closable={false} footer={null}>
+    <Modal centered open={isModalOpen} closable={false} footer={null}>
       <div className="column__sort column__center gap__24">
         <div className="column__sort column__center gap__12">
           <h1 className="f__18 w__600">회원가입을 축하 드려요.</h1>
