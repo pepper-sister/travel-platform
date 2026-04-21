@@ -8,7 +8,6 @@ import Link from "next/link";
 
 export default function RecommendUI() {
   const { data } = useRecommend();
-  console.log(data);
 
   return (
     <div className="column__sort gap__24">

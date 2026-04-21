@@ -17,7 +17,6 @@ export const useSeller = () => {
     if (!data?.fetchTravelproduct || !userData) return;
     const price = data.fetchTravelproduct.price ?? 0;
     const point = userData.fetchUserLoggedIn.userPoint?.amount ?? 0;
-    console.log(price, point);
     if (price > point) {
       setIsShortageModal(true);
     } else {
