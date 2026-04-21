@@ -21,6 +21,7 @@ type Documents = {
     "\n  mutation uplaodFile($file: Upload!) {\n    uploadFile(file: $file) {\n      url\n    }\n  }\n": typeof types.UplaodFileDocument,
     "\n  query fetchBoards($endDate: DateTime, $startDate: DateTime, $search: String, $page: Int!) {\n    fetchBoards(endDate: $endDate, startDate: $startDate, search: $search, page: $page) {\n      _id\n      title\n      writer\n      createdAt\n    }\n  }\n": typeof types.FetchBoardsDocument,
     "\n  mutation deleteBoard($boardId: ID!) {\n    deleteBoard(boardId: $boardId)\n  }\n": typeof types.DeleteBoardDocument,
+    "\n  query fetchBoardsOfTheBest {\n    fetchBoardsOfTheBest {\n      _id\n      writer\n      title\n      likeCount\n      images\n      user {\n        picture\n      }\n      createdAt\n    }\n  }\n": typeof types.FetchBoardsOfTheBestDocument,
     "\n  query fetchTravelproductsISold($search: String, $page: Int) {\n    fetchTravelproductsISold(search: $search, page: $page) {\n      _id\n      name\n      price\n      soldAt\n      createdAt\n    }\n  }\n": typeof types.FetchTravelproductsISoldDocument,
     "\n  query fetchTravelproductsIPicked($search: String, $page: Int) {\n    fetchTravelproductsIPicked(search: $search, page: $page) {\n      _id\n      name\n      price\n      seller {\n        name\n      }\n      createdAt\n    }\n  }\n": typeof types.FetchTravelproductsIPickedDocument,
     "\n  query fetchPointTransactions($search: String, $page: Int) {\n    fetchPointTransactions(search: $search, page: $page) {\n      _id\n      amount\n      balance\n      status\n      travelproduct {\n        name\n      }\n      createdAt\n    }\n  }\n": typeof types.FetchPointTransactionsDocument,
@@ -65,6 +66,7 @@ const documents: Documents = {
     "\n  mutation uplaodFile($file: Upload!) {\n    uploadFile(file: $file) {\n      url\n    }\n  }\n": types.UplaodFileDocument,
     "\n  query fetchBoards($endDate: DateTime, $startDate: DateTime, $search: String, $page: Int!) {\n    fetchBoards(endDate: $endDate, startDate: $startDate, search: $search, page: $page) {\n      _id\n      title\n      writer\n      createdAt\n    }\n  }\n": types.FetchBoardsDocument,
     "\n  mutation deleteBoard($boardId: ID!) {\n    deleteBoard(boardId: $boardId)\n  }\n": types.DeleteBoardDocument,
+    "\n  query fetchBoardsOfTheBest {\n    fetchBoardsOfTheBest {\n      _id\n      writer\n      title\n      likeCount\n      images\n      user {\n        picture\n      }\n      createdAt\n    }\n  }\n": types.FetchBoardsOfTheBestDocument,
     "\n  query fetchTravelproductsISold($search: String, $page: Int) {\n    fetchTravelproductsISold(search: $search, page: $page) {\n      _id\n      name\n      price\n      soldAt\n      createdAt\n    }\n  }\n": types.FetchTravelproductsISoldDocument,
     "\n  query fetchTravelproductsIPicked($search: String, $page: Int) {\n    fetchTravelproductsIPicked(search: $search, page: $page) {\n      _id\n      name\n      price\n      seller {\n        name\n      }\n      createdAt\n    }\n  }\n": types.FetchTravelproductsIPickedDocument,
     "\n  query fetchPointTransactions($search: String, $page: Int) {\n    fetchPointTransactions(search: $search, page: $page) {\n      _id\n      amount\n      balance\n      status\n      travelproduct {\n        name\n      }\n      createdAt\n    }\n  }\n": types.FetchPointTransactionsDocument,
@@ -144,6 +146,10 @@ export function graphql(source: "\n  query fetchBoards($endDate: DateTime, $star
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(source: "\n  mutation deleteBoard($boardId: ID!) {\n    deleteBoard(boardId: $boardId)\n  }\n"): (typeof documents)["\n  mutation deleteBoard($boardId: ID!) {\n    deleteBoard(boardId: $boardId)\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\n  query fetchBoardsOfTheBest {\n    fetchBoardsOfTheBest {\n      _id\n      writer\n      title\n      likeCount\n      images\n      user {\n        picture\n      }\n      createdAt\n    }\n  }\n"): (typeof documents)["\n  query fetchBoardsOfTheBest {\n    fetchBoardsOfTheBest {\n      _id\n      writer\n      title\n      likeCount\n      images\n      user {\n        picture\n      }\n      createdAt\n    }\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
