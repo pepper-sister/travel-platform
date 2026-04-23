@@ -31,12 +31,13 @@ function BoardsListContents() {
                 <Image
                   src={`https://storage.googleapis.com/${el.images?.[0]}`}
                   alt="게시글"
-                  width={112}
-                  height={152}
+                  width={0}
+                  height={0}
                   style={{
                     borderRadius: "8px",
                     objectFit: "cover",
                   }}
+                  className={styles.best__boards__img}
                 />
                 <div className="width__100 column__sort row__between">
                   <div className="column__sort gap__8">

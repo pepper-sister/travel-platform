@@ -2,6 +2,10 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
 }
+.best__boards__img {
+  width: 112px;
+  height: 152px;
+}
 
 .detail__good__icon path {
   color: #f66a6a;
@@ -10,5 +14,15 @@
 @media (max-width: 1279px) {
   .best__boards {
     grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 780px) {
+  .best__boards {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .best__boards__img {
+    width: 96px;
+    height: 128px;
   }
 }
