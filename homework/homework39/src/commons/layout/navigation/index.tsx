@@ -93,8 +93,16 @@ export default function NavigationUI() {
     <div className="row__sort row__center">
       <div className="width__1280px padding__20__20 row__sort row__between column__center">
         <div className="row__sort gap__24 column__center">
-          <Image src="/images/navigation/logo.png" alt="logo" width={52} height={32} priority />
-          <div className="row__sort gap__16">
+          <Image
+            src="/images/navigation/logo.png"
+            alt="logo"
+            width={52}
+            height={32}
+            priority
+            className={styles.navigation__img}
+          />
+          <h1 className={`${styles.mobile__navigation__title} f__28 l__24 w__600`}>트립토크</h1>
+          <div className={`${styles.tablet__navigation} row__sort gap__16`}>
             <Link
               href="/boards"
               className={`${isActive("/boards") ? `${styles.navigation__active} w__700 c__000000` : "c__333333"} padding__8`}
@@ -117,13 +125,23 @@ export default function NavigationUI() {
         </div>
 
         {!accessToken ? (
-          <Link
-            href="/signin-with-signup"
-            className="br__100 padding__8__12 row__sort gap__8 column__center bg__000000"
-          >
-            <p className="f__14 w__600 l__20 c__ffffff">로그인</p>
-            <Image className="filter" src="/images/navigation/right_arrow.png" alt="right" width={24} height={24} />
-          </Link>
+          <>
+            <Link
+              href="/signin-with-signup"
+              className={`${styles.navigation__login} br__100 padding__8__12 row__sort gap__8 column__center bg__000000`}
+            >
+              <p className="f__14 w__600 l__20 c__ffffff">로그인</p>
+              <Image className="filter" src="/images/navigation/right_arrow.png" alt="right" width={24} height={24} />
+            </Link>
+
+            <Link
+              href="/signin-with-signup"
+              className={`${styles.mobile__navigation__login} row__sort gap__4 column__center`}
+            >
+              <p className="f__13 w__500 l__20 c__333333">로그인</p>
+              <Image src="/images/navigation/login.png" alt="right" width={16} height={16} />
+            </Link>
+          </>
         ) : (
           <div className="row__sort gap__4 column__center">
             <Image
@@ -139,7 +157,6 @@ export default function NavigationUI() {
           </div>
         )}
       </div>
-
       <PointUI isChargeModal={isChargeModal} setIsChargeModal={setIsChargeModal} handleCancel={handleCancel} />
     </div>
   );
