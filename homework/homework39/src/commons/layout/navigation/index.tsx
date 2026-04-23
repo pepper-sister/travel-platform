@@ -3,12 +3,13 @@ import styles from "./styles.module.css";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useAccessTokenStore } from "@/commons/stores/access-token";
-import { Dropdown, DropdownProps, MenuProps } from "antd";
+import { Drawer, Dropdown, DropdownProps, MenuProps } from "antd";
 import { useLoggedIn } from "@/commons/libraries/is-logged-in";
 import { useState } from "react";
 import PointUI from "@/app/voucher/[travelproductId]/_components/point";
 import { useMutation } from "@apollo/client/react";
 import { LogoutUserDocument } from "@/commons/graphql/graphql";
+import { useNavigation } from "./hook";
 
 export default function NavigationUI() {
   const { data } = useLoggedIn();
@@ -18,6 +19,7 @@ export default function NavigationUI() {
   const pathname = usePathname();
   const isActive = (path: string) => pathname === path;
   const [logoutUser] = useMutation(LogoutUserDocument);
+  const { open, showDrawer, onClose } = useNavigation();
 
   const handleCancel = () => {
     setIsChargeModal(false);
@@ -101,7 +103,9 @@ export default function NavigationUI() {
             priority
             className={styles.navigation__img}
           />
-          <h1 className={`${styles.mobile__navigation__title} f__28 l__24 w__600`}>트립토크</h1>
+          <Link href="/boards" className={`${styles.mobile__navigation__title} f__28 l__24 w__600 c__000000`}>
+            트립토크
+          </Link>
           <div className={`${styles.tablet__navigation} row__sort gap__16`}>
             <Link
               href="/boards"
@@ -143,18 +147,104 @@ export default function NavigationUI() {
             </Link>
           </>
         ) : (
-          <div className="row__sort gap__4 column__center">
+          <>
+            <div className={`${styles.navigation__profile} row__sort gap__4 column__center`}>
+              <Image
+                src="/images/navigation/profile.png"
+                className="br__100 bg__E4E4E4"
+                alt="person"
+                width={40}
+                height={40}
+              />
+              <Dropdown {...sharedProps}>
+                <Image className="click" src="/images/navigation/down_arrow.png" alt="down" width={24} height={24} />
+              </Dropdown>
+            </div>
             <Image
               src="/images/navigation/profile.png"
-              className="br__100 bg__E4E4E4"
+              className={`${styles.mobile__navigation__profile} br__100 bg__E4E4E4`}
               alt="person"
-              width={40}
-              height={40}
+              width={24}
+              height={24}
+              onClick={showDrawer}
             />
-            <Dropdown {...sharedProps}>
-              <Image className="click" src="/images/navigation/down_arrow.png" alt="down" width={24} height={24} />
-            </Dropdown>
-          </div>
+            <Drawer
+              title={
+                <div className="row__sort column__center">
+                  <Image
+                    src="/images/navigation/logo.png"
+                    alt="logo"
+                    width={36}
+                    height={36}
+                    priority
+                    style={{ objectFit: "contain", justifyItems: "center" }}
+                  />
+                </div>
+              }
+              closable={{ placement: "end" }}
+              onClose={onClose}
+              open={open}
+              width="70%"
+              styles={{
+                mask: { backdropFilter: "blur(0.5px)" },
+                header: {
+                  borderBottom: "none",
+                },
+                body: { padding: "16px 20px" },
+              }}
+            >
+              <div className="column__sort" style={{ gap: "12px" }}>
+                <div
+                  className="row__sort column__center gap__4"
+                  onClick={() => {
+                    handleMenuClick({ key: "0" } as any);
+                    onClose();
+                  }}
+                >
+                  <Image
+                    src="/images/navigation/profile.png"
+                    className="br__100 bg__E4E4E4"
+                    alt="person"
+                    width={40}
+                    height={40}
+                  />
+                  <p className="f__28 c__333333">{data?.fetchUserLoggedIn.name}</p>
+                </div>
+                <div className="div" />
+                <div
+                  className="row__sort gap__4"
+                  onClick={() => {
+                    handleMenuClick({ key: "1" } as any);
+                    onClose();
+                  }}
+                >
+                  <Image src="/images/navigation/wallet.png" alt="wallet" width={20} height={20} />
+                  <p className="f__18">{data?.fetchUserLoggedIn.userPoint?.amount.toLocaleString()} P</p>
+                </div>
+                <div className="div" />
+                <div
+                  className="row__sort column__center gap__2"
+                  onClick={() => {
+                    handleMenuClick({ key: "2" } as any);
+                    onClose();
+                  }}
+                >
+                  <Image src="/images/navigation/charge.png" alt="charge" width={16} height={16} />
+                  <p className="f__18 c__333333">포인트 충전</p>
+                </div>
+                <div
+                  className="row__sort column__center gap__2"
+                  onClick={() => {
+                    handleMenuClick({ key: "3" } as any);
+                    onClose();
+                  }}
+                >
+                  <Image src="/images/navigation/logout.png" alt="logout" width={16} height={16} />
+                  <p className="f__18">로그아웃</p>
+                </div>
+              </div>
+            </Drawer>
+          </>
         )}
       </div>
       <PointUI isChargeModal={isChargeModal} setIsChargeModal={setIsChargeModal} handleCancel={handleCancel} />

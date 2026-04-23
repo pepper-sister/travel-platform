@@ -9,6 +9,10 @@
   border-bottom: 2px solid #000000;
 }
 
+.mobile__navigation__profile {
+  display: none;
+}
+
 @media (max-width: 780px) {
   .navigation__img {
     display: none;
@@ -26,5 +30,12 @@
 
   .tablet__navigation {
     display: none;
+  }
+
+  .navigation__profile {
+    display: none;
+  }
+  .mobile__navigation__profile {
+    display: block;
   }
 }
