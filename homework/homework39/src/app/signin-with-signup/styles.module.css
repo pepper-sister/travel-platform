@@ -1,0 +1,13 @@
+.title {
+  display: none;
+}
+
+@media (max-width: 780px) {
+  .title {
+    display: flex;
+  }
+  .title__img {
+    position: absolute;
+    right: 0;
+  }
+}

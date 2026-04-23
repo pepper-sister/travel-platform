@@ -4,14 +4,17 @@ import Image from "next/image";
 import FormUI from "./_components/form";
 import ButtonUI from "./_components/button";
 import ModalUI from "./_components/modal";
-import { useSigninWithSignup } from "./_components/hook";
 import { FormProvider } from "react-hook-form";
 import { useEffect } from "react";
+import styles from "./styles.module.css";
+import { useSigninTitle } from "./hook";
+import { useSigninWithSignup } from "./_components/hook";
 
 export default function SigninWithSignup() {
   const { methods, isSignUp, isModalOpen, onClickSignIn, onClickSignUp } = useSigninWithSignup();
   const { reset } = methods;
   const { handleSubmit } = methods;
+  const { onClickCancel } = useSigninTitle();
 
   useEffect(() => {
     reset();
@@ -19,6 +22,17 @@ export default function SigninWithSignup() {
 
   return (
     <FormProvider {...methods}>
+      <div className={`${styles.title} width__100 relative row__sort row__center column__center gap__8 padding__12__0`}>
+        <p className="">로그인</p>
+        <Image
+          className={`${styles.title__img} click`}
+          src="/images/signin-with-signup/close.png"
+          alt="close"
+          width={24}
+          height={24}
+          onClick={onClickCancel}
+        />
+      </div>
       <form className="row__sort column__center" onSubmit={handleSubmit(onClickSignIn)}>
         <div className="width__400px padding__0__40 column__sort column__center gap__24">
           {isSignUp ? "" : <Image src="/images/signin-with-signup/logo.png" alt="logo" width={120} height={75} />}
