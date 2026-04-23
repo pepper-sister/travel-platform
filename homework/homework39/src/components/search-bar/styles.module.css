@@ -19,6 +19,7 @@
   }
   .search__date {
     flex-grow: 1;
+    max-width: 289px;
   }
 }
 
@@ -31,15 +32,16 @@
   }
   .search__date {
     padding: 8px 12px;
+    max-width: 100%;
   }
   .search__btn {
     width: 100%;
   }
 
   .submit__btn {
-    position: fixed;
-    bottom: 80px;
-    right: 20px;
+    position: absolute;
+    bottom: 20px;
+    right: 0px;
     z-index: 999;
   }
 }

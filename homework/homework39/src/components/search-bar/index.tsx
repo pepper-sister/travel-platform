@@ -15,7 +15,7 @@ export default function SearchBarUI() {
 
   return (
     <div
-      className="width__100 row__sort row__between gap__8"
+      className="width__100 row__sort row__between gap__8 relative"
       style={{
         flexWrap: "wrap-reverse",
         rowGap: "16px",
@@ -42,7 +42,6 @@ export default function SearchBarUI() {
         ) : (
           <RangePicker
             className={`${styles.search__date} click bg__F2F2F2`}
-            style={{ maxWidth: "289px" }}
             format={dateFormat}
             onChange={onChangedate}
           />
@@ -57,7 +56,7 @@ export default function SearchBarUI() {
       </div>
       <Link
         href={isVoucher ? "/voucher/new" : "/boards/new"}
-        className={`${styles.submit__btn} bg__2974E5 br__8 padding__12__16 click row__sort gap__8 f__18 w__600 c__ffffff`}
+        className={`${styles.submit__btn} bg__2974E5 br__8 padding__12__16 click row__sort column__center gap__8 f__18 w__600 c__ffffff`}
         style={{
           marginLeft: "auto",
         }}
