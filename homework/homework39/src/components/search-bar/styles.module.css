@@ -17,4 +17,29 @@
   .search__input {
     width: 300px;
   }
+  .search__date {
+    flex-grow: 1;
+  }
+}
+
+@media (max-width: 780px) {
+  .search__input__section {
+    width: 100%;
+  }
+  .search__input {
+    width: 100%;
+  }
+  .search__date {
+    padding: 8px 12px;
+  }
+  .search__btn {
+    width: 100%;
+  }
+
+  .submit__btn {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    z-index: 999;
+  }
 }
