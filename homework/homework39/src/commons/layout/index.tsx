@@ -39,7 +39,7 @@ export default function Layout({ children }: ILayout) {
     <>
       {!isHiddenNavigation && <NavigationUI />}
       {!isHiddenBanner && <Banner />}
-      {children}
+      <main className={!isHiddenMenu ? "padding_bottom__60" : ""}>{children}</main>
       {!isHiddenMenu && <MenuUI />}
     </>
   );

@@ -134,6 +134,9 @@ button {
 .padding__48 {
   padding: 48px;
 }
+.padding_bottom__60 {
+  padding-bottom: 60px;
+}
 
 .click {
   cursor: pointer;
@@ -383,7 +386,7 @@ button {
     padding: 4px 8px;
   }
   .padding__40__20 {
-    padding: 24px 20px 80px;
+    padding: 24px 20px;
   }
 
   .gap__12 {
