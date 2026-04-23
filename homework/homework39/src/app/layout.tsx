@@ -3,6 +3,7 @@ import "./globals.css";
 import ApolloSetting from "@/commons/settings/apollo-setting";
 import Layout from "@/commons/layout";
 import { ReactNode } from "react";
+import MenuUI from "@/commons/layout/menu";
 
 export const metadata: Metadata = {
   title: "Trip Talk",
@@ -17,6 +18,7 @@ export default function RootLayout({ children, modal }: { children: ReactNode; m
         <ApolloSetting>
           <Layout>{children}</Layout>
         </ApolloSetting>
+        <MenuUI />
       </body>
     </html>
   );

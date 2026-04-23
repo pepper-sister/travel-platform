@@ -1,0 +1,18 @@
+.mobile__navigation {
+  display: none;
+}
+.mobile__navigation__menu {
+  align-items: center;
+}
+
+@media (max-width: 780px) {
+  .mobile__navigation {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    place-items: center;
+    position: fixed;
+    bottom: 0;
+    z-index: 999;
+  }
+}
