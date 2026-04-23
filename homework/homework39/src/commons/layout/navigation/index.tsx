@@ -26,7 +26,7 @@ export default function NavigationUI() {
   };
 
   const handleMenuClick: MenuProps["onClick"] = async (e) => {
-    if (e.key === "0" || e.key === "1") {
+    if (e.key === "1") {
       router.push("/mypage");
     } else if (e.key === "2") {
       setIsChargeModal(true);
@@ -54,7 +54,6 @@ export default function NavigationUI() {
           alt="profile"
         />
       ),
-      onClick: handleMenuClick,
     },
     {
       type: "divider",
@@ -194,13 +193,7 @@ export default function NavigationUI() {
               }}
             >
               <div className="column__sort" style={{ gap: "12px" }}>
-                <div
-                  className="row__sort column__center gap__4"
-                  onClick={() => {
-                    handleMenuClick({ key: "0" } as any);
-                    onClose();
-                  }}
-                >
+                <div className="row__sort column__center gap__4">
                   <Image
                     src="/images/navigation/profile.png"
                     className="br__100 bg__E4E4E4"
@@ -212,7 +205,7 @@ export default function NavigationUI() {
                 </div>
                 <div className="div" />
                 <div
-                  className="row__sort gap__4"
+                  className="row__sort gap__4 click"
                   onClick={() => {
                     handleMenuClick({ key: "1" } as any);
                     onClose();
@@ -223,7 +216,7 @@ export default function NavigationUI() {
                 </div>
                 <div className="div" />
                 <div
-                  className="row__sort column__center gap__2"
+                  className="row__sort column__center gap__2 click"
                   onClick={() => {
                     handleMenuClick({ key: "2" } as any);
                     onClose();
@@ -233,7 +226,7 @@ export default function NavigationUI() {
                   <p className="f__18 c__333333">포인트 충전</p>
                 </div>
                 <div
-                  className="row__sort column__center gap__2"
+                  className="row__sort column__center gap__2 click"
                   onClick={() => {
                     handleMenuClick({ key: "3" } as any);
                     onClose();
