@@ -136,7 +136,7 @@ export default function NavigationUI() {
 
             <Link
               href="/signin-with-signup"
-              className={`${styles.mobile__navigation__login} row__sort gap__4 column__center`}
+              className={`${styles.mobile__navigation__login} row__sort gap__4 column__center click`}
             >
               <p className="f__13 w__500 l__20 c__333333">로그인</p>
               <Image src="/images/navigation/login.png" alt="right" width={16} height={16} />
