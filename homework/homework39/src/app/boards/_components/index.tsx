@@ -28,22 +28,32 @@ export default function ListUI() {
             onClick={() => onClickDetail(el._id)}
             className={`${styles.list__list} relative br__8 padding__12__24 click border__F2F2F2 row__sort row__between`}
           >
-            <div className="row__sort gap__8">
+            <div className="row__sort gap__8" style={{ flex: 1, minWidth: 0 }}>
               <p className="width__64px f__14 w__300 l__20 c__919191 text__center">{index + 1}</p>
-              <p className="f__14 l__20">
+              <p className={`${styles.list__title} f__14 l__20`}>
                 {el.title
                   .replaceAll(keyword, `@#$${keyword}@#$`)
                   .split("@#$")
                   .map((el, index) => (
-                    <span key={`${el}_${index}`} style={{ color: el === keyword ? "red" : "#1c1c1c" }}>
+                    <span
+                      key={`${el}_${index}`}
+                      style={{
+                        color: el === keyword ? "red" : "#1c1c1c",
+                      }}
+                    >
                       {el}
                     </span>
                   ))}
               </p>
             </div>
-            <div className="row__sort gap__8">
+            <div className="row__sort column__center gap__8">
               <p className="width__100px f__14 w__300 l__20 c__333333 text__center">{el.writer}</p>
-              <p className="width__100px f__14 w__300 l__20 c__919191 text__center">{el.createdAt.slice(0, 10)}</p>
+              <p
+                className={`${styles.list__date} width__100px f__14 w__300 l__20 c__919191 text__center`}
+                style={{ whiteSpace: "nowrap" }}
+              >
+                {el.createdAt.slice(0, 10)}
+              </p>
               <Image
                 src="/images/boards/delete.png"
                 onClick={(event) => onClickDelete(event, el._id)}
