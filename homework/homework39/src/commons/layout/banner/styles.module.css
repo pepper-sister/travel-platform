@@ -19,3 +19,9 @@
   object-fit: cover;
   object-position: center 70%;
 }
+
+@media (max-width: 780px) {
+  .banner__image {
+    height: 200px;
+  }
+}
