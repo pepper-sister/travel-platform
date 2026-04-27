@@ -3,3 +3,16 @@
   color: #e4e4e4;
   cursor: auto;
 }
+
+@media (max-width: 780px) {
+  .btn__section {
+    display: gird;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .btn__section,
+  .btn,
+  .submit__btn {
+    width: 100%;
+  }
+}
