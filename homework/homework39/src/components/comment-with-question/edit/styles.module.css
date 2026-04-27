@@ -10,6 +10,9 @@
 .comment__star :global(.ant-rate-star-zero svg) {
   fill: #c7c7c7;
 }
+.mobile__star {
+  display: none;
+}
 
 .comment__input__section {
   width: 640px;
@@ -38,4 +41,18 @@
   background-color: #c7c7c7;
   color: #e4e4e4;
   cursor: auto;
+}
+
+@media (max-width: 780px) {
+  .star {
+    display: none;
+  }
+  .mobile__star {
+    display: flex;
+  }
+
+  .comment__input__section {
+    flex-direction: column;
+    width: 100%;
+  }
 }

@@ -388,7 +388,13 @@ button {
   .padding__40__20 {
     padding: 24px 20px;
   }
+  .padding__40__0 {
+    padding: 40px 0 24px;
+  }
 
+  .gap__8 {
+    gap: 4px;
+  }
   .gap__12 {
     gap: 8px;
   }

@@ -31,7 +31,7 @@ export default function ItemUI({ el, index }: IFetchItemData) {
                   <p className="f__14 w__300 c__5F5F5F">{"writer" in el ? el.writer : el.user?.name}</p>
                 </div>
                 {"rating" in el && (
-                  <Rate className={`${styles.comment__star} row__sort gap__8`} value={el.rating} disabled />
+                  <Rate className={`row__sort gap__8 ${styles.comment__star}`} value={el.rating} disabled />
                 )}
               </div>
               <div className="row__sort gap__8">

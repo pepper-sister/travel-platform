@@ -1,8 +1,14 @@
 import { ChangeEvent, useState } from "react";
 import { useMutation } from "@apollo/client/react";
-import { UpdateBoardCommentDocument, UpdateTravelproductQuestionDocument } from "@/commons/graphql/graphql";
+import {
+  FetchBoardCommentsDocument,
+  FetchTravelproductQuestionsDocument,
+  UpdateBoardCommentDocument,
+  UpdateTravelproductQuestionDocument,
+} from "@/commons/graphql/graphql";
 import { IEditProps } from "./types";
 import { useVoucherStore } from "@/commons/stores/voucher";
+import { useParams } from "next/navigation";
 
 export const useEdit = (props: IEditProps) => {
   const [rate, setRate] = useState("rating" in props.el ? props.el.rating : 0);
@@ -13,6 +19,7 @@ export const useEdit = (props: IEditProps) => {
   });
   const { isVoucher } = useVoucherStore();
   const isActive = isVoucher ? form.contents : form.password && form.contents;
+  const { boardId, travelproductId } = useParams();
 
   const [updateBoardComment] = useMutation(UpdateBoardCommentDocument);
   const [updateTravelproductQuestion] = useMutation(UpdateTravelproductQuestionDocument);
@@ -31,6 +38,12 @@ export const useEdit = (props: IEditProps) => {
             },
             travelproductQuestionId: props.el?._id ?? "",
           },
+          refetchQueries: [
+            {
+              query: FetchTravelproductQuestionsDocument,
+              variables: { page: 1, travelproductId: travelproductId },
+            },
+          ],
         });
         props.setIsEdit(!props.isEdit);
       } else {
@@ -43,6 +56,12 @@ export const useEdit = (props: IEditProps) => {
             password: String(form.password),
             boardCommentId: props.el?._id ?? "",
           },
+          refetchQueries: [
+            {
+              query: FetchBoardCommentsDocument,
+              variables: { page: 1, boardId: boardId },
+            },
+          ],
         });
         props.setIsEdit(!props.isEdit);
       }

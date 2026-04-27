@@ -14,7 +14,11 @@ export default function EditUI({ el, isEdit, setIsEdit }: IEditProps) {
 
   return (
     <div className="column__sort gap__24">
-      {isVoucher ? "" : <Rate className={`${styles.comment__star} row__sort gap__8`} value={rate} onChange={setRate} />}
+      {isVoucher ? (
+        ""
+      ) : (
+        <Rate className={`${styles.comment__star} ${styles.star} row__sort gap__8`} value={rate} onChange={setRate} />
+      )}
       <div className="width__100 column__sort gap__16">
         {isVoucher ? (
           ""
@@ -41,6 +45,15 @@ export default function EditUI({ el, isEdit, setIsEdit }: IEditProps) {
                 value={form.password}
               />
             </div>
+            {isVoucher ? (
+              ""
+            ) : (
+              <Rate
+                className={`${styles.comment__star} ${styles.mobile__star} row__sort gap__8`}
+                value={rate}
+                onChange={setRate}
+              />
+            )}
           </div>
         )}
         <div className="column__sort column__right gap__16">

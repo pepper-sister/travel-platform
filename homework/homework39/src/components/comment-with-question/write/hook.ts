@@ -3,8 +3,10 @@ import { useMutation } from "@apollo/client/react";
 import { CreateBoardCommentDocument, CreateTravelproductQuestionDocument } from "@/commons/graphql/graphql";
 import { useParams } from "next/navigation";
 import { useVoucherStore } from "@/commons/stores/voucher";
+import { useLoggedIn } from "@/commons/libraries/is-logged-in";
 
 export const useWrite = () => {
+  const { data } = useLoggedIn();
   const params = useParams();
   const [rate, setRate] = useState(3);
   const [form, setForm] = useState({
@@ -13,7 +15,7 @@ export const useWrite = () => {
     contents: "",
   });
   const { isVoucher } = useVoucherStore();
-  const isActive = isVoucher ? form.contents : form.writer && form.password && form.contents;
+  const isActive = form.contents;
 
   const [createBoardComment] = useMutation(CreateBoardCommentDocument);
   const [createTravelproductQuestion] = useMutation(CreateTravelproductQuestionDocument);
@@ -23,6 +25,12 @@ export const useWrite = () => {
   };
 
   const onClickSubmit = async () => {
+    const password = prompt("비밀번호를 입력해주세요");
+    if (!password) {
+      alert("비밀번호 입력이 완료되지 않았습니다. 다시 시도해주세요.");
+      return;
+    }
+
     try {
       if (isVoucher) {
         await createTravelproductQuestion({
@@ -47,6 +55,8 @@ export const useWrite = () => {
           variables: {
             createBoardCommentInput: {
               ...form,
+              writer: data?.fetchUserLoggedIn.name,
+              password,
               rating: rate,
             },
             boardId: String(params.boardId),
