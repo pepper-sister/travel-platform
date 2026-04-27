@@ -11,7 +11,7 @@ type IImageProps = {
 export default function ImageUploadUI({ index, imageUrl, onClickUpload, onClickDelete }: IImageProps) {
   return (
     <div
-      className="relative click"
+      className={`${styles.mobile__img__section} relative click`}
       onClick={() => {
         onClickUpload(index);
       }}
@@ -24,8 +24,9 @@ export default function ImageUploadUI({ index, imageUrl, onClickUpload, onClickD
               src={imageUrl}
               className={`${styles.img} br__8 bg__F2F2F2`}
               alt="사진업로드"
-              width={160}
-              height={160}
+              width={0}
+              height={0}
+              sizes="100vw"
             />
             <div
               className={`${styles.img__delete__section} br__100 padding__2 bg__00000066`}
@@ -44,10 +45,17 @@ export default function ImageUploadUI({ index, imageUrl, onClickUpload, onClickD
             </div>
           </>
         ) : (
-          <>
-            <Image src="/images/create-board-with-voucher/add.png" alt="사진업로드" width={40} height={40} />
-            <p className="w__400 c__777777">클릭해서 사진 업로드</p>
-          </>
+          <div className={`${styles.mobile__img__text__section} column__sort column__center`}>
+            <Image
+              className={styles.add__img}
+              src="/images/create-board-with-voucher/add.png"
+              alt="사진업로드"
+              width={40}
+              height={40}
+            />
+            <p className={`${styles.img__text} w__400 c__777777`}>클릭해서 사진 업로드</p>
+            <p className={`${styles.mobile__img__text} w__400 c__777777`}>사진 업로드</p>
+          </div>
         )}
       </div>
     </div>

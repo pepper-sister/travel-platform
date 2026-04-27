@@ -20,3 +20,33 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+.mobile__img__text {
+  display: none;
+}
+
+@media (max-width: 780px) {
+  .mobile__img__section {
+    width: 100%;
+  }
+
+  .img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1/1;
+  }
+
+  .mobile__img__text__section {
+    gap: 0;
+  }
+  .add__img {
+    width: 24px;
+    height: 24px;
+  }
+  .img__text {
+    display: none;
+  }
+  .mobile__img__text {
+    display: block;
+  }
+}

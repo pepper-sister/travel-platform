@@ -392,6 +392,9 @@ button {
   .gap__12 {
     gap: 8px;
   }
+  .gap__16 {
+    gap: 10px;
+  }
   .gap__24 {
     gap: 16px;
   }
