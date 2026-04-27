@@ -10,3 +10,17 @@
   font-weight: 400;
   color: #ababab;
 }
+
+@media (max-width: 780px) {
+  .input__title {
+    flex-direction: column;
+    gap: 16px;
+  }
+  .mobile__gap {
+    gap: 16px;
+  }
+
+  .textarea__text {
+    height: 120px;
+  }
+}

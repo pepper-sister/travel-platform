@@ -6,8 +6,8 @@ import { v4 as uuidv4 } from "uuid";
 
 export default function FormUI({ register, setValue, getValues, watch }: UseFormReturn<any>) {
   return (
-    <div className="column__sort gap__40">
-      <div className="row__sort gap__40">
+    <div className={`column__sort gap__40 ${styles.mobile__gap}`}>
+      <div className={`${styles.input__title} row__sort gap__40`}>
         <div className="column__sort gap__8 flex">
           <div className="row__sort gap__4">
             <p className="c__333333">작성자</p>
