@@ -12,16 +12,17 @@ export default function RecommendUI() {
   return (
     <div className="column__sort gap__24">
       <h1 className="f__28 w__700 l__36">2026 끝여름 낭만있게 마무리 하고 싶다면?</h1>
-      <div className="width__100 row__sort gap__24">
+      <div className={`${styles.recommend__section} width__100 row__sort gap__24`}>
         {data?.fetchTravelproductsOfTheBest.slice(0, 2).map((el) => (
           <Link
             href={`/voucher/${el._id}`}
             key={el._id}
-            className={`${styles.lodging__img} width__100 relative br__16 click`}
+            className={`${styles.lodging__img__section} width__100 relative br__16 click`}
           >
             <Image
               src={`https://storage.googleapis.com/${el.images?.[0]}`}
               alt="숙소"
+              className={styles.lodging__img}
               width={628}
               height={628}
               style={{ objectFit: "cover" }}
@@ -31,7 +32,7 @@ export default function RecommendUI() {
               <Image src="/images/voucher/bookmark.png" className="filter" alt="북마크" width={24} height={24} />
               <p className="f__14 l__20 c__ffffff">{el.pickedCount}</p>
             </div>
-            <div className={`${styles.lodging__txt__section} width__100 padding__24 column__sort gap__8`}>
+            <div className={`width__100 padding__24 column__sort gap__8 ${styles.lodging__txt__section}`}>
               <div className="column__sort gap__4">
                 <h3 className="f__24 w__700 l__32 c__ffffff">{el.name}</h3>
                 <p

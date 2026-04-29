@@ -1,4 +1,4 @@
-.lodging__img {
+.lodging__img__section {
   aspect-ratio: 1 / 1;
   overflow: hidden;
 }
@@ -25,4 +25,19 @@
   line-clamp: 1;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+@media (max-width: 780px) {
+  .recommend__section {
+    flex-direction: column;
+  }
+  .lodging__img,
+  .lodging__img__cover {
+    width: 100%;
+    height: 100%;
+  }
+
+  .lodging__txt__section {
+    padding: 8px;
+  }
 }
