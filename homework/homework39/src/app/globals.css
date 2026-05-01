@@ -54,6 +54,9 @@ button {
 .height__100 {
   height: 100%;
 }
+.height__auto {
+  height: auto;
+}
 
 .relative {
   position: relative;
@@ -404,7 +407,8 @@ button {
   .gap__24 {
     gap: 16px;
   }
-  .gap__32 {
+  .gap__32,
+  .gap__64 {
     gap: 24px;
   }
   .gap__40 {
@@ -417,10 +421,14 @@ button {
   .f__18 {
     font-size: 14px;
   }
+  .f__24 {
+    font-size: 16px;
+  }
   .f__28 {
     font-size: 16px;
   }
 
+  .l__32,
   .l__36 {
     line-height: 24px;
   }
