@@ -1,0 +1,12 @@
+.menu__section {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px 0;
+}
+
+@media (max-width: 780px) {
+  .menu__section {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
