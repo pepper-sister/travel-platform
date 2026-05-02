@@ -12,5 +12,11 @@
 .lodging__txt {
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: nowrap;
+}
+
+@media (max-width: 780px) {
+  .reserve__bookmark__section {
+    top: 8px;
+    right: 8px;
+  }
 }

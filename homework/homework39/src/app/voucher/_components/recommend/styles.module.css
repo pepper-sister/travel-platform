@@ -37,6 +37,11 @@
     height: 100%;
   }
 
+  .bookmark__section {
+    top: 8px;
+    right: 8px;
+  }
+
   .lodging__txt__section {
     padding: 8px;
   }

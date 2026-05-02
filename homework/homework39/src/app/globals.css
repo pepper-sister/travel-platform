@@ -425,6 +425,10 @@ button {
     gap: 32px;
   }
 
+  .btn__border {
+    padding: 4px 8px;
+  }
+
   .f__14 {
     font-size: 12px;
   }
