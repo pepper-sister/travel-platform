@@ -357,6 +357,16 @@ button {
   object-fit: cover;
 }
 
+.youtube__section {
+  padding: 24px;
+}
+.youtube {
+  width: 100%;
+  max-width: 822px;
+  height: auto;
+  max-height: 464px;
+}
+
 @media (max-width: 1279px) {
   .width__1280px {
     width: 100%;
@@ -435,5 +445,8 @@ button {
 
   .list__section {
     padding: 16px;
+  }
+  .youtube__section {
+    padding: 24px 0;
   }
 }

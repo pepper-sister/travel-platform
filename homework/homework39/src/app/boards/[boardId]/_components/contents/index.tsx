@@ -19,8 +19,8 @@ export default function ContentsUI({ data }: IFetchBoardData) {
         <div></div>
       )}
       {data?.youtubeUrl && (
-        <div className="relative padding__24 row__sort row__center bg__F2F2F2">
-          <iframe width="822" height="464" src={getYoutubeEmbedUrl(data.youtubeUrl)}></iframe>
+        <div className="youtube__section relative row__sort row__center bg__F2F2F2">
+          <iframe className="youtube" src={getYoutubeEmbedUrl(data.youtubeUrl)}></iframe>
         </div>
       )}
     </>
