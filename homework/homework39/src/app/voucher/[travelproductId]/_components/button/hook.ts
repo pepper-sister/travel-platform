@@ -3,8 +3,10 @@ import { useVoucherDetail } from "../hook";
 import { useLoggedIn } from "@/commons/libraries/is-logged-in";
 import { useMutation } from "@apollo/client/react";
 import { CreatePointTransactionOfBuyingAndSellingDocument } from "@/commons/graphql/graphql";
+import { useRouter } from "next/navigation";
 
-export const useSeller = () => {
+export const useButton = () => {
+  const router = useRouter();
   const { data } = useVoucherDetail();
   const { data: userData } = useLoggedIn();
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -41,6 +43,11 @@ export const useSeller = () => {
   };
 
   const onClickPurchase = () => {
+    if (!userData?.fetchUserLoggedIn) {
+      alert("로그인이 필요한 기능입니다.");
+      router.push("/signin-with-signup");
+      return;
+    }
     setIsModalOpen(true);
   };
 
