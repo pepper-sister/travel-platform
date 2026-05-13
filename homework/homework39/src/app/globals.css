@@ -229,6 +229,9 @@ button {
 .bg__000000 {
   background-color: #000000;
 }
+.bg__1C1C1C {
+  background-color: #1c1c1c;
+}
 .bg__00000066 {
   background-color: #00000066;
 }
@@ -402,7 +405,7 @@ button {
     padding: 24px 20px;
   }
   .padding__40__0 {
-    padding: 40px 0 24px;
+    padding: 24px 0;
   }
 
   .gap__8 {
