@@ -1,0 +1,16 @@
+.profile {
+  position: absolute;
+  top: 260px;
+}
+
+.divLine {
+  border-bottom: 2px solid #1c1c1c;
+}
+
+.price__section {
+  padding: 12px;
+  border-radius: 8px;
+}
+.price__txt {
+  list-style-position: inside;
+}

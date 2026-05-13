@@ -8,3 +8,9 @@
     width: 100%;
   }
 }
+
+@media (max-width: 780px) {
+  .product__location {
+    height: 144px;
+  }
+}

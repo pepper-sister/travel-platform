@@ -18,7 +18,6 @@ export default function ImageUI() {
         height={0}
         sizes="100vw"
         className={styles.product__img}
-        style={{ objectFit: "cover", borderRadius: "8px" }}
       />
       <div className={`${styles.product__img__section} column__sort gap__16`}>
         {productImages.map((el, index) => (
