@@ -17,3 +17,9 @@
   top: 10px;
   right: 8px;
 }
+
+@media (max-width: 780px) {
+  .search__section {
+    width: 220px;
+  }
+}
