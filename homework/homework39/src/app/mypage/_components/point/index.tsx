@@ -55,7 +55,7 @@ export default function PointUI() {
         ) : (
           <div className="column__sort gap__8">
             <div className="padding__16__24 row__sort">
-              <div className={`${active !== "total" ? "row__between" : ""} width__100 row__sort gap__8`}>
+              <div className={`${active !== "total" ? "row__between" : ""} width__100 row__sort gap__8 column__center`}>
                 <div className="row__sort gap__8">
                   <p className="width__100px l__20 c__1C1C1C text__center">
                     {active === "total" ? "날짜" : active === "charge" ? "충전일" : "거래일"}
@@ -64,7 +64,7 @@ export default function PointUI() {
                     {active === "total" ? "내용" : active === "charge" ? "결제 ID" : "상품 명"}
                   </p>
                 </div>
-                <div className={`${active === "total" ? "flex__grow" : ""} row__sort gap__8`}>
+                <div className={`${active === "total" ? "flex__grow" : ""} row__sort gap__8 column__center`}>
                   <p className={`${active === "total" ? "flex__grow" : "width__100px"} l__20 c__1C1C1C text__center`}>
                     {active === "total" ? "거래 및 충전 내역" : active === "charge" ? "충전내역" : "거래내역"}
                   </p>
@@ -81,8 +81,10 @@ export default function PointUI() {
                   key={`${el._id}`}
                   className="relative br__8 padding__11__24 border__F2F2F2 row__sort row__between column__center"
                 >
-                  <div className={`${active !== "total" ? "row__between" : ""} width__100 row__sort gap__8`}>
-                    <div className="row__sort gap__8">
+                  <div
+                    className={`${active !== "total" ? "row__between" : ""} width__100 row__sort gap__8 column__center`}
+                  >
+                    <div className="row__sort gap__8 column__center">
                       <p className="width__100px f__14 w__300 l__20 c__919191 text__center">
                         {el.createdAt.slice(0, 10)}
                       </p>
