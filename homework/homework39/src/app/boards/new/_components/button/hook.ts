@@ -47,7 +47,7 @@ export const useButton = () => {
   };
 
   const onClickCancel = () => {
-    router.back();
+    router.push("/boards");
   };
 
   return { isActive, onClickCancel, onClickSubmit };

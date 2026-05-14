@@ -53,7 +53,7 @@ export const useButton = () => {
   };
 
   const onClickCancel = () => {
-    router.back();
+    router.push("/voucher");
   };
 
   return { isActive, onClickCancel, onClickSubmit };
