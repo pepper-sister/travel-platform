@@ -8,8 +8,12 @@ export default function ButtonUI() {
 
   return (
     <div className="row__sort row__end">
-      <div className="row__sort gap__16">
-        <button type="button" onClick={onClickCancel} className="white__btn br__8 padding__12__16 f__18 w__600">
+      <div className={`row__sort gap__16 ${styles.btn__section}`}>
+        <button
+          type="button"
+          onClick={onClickCancel}
+          className={`white__btn br__8 padding__12__16 f__18 w__600 ${styles.btn}`}
+        >
           취소
         </button>
         <button
