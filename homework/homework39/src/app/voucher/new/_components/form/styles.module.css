@@ -8,3 +8,9 @@
   flex-direction: column;
   height: 477px;
 }
+
+@media (max-width: 780px) {
+  .editor {
+    height: 200px;
+  }
+}

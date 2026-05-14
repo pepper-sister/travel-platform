@@ -13,7 +13,7 @@ export default function AddressUI({ register, setValue, watch }: AddressProps) {
   const { address } = useAddress({ setValue, watch });
 
   return (
-    <div className="row__sort gap__40">
+    <div className={`row__sort gap__40 ${styles.address__section}`}>
       <div className={`${styles.voucher__address} column__sort gap__40`}>
         <div className="column__sort gap__8">
           <div className="row__sort gap__4">
@@ -48,7 +48,7 @@ export default function AddressUI({ register, setValue, watch }: AddressProps) {
           </div>
         </div>
       </div>
-      <div className="width__100 column__sort gap__16">
+      <div className={`${styles.map__section} width__100 column__sort gap__16`}>
         <p>상세 위치</p>
         <div className="flex br__16 border__E4E4E4 row__sort row__center column__center bg__E4E4E4">
           {address ? (

@@ -35,7 +35,8 @@ export default function ImageUploadUI({ imageUrl, onClickUpload, onClickDelete }
         ) : (
           <>
             <Image src="/images/create-board-with-voucher/add.png" alt="사진업로드" width={40} height={40} />
-            <p className="w__400 c__777777">클릭해서 사진 업로드</p>
+            <p className={`${styles.img__text} w__400 c__777777`}>클릭해서 사진 업로드</p>
+            <p className={`${styles.mobile__img__text} w__400 c__777777`}>사진 업로드</p>
           </>
         )}
       </div>
